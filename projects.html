@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Projects &amp; Case Studies — Zeerak Shafique | Creative Developer</title>
+  <meta name="title" content="Projects &amp; Works — Zeerak Shafique">
+  <meta name="description" content="Showcase of creative developer works, front-end architecture, C algorithms, and WebGL experiments by Zeerak Shafique.">
+  <meta name="author" content="Zeerak Shafique">
+  <meta name="theme-color" content="#060709">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects &amp; Case Studies — Zeerak Shafique">
+  <meta property="og:description" content="Selected case studies exploring computational aesthetics, performance-first front-end engineering, and algorithmic visualizers.">
+  <meta property="og:image" content="Profile%20Pic.jpg">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="projects">
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
+
+  <!-- Custom Precision Cursor (Desktop Only) -->
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- Ambient Cinematic Lighting Strata -->
+  <div class="ambient-light-container" aria-hidden="true">
+    <div class="ambient-light ambient-violet"></div>
+    <div class="ambient-light ambient-cyan"></div>
+    <div class="telemetry-grid-overlay"></div>
+  </div>
+
+  <!-- SHARED NAVIGATION -->
+  <header class="site-header">
+    <nav class="nav-capsule" aria-label="Main Navigation">
+      <!-- Personal Brand Mark (Links to Home) -->
+      <a href="index.html" class="brand-mark" aria-label="Zeerak Shafique Home">
+        <span class="brand-monogram">ZS</span>
+        <span class="brand-divider">//</span>
+        <span class="brand-version">26</span>
+        <span class="brand-pulse" title="System Online"></span>
+      </a>
+
+      <!-- Desktop Multipage Links -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-item"><span class="nav-index">// 00.</span> HOME</a></li>
+        <li><a href="about.html" class="nav-item"><span class="nav-index">// 01.</span> ABOUT</a></li>
+        <li><a href="projects.html" class="nav-item active"><span class="nav-index">// 02.</span> PROJECTS</a></li>
+        <li><a href="skills.html" class="nav-item"><span class="nav-index">// 03.</span> SKILLS</a></li>
+        <li><a href="contact.html" class="nav-item"><span class="nav-index">// 04.</span> CONTACT</a></li>
+      </ul>
+
+      <!-- Live Availability Beacon -->
+      <div class="availability-badge" title="Status: Available for creative collaborations">
+        <span class="status-dot"></span>
+        <span class="availability-text">AVAILABLE // BCA '26</span>
+      </div>
+
+      <!-- Action Button -->
+      <div class="nav-cta-cluster">
+        <a href="contact.html" class="btn btn-nav">
+          <span>TRANSMIT</span>
+          <svg class="btn-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-telemetry-header">
+          <span>NAVIGATION HUD // ACTIVE</span>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ESC / ✕ ]</button>
+        </div>
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link"><span class="mob-index">00</span> HOME</a></li>
+          <li><a href="about.html" class="mobile-link"><span class="mob-index">01</span> ABOUT</a></li>
+          <li><a href="projects.html" class="mobile-link active"><span class="mob-index">02</span> PROJECTS</a></li>
+          <li><a href="skills.html" class="mobile-link"><span class="mob-index">03</span> SKILLS</a></li>
+          <li><a href="contact.html" class="mobile-link"><span class="mob-index">04</span> CONTACT</a></li>
+        </ul>
+        <div class="mobile-drawer-footer">
+          <div class="drawer-telemetry">
+            <div>NODE: ZEERAK.SYS</div>
+            <div>STATUS: ONLINE // 60 FPS</div>
+            <div>COORDS: LAT 31.5204° N</div>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-block">INITIALIZE TRANSMISSION</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- SUBPAGE HERO BANNER -->
+    <section class="page-hero-banner" aria-label="Projects Page Introduction">
+      <div class="container">
+        <div class="breadcrumb-nav reveal-item">
+          <a href="index.html">HOME</a>
+          <span class="sep">/</span>
+          <span>SELECTED WORKS &amp; ARCHIVE</span>
+        </div>
+        <h1 class="page-title reveal-item">
+          Digital Artifacts &amp;<br>
+          <span class="text-gradient">Interactive Case Studies.</span>
+        </h1>
+        <p class="page-lead reveal-item">
+          A showcase of creative developer projects, computational logic visualizers, and experimental front-end architectures engineered from first principles.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS GALLERY SECTION -->
+    <section class="section projects-section" aria-label="Project Dossiers">
+      <div class="container">
+        <!-- Filter Tabs -->
+        <div class="project-filters reveal-item" id="project-filters" role="tablist" aria-label="Project Categories">
+          <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">ALL WORKS (4)</button>
+          <button type="button" class="filter-btn" data-filter="creative" role="tab" aria-selected="false">CREATIVE FRONTEND</button>
+          <button type="button" class="filter-btn" data-filter="systems" role="tab" aria-selected="false">SYSTEMS &amp; C LOGIC</button>
+          <button type="button" class="filter-btn" data-filter="experimental" role="tab" aria-selected="false">EXPERIMENTAL LAB</button>
+        </div>
+
+        <!-- Project Dossiers List -->
+        <div class="projects-dossier-list" id="projects-list">
+          <!-- PROJECT 01: The Living Portfolio (Featured) -->
+          <article class="project-dossier-item reveal-item" data-category="creative">
+            <div class="dossier-meta-col">
+              <div class="project-index">[ 01 / 04 ]</div>
+              <div class="project-year">YEAR: 2026</div>
+              <div class="project-status-chip">
+                <span class="status-pulse-dot"></span>
+                <span>ACTIVE LIVING SITE</span>
+              </div>
+            </div>
+
+            <div class="dossier-content-col">
+              <div class="project-category">CREATIVE ENGINEERING &bull; MULTIPAGE ARCHITECTURE</div>
+              <h2 class="project-title">Digital Afterdark // Personal Developer Portfolio v2</h2>
+              <p class="project-description">
+                The multipage website you are currently exploring. Designed and engineered from the ground up as a bespoke creative developer universe. Combines custom Three.js hardware-accelerated 3D meshes, fluid typography clamp curves, zero-bloat vanilla scripts, and complete accessibility compliance.
+              </p>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">HTML5 Semantic DOM</span>
+                <span class="tech-tag">CSS Design Tokens</span>
+                <span class="tech-tag">Vanilla JS (ES6+)</span>
+                <span class="tech-tag">Three.js WebGL</span>
+                <span class="tech-tag">Multipage Architecture</span>
+              </div>
+
+              <div class="project-actions">
+                <a href="index.html" class="btn btn-primary btn-sm">
+                  <span>VIEW HOMEPAGE [↗]</span>
+                </a>
+                <a href="https://github.com/zeerak-shafique" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <span>SOURCE REPOSITORY ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="dossier-preview-col">
+              <div class="preview-frame">
+                <div class="preview-hud">
+                  <span>TELEMETRY: LIVE_VIEWPORT</span>
+                  <span>FPS: 60</span>
+                </div>
+                <div class="preview-visual preview-visual-portfolio">
+                  <div class="schematic-grid"></div>
+                  <div class="schematic-circle"></div>
+                  <div class="schematic-code">
+                    <span>SYS.RENDER: OK</span>
+                    <span>THREE.JS: MOUNTED</span>
+                    <span>FRAMEWORK_BLOAT: 0%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 02: Algorithmic Logic Engine (Structured Concept) -->
+          <article class="project-dossier-item reveal-item" data-category="systems">
+            <div class="dossier-meta-col">
+              <div class="project-index">[ 02 / 04 ]</div>
+              <div class="project-year">YEAR: 2026</div>
+              <div class="project-status-chip pending">
+                <span class="status-pulse-dot pending"></span>
+                <span>IN DEVELOPMENT</span>
+              </div>
+            </div>
+
+            <div class="dossier-content-col">
+              <div class="project-category">SYSTEMS LOGIC &bull; COMPUTATIONAL GRAPHICS</div>
+              <h2 class="project-title">Algo.Core // Sorting &amp; Graph Visualizer</h2>
+              <p class="project-description">
+                An interactive web-based visualizer inspired by C data structures and algorithms. Bridges low-level sorting routines (Quicksort, Merge Sort, Binary Search Trees) with dynamic Canvas 2D frame rendering, sound frequency mapping, and real-time complexity analysis.
+              </p>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">C Logic Models</span>
+                <span class="tech-tag">JavaScript Engine</span>
+                <span class="tech-tag">HTML5 Canvas 2D</span>
+                <span class="tech-tag">Web Workers</span>
+              </div>
+
+              <div class="project-actions">
+                <span class="badge-phase">PROTOTYPE ENGINE IN PROGRESS</span>
+                <a href="https://github.com/zeerak-shafique" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <span>UPCOMING ARCHIVE ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="dossier-preview-col">
+              <div class="preview-frame">
+                <div class="preview-hud">
+                  <span>ENGINE: ALGO_SCHEMATIC</span>
+                  <span>NODES: 64</span>
+                </div>
+                <div class="preview-visual preview-visual-algo">
+                  <div class="algo-bars">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                    <span class="bar bar-4"></span>
+                    <span class="bar bar-5"></span>
+                    <span class="bar bar-6"></span>
+                    <span class="bar bar-7"></span>
+                    <span class="bar bar-8"></span>
+                  </div>
+                  <div class="algo-tag">BINARY SEARCH TREE // TRAVERSAL</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 03: Spatial Canvas Experiment (Creative Laboratory) -->
+          <article class="project-dossier-item reveal-item" data-category="experimental">
+            <div class="dossier-meta-col">
+              <div class="project-index">[ 03 / 04 ]</div>
+              <div class="project-year">YEAR: 2026</div>
+              <div class="project-status-chip research">
+                <span class="status-pulse-dot research"></span>
+                <span>RESEARCH PHASE</span>
+              </div>
+            </div>
+
+            <div class="dossier-content-col">
+              <div class="project-category">CREATIVE LAB &bull; SHADER EXPERIMENTS</div>
+              <h2 class="project-title">Kinetic Geometry // GLSL Shader Lab</h2>
+              <p class="project-description">
+                Exploration of procedural noise, mathematical mesh distortions, and fragment shaders running natively in the browser. Investigating how hardware GPUs calculate vertex displacement to produce fluid, organic digital sculptures.
+              </p>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">WebGL 2.0</span>
+                <span class="tech-tag">GLSL Shaders</span>
+                <span class="tech-tag">Three.js</span>
+                <span class="tech-tag">Simplex Noise</span>
+              </div>
+
+              <div class="project-actions">
+                <span class="badge-phase">EXPERIMENTATION BENCH</span>
+                <a href="https://github.com/zeerak-shafique" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <span>RESEARCH LOGS ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="dossier-preview-col">
+              <div class="preview-frame">
+                <div class="preview-hud">
+                  <span>PIPELINE: GLSL_VERTEX</span>
+                  <span>GEOM: TORUS</span>
+                </div>
+                <div class="preview-visual preview-visual-shader">
+                  <div class="shader-ring-1"></div>
+                  <div class="shader-ring-2"></div>
+                  <div class="shader-tag">sin(u_time * 0.5) * normal;</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 04: C System Shell Emulator (Research Placeholder) -->
+          <article class="project-dossier-item reveal-item" data-category="systems">
+            <div class="dossier-meta-col">
+              <div class="project-index">[ 04 / 04 ]</div>
+              <div class="project-year">YEAR: 2026</div>
+              <div class="project-status-chip research">
+                <span class="status-pulse-dot research"></span>
+                <span>CONCEPTUAL PHASE</span>
+              </div>
+            </div>
+
+            <div class="dossier-content-col">
+              <div class="project-category">SYSTEMS ARCHITECTURE &bull; COMMAND LINE INTERFACES</div>
+              <h2 class="project-title">Terminal.OS // C Memory &amp; Process Simulator</h2>
+              <p class="project-description">
+                A planned interactive web simulation demonstrating how an operating system allocates memory pages, parses command tokens, and manages virtual file nodes, modeled directly after C systems programming patterns.
+              </p>
+
+              <div class="project-tech-tags">
+                <span class="tech-tag">C Core Logic</span>
+                <span class="tech-tag">Memory Paging</span>
+                <span class="tech-tag">Command Parser</span>
+                <span class="tech-tag">Vanilla JS</span>
+              </div>
+
+              <div class="project-actions">
+                <span class="badge-phase">DESIGN SPECIFICATION IN PROGRESS</span>
+                <a href="https://github.com/zeerak-shafique" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm">
+                  <span>SPEC REPO ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="dossier-preview-col">
+              <div class="preview-frame">
+                <div class="preview-hud">
+                  <span>SIM: MEMORY_PAGING</span>
+                  <span>BLOCKS: 256KB</span>
+                </div>
+                <div class="preview-visual" style="background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%); flex-direction: column; gap: 8px;">
+                  <div style="font-family: var(--font-mono); font-size: 11px; color: var(--status-online);">
+                    [0x004000] ALLOC: OK (4KB)<br>
+                    [0x004004] STACK_PTR: 0x7FFF
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="brand-monogram">ZS</span>
+            <span class="brand-divider">//</span>
+            <span class="brand-name">ZEERAK SHAFIQUE</span>
+          </div>
+          <p class="footer-role">
+            BCA Student &bull; Aspiring Creative Developer &bull; Exploring Computational Aesthetics
+          </p>
+        </div>
+
+        <div class="footer-nav-block">
+          <div class="clock-label">NAVIGATION DIRECTORY</div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
+            <li><a href="index.html" style="color: var(--text-secondary); text-decoration: none;">// 00. HOME</a></li>
+            <li><a href="about.html" style="color: var(--text-secondary); text-decoration: none;">// 01. ABOUT</a></li>
+            <li><a href="projects.html" style="color: var(--text-primary); text-decoration: none;">// 02. PROJECTS</a></li>
+            <li><a href="skills.html" style="color: var(--text-secondary); text-decoration: none;">// 03. SKILLS</a></li>
+            <li><a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">// 04. CONTACT</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-telemetry-clock">
+          <div class="clock-label">SYSTEM TIME // PKT (UTC+5)</div>
+          <div class="clock-time" id="live-clock">--:--:-- PKT</div>
+          <div class="clock-sub">LOCATION: SOUTH ASIA</div>
+        </div>
+
+        <div class="footer-elevator">
+          <a href="#main-content" class="btn btn-elevator" id="btn-back-top" aria-label="Return to top of page">
+            <span>RETURN TO APEX</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; <span id="current-year">2026</span> ZEERAK SHAFIQUE. ALL RIGHTS RESERVED.
+        </div>
+        <div class="footer-specs">
+          <span>VANILLA HTML5 + CSS3 + MULTIPAGE</span>
+          <span class="dot">&bull;</span>
+          <span>ZERO FRAMEWORK OVERHEAD</span>
+          <span class="dot">&bull;</span>
+          <span>HARDWARE ACCELERATED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Technical Architecture &amp; Skills — Zeerak Shafique</title>
+  <meta name="title" content="Technical Skills — Zeerak Shafique">
+  <meta name="description" content="Core engineering pillars, programming languages, and web standards practiced by Zeerak Shafique: HTML5, CSS3, JavaScript, and C Programming.">
+  <meta name="author" content="Zeerak Shafique">
+  <meta name="theme-color" content="#060709">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Technical Architecture &amp; Skills — Zeerak Shafique">
+  <meta property="og:description" content="Foundational engineering disciplines: HTML5, CSS3, JavaScript ES6+, and C Systems Programming. Honest learning without fake percentage bars.">
+  <meta property="og:image" content="Profile%20Pic.jpg">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="skills">
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
+
+  <!-- Custom Precision Cursor (Desktop Only) -->
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- Ambient Cinematic Lighting Strata -->
+  <div class="ambient-light-container" aria-hidden="true">
+    <div class="ambient-light ambient-violet"></div>
+    <div class="ambient-light ambient-cyan"></div>
+    <div class="telemetry-grid-overlay"></div>
+  </div>
+
+  <!-- SHARED NAVIGATION -->
+  <header class="site-header">
+    <nav class="nav-capsule" aria-label="Main Navigation">
+      <!-- Personal Brand Mark (Links to Home) -->
+      <a href="index.html" class="brand-mark" aria-label="Zeerak Shafique Home">
+        <span class="brand-monogram">ZS</span>
+        <span class="brand-divider">//</span>
+        <span class="brand-version">26</span>
+        <span class="brand-pulse" title="System Online"></span>
+      </a>
+
+      <!-- Desktop Multipage Links -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="nav-item"><span class="nav-index">// 00.</span> HOME</a></li>
+        <li><a href="about.html" class="nav-item"><span class="nav-index">// 01.</span> ABOUT</a></li>
+        <li><a href="projects.html" class="nav-item"><span class="nav-index">// 02.</span> PROJECTS</a></li>
+        <li><a href="skills.html" class="nav-item active"><span class="nav-index">// 03.</span> SKILLS</a></li>
+        <li><a href="contact.html" class="nav-item"><span class="nav-index">// 04.</span> CONTACT</a></li>
+      </ul>
+
+      <!-- Live Availability Beacon -->
+      <div class="availability-badge" title="Status: Available for creative collaborations">
+        <span class="status-dot"></span>
+        <span class="availability-text">AVAILABLE // BCA '26</span>
+      </div>
+
+      <!-- Action Button -->
+      <div class="nav-cta-cluster">
+        <a href="contact.html" class="btn btn-nav">
+          <span>TRANSMIT</span>
+          <svg class="btn-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Trigger -->
+        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle Navigation Menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-inner">
+        <div class="mobile-telemetry-header">
+          <span>NAVIGATION HUD // ACTIVE</span>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ESC / ✕ ]</button>
+        </div>
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link"><span class="mob-index">00</span> HOME</a></li>
+          <li><a href="about.html" class="mobile-link"><span class="mob-index">01</span> ABOUT</a></li>
+          <li><a href="projects.html" class="mobile-link"><span class="mob-index">02</span> PROJECTS</a></li>
+          <li><a href="skills.html" class="mobile-link active"><span class="mob-index">03</span> SKILLS</a></li>
+          <li><a href="contact.html" class="mobile-link"><span class="mob-index">04</span> CONTACT</a></li>
+        </ul>
+        <div class="mobile-drawer-footer">
+          <div class="drawer-telemetry">
+            <div>NODE: ZEERAK.SYS</div>
+            <div>STATUS: ONLINE // 60 FPS</div>
+            <div>COORDS: LAT 31.5204° N</div>
+          </div>
+          <a href="contact.html" class="btn btn-primary btn-block">INITIALIZE TRANSMISSION</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- SUBPAGE HERO BANNER -->
+    <section class="page-hero-banner" aria-label="Skills Page Introduction">
+      <div class="container">
+        <div class="breadcrumb-nav reveal-item">
+          <a href="index.html">HOME</a>
+          <span class="sep">/</span>
+          <span>TECHNICAL ARCHITECTURE &amp; STACK</span>
+        </div>
+        <h1 class="page-title reveal-item">
+          Foundational Pillars &amp;<br>
+          <span class="text-gradient">Engineering Disciplines.</span>
+        </h1>
+        <p class="page-lead reveal-item">
+          A transparent matrix of the programming languages and web standards I actively study, practice, and build with. Zero arbitrary percentage ratings.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4 CORE ARCHITECTURAL PILLARS -->
+    <section class="section skills-section" aria-label="Core Engineering Pillars">
+      <div class="container">
+        <div class="section-meta reveal-item">
+          <span class="section-index">// 02.1</span>
+          <span class="section-tag">CORE ARCHITECTURAL MATRIX</span>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Pillar 1: HTML5 -->
+          <article class="skill-card reveal-item" data-tilt>
+            <div class="skill-card-inner">
+              <div class="skill-header">
+                <span class="skill-index">01</span>
+                <span class="skill-tag">DOM_ARCHITECTURE</span>
+              </div>
+              <h2 class="skill-title">HTML5 Semantic Systems</h2>
+              <p class="skill-desc">
+                Engineering accessible, search-optimized, and clean document flow. Structuring DOM trees that screen readers navigate effortlessly and browsers render with minimal repaints.
+              </p>
+              <ul class="skill-specs">
+                <li><span class="spec-dot"></span> Semantic Landmark Elements (&lt;header&gt;, &lt;main&gt;, &lt;article&gt;)</li>
+                <li><span class="spec-dot"></span> WCAG 2.1 AA Screen-Reader Transparency</li>
+                <li><span class="spec-dot"></span> OpenGraph &amp; Twitter Card Metadata Protocols</li>
+                <li><span class="spec-dot"></span> Fast Resource Hints (dns-prefetch, preconnect)</li>
+              </ul>
+              <div class="skill-code-preview" aria-hidden="true">
+                <code>&lt;main role="main" aria-label="core"&gt;</code>
+              </div>
+            </div>
+          </article>
+
+          <!-- Pillar 2: CSS3 -->
+          <article class="skill-card reveal-item" data-tilt>
+            <div class="skill-card-inner">
+              <div class="skill-header">
+                <span class="skill-index">02</span>
+                <span class="skill-tag">SPATIAL_STYLING</span>
+              </div>
+              <h2 class="skill-title">CSS3 &amp; Design Tokens</h2>
+              <p class="skill-desc">
+                Building fluid, mathematical layout systems without heavy CSS frameworks. Leveraging CSS Custom Properties, asymmetric Grid, fluid clamp() formulas, and GPU-composited keyframes.
+              </p>
+              <ul class="skill-specs">
+                <li><span class="spec-dot"></span> Fluid Typography (clamp() mathematical scales)</li>
+                <li><span class="spec-dot"></span> Asymmetric 12-Column CSS Grid &amp; Flexbox</li>
+                <li><span class="spec-dot"></span> Hardware-Accelerated 3D Transform Matrices</li>
+                <li><span class="spec-dot"></span> Glassmorphism, Saturation &amp; Backdrop Blurs</li>
+              </ul>
+              <div class="skill-code-preview" aria-hidden="true">
+                <code>clamp(2rem, 5vw + 1rem, 6rem);</code>
+              </div>
+            </div>
+          </article>
+
+          <!-- Pillar 3: JavaScript -->
+          <article class="skill-card reveal-item" data-tilt>
+            <div class="skill-card-inner">
+              <div class="skill-header">
+                <span class="skill-index">03</span>
+                <span class="skill-tag">ENGINE_LOGIC</span>
+              </div>
+              <h2 class="skill-title">JavaScript (ES6+)</h2>
+              <p class="skill-desc">
+                Client-side execution logic, asynchronous pipelines, event loop comprehension, DOM reactive interfaces, and hardware-accelerated canvas animation loops.
+              </p>
+              <ul class="skill-specs">
+                <li><span class="spec-dot"></span> Asynchronous Pipelines &amp; Promises</li>
+                <li><span class="spec-dot"></span> Event-Driven Architecture &amp; Custom Observers</li>
+                <li><span class="spec-dot"></span> Canvas 2D &amp; Three.js WebGL Integration</li>
+                <li><span class="spec-dot"></span> Lerp Math &amp; Micro-Interaction Physics</li>
+              </ul>
+              <div class="skill-code-preview" aria-hidden="true">
+                <code>requestAnimationFrame(renderLoop);</code>
+              </div>
+            </div>
+          </article>
+
+          <!-- Pillar 4: C Programming -->
+          <article class="skill-card reveal-item" data-tilt>
+            <div class="skill-card-inner">
+              <div class="skill-header">
+                <span class="skill-index">04</span>
+                <span class="skill-tag">SYSTEMS_CORE</span>
+              </div>
+              <h2 class="skill-title">C Programming</h2>
+              <p class="skill-desc">
+                The scholastic anchor of my engineering discipline. Understanding physical RAM, memory allocation (malloc/free), pointers, structs, and core algorithmic complexity.
+              </p>
+              <ul class="skill-specs">
+                <li><span class="spec-dot"></span> Dynamic Heap Allocations &amp; Memory Safety</li>
+                <li><span class="spec-dot"></span> Pointer Arithmetic &amp; Complex Struct Modeling</li>
+                <li><span class="spec-dot"></span> Data Structures (Arrays, Linked Lists, Stacks, Queues)</li>
+                <li><span class="spec-dot"></span> Algorithmic Complexity (Big-O Reasoning)</li>
+              </ul>
+              <div class="skill-code-preview" aria-hidden="true">
+                <code>int *mem = malloc(sizeof(int) * 64);</code>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: THE DUALITY PHILOSOPHY (HOW C INFORMS FRONTEND) -->
+    <section class="section" style="padding-top: 0;" aria-label="Engineering Philosophy">
+      <div class="container">
+        <div class="system-dossier-card reveal-item" style="padding: 32px;">
+          <div class="section-meta">
+            <span class="section-index">// 02.2</span>
+            <span class="section-tag">ENGINEERING PRINCIPLE: THE LOW-TO-HIGH DUALITY</span>
+          </div>
+
+          <h2 style="font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--text-primary); margin-bottom: 16px;">
+            How Low-Level C Thinking Transforms Web Development
+          </h2>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
+            <div style="background: var(--bg-surface-2); padding: 20px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-violet); margin-bottom: 8px;">[CONCEPT: MEMORY AWARENESS]</div>
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                In C, unmanaged memory causes immediate crashes or leaks. In JavaScript, understanding garbage collection prevents hidden memory retention in detached DOM nodes and animation loops.
+              </p>
+            </div>
+
+            <div style="background: var(--bg-surface-2); padding: 20px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan); margin-bottom: 8px;">[CONCEPT: TIME COMPLEXITY]</div>
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                Writing sorting algorithms in C clarifies why nested loops in front-end code freeze the UI thread. Every DOM query and array transformation is evaluated for efficiency.
+              </p>
+            </div>
+
+            <div style="background: var(--bg-surface-2); padding: 20px; border-radius: 8px; border: 1px solid var(--border-subtle);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--status-online); margin-bottom: 8px;">[CONCEPT: SYSTEM DISCIPLINE]</div>
+              <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.6;">
+                C demands strict compilation and zero implicit magic. This translates to disciplined, modular vanilla JavaScript with explicit variable scopes and predictable state flow.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: GROWTH VECTOR / TRAJECTORY -->
+    <section class="section trajectory-section" aria-label="Learning Trajectory">
+      <div class="container">
+        <div class="section-meta reveal-item">
+          <span class="section-index">// 02.3</span>
+          <span class="section-tag">HORIZON &amp; EXPANSION TRAJECTORY</span>
+        </div>
+
+        <div class="section-intro reveal-item">
+          <h2 class="section-heading">Learning Trajectory</h2>
+          <p class="section-subheading">
+            An honest, forward-looking roadmap of the technologies and engineering disciplines I am actively expanding into.
+          </p>
+        </div>
+
+        <div class="trajectory-grid">
+          <!-- Vector 1 -->
+          <div class="trajectory-card active-card reveal-item">
+            <div class="traj-header">
+              <span class="traj-step">VECTOR 01</span>
+              <span class="traj-badge badge-active">ACTIVE DEEP-DIVE</span>
+            </div>
+            <h3 class="traj-title">JavaScript Runtime Internals &amp; Advanced C</h3>
+            <p class="traj-desc">
+              Mastering how JavaScript executes under the hood (call stack, microtask queue, memory leaks) while writing advanced data structures in C (self-balancing trees, hash maps).
+            </p>
+            <ul class="traj-list">
+              <li><span class="traj-check">&#10003;</span> Event loop concurrency &amp; Web Workers</li>
+              <li><span class="traj-check">&#10003;</span> Dynamic memory management &amp; file I/O in C</li>
+              <li><span class="traj-check">&#10003;</span> Modular ES6+ bundling principles</li>
+            </ul>
+          </div>
+
+          <!-- Vector 2 -->
+          <div class="trajectory-card frontier-card reveal-item">
+            <div class="traj-header">
+              <span class="traj-step">VECTOR 02</span>
+              <span class="traj-badge badge-frontier">NEXT HORIZON</span>
+            </div>
+            <h3 class="traj-title">Custom GLSL Shaders &amp; Modern Tooling</h3>
+            <p class="traj-desc">
+              Progressing from pre-built Three.js materials into custom vertex/fragment shaders written in GLSL, paired with modern build pipelines and TypeScript.
+            </p>
+            <ul class="traj-list">
+              <li><span class="traj-arrow">&#8594;</span> GLSL math: vector transformations &amp; raymarching</li>
+              <li><span class="traj-arrow">&#8594;</span> Fullstack fundamentals (Node.js &amp; API design)</li>
+              <li><span class="traj-arrow">&#8594;</span> Web Accessibility (WCAG AAA certification)</li>
+            </ul>
+          </div>
+
+          <!-- Vector 3 -->
+          <div class="trajectory-card vision-card reveal-item">
+            <div class="traj-header">
+              <span class="traj-step">VECTOR 03</span>
+              <span class="traj-badge badge-vision">LONG-TERM VISION</span>
+            </div>
+            <h3 class="traj-title">Award-Winning Creative Engineering</h3>
+            <p class="traj-desc">
+              Evolving into a versatile creative developer capable of conceptualizing and engineering digital experiences celebrated on international platforms like Awwwards and FWA.
+            </p>
+            <ul class="traj-list">
+              <li><span class="traj-arrow">&#8594;</span> Interactive 3D web environments</li>
+              <li><span class="traj-arrow">&#8594;</span> High-performance computational design</li>
+              <li><span class="traj-arrow">&#8594;</span> Scholastic excellence in Computer Applications</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-cta-center reveal-item" style="margin-top: 48px; text-align: center;">
+          <a href="contact.html" class="btn btn-primary">
+            <span>DISCUSS COLLABORATION OR INTERNSHIP</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SHARED FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="brand-monogram">ZS</span>
+            <span class="brand-divider">//</span>
+            <span class="brand-name">ZEERAK SHAFIQUE</span>
+          </div>
+          <p class="footer-role">
+            BCA Student &bull; Aspiring Creative Developer &bull; Exploring Computational Aesthetics
+          </p>
+        </div>
+
+        <div class="footer-nav-block">
+          <div class="clock-label">NAVIGATION DIRECTORY</div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 8px; font-family: var(--font-mono); font-size: 12px;">
+            <li><a href="index.html" style="color: var(--text-secondary); text-decoration: none;">// 00. HOME</a></li>
+            <li><a href="about.html" style="color: var(--text-secondary); text-decoration: none;">// 01. ABOUT</a></li>
+            <li><a href="projects.html" style="color: var(--text-secondary); text-decoration: none;">// 02. PROJECTS</a></li>
+            <li><a href="skills.html" style="color: var(--text-primary); text-decoration: none;">// 03. SKILLS</a></li>
+            <li><a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">// 04. CONTACT</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-telemetry-clock">
+          <div class="clock-label">SYSTEM TIME // PKT (UTC+5)</div>
+          <div class="clock-time" id="live-clock">--:--:-- PKT</div>
+          <div class="clock-sub">LOCATION: SOUTH ASIA</div>
+        </div>
+
+        <div class="footer-elevator">
+          <a href="#main-content" class="btn btn-elevator" id="btn-back-top" aria-label="Return to top of page">
+            <span>RETURN TO APEX</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; <span id="current-year">2026</span> ZEERAK SHAFIQUE. ALL RIGHTS RESERVED.
+        </div>
+        <div class="footer-specs">
+          <span>VANILLA HTML5 + CSS3 + MULTIPAGE</span>
+          <span class="dot">&bull;</span>
+          <span>ZERO FRAMEWORK OVERHEAD</span>
+          <span class="dot">&bull;</span>
+          <span>HARDWARE ACCELERATED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
