@@ -1924,7 +1924,7 @@ body {
   line-height: 1.6;
 }
 
-/* Real-Time PKT World Clock */
+/* Real-Time IST World Clock */
 .footer-telemetry-clock {
   font-family: var(--font-mono);
   display: flex;
@@ -2444,4 +2444,243 @@ body {
     max-width: 100%;
   }
 }
+
+/* --------------------------------------------------------------------------
+   17. DIRECT CONTACT & SOCIAL ACTIONS (PHONE & INSTAGRAM)
+   -------------------------------------------------------------------------- */
+.nav-social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  transition: all var(--duration-fast) ease;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-social-btn:hover {
+  color: #ffffff;
+  border-color: rgba(225, 48, 108, 0.6);
+  background: linear-gradient(135deg, rgba(225, 48, 108, 0.2), rgba(131, 58, 180, 0.2));
+  box-shadow: 0 0 14px rgba(225, 48, 108, 0.35);
+  transform: translateY(-1px);
+}
+
+.nav-social-btn:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+.drawer-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 16px;
+  width: 100%;
+}
+
+.drawer-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--duration-fast) ease;
+}
+
+.drawer-link-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
+  background-color: rgba(0, 242, 254, 0.06);
+}
+
+.drawer-link-btn.instagram:hover {
+  border-color: rgba(225, 48, 108, 0.6);
+  background-color: rgba(225, 48, 108, 0.08);
+}
+
+.footer-contact-cluster {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 4px 10px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  transition: all var(--duration-fast) ease;
+}
+
+.footer-contact-link:hover {
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
+  background-color: rgba(0, 242, 254, 0.08);
+  box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+  transform: translateY(-1px);
+}
+
+.footer-contact-link.instagram:hover {
+  border-color: rgba(225, 48, 108, 0.6);
+  background-color: rgba(225, 48, 108, 0.1);
+  box-shadow: 0 0 10px rgba(225, 48, 108, 0.25);
+}
+
+.footer-contact-sep {
+  color: var(--text-muted);
+}
+
+.contact-channels-strip {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.channel-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all var(--duration-fast) ease;
+}
+
+.channel-chip:hover {
+  color: #ffffff;
+  border-color: var(--accent-cyan);
+  background-color: rgba(0, 242, 254, 0.08);
+  box-shadow: 0 0 14px rgba(0, 242, 254, 0.2);
+  transform: translateY(-1px);
+}
+
+.channel-chip.instagram-chip:hover {
+  border-color: rgba(225, 48, 108, 0.6);
+  background-color: rgba(225, 48, 108, 0.1);
+  box-shadow: 0 0 14px rgba(225, 48, 108, 0.25);
+}
+
+.chip-label {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.chip-val {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.chip-arrow {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.phone-capsule-wrapper {
+  margin-bottom: 28px;
+}
+
+.contact-channel-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  background-color: #050609;
+  border: 1px solid var(--border-highlight);
+  border-radius: var(--radius-card);
+  transition: border-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+  flex-wrap: wrap;
+}
+
+.contact-channel-card:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+}
+
+.channel-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-cyan);
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.channel-val {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.1vw, 16px);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.channel-val .phone-link {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.channel-val .phone-link:hover {
+  color: var(--accent-cyan);
+}
+
+.channel-icon {
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.btn-call-action {
+  padding: 9px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-item-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-instagram:hover {
+  border-color: rgba(225, 48, 108, 0.7) !important;
+  box-shadow: 0 0 16px rgba(225, 48, 108, 0.3) !important;
+  color: #ffffff !important;
+}
+
+.social-instagram:hover .social-net {
+  color: #f43f5e !important;
+}
+
 

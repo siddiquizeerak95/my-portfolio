@@ -332,37 +332,56 @@ function initEmailTransmission() {
 }
 
 // -----------------------------------------------------------------------------
-// 05. REAL-TIME WORLD CLOCK (ISLAMABAD / PKT UTC+5) & YEAR
+// 05. REAL-TIME WORLD CLOCK (NEW DELHI / IST UTC+05:30) & YEAR
 // -----------------------------------------------------------------------------
+const indiaTimeFormatter = new Intl.DateTimeFormat('en-IN', {
+  timeZone: 'Asia/Kolkata',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false
+});
+
+const indiaYearFormatter = new Intl.DateTimeFormat('en-IN', {
+  timeZone: 'Asia/Kolkata',
+  year: 'numeric'
+});
+
+function getIndianTime(date = new Date()) {
+  return indiaTimeFormatter.format(date);
+}
+
+let clockIntervalId = null;
+
 function initWorldClock() {
   const clockEl = document.getElementById('live-clock');
   const yearEl = document.getElementById('current-year');
 
   if (yearEl) {
-    yearEl.textContent = new Date().getFullYear().toString();
+    try {
+      yearEl.textContent = indiaYearFormatter.format(new Date());
+    } catch (e) {
+      yearEl.textContent = new Date().getFullYear().toString();
+    }
   }
 
   const updateClock = () => {
     if (!clockEl) return;
     try {
-      const now = new Date();
-      const options = {
-        timeZone: 'Asia/Karachi',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
-      };
-      const formatter = new Intl.DateTimeFormat([], options);
-      clockEl.textContent = `${formatter.format(now)} PKT`;
+      clockEl.textContent = `${getIndianTime()} IST`;
     } catch (err) {
       const now = new Date();
-      clockEl.textContent = `${now.toTimeString().split(' ')[0]} LOCAL`;
+      clockEl.textContent = `${now.toTimeString().split(' ')[0]} IST`;
     }
   };
 
+  // Prevent duplicate timers if initialized multiple times
+  if (clockIntervalId) {
+    clearInterval(clockIntervalId);
+  }
+
   updateClock();
-  setInterval(updateClock, 1000);
+  clockIntervalId = setInterval(updateClock, 1000);
 }
 
 // -----------------------------------------------------------------------------

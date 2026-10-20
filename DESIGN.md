@@ -279,7 +279,7 @@ Layer 7: Custom Interactive Cursor Follower                      -> z-index: 999
 
 ```
 +-----------------------------------------------------------------------------------+
-|  [TELEMETRY TAG: SECTOR 01 // SYS.INIT]             [LAT: 31.5204° N // PKT]      |
+|  [TELEMETRY TAG: SECTOR 01 // SYS.INIT]             [LAT: 31.5204° N // IST]      |
 |                                                                                   |
 |  ZEERAK SHAFIQUE                                   +---------------------------+  |
 |  CREATIVE DEVELOPER                                |                           |  |
@@ -340,7 +340,7 @@ Layer 7: Custom Interactive Cursor Follower                      -> z-index: 999
       |                       | Graphics, Systems Programming       |
       | [03] METHODOLOGY      | Semantic HTML, Mathematical Layouts,|
       |                       | Clean C Code, Zero-Bloat Vanilla JS |
-      | [04] LOCATION         | South Asia (PKT / UTC+5)            |
+      | [04] LOCATION         | South Asia (IST / UTC+05:30)        |
       | [05] STATUS           | Open to Collaborations & Internships |
       +-------------------------------------------------------------+
       ```
@@ -451,11 +451,12 @@ Layer 7: Custom Interactive Cursor Follower                      -> z-index: 999
       `zeerak.shafique.dev@gmail.com` *(or configurable personal email token)*.
     - Features an interactive **"COPY TRANSMISSION ADDRESS"** button with dynamic feedback (`"COPIED TO CLIPBOARD // OK"`).
     - Secondary direct mail action: `[ OPEN IN CLIENT ↗ ]`.
+  - **Direct Voice & Telemetry:**
+    - Direct Phone Line: `+91 9580912686` (`tel:+919580912686`).
   - **Social Coordinates Cluster:**
-    - GitHub: `[ GITHUB // REPOSITORIES ↗ ]`
-    - LinkedIn: `[ LINKEDIN // NETWORK ↗ ]`
-    - Instagram / Creative Archive: `[ INSTAGRAM // VISUALS ↗ ]`
-    *(Placeholders clearly labeled for actual usernames without fabricating broken URLs)*.
+    - GitHub: `[ GITHUB // REPOSITORIES ↗ ]` (`https://github.com/zeerak-shafique`)
+    - LinkedIn: `[ LINKEDIN // NETWORK ↗ ]` (`https://linkedin.com/in/zeerak-shafique`)
+    - Instagram / Creative Archive: `[ INSTAGRAM // VISUALS ↗ ]` (`@_siddiqui_._zeerak_` -> `https://www.instagram.com/_siddiqui_._zeerak_/`)
   - **System Telemetry Status:**
     - `RESPONSE TIME: < 24 HOURS`
     - `ENCRYPTION: TLS 1.3 STANDARD`
@@ -468,7 +469,7 @@ Layer 7: Custom Interactive Cursor Follower                      -> z-index: 999
 - **Elements:**
   1. **Brand Signature:** `ZEERAK SHAFIQUE — CREATIVE DEVELOPER & BCA SCHOLAR`.
   2. **Colophon Specifications:** `CRAFTED WITH VANILLA HTML5, MODERN CSS & THREE.JS. ZERO FRAMEWORK OVERHEAD. 60 FPS.`
-  3. **Real-Time World Clock:** `LOCAL TIME: ISLAMABAD / PKT (UTC+5) — [HH:MM:SS LIVE]`.
+  3. **Real-Time World Clock:** `LOCAL TIME: NEW DELHI / IST (UTC+05:30) — [HH:MM:SS LIVE]`.
   4. **Back to Top Elevator Button:** `[ RETURN TO APEX ↑ ]` with smooth native scroll reset.
   5. **Copyright:** `© 2026 ZEERAK SHAFIQUE. ALL RIGHTS RESERVED.`
 
@@ -700,8 +701,8 @@ Any AI coding agent or engineer implementing this website must satisfy every ite
 ### H. Contact Section & Footer
 - [ ] Monumental display headline: `LET'S BUILD THE FUTURE.`
 - [ ] One-click email copy capsule with clipboard confirmation feedback.
-- [ ] Social link placeholders for GitHub, LinkedIn, and Instagram.
-- [ ] Live Pakistan Standard Time (PKT) world clock in footer.
+- [ ] Verified direct channels: Direct Phone Line (+91 9580912686) and Instagram (@_siddiqui_._zeerak_).
+- [ ] Live Indian Standard Time (IST) world clock in footer.
 - [ ] Smooth "Return to Apex" back-to-top button.
 
 ### I. Interactions, a11y & Performance
