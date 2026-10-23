@@ -1,8 +1,8 @@
 /**
- * DIGITAL AFTERDARK — MASTER INTERACTIVE ARCHITECTURE
- * Author: Creative Director & Frontend Architect
- * Specification: DESIGN.md (v2.6 Authoritative)
- * Architecture: ES Modules + Vanilla Native APIs + Multipage Orchestration
+ * OBSIDIAN GOLD — THE DIGITAL ATELIER
+ * Master Interactive Architecture & 3D Visual System
+ * Specification: DESIGN.md (v3.0 Master Redesign)
+ * Author: Zeerak Shafique Portfolio Engineering
  */
 
 // -----------------------------------------------------------------------------
@@ -19,7 +19,6 @@ function initPreloader() {
     return;
   }
 
-  // Session check: only show on fresh visit or home
   let progress = 0;
   let isDismissed = false;
 
@@ -32,21 +31,21 @@ function initPreloader() {
   };
 
   const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 16) + 8;
+    progress += Math.floor(Math.random() * 18) + 10;
     if (progress >= 100) {
       progress = 100;
       clearInterval(interval);
       if (counter) counter.textContent = '100%';
       if (progressBar) progressBar.style.width = '100%';
-      if (statusText) statusText.textContent = 'SYS.KERNEL: ALL SYSTEMS ONLINE';
-      setTimeout(dismiss, 220);
+      if (statusText) statusText.textContent = 'ATELIER INITIALIZED // ALL SYSTEMS ONLINE';
+      setTimeout(dismiss, 180);
     } else {
       if (counter) counter.textContent = `${progress.toString().padStart(2, '0')}%`;
       if (progressBar) progressBar.style.width = `${progress}%`;
     }
-  }, 40);
+  }, 35);
 
-  // Hard Failsafe: Guarantees page access under 1.2s regardless of environment
+  // Hard Failsafe: Guarantees page access under 1.2s
   setTimeout(dismiss, 1200);
 }
 
@@ -55,12 +54,12 @@ function revealPageItems() {
   heroItems.forEach((item, index) => {
     setTimeout(() => {
       item.classList.add('revealed');
-    }, index * 80);
+    }, index * 70);
   });
 }
 
 // -----------------------------------------------------------------------------
-// 02. THREE.JS 3D KINETIC MONOLITH & ORBITAL RINGS (IF PRESENT)
+// 02. THREE.JS 3D KINETIC CENTERPIECE — THE GOLDEN GYROSCOPE & OBSIDIAN CORE
 // -----------------------------------------------------------------------------
 async function initThreeScene() {
   const container = document.getElementById('canvas-container');
@@ -78,14 +77,14 @@ async function initThreeScene() {
   try {
     THREE = await import('three');
   } catch (err) {
-    console.warn('Three.js module fallback active:', err);
+    console.warn('Three.js CDN fallback active:', err);
     if (fallback) fallback.style.display = 'block';
     return;
   }
 
   try {
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(45, (container.clientWidth || 190) / (container.clientHeight || 380), 0.1, 1000);
     camera.position.set(0, 0, 7.5);
 
     const renderer = new THREE.WebGLRenderer({
@@ -93,7 +92,7 @@ async function initThreeScene() {
       antialias: true,
       powerPreference: 'high-performance'
     });
-    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setSize(container.clientWidth || 190, container.clientHeight || 380);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
     container.appendChild(renderer.domElement);
@@ -101,85 +100,147 @@ async function initThreeScene() {
     const rootGroup = new THREE.Group();
     scene.add(rootGroup);
 
-    // Central Monolith
-    const boxGeometry = new THREE.BoxGeometry(1.6, 3.2, 0.65);
-    const boxMaterial = new THREE.MeshStandardMaterial({
-      color: 0x0c0e14,
-      metalness: 0.88,
+    // Central Obsidian Polyhedron Core (Scaled to sit comfortably in dedicated card)
+    const coreGeo = new THREE.DodecahedronGeometry(1.0, 0);
+    const coreMat = new THREE.MeshStandardMaterial({
+      color: 0x121110,
+      metalness: 0.92,
       roughness: 0.16
     });
-    const monolithMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-    rootGroup.add(monolithMesh);
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    rootGroup.add(coreMesh);
 
-    // Glowing Edges
-    const edgeGeo = new THREE.EdgesGeometry(boxGeometry);
+    // Champagne Gold Architectural Edges
+    const edgeGeo = new THREE.EdgesGeometry(coreGeo);
     const edgeMat = new THREE.LineBasicMaterial({
-      color: 0x8b5cf6,
+      color: 0xD6B46A,
       linewidth: 1.5,
+      transparent: true,
+      opacity: 0.88
+    });
+    const wireframeEdges = new THREE.LineSegments(edgeGeo, edgeMat);
+    coreMesh.add(wireframeEdges);
+
+    // Dual Concentric Golden Orbital Rings (Calibrated radii to avoid clipping)
+    const ring1Geo = new THREE.TorusGeometry(1.55, 0.015, 16, 100);
+    const ring1Mat = new THREE.MeshBasicMaterial({
+      color: 0xD6B46A,
+      wireframe: true,
       transparent: true,
       opacity: 0.75
     });
-    const wireframeEdges = new THREE.LineSegments(edgeGeo, edgeMat);
-    monolithMesh.add(wireframeEdges);
-
-    // Orbital Rings
-    const ring1Geo = new THREE.TorusGeometry(2.35, 0.015, 16, 120);
-    const ring1Mat = new THREE.MeshBasicMaterial({
-      color: 0x8b5cf6,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.65
-    });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
-    ring1.rotation.x = Math.PI * 0.35;
+    ring1.rotation.x = Math.PI * 0.38;
     rootGroup.add(ring1);
 
-    const ring2Geo = new THREE.TorusGeometry(2.85, 0.015, 16, 140);
+    const ring2Geo = new THREE.TorusGeometry(2.05, 0.012, 16, 120);
     const ring2Mat = new THREE.MeshBasicMaterial({
-      color: 0x00f2fe,
+      color: 0x9D7B3C,
       wireframe: true,
       transparent: true,
       opacity: 0.55
     });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
-    ring2.rotation.x = -Math.PI * 0.28;
+    ring2.rotation.x = -Math.PI * 0.26;
     rootGroup.add(ring2);
 
-    // Cinematic Lights
-    const ambientLight = new THREE.AmbientLight(0x1a1a2e, 0.8);
+    // Luxurious Studio Lighting
+    const ambientLight = new THREE.AmbientLight(0x1a1610, 0.75);
     scene.add(ambientLight);
 
-    const violetLight = new THREE.PointLight(0x8b5cf6, 4.5, 14);
-    violetLight.position.set(-4, 4, 3.5);
-    scene.add(violetLight);
+    const goldKeyLight = new THREE.PointLight(0xD6B46A, 4.2, 18);
+    goldKeyLight.position.set(4, 3.5, 4);
+    scene.add(goldKeyLight);
 
-    const cyanLight = new THREE.PointLight(0x00f2fe, 3.5, 14);
-    cyanLight.position.set(4, -3, 3);
-    scene.add(cyanLight);
+    const warmRimLight = new THREE.PointLight(0xF3EFE6, 2.2, 16);
+    warmRimLight.position.set(-4, -3, 3);
+    scene.add(warmRimLight);
 
     let targetRotX = 0;
     let targetRotY = 0;
 
+    // Dynamic Camera Distance calculation ensuring 3D sculpture never clips
+    function updateViewport() {
+      if (!container || !renderer || !camera) return;
+      const width = Math.max(container.clientWidth, 60);
+      const height = Math.max(container.clientHeight, 60);
+      const aspect = width / height;
+      camera.aspect = aspect;
+
+      // Outer ring geometry radius is 2.05 + tube. Margin target is 2.35.
+      const targetRadius = 2.35;
+      const vFovRad = (camera.fov * Math.PI) / 180;
+      const distV = targetRadius / Math.sin(vFovRad / 2);
+      const hFovRad = 2 * Math.atan(Math.tan(vFovRad / 2) * aspect);
+      const distH = targetRadius / Math.sin(hFovRad / 2);
+      camera.position.z = Math.max(distV, distH, 6.2);
+
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+
+      // On narrow mobile devices (< 480px), simplify orbit to save GPU cycles and maintain focus
+      if (ring2) {
+        ring2.visible = window.innerWidth >= 480;
+      }
+    }
+
+    updateViewport();
+
+    // Use ResizeObserver on container for exact responsiveness
+    if (typeof ResizeObserver !== 'undefined') {
+      const resizeObserver = new ResizeObserver(() => {
+        updateViewport();
+      });
+      resizeObserver.observe(container);
+    }
+    window.addEventListener('resize', updateViewport, { passive: true });
+
+    // Interactive Drag & Pointer Tracking
+    let isDragging = false;
+    let prevPointerX = 0;
+    let prevPointerY = 0;
+    const sculptureCard = container.closest('.hero-sculpture-card') || container;
+
+    sculptureCard.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      prevPointerX = e.clientX;
+      prevPointerY = e.clientY;
+      try { sculptureCard.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+
+    const endDrag = (e) => {
+      if (isDragging) {
+        isDragging = false;
+        try { sculptureCard.releasePointerCapture(e.pointerId); } catch (_) {}
+      }
+    };
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+
     const onPointerMove = (e) => {
+      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX) || 0;
+      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY) || 0;
+
+      if (isDragging) {
+        const dx = clientX - prevPointerX;
+        const dy = clientY - prevPointerY;
+        prevPointerX = clientX;
+        prevPointerY = clientY;
+        targetRotY += dx * 0.016;
+        targetRotX += dy * 0.016;
+        return;
+      }
+
       const rect = container.getBoundingClientRect();
-      const clientX = e.clientX || (e.touches && e.touches[0].clientX) || 0;
-      const clientY = e.clientY || (e.touches && e.touches[0].clientY) || 0;
-
-      const mouseX = ((clientX - rect.left) / rect.width) * 2 - 1;
-      const mouseY = -(((clientY - rect.top) / rect.height) * 2 - 1);
-
-      targetRotY = mouseX * 0.65;
-      targetRotX = -mouseY * 0.45;
+      if (rect.width > 0 && rect.height > 0) {
+        const mouseX = ((clientX - rect.left) / rect.width) * 2 - 1;
+        const mouseY = -(((clientY - rect.top) / rect.height) * 2 - 1);
+        targetRotY = Math.max(-1.4, Math.min(1.4, mouseX * 0.75));
+        targetRotX = Math.max(-1.1, Math.min(1.1, -mouseY * 0.60));
+      }
     };
 
-    window.addEventListener('mousemove', onPointerMove, { passive: true });
-
-    window.addEventListener('resize', () => {
-      if (!container) return;
-      camera.aspect = container.clientWidth / container.clientHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    });
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
 
     let isSceneVisible = true;
     const observer = new IntersectionObserver((entries) => {
@@ -195,16 +256,18 @@ async function initThreeScene() {
       if (!isSceneVisible) return;
 
       const elapsedTime = clock.getElapsedTime();
-      monolithMesh.rotation.y += (targetRotY - monolithMesh.rotation.y) * 0.05;
-      monolithMesh.rotation.x += (targetRotX - monolithMesh.rotation.x) * 0.05;
+      coreMesh.rotation.y += (targetRotY - coreMesh.rotation.y) * 0.055;
+      coreMesh.rotation.x += (targetRotX - coreMesh.rotation.x) * 0.055;
 
-      rootGroup.rotation.y = elapsedTime * 0.12;
+      rootGroup.rotation.y = elapsedTime * 0.11;
       ring1.rotation.z += 0.008;
-      ring2.rotation.z -= 0.006;
+      if (ring2 && ring2.visible) {
+        ring2.rotation.z -= 0.005;
+      }
 
       if (rotReadout) {
-        const degX = (monolithMesh.rotation.x * (180 / Math.PI)).toFixed(1);
-        const degY = (monolithMesh.rotation.y * (180 / Math.PI)).toFixed(1);
+        const degX = (coreMesh.rotation.x * (180 / Math.PI)).toFixed(1);
+        const degY = (coreMesh.rotation.y * (180 / Math.PI)).toFixed(1);
         rotReadout.textContent = `ROT_X: ${degX}° | ROT_Y: ${degY}°`;
       }
 
@@ -280,7 +343,7 @@ function initNavigation() {
 }
 
 // -----------------------------------------------------------------------------
-// 04. ONE-CLICK EMAIL TRANSMISSION CAPSULE
+// 04. ONE-CLICK EMAIL / TRANSMISSION ADDRESS CAPSULE
 // -----------------------------------------------------------------------------
 function initEmailTransmission() {
   const emailCapsule = document.getElementById('email-capsule');
@@ -314,7 +377,7 @@ function initEmailTransmission() {
         if (copyBtn) copyBtn.classList.remove('copied');
       }, 2500);
     } catch (err) {
-      console.error('Failed to copy email:', err);
+      console.error('Failed to copy address:', err);
       if (copyLabel) copyLabel.textContent = 'COPY FAILED';
     }
   };
@@ -332,7 +395,7 @@ function initEmailTransmission() {
 }
 
 // -----------------------------------------------------------------------------
-// 05. REAL-TIME WORLD CLOCK (NEW DELHI / IST UTC+05:30) & YEAR
+// 05. REAL-TIME INDIAN STANDARD TIME WORLD CLOCK (ASIA/KOLKATA)
 // -----------------------------------------------------------------------------
 const indiaTimeFormatter = new Intl.DateTimeFormat('en-IN', {
   timeZone: 'Asia/Kolkata',
@@ -375,7 +438,6 @@ function initWorldClock() {
     }
   };
 
-  // Prevent duplicate timers if initialized multiple times
   if (clockIntervalId) {
     clearInterval(clockIntervalId);
   }
@@ -401,10 +463,10 @@ function initCardTilt() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
 
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
     });
 
     card.addEventListener('mouseleave', () => {
@@ -414,7 +476,7 @@ function initCardTilt() {
 }
 
 // -----------------------------------------------------------------------------
-// 07. CUSTOM DUAL-STATE PRECISION CURSOR
+// 07. CUSTOM DUAL-STATE PRECISION GOLD CURSOR
 // -----------------------------------------------------------------------------
 function initCustomCursor() {
   if (window.matchMedia('(hover: none)').matches) return;
@@ -491,8 +553,8 @@ function initMagneticButtons() {
   magneticBtns.forEach((btn) => {
     btn.addEventListener('mousemove', (e) => {
       const rect = btn.getBoundingClientRect();
-      const deltaX = (e.clientX - rect.left - rect.width / 2) * 0.25;
-      const deltaY = (e.clientY - rect.top - rect.height / 2) * 0.25;
+      const deltaX = (e.clientX - rect.left - rect.width / 2) * 0.22;
+      const deltaY = (e.clientY - rect.top - rect.height / 2) * 0.22;
       btn.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
     });
 
@@ -528,7 +590,7 @@ function initProjectFilters() {
           item.style.display = 'grid';
           setTimeout(() => {
             item.classList.add('revealed');
-          }, 50);
+          }, 40);
         } else {
           item.style.display = 'none';
         }
@@ -538,7 +600,7 @@ function initProjectFilters() {
 }
 
 // -----------------------------------------------------------------------------
-// 11. CONTACT TRANSMISSION FORM HANDLER (WITH AUTHENTIC CLIENT DISPATCH)
+// 11. CONTACT TRANSMISSION FORM HANDLER
 // -----------------------------------------------------------------------------
 function initContactForm() {
   const form = document.getElementById('contact-transmission-form');
@@ -554,7 +616,6 @@ function initContactForm() {
     const subject = form.querySelector('#contact-subject').value;
     const message = form.querySelector('#contact-message').value.trim();
 
-    // Client-side validation
     if (!name || !email || !message) {
       statusMsg.className = 'form-status-msg error';
       statusMsg.textContent = 'ERROR: All required transmission fields must be filled before dispatch.';
@@ -568,19 +629,18 @@ function initContactForm() {
       return;
     }
 
-    // Meaningful feedback: constructs mailto link and opens client
     statusMsg.className = 'form-status-msg success';
     statusMsg.innerHTML = `TRANSMISSION VALIDATED // PREPARING MAIL CLIENT FOR ${name.toUpperCase()}...`;
 
     const encodedSubject = encodeURIComponent(`[Portfolio Transmission] ${subject} - from ${name}`);
     const encodedBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nClassification: ${subject}\n\nMessage Payload:\n${message}\n\n---\nSent via Zeerak Shafique Portfolio Terminal`
+      `Name: ${name}\nEmail: ${email}\nClassification: ${subject}\n\nMessage Payload:\n${message}\n\n---\nSent via Zeerak Shafique Atelier Terminal`
     );
 
     setTimeout(() => {
       window.location.href = `mailto:siddiquizeerak@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
-      statusMsg.innerHTML = `TRANSMISSION DISPATCHED // Mail client launched. If it didn't open, please send directly to <a href="mailto:siddiquizeerak@gmail.com" style="color: #00f2fe;">siddiquizeerak@gmail.com</a>.`;
-    }, 800);
+      statusMsg.innerHTML = `TRANSMISSION DISPATCHED // Mail client launched. If it didn't open, please send directly to <a href="mailto:siddiquizeerak@gmail.com" style="color: #D6B46A;">siddiquizeerak@gmail.com</a>.`;
+    }, 700);
   });
 }
 

@@ -1,109 +1,103 @@
-# DESIGN SPECIFICATION: DIGITAL AFTERDARK
-### Creative Direction, Architectural Blueprint & Interaction System
-**Project:** Zeerak Shafique — Personal Creative Developer Portfolio  
+# DESIGN SPECIFICATION: OBSIDIAN GOLD — THE DIGITAL ATELIER
+### Creative Direction, Architectural Blueprint & High-Craft Interaction System
+**Project:** Zeerak Shafique — Personal Luxury Creative Developer Portfolio  
 **Role:** Bachelor of Computer Applications (BCA) Student & Aspiring Creative Developer  
-**Status:** Authoritative Design Specification (v2.6)  
-**Author:** Creative Director & Frontend Architect  
+**Status:** Authoritative Design Specification (v3.0 Master Redesign)  
+**Brand Direction:** OBSIDIAN GOLD — The Digital Atelier  
+**Author:** Creative Director, Senior UI/UX Designer & 3D Web Architect  
 
 ---
 
-## 1. EXECUTIVE SUMMARY & CREATIVE VISION
+## 1. BRAND IDENTITY & CREATIVE CONCEPT
 
-### 1.1 Project Identity & Core Objective
+### 1.1 Project Identity & Core Narrative
 - **Name:** Zeerak Shafique
-- **Identity:** BCA Student | Aspiring Creative Developer
-- **Purpose:** Transform an ordinary student portfolio into an extraordinary, futuristic, museum-grade digital experience that commands attention from creative directors, engineering leads, and technology pioneers.
-- **Core Narrative:** A creative developer exploring the duality between **computational logic** (low-level systems, C programming, algorithmic rigor) and **sensory digital aesthetics** (modern web standards, interactive graphics, cinematic interfaces).
+- **Professional Stance:** BCA Student / Aspiring Creative Developer
+- **Brand Identity Concept:** **OBSIDIAN GOLD — The Digital Atelier**
+- **Core Vision:** The digital atelier is a private, architectural sanctuary where mathematical computation meets luxury editorial craftsmanship. Rather than presenting as an amateur junior developer with neon game aesthetics or generic corporate cards, Zeerak’s presence is established as an artisan of code—disciplined in the rigors of C systems programming and passionate about high-fidelity, spatial web experiences.
+- **Narrative Resonance:** Honest, academic, and technologically refined. No fabricated accolades, no fake client lists. Authentic pride in computer science fundamentals, semantic web craft, and sculptural digital spaces.
 
-### 1.2 The Creative Concept: "DIGITAL AFTERDARK"
-The web is saturated with repetitive, formulaic portfolios: black backgrounds with generic purple gradients, standard rounded cards, and uninspired center-aligned text. 
-
-**DIGITAL AFTERDARK** rejects generic templates. It visualizes Zeerak's portfolio as an **interactive computational universe**:
-- **Atmosphere:** Deep obsidian space punctuated by cinematic atmospheric lighting, technical telemetry, and laser-precise edge lines.
-- **Tone:** Enigmatic, mathematically disciplined, technologically progressive, and unapologetically refined.
-- **Spatial Dimension:** Layered spatial architecture featuring a live 3D geometric monolith enveloped in orbital kinetic rings, reacting fluidly to cursor physics and scroll velocity.
-- **Swiss Precision:** Monospaced technical data tags, asymmetric editorial grids, and oversized display typography coexisting in harmony.
+### 1.2 Creative Direction & Atmospheric Pillars
+1. **The Private Digital Atelier:** A high-end editorial environment characterized by deep obsidian stone (`#080808`), warm textured surfaces (`#101010`, `#171614`), and fine architectural hairline dividers (`#302A20`).
+2. **Restrained Metallic Gold:** Strategic Champagne Gold (`#D6B46A`) and Muted Antique Gold (`#9D7B3C`) utilized strictly as typographic accents, active states, precision monograms, and warm volumetric light rays. Zero cheap yellow gradients, zero garish glitter.
+3. **Haute Horlogerie / Editorial Precision:** Monospaced technical telemetry, Roman numerals, bespoke crop lines, and curated negative space inspired by luxury horology and architectural monographs.
+4. **Sculptural Spatial 3D:** An interactive 3D centerpiece featuring brushed dark obsidian and champagne-gold geometric lattice forms reacting smoothly to cursor parallax and device orientation.
 
 ---
 
-## 2. ART DIRECTION & DESIGN PRINCIPLES
-
-Inspired by the design craftsmanship of **Awwwards Site of the Year** nominees, **Bruno Simon**, and high-craft creative studios, this experience adheres to five foundational pillars:
+## 2. VISUAL REFERENCES & INSPIRATION PRINCIPLES
 
 ```
-+-----------------------------------------------------------------------------------+
-|                            THE 5 CORE DESIGN PILLARS                              |
-+-----------------------------------------------------------------------------------+
-| 1. ARCHITECTURAL HONESTY  | Authentic student journey; zero fabricated client     |
-|                           | accolades; genuine pride in computer science basics.  |
-| 2. SPATIAL DEPTH          | Multi-plane Z-index layering: background telemetry -> |
-|                           | ambient light -> 3D canvas -> editorial layout -> HUD.|
-| 3. EDITORIAL TYPOGRAPHY   | Brutalist display scales paired with hyper-legible    |
-|                           | system sans and monospaced technical metadata.        |
-| 4. RESTRAINED KINETICS    | Physics-based spring curves; micro-interactions with  |
-|                           | purpose; zero gratuitous bouncing or novelty particles|
-| 5. ZERO RUNTIME BLOAT     | 60 FPS hardware-accelerated performance via native    |
-|                           | Web APIs and lightweight, purposeful dependencies.    |
-+-----------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+|                               OBSIDIAN GOLD DESIGN PILLARS                              |
++-----------------------------------------------------------------------------------------+
+| 1. ARCHITECTURAL RESTRAINT | Vast negative space; razor-thin hairline borders (#302A20);|
+|                            | asymmetrical editorial grid compositions.                  |
+| 2. STRATEGIC METALLIC CRAFT| Gold is a precious accent, not a background wash. Applied  |
+|                            | to emblems, key monograms, and subtle light reflections.   |
+| 3. AUTHENTIC DISCIPLINE    | Genuine BCA student focus: HTML5, CSS3, JS (ES6+), and C.  |
+|                            | Absolute transparency; zero inflated credentials.          |
+| 4. EDITORIAL TYPOGRAPHY    | Cormorant Garamond display serif paired with crisp Manrope |
+|                            | sans-serif and clinical JetBrains Mono technical metadata. |
+| 5. HARDWARE VELOCITY       | 60 FPS performance, lightweight Three.js & CSS 3D fallback,|
+|                            | clean vanilla multipage architecture, zero framework bloat.|
++-----------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 3. DESIGN TOKEN SYSTEM & PALETTE
+## 3. EXACT COLOR TOKEN SYSTEM
 
-All colors are formulated to provide high contrast (WCAG 2.1 AA/AAA compliance), cinematic glow thresholds, and distinct visual hierarchy.
+The color architecture is built around calibrated HSL/HEX values ensuring WCAG 2.1 AA/AAA contrast ratios against deep dark obsidian surfaces.
 
 ### 3.1 Color Palette Matrix
 
-| Token Name | Exact HEX | RGBA Equivalent | Purpose / Application |
+| Token Name | Exact HEX | RGBA Equivalent | Architectural Purpose / Application |
 | :--- | :--- | :--- | :--- |
-| `--bg-obsidian` | `#060709` | `rgba(6, 7, 9, 1)` | Primary canvas background |
-| `--bg-surface-1` | `#0C0E14` | `rgba(12, 14, 20, 1)` | Secondary surface: cards, modals, nav capsule |
-| `--bg-surface-2` | `#141722` | `rgba(20, 23, 34, 1)` | Elevated state: card hover, active pill buttons |
-| `--bg-surface-subtle`| `#1A1D2B` | `rgba(26, 29, 43, 0.6)`| Translucent glassmorphism base |
-| `--accent-violet` | `#8B5CF6` | `rgba(139, 92, 246, 1)`| Primary accent: brand markers, focus highlights |
-| `--accent-violet-glow`| `#7C3AED` | `rgba(124, 58, 237, 0.28)`| Volumetric atmospheric glow, box-shadow pulses |
-| `--accent-cyan` | `#00F2FE` | `rgba(0, 242, 254, 1)` | Secondary accent: telemetry, live status, active markers |
-| `--accent-cyan-glow` | `#06B6D4` | `rgba(6, 182, 212, 0.22)` | Ambient specular highlights, secondary glows |
-| `--text-primary` | `#F8FAFC` | `rgba(248, 250, 252, 1)`| High-contrast headlines & primary copy |
-| `--text-secondary` | `#94A3B8` | `rgba(148, 163, 184, 1)`| Descriptive body text, metadata paragraphs |
-| `--text-muted` | `#64748B` | `rgba(100, 116, 139, 1)`| Technical tags, timestamps, coordinate readouts |
-| `--border-subtle` | `#1E2230` | `rgba(255, 255, 255, 0.07)`| Inactive card borders, grid separator lines |
-| `--border-highlight`| `#3B4259` | `rgba(255, 255, 255, 0.18)`| Hover state borders, input field focus |
-| `--border-cyan` | `#00F2FE` | `rgba(0, 242, 254, 0.45)` | Interactive focus states, active HUD borders |
-| `--status-online` | `#10B981` | `rgba(16, 185, 129, 1)` | Live availability beacon dot |
+| `--bg-obsidian` | `#080808` | `rgba(8, 8, 8, 1)` | Primary canvas & body backdrop |
+| `--bg-surface-secondary` | `#101010` | `rgba(16, 16, 16, 1)` | Secondary surface: large cards, sections |
+| `--bg-surface-elevated` | `#171614` | `rgba(23, 22, 20, 1)` | Elevated state: interactive cards, drawer, nav capsule |
+| `--gold-champagne` | `#D6B46A` | `rgba(214, 180, 106, 1)` | Primary brand accent: active links, hero highlights, emblem |
+| `--gold-antique` | `#9D7B3C` | `rgba(157, 123, 60, 1)` | Muted metallic tone: secondary rules, sub-tags, subtle borders |
+| `--gold-glow` | `#D6B46A` | `rgba(214, 180, 106, 0.18)`| Atmospheric specular aura & focused ring shadows |
+| `--text-ivory` | `#F3EFE6` | `rgba(243, 239, 230, 1)` | High-contrast headlines & primary editorial text |
+| `--text-secondary` | `#A7A198` | `rgba(167, 161, 152, 1)` | Narrative body copy & descriptive prose |
+| `--text-muted` | `#666056` | `rgba(102, 96, 86, 1)` | Telemetry timestamps, indexing, code annotations |
+| `--border-subtle` | `#302A20` | `rgba(48, 42, 32, 0.85)` | Inactive architectural lines, card frames, dividers |
+| `--border-gold` | `#D6B46A` | `rgba(214, 180, 106, 0.45)`| Interactive focus states, hover borders, active badges |
+| `--status-live` | `#D6B46A` | `rgba(214, 180, 106, 1)` | Live status pulse & availability indicator |
 
 ### 3.2 CSS Custom Properties Block
 ```css
 :root {
-  /* Color System */
-  --bg-obsidian: #060709;
-  --bg-surface-1: #0c0e14;
-  --bg-surface-2: #141722;
-  --bg-surface-subtle: rgba(26, 29, 43, 0.65);
-  
-  --accent-violet: #8b5cf6;
-  --accent-violet-glow: rgba(139, 92, 246, 0.28);
-  --accent-cyan: #00f2fe;
-  --accent-cyan-glow: rgba(0, 242, 254, 0.22);
-  
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-highlight: rgba(255, 255, 255, 0.22);
-  --border-cyan: rgba(0, 242, 254, 0.45);
-  --status-online: #10b981;
+  /* Obsidian & Gold Color System */
+  --bg-obsidian: #080808;
+  --bg-surface-secondary: #101010;
+  --bg-surface-elevated: #171614;
+  --bg-surface-translucent: rgba(23, 22, 20, 0.85);
+
+  --gold-champagne: #D6B46A;
+  --gold-antique: #9D7B3C;
+  --gold-glow: rgba(214, 180, 106, 0.18);
+  --gold-sheen: linear-gradient(135deg, #F3EFE6 0%, #D6B46A 50%, #9D7B3C 100%);
+
+  --text-ivory: #F3EFE6;
+  --text-secondary: #A7A198;
+  --text-muted: #666056;
+
+  --border-subtle: #302A20;
+  --border-gold: rgba(214, 180, 106, 0.45);
+  --border-hairline: 1px solid var(--border-subtle);
 
   /* Typography Stacks */
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  /* Spacing Scale */
-  --space-2xs: 4px;
-  --space-xs: 8px;
+  /* Spatial Scale */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
   --space-sm: 16px;
   --space-md: 24px;
   --space-lg: 32px;
@@ -113,24 +107,22 @@ All colors are formulated to provide high contrast (WCAG 2.1 AA/AAA compliance),
   --space-4xl: 128px;
   --space-5xl: 160px;
 
-  /* Spatial Constraints */
-  --container-max-width: 1400px;
-  --container-gutter: clamp(20px, 4vw, 48px);
-  --header-height: 80px;
+  /* Layout Constraints */
+  --container-max-width: 1360px;
+  --container-gutter: clamp(20px, 4.5vw, 56px);
+  --header-height: 84px;
 
-  /* Elevation & Glassmorphism */
-  --glass-backdrop: blur(16px) saturate(180%);
-  --shadow-elevation-1: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
-  --shadow-elevation-2: 0 12px 32px -4px rgba(0, 0, 0, 0.7);
-  --shadow-glow-violet: 0 0 35px -5px rgba(139, 92, 246, 0.35);
-  --shadow-glow-cyan: 0 0 35px -5px rgba(0, 242, 254, 0.3);
+  /* Elevation & Shadows */
+  --shadow-subtle: 0 4px 24px -2px rgba(0, 0, 0, 0.6);
+  --shadow-elevated: 0 16px 40px -8px rgba(0, 0, 0, 0.85);
+  --shadow-gold-glow: 0 0 32px -4px rgba(214, 180, 106, 0.22);
 
-  /* Transitions */
-  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
-  --duration-fast: 200ms;
-  --duration-normal: 400ms;
-  --duration-slow: 700ms;
+  /* Motion Curves */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 350ms;
+  --duration-slow: 750ms;
 }
 ```
 
@@ -138,581 +130,263 @@ All colors are formulated to provide high contrast (WCAG 2.1 AA/AAA compliance),
 
 ## 4. TYPOGRAPHY SYSTEM
 
-The typography pairs brutalist geometry with clinical legibility and developer-terminal telemetry.
+The typographic identity balances haute editorial serif with architectural geometry and monospaced computational rigor.
 
 ### 4.1 Typeface Selection
-1. **Display Headings:** `Space Grotesk` (Google Fonts, Weights: 500, 700).  
-   *Character:* Geometric, confident, slightly eccentric ink-traps that deliver editorial presence.
-2. **Body & UI Elements:** `Inter` (Google Fonts, Weights: 400, 500, 600).  
-   *Character:* Ultra-clean, neutral, optimized for micro-legibility at 14px–18px.
-3. **Technical Telemetry & Labels:** `JetBrains Mono` (Google Fonts, Weights: 400, 600).  
-   *Character:* Monospaced code aesthetics, distinct punctuation, and clinical computational feel.
+1. **Display & Editorial Serif:** `Cormorant Garamond` (Weights: 400, 500, 600, 700, Italic).
+   *Character:* Classical Roman letterforms, elegant calligraphic contrast, aristocratic luxury presence for hero headlines, section titles, and highlighted pull quotes.
+2. **Body & Interface Sans-Serif:** `Manrope` (Weights: 300, 400, 500, 600).
+   *Character:* Modern semi-geometric grotesque, immaculate legibility, generous x-height, refined kerning for long-form reading and interactive labels.
+3. **Technical Telemetry & Code:** `JetBrains Mono` (Weights: 400, 500, 600).
+   *Character:* Monospaced developer precision, crisp punctuation, tabular numeral alignment for world clock, telemetry coordinates, and code snippets.
 
-### 4.2 Fluid Typography Hierarchy
+### 4.2 Typographic Hierarchy & Fluid Scaling
 
-| Style Level | Typeface | Fluid Clamp Definition | Desktop Reference | Mobile Reference | Line Height | Letter Spacing |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Hero Title** | Display | `clamp(2.75rem, 8vw + 1rem, 7.5rem)` | 120px | 44px | 0.95 | `-0.04em` |
-| **H1 (Section)**| Display | `clamp(2.25rem, 5vw + 0.5rem, 4.5rem)`| 72px | 36px | 1.05 | `-0.03em` |
-| **H2 (Subhead)**| Display | `clamp(1.75rem, 3vw + 0.5rem, 2.75rem)`| 44px | 28px | 1.15 | `-0.02em` |
-| **H3 (Card Title)**| Display| `clamp(1.25rem, 1.5vw + 0.5rem, 1.75rem)`| 28px | 20px | 1.25 | `-0.01em` |
-| **Lead Paragraph**| Body | `clamp(1.05rem, 1vw + 0.25rem, 1.35rem)` | 21px | 17px | 1.65 | `-0.005em` |
-| **Body Regular** | Body | `clamp(0.95rem, 0.5vw + 0.5rem, 1.05rem)`| 16px | 15px | 1.70 | `normal` |
-| **Mono Badge/Tag**| Mono | `0.8125rem (13px)` | 13px | 12px | 1.40 | `+0.08em` (Uppercase) |
-| **Telemetry Fine**| Mono | `0.75rem (12px)` | 12px | 11px | 1.30 | `+0.1em` (Uppercase) |
-
----
-
-## 5. LAYOUT ARCHITECTURE & SPATIAL COMPOSITION
-
-### 5.1 Grid & Spatial Container
-- **12-Column Swiss Responsive Grid:** Max width `1400px`, centered with fluid side gutters `clamp(20px, 4vw, 48px)`.
-- **Column Gap:** `clamp(16px, 2.5vw, 32px)`.
-- **Section Vertical Rhythm:** `clamp(80px, 12vw, 160px)` padding top/bottom.
-- **Horizontal Overflow Prevention Rule:**
-  ```css
-  html, body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
-    position: relative;
-  }
-  ```
-
-### 5.2 Responsive Breakpoints
-1. **Desktop Ultra-Wide:** `>= 1440px` (Full 12-column expansive editorial layouts).
-2. **Desktop Standard / Laptop:** `1024px – 1439px` (Structured 12-column with proportioned 3D canvas).
-3. **Tablet (Portrait & Landscape):** `768px – 1023px` (8-column grid, stacked hero visual, docked bottom or floating nav).
-4. **Mobile Standard:** `480px – 767px` (4-column grid, 3D canvas centered background, full-screen mobile drawer).
-5. **Mobile Compact:** `< 480px` (Single column linear flow, optimized touch targets >= 48px).
-
-### 5.3 Z-Index Elevation Matrix
-```
-Layer 0: Background Canvas (#060709 + Ambient Radial Gradients) -> z-index: 0
-Layer 1: Three.js Interactive 3D WebGL Scene                     -> z-index: 1
-Layer 2: Subtle Telemetry Grid Lines & Coordinate Overlays       -> z-index: 2
-Layer 3: Primary Content & Section Components                    -> z-index: 10
-Layer 4: Floating Glass Navigation Bar                           -> z-index: 100
-Layer 5: Mobile Navigation Drawer & Modals                      -> z-index: 200
-Layer 6: System Preloader HUD                                    -> z-index: 999
-Layer 7: Custom Interactive Cursor Follower                      -> z-index: 9999
-```
+| Hierarchy Level | Font Family | Fluid Clamp Expression | Desktop Value | Mobile Value | Weight | Line Height | Tracking |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Hero Monogram Title**| Serif | `clamp(3.5rem, 8.5vw + 0.5rem, 8.5rem)` | 136px | 56px | 600 | 0.92 | `-0.03em` |
+| **Section H1 Title** | Serif | `clamp(2.5rem, 5.5vw + 0.25rem, 5rem)` | 80px | 40px | 600 | 1.05 | `-0.02em` |
+| **Subhead H2** | Serif | `clamp(1.75rem, 3.2vw + 0.25rem, 3rem)` | 48px | 28px | 500 | 1.15 | `-0.01em` |
+| **Card H3** | Sans | `clamp(1.2rem, 1.6vw + 0.4rem, 1.65rem)` | 26px | 20px | 600 | 1.30 | `-0.01em` |
+| **Editorial Lead** | Serif / Sans | `clamp(1.15rem, 1.2vw + 0.2rem, 1.45rem)`| 23px | 18px | 400 | 1.60 | `0.01em` |
+| **Body Regular** | Sans | `clamp(0.95rem, 0.4vw + 0.65rem, 1.05rem)`| 16.5px | 15px | 400 | 1.70 | `normal` |
+| **Technical Label / Tag**| Mono | `0.8125rem (13px)` | 13px | 12px | 500 | 1.40 | `+0.08em` (Caps) |
+| **Telemetry Fine** | Mono | `0.75rem (12px)` | 12px | 11px | 400 | 1.35 | `+0.12em` (Caps) |
 
 ---
 
-## 6. SECTION-BY-SECTION DETAILED SPECIFICATIONS
+## 5. SPACING & LAYOUT SYSTEM
 
-```
-+-----------------------------------------------------------------------------------+
-|                           PAGE COMPONENT FLOW MAP                                 |
-+-----------------------------------------------------------------------------------+
-|  [ PRELOADER HUD (1.2s auto-dismiss) ]                                            |
-|  [ FLOATING CAPSULE NAVIGATION (Sticky / Glassmorphism) ]                         |
-|  [ SECTION 01: HERO - The Signature Kinetic Experience (Three.js Monolith) ]      |
-|  [ SECTION 02: ABOUT - Editorial Manifesto & Engineering Core ]                   |
-|  [ SECTION 03: SKILLS - The Technical Architecture Matrix (HTML, CSS, JS, C) ]    |
-|  [ SECTION 04: SELECTED WORKS - Interactive Project Dossiers ]                    |
-|  [ SECTION 05: TRAJECTORY - Current Explorations & Growth Vector ]                |
-|  [ SECTION 06: CONTACT - Transmission Terminal & Direct Connection ]              |
-|  [ FOOTER - Colophon, System Telemetry & Back-to-Top Elevator ]                   |
-+-----------------------------------------------------------------------------------+
-```
+### 5.1 Editorial Grid Architecture
+- **Max Container Width:** `1360px` with fluid gutters `clamp(20px, 4.5vw, 56px)`.
+- **Asymmetric Split System:** 12-column CSS Grid with non-standard distribution (e.g. 7-column editorial left vs 5-column showcase right; or 4-column index vs 8-column narrative).
+- **Hairline Dividers:** Structural borders (`1px solid var(--border-subtle)`) defining sections, removing generic card pills and replacing them with tailored editorial enclosures.
+- **Negative Space Breathing Room:** Section vertical padding set to `clamp(96px, 12vw, 170px)`.
+
+### 5.2 Responsive Viewport Rules
+1. **Ultra-Wide (> 1440px):** Full 12-column layout, luxury margin offsets, 3D golden sculpture beside hero portrait.
+2. **Desktop / Laptop (1024px – 1439px):** Split hero composition with portrait on right and oversized serif typography on left.
+3. **Tablet (768px – 1023px):** Fluid vertical stacking with preserved editorial proportions and accessible floating navigation.
+4. **Mobile (< 768px):** Intentionally designed single-column atelier layout; portrait cleanly framed with `aspect-ratio: 1 / 1` or `4 / 5`, touch targets >= 48px, zero horizontal overflow.
 
 ---
 
-### SECTION 00: THE PRELOADER (SYSTEM BOOT HUD)
-**Intent:** Establish immediate atmosphere and technical polish within 1200 milliseconds. Failsafe guarantees the user is never blocked.
+## 6. ASSET TREATMENT & BRAND PRESERVATION
 
-- **Visual Architecture:**
-  - Fullscreen overlay (`#060709`).
-  - Centered technical terminal box with crisp glowing cyan border.
-  - Live progress counter (`00%` to `100%`) ticking upward in ~1000ms.
-  - Monospaced readout:
-    ```
-    [ SYS.BOOT // ZEERAK.SHF_KERNEL_V2.6 ]
-    >> LOADING ASSETS... OK
-    >> COMPILING SHADERS... OK
-    >> GEOMETRY BUFFER: READY
-    >> STATUS: ONLINE
-    ```
-- **Exit Choreography:**
-  - Counter reaches 100%.
-  - The preloader splits vertically (top/bottom shutter) or smoothly fades out with `transform: scale(1.04); opacity: 0; pointer-events: none;` over 400ms.
-  - Hero typography immediately staggers upward.
-- **Failsafe Rule:** If asset loading or WebGL encounters delay, a hardcoded `setTimeout(1500)` forces the preloader to terminate, guaranteeing immediate accessibility.
+### 6.1 The Hexagonal ZS Monogram Logo (`ZS fav icon.png`)
+- **Authentic Asset:** Located at root as `ZS fav icon.png`. Features an intricate champagne-gold geometric monogram encased in a sharp hexagonal emblem.
+- **Role:** Primary brand insignia.
+- **Integration Points:**
+  1. **Site Navigation:** Crisp 42px x 42px brand emblem with subtle warm gold border accent and active home link.
+  2. **Footer:** Prominent 52px x 52px brand insignia anchoring the architectural closing.
+  3. **Preloader / Loading Experience:** Centered gold emblem with gentle breathing illumination during initial load.
+  4. **Favicon:** Directly referenced across all HTML documents with `<link rel="icon" type="image/png" href="ZS%20fav%20icon.png">`.
+- **Integrity Rule:** Do NOT redraw, replace, or alter the geometry of this supplied asset. Maintain 1:1 aspect ratio.
 
----
-
-### SECTION 01: FLOATING CAPSULE NAVIGATION
-**Intent:** Minimalist, glassmorphism floating island that remains accessible without obstructing content.
-
-- **Layout & Positioning:**
-  - Centered floating capsule: `position: fixed; top: 24px; left: 50%; transform: translateX(-50%); z-index: 100;`.
-  - Max width: `920px`, width: `calc(100% - 48px)`.
-  - Background: `var(--bg-surface-subtle)` with `backdrop-filter: blur(16px) saturate(180%)`.
-  - Border: `1px solid var(--border-subtle)` with subtle top border highlight `rgba(255, 255, 255, 0.15)`.
-  - Border radius: `9999px` (pill).
-  - Padding: `10px 24px`.
-- **Navigation Elements:**
-  1. **Personal Brand Mark:**
-     - Left-aligned: `ZS // 26` in `JetBrains Mono` bold with an electric cyan indicator dot (`#00F2FE`).
-  2. **Navigation Links (Desktop):**
-     - Links: `// 01. ABOUT`, `// 02. SKILLS`, `// 03. PROJECTS`, `// 04. TRAJECTORY`.
-     - Styling: `JetBrains Mono` 13px, uppercase, `var(--text-secondary)`.
-     - Hover: `var(--text-primary)` with electric violet underline glow.
-     - Active indicator: Dynamic indicator sliding pill or cyan dot.
-  3. **Live Status Indicator:**
-     - Pulsing beacon dot: `8px x 8px`, `#10B981` (emerald green) with a continuous pinging radar ring.
-     - Label: `AVAILABLE FOR COLLAB` (Hidden on mobile).
-  4. **Primary CTA Button:**
-     - Compact pill button: `"TRANSMIT"` / `"CONTACT"`.
-     - Background: `rgba(139, 92, 246, 0.15)`, Border: `1px solid var(--accent-violet)`.
-     - Hover: Background `#8B5CF6`, Text `#FFFFFF`, Box shadow `var(--shadow-glow-violet)`.
-- **Mobile Responsive Drawer:**
-  - On screens `< 768px`, the center links hide. A sleek hamburger trigger `[MENU]` appears.
-  - Tapping opens a full-screen blurred obsidian overlay with oversized vertical editorial links (`Space Grotesk` 32px), soundless stagger transition, and device battery/time telemetry at bottom.
+### 6.2 The Official Profile Portrait (`Profile Pic.jpg`)
+- **Authentic Asset:** Located at root as `Profile Pic.jpg`. Features Zeerak Shafique in an artistic black-and-white portrait with natural lighting.
+- **Homepage Hero Role:** Visually striking, high-impact editorial placement positioned adjacent to the oversized name typography.
+- **Framing & Curation:**
+  - Ratio: `aspect-ratio: 1 / 1` (or `4 / 5` on vertical viewports) with `object-fit: cover; object-position: center 28%;` ensuring Zeerak's face and eyes are commanding and sharp.
+  - Border Framing: Deliberate `#302A20` hairline border with micro-corner tick marks (`+`) in Champagne Gold.
+  - Subtle Lighting: Warm gold vignette overlay (`rgba(214, 180, 106, 0.08)`) and soft obsidian gradient fade at the bottom.
+  - Interactive Depth: Refined 3D mouse tilt tracking (`max: 4deg`) on desktop.
+  - Accessibility: Full semantic `<img alt="Zeerak Shafique — Portrait of BCA Student and Aspiring Creative Developer">` with explicit width and height to prevent CLS.
 
 ---
 
-### SECTION 02: HERO — THE SIGNATURE KINETIC EXPERIENCE
-**Intent:** The emotional centerpiece of the site. Immediately communicates technical ambition, spatial depth, and artistic craftsmanship.
+## 7. 3D SCENE SPECIFICATIONS: THE OBSIDIAN & GOLD SCULPTURE
+
+### 7.1 Visual Concept: "The Golden Gyroscope & Obsidian Core"
+To complement Zeerak's portrait without causing visual clutter, the 3D centerpiece is an **architectural kinetic sculpture**:
+- **Obsidian Core:** A faceted dark obsidian polyhedron (dodecahedron or beveled prism) with high specular reflectivity and dark onyx material.
+- **Champagne-Gold Orbital Girdles:** Two concentric, razor-thin metallic gold rings with brushed finish and subtle wireframe coordinate ticks orbiting the core at 38° and -25° angles.
+- **Symbolism:** The unyielding obsidian core represents algorithmic logic and low-level C programming; the luminous, fluid gold orbits represent creative frontend web craftsmanship.
+
+### 7.2 Technical Implementation (Three.js WebGL with Graceful Fallback)
+- **Library:** Native ES Module Three.js loaded asynchronously via CDN.
+- **Lighting Setup:**
+  - Ambient base: `#14120E` (low-intensity warm shadow).
+  - Main Key Light: Warm Champagne Gold (`#D6B46A`, intensity `2.8`) casting crisp specular highlights across the metallic facets.
+  - Subtle Rim Light: Soft Ivory (`#F3EFE6`, intensity `1.2`) separating the core from the obsidian background.
+- **Interactivity:**
+  - Inertial mouse parallax: Tilts and rotates gently toward cursor position with smooth damping (`lerp: 0.05`).
+  - Scroll observer: Automatically suspends `requestAnimationFrame` render loop when scrolled out of viewport.
+- **Fallback Guarantee:**
+  - On devices with WebGL disabled or `prefers-reduced-motion: reduce`, displays an elegant CSS 3D gold geometric emblem with subtle pulsing radial aura.
+
+---
+
+## 8. PAGE-BY-PAGE DETAILED ARCHITECTURAL BLUEPRINTS
 
 ```
-+-----------------------------------------------------------------------------------+
-|  [TELEMETRY TAG: SECTOR 01 // SYS.INIT]             [LAT: 31.5204° N // IST]      |
-|                                                                                   |
-|  ZEERAK SHAFIQUE                                   +---------------------------+  |
-|  CREATIVE DEVELOPER                                |                           |  |
-|                                                    |     3D HYPER-MONOLITH     |  |
-|  "Bridging low-level computational logic           |     & ORBITAL KINETIC     |  |
-|   and high-fidelity digital experiences."          |     RINGS (THREE.JS)      |  |
-|                                                    |                           |  |
-|  [ EXPLORE ARCHIVE ↓ ]    [ INITIALIZE CONTACT ↗ ] |                           |  |
-|                                                    +---------------------------+  |
-|  [SCROLL TELEMETRY // 0.00%]                                                      |
-+-----------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+|                               PAGE FLOW & MULTIPAGE ROUTING                             |
++-----------------------------------------------------------------------------------------+
+|  [ index.html ]    --> Hero with Portrait & 3D, Overview, Selected Works, Contact Invite|
+|  [ about.html ]    --> Editorial Narrative, BCA Studies, C & Web Foundations, Dossier   |
+|  [ projects.html ] --> Portfolio Case Study, C Algorithm Engine, Shader Lab Concepts    |
+|  [ skills.html ]   --> 4 Architectural Pillars: HTML5, CSS3, JavaScript, C Programming  |
+|  [ contact.html ]  --> Transmission Terminal, +91 9580912686, Instagram @_siddiqui_._zeerak_
++-----------------------------------------------------------------------------------------+
 ```
 
-- **Asymmetric Composition (12-Column Split):**
-  - **Left Column (Span 7 Columns):**
-    - **Telemetry Chip:** Monospace pill `[ SYSTEM.INIT // DEV_SECTOR.01 ]` with cyan border and subtle scanline pulse.
-    - **Name Display Headline:**
+### 8.1 Shared Architecture (Across All Pages)
+
+#### Header & Navigation
+- Fixed / sticky top navigation capsule with glassmorphism backdrop (`rgba(23, 22, 20, 0.85)` + `backdrop-filter: blur(16px)`).
+- Left: Embedded **ZS gold hexagonal emblem** (`ZS fav icon.png`) + `ZEERAK SHAFIQUE` wordmark in `Cormorant Garamond`.
+- Center: Multipage links: `HOME`, `ABOUT`, `PROJECTS`, `SKILLS`, `CONTACT`.
+- Right:
+  - Live availability beacon: Gold pulsing dot + `AVAILABLE FOR COLLAB // BCA '26`.
+  - Telephone quick action: `+91 9580912686`.
+  - Instagram shortcut: `@_siddiqui_._zeerak_`.
+  - Mobile hamburger menu button opening an editorial fullscreen overlay.
+
+#### Footer & Colophon
+- Architectural hairline separator in `#302A20`.
+- Left: ZS Gold Hexagonal Emblem + summary of Zeerak's focus.
+- Center: Directory links to all pages.
+- Right: **Live Indian Standard Time Clock** (`Asia/Kolkata` with live seconds).
+- Bottom: Copyright `© 2026 Zeerak Shafique. All Rights Reserved.` + "Built with Vanilla HTML5, CSS3 & ES6+ JavaScript. Zero Framework Bloat." + Smooth "Return to Apex" button.
+
+### 8.2 Page 1: Homepage (`index.html`)
+- **Section 0: Preloader:** Fast (~800ms) luxury boot sequence featuring the gold ZS emblem, progress counter (`00%` -> `100%`), and a 1.2s hard failsafe.
+- **Section 1: Hero:**
+  - Split editorial grid:
+    - Left Column: Telemetry tags (`IST // ASIA/KOLKATA`), oversized serif headline:
       ```
       ZEERAK
       SHAFIQUE
       ```
-      Typeface: `Space Grotesk`, Bold, `clamp(3rem, 7.5vw, 6.75rem)`, letter spacing `-0.04em`.
-      Text styling: Soft white with subtle gradient sheen (`linear-gradient(180deg, #FFFFFF 60%, #94A3B8 100%)`).
-    - **Subtitle / Role Definition:**
-      `ASPIRING CREATIVE DEVELOPER & BCA SCHOLAR`  
-      Typeface: `JetBrains Mono`, 15px, letter spacing `+0.05em`, color `var(--accent-cyan)`.
-    - **Manifesto Blurb (Concise & Honest):**
-      `"Undergraduate student in Computer Applications exploring the synthesis of systems programming and interactive web design. Crafting digital spaces with architectural discipline."`
-    - **Action Button Cluster:**
-      - **Primary Button:** `EXPLORE ARCHIVE [↓]` — Obsidian pill with violet border, smooth hover fill, magnetic cursor reaction.
-      - **Secondary Button:** `INITIALIZE CONTACT [↗]` — Subtle ghost button with border highlight and arrow translate on hover.
-  - **Right Column (Span 5 Columns — Interactive 3D Canvas Container):**
-    - An interactive Three.js viewport hosting **"The Obsidian Monolith & Dual Orbital Rings"** (detailed in Section 7).
-    - Mouse parallax: Moving the cursor tilts the monolith in real-time with smooth inertia (lerp smoothing).
-    - Mobile behavior: Canvas moves behind the hero text at 40% opacity with pointer interaction disabled to ensure silky 60 FPS scrolling.
+      Sub-headline in Champagne Gold: `BCA STUDENT / ASPIRING CREATIVE DEVELOPER`.
+      Short, authentic introduction about learning programming and crafting digital experiences.
+      CTA Cluster: `"EXPLORE PROJECTS"` (Gold pill) and `"ABOUT ME"` (Hairline ghost button).
+    - Right Column: Zeerak's genuine portrait (`Profile Pic.jpg`) set in a gold-detailed architectural frame, paired with the interactive Three.js 3D golden sculpture.
+- **Section 2: The Philosophy Statement:**
+  - Oversized typography quote: *"I study how low-level computational logic transforms into sensory digital experiences."*
+- **Section 3: Selected Skills Overview:**
+  - 4 architectural cards: HTML5, CSS3, JavaScript (ES6+), C Programming with live code tags.
+- **Section 4: Featured Creations Preview:**
+  - Project 01: The Living Portfolio (Obsidian Gold edition) with live status chip and repository link.
+- **Section 5: Direct Contact Invitation:**
+  - Monumental display: *"LET'S BUILD SOMETHING EXTRAORDINARY."*
+  - Instant phone line `+91 9580912686` and Instagram link `@_siddiqui_._zeerak_`.
+
+### 8.3 Page 2: About (`about.html`)
+- **Subpage Hero:** Large serif headline: *"The Architecture of Learning."*
+- **Scholastic Dossier:**
+  - Authentic academic status: Bachelor of Computer Applications (BCA) candidate.
+  - Core philosophy: "Respect the machine first." Learning memory management, pointers, and data structures in C before relying on web frameworks.
+  - Bridging the gap: Connecting procedural algorithms with accessible, responsive modern web design.
+- **Portrait Inclusion:** Secondary editorial treatment of `Profile Pic.jpg` integrated into the personal narrative with an architectural caption.
+- **System Specifications Sheet:**
+  - Standardized technical card listing location (`South Asia / IST`), current curriculum, key focus areas, and coding methodology.
+
+### 8.4 Page 3: Projects (`projects.html`)
+- **Subpage Hero:** Large serif headline: *"Selected Works & Experiments."*
+- **Filter Controls:** Category pills (`ALL WORKS`, `CREATIVE WEB`, `SYSTEMS & ALGORITHMS`).
+- **Project 01 (Featured Showcase):**
+  - Title: *Obsidian Gold // Personal Digital Atelier*
+  - Category: *Creative Engineering / Multipage Experience*
+  - Year: *2026*
+  - Detailed narrative of first-principles engineering, responsive clamp formulas, Three.js spatial visualizer, zero external framework runtime.
+  - Active links: `[ ACTIVE DEMO ]` and `[ REPOSITORY ↗ ]`.
+- **Project 02 (Structured Concept):**
+  - Title: *Algo.Core // C Algorithm Visualizer*
+  - Category: *Systems Programming & Canvas Logic*
+  - Description: Upcoming project bridging sorting algorithms and memory models in C with interactive web canvas animation.
+  - Status: Clearly labeled `[ IN DEVELOPMENT // PROTOTYPE ]`.
+- **Project 03 (Creative Laboratory):**
+  - Title: *Kinetic Geometry // Spatial Shader Lab*
+  - Category: *WebGL & Procedural Mathematics*
+  - Status: Clearly labeled `[ RESEARCH & EXPERIMENTATION ]`.
+
+### 8.5 Page 4: Skills (`skills.html`)
+- **Subpage Hero:** Large serif headline: *"Foundational Disciplines."*
+- **Core Engineering Pillars (No Fake Percentages):**
+  1. **HTML5 Architecture:** Semantic document structure, DOM trees, accessibility (WCAG AA), SEO metadata.
+  2. **CSS3 & Design Tokens:** Architectural layouts, CSS Grid, fluid clamp typography, metallic gradients, 3D transforms.
+  3. **JavaScript (ES6+):** Vanilla DOM manipulation, event loops, async promise chains, WebGL rendering pipelines, zero-bloat state.
+  4. **C Programming:** Computational foundations, memory allocation (`malloc`/`free`), pointer arithmetic, structs, data structures (linked lists, stacks, queues).
+- **Curriculum & Growth Vector:**
+  - Clear overview of current learning topics and future exploration frontiers (e.g. GLSL shaders, TypeScript fundamentals).
+
+### 8.6 Page 5: Contact (`contact.html`)
+- **Subpage Hero:** Large serif headline: *"Initialize Communication."*
+- **Genuine Contact Details:**
+  - Phone: `+91 9580912686` with clickable `tel:+919580912686` action.
+  - Instagram: `@_siddiqui_._zeerak_` with link `https://www.instagram.com/_siddiqui_._zeerak_/`.
+  - Zero fabricated emails or unauthorized social media profiles.
+- **Interactive Transmission Terminal:**
+  - Client-side validated form (Name, Return Email, Subject, Message) that generates a clean mailto payload with immediate user confirmation.
+- **Availability Telemetry:** Live Indian Standard Time status, response window (< 24 hours), and secure communication standards.
 
 ---
 
-### SECTION 03: ABOUT — EDITORIAL MANIFESTO & SYSTEM ARCHITECTURE
-**Intent:** Tell Zeerak's genuine story as a BCA student with intellectual gravitas, zero buzzword inflation, and authentic pride in computational foundations.
+## 9. PRESERVATION OF INDIAN STANDARD TIME (IST)
 
-- **Layout (Asymmetric Editorial Spread):**
-  - **Left Column (Span 5 Columns) — The Philosophy:**
-    - Section Index: `// 01. INTROSPECTION`
-    - Large Editorial Lead:
-      `"I don't just assemble interfaces. I study how computational engines translate logic into human emotion."`
-    - Authentic Bio Copy:
-      `"Currently pursuing my Bachelor of Computer Applications (BCA). While many enter development solely through high-level abstractions, my journey is anchored in foundational programming: understanding memory allocations in C, data structures, and the document object model before reaching for heavy frameworks.`
-      `My goal is to evolve into a creative technologist who builds high-performance, aesthetically arresting experiences on the open web."`
-  - **Right Column (Span 7 Columns) — System Profile Dossier:**
-    - Structured like a high-end technical specification sheet:
-      ```
-      +-------------------------------------------------------------+
-      | SYSTEM DOSSIER: ZEERAK SHAFIQUE                             |
-      +-------------------------------------------------------------+
-      | [01] DEGREE CANDIDATE | Bachelor of Computer Applications   |
-      | [02] FOCUS DOMAINS    | Interactive Frontend, Creative Web  |
-      |                       | Graphics, Systems Programming       |
-      | [03] METHODOLOGY      | Semantic HTML, Mathematical Layouts,|
-      |                       | Clean C Code, Zero-Bloat Vanilla JS |
-      | [04] LOCATION         | South Asia (IST / UTC+05:30)        |
-      | [05] STATUS           | Open to Collaborations & Internships |
-      +-------------------------------------------------------------+
-      ```
-    - Styling: Dark graphite card background (`#0C0E14`), crisp `1px solid var(--border-subtle)`, corner crosshair markers (`+`), and monospaced typography.
+- **IANA Timezone Standard:** `Asia/Kolkata` (UTC+05:30).
+- **Implementation Mechanism:** Native JavaScript `Intl.DateTimeFormat`:
+  ```javascript
+  const istFormatter = new Intl.DateTimeFormat('en-IN', {
+    timeZone: 'Asia/Kolkata',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
+  ```
+- **Integrity Rule:** No manual arithmetic (+5.5 hours). Automatic daylight calculation handled by standard IANA database.
+- **Geographical Coordinates:** Telemetry readouts updated to Indian coordinates (`28.6139° N, 77.2090° E // IST (UTC+05:30)`). Zero old foreign timezone or coordinate remnants.
 
 ---
 
-### SECTION 04: SKILLS — THE TECHNICAL ARCHITECTURE MATRIX
-**Intent:** Showcase HTML, CSS, JavaScript, and C Programming as deliberate, foundational engineering pillars rather than arbitrary progress percentages (e.g., no meaningless "CSS: 90%").
+## 10. ANIMATION & MOTION LANGUAGE
 
-- **Visual Concept: 4 Structural Architecture Pillars:**
-  Presented as interactive architectural modules in a responsive 4-column (or 2x2 tablet) layout.
-
-```
-+------------------------------------------------------------------------------------+
-|  [01] FOUNDATION             [02] SPATIAL STYLING   [03] ENGINE LOGIC   [04] LOW-LEVEL     |
-|  HTML5 ARCHITECTURE          CSS3 / COMPUTATIONAL   JAVASCRIPT (ES6+)   C PROGRAMMING      |
-|  ------------------          --------------------   -----------------   -------------      |
-|  Semantic Structuring        Custom Design Tokens   DOM Engine Ops      Memory Allocations |
-|  Accessible DOM Trees        Fluid Clamp Systems    Async Pipelines     Pointers & Structs |
-|  SEO Microdata Standards     Matrix Animations      Canvas & WebGL API  Algorithmic Logic  |
-|  Clean Document Flow         Backdrop Compositing   Event Architecture  Data Structures    |
-|                                                                                            |
-|  [TAG: DOM_CORE]             [TAG: RENDER_SPEC]     [TAG: EVENT_LOOP]   [TAG: BINARY_CORE] |
-+------------------------------------------------------------------------------------+
-```
-
-- **Interactive State for Each Card:**
-  - Base: Matte graphite card with subtle coordinate tag in upper-right corner.
-  - Hover: Border ignites with electric violet (`#8B5CF6`) or cyan (`#00F2FE`), card tilts subtly in 3D perspective (`perspective(1000px) rotateX(...) rotateY(...)`), and a micro terminal window at the bottom of the card illuminates with a live code snippet or architectural note:
-    - *HTML Card:* `<!-- <main role="main" aria-label="core"> -->`
-    - *CSS Card:* `grid-template-columns: repeat(12, 1fr);`
-    - *JavaScript Card:* `const render = (time) => requestAnimationFrame(render);`
-    - *C Card:* `int *ptr = (int*)malloc(sizeof(int) * 64);`
+1. **Editorial Stagger Reveals:**
+   - Elements enter on scroll via `IntersectionObserver` using `opacity: 0; transform: translateY(28px);` transitioning smoothly with `cubic-bezier(0.16, 1, 0.3, 1)` over 600ms.
+2. **Hairline Gold Expansions:**
+   - Architectural divider lines expand horizontally on scroll to establish editorial boundaries.
+3. **Card & Portrait 3D Perspective Tilt:**
+   - Mouse hover tilts cards smoothly by up to 4° on X and Y axes, reflecting subtle gold specular light.
+4. **Precision Dual-State Cursor (Desktop):**
+   - Fine champagne gold center dot (4px) surrounded by a floating metallic ring (32px), expanding to 54px when hovering over links and buttons. Disabled on touch devices.
+5. **Reduced Motion Safeguards:**
+   - Full compliance with `@media (prefers-reduced-motion: reduce)`. Animations are immediately cleared, and 3D scenes gracefully display static gold geometric artwork.
 
 ---
 
-### SECTION 05: SELECTED WORKS — PROJECT SHOWCASES
-**Intent:** Frame every project as a bespoke case study. Give the existing personal portfolio pride of place as Project 01, followed by carefully structured concepts for upcoming works.
+## 11. ACCESSIBILITY, SEO & PERFORMANCE METRICS
 
-- **Dossier Layout:** Each project is an expansive, horizontal editorial block with an index counter (`[ 01 / 03 ]`).
-
-#### Project 01: The Living Portfolio (Featured Showcase)
-- **Title:** `DIGITAL AFTERDARK // PERSONAL PORTFOLIO V1`
-- **Category:** `Creative Engineering / Interactive Experience`
-- **Year:** `2026`
-- **Narrative:** The website the visitor is currently experiencing. Designed and engineered from the ground up as an editorial, futuristic universe combining Three.js 3D kinetic visuals, Swiss typography, and pure semantic performance.
-- **Technologies Used:** `HTML5`, `Modern CSS3 (Tokens & Grid)`, `Vanilla JavaScript`, `Three.js (WebGL)`, `Mathematical Motion`.
-- **Visual Treatment:** A split-screen interactive viewport with an animated wireframe preview and live telemetry overlay (`60 FPS`, `0 RUNTIME FRAMEWORK BLOAT`).
-- **Action CTAs:**
-  - Live Demo: `[ ACTIVE EXPERIENCE ]` (Pulsing green indicator).
-  - Source Code: `[ VIEW REPOSITORY ↗ ]` (Link placeholder: `https://github.com/zeerak-shafique/portfolio`).
-
-#### Project 02: Algorithmic Logic Engine (Structured Concept)
-- **Title:** `ALGO.CORE // COMPUTATIONAL VISUALIZER`
-- **Category:** `Systems Logic & Visual Computing`
-- **Year:** `2026 (In Development)`
-- **Narrative:** An upcoming interactive visualizer bridging C algorithms with web canvas rendering. Designed to illustrate sorting dynamics, tree traversals, and memory stack behaviors in real time.
-- **Technologies Used:** `C Programming (Logic)`, `JavaScript`, `Canvas 2D API`, `Web Workers`.
-- **Visual Treatment:** Abstract vector visualization card showing dynamic sorting nodes with cyan glowing connection lines.
-- **Action CTAs:**
-  - Status: `[ PROTOTYPE PHASE // COMING SOON ]`
-  - Repository: `[ ARCHIVE IN PROGRESS ↗ ]`
-
-#### Project 03: Spatial Canvas Experiment (Creative Laboratory)
-- **Title:** `KINETIC GEOMETRY // WEBGL SHADER LAB`
-- **Category:** `Experimental Creative Coding`
-- **Year:** `2026 (Upcoming Focus)`
-- **Narrative:** Exploration into mathematical geometry, procedural noise, and hardware-accelerated fluid shaders running in the browser.
-- **Technologies Used:** `WebGL`, `GLSL Shaders`, `Three.js`, `Math Modeling`.
-- **Visual Treatment:** Geometric wireframe torus with kinetic wave displacement preview.
-- **Action CTAs:**
-  - Status: `[ RESEARCH & DISCOVERY ]`
+- **Semantic HTML5:** Strict single `<h1>` per page, hierarchical `<h2>` and `<h3>`, semantic landmarks (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`).
+- **Contrast Ratios:** Text ivory (`#F3EFE6`) on obsidian (`#080808`) delivers an exceptional contrast ratio of **18.5:1**, far exceeding WCAG AAA standards. Champagne gold accents meet AA standards for large text and UI markers.
+- **Focus Rings:** Distinctive `:focus-visible` outline in Champagne Gold (`#D6B46A`) with a 3px offset.
+- **SEO & Social Sharing:**
+  - Descriptive titles, meta descriptions, Open Graph cards referencing `Profile Pic.jpg`.
+  - Canonical links and favicon tags referencing `ZS fav icon.png`.
+- **Zero Framework Runtime:** 100% vanilla HTML, CSS, and modern JavaScript. Fast First Contentful Paint (< 0.8s) and smooth 60 FPS scrolling.
 
 ---
 
-### SECTION 06: TRAJECTORY — CURRENT LEARNING FOCUS
-**Intent:** Provide an authentic, compelling roadmap of what Zeerak is actively studying and building towards.
+## 12. IMPLEMENTATION ACCEPTANCE CHECKLIST
 
-- **Visual Architecture: The Growth Vector Timeline:**
-  A horizontal or staggered vertical roadmap featuring three vectors:
-  1. **Active Mastery (In Progress):**
-     - Modern JavaScript Engine Internals (V8 execution context, closures, event loop).
-     - Responsive Grid & Subgrid Systems in Modern CSS.
-     - Pointers, Dynamic Memory, and Linked Lists in C.
-  2. **Next Frontier (Imminent Horizon):**
-     - Custom GLSL Shaders & Three.js Post-Processing.
-     - Web Accessibility (WCAG AAA Compliance & Assistive Navigation).
-     - Component Architecture & Build Tooling (Vite, TypeScript fundamentals).
-  3. **Vision:**
-     - Becoming an award-winning creative technologist contributing to world-class interactive digital experiences.
+Before concluding the project, every item in this checklist must be satisfied:
 
----
-
-### SECTION 07: CONTACT — TRANSMISSION TERMINAL
-**Intent:** Monumental closing statement that makes initiating contact effortless, memorable, and visually dramatic.
-
-- **Visual Design:**
-  - Giant Display Typography:
-    ```
-    LET'S BUILD
-    THE FUTURE.
-    ```
-    `Space Grotesk` Bold, `clamp(2.5rem, 7vw, 6rem)`, with subtle ambient violet backlighting.
-  - Subhead: `"Have an opportunity, creative inquiry, or shared passion for code? My transmission line is always open."`
-  - **One-Click Email Capsule:**
-    - An oversized interactive pill element:
-      `zeerak.shafique.dev@gmail.com` *(or configurable personal email token)*.
-    - Features an interactive **"COPY TRANSMISSION ADDRESS"** button with dynamic feedback (`"COPIED TO CLIPBOARD // OK"`).
-    - Secondary direct mail action: `[ OPEN IN CLIENT ↗ ]`.
-  - **Direct Voice & Telemetry:**
-    - Direct Phone Line: `+91 9580912686` (`tel:+919580912686`).
-  - **Social Coordinates Cluster:**
-    - GitHub: `[ GITHUB // REPOSITORIES ↗ ]` (`https://github.com/zeerak-shafique`)
-    - LinkedIn: `[ LINKEDIN // NETWORK ↗ ]` (`https://linkedin.com/in/zeerak-shafique`)
-    - Instagram / Creative Archive: `[ INSTAGRAM // VISUALS ↗ ]` (`@_siddiqui_._zeerak_` -> `https://www.instagram.com/_siddiqui_._zeerak_/`)
-  - **System Telemetry Status:**
-    - `RESPONSE TIME: < 24 HOURS`
-    - `ENCRYPTION: TLS 1.3 STANDARD`
+- [ ] `DESIGN.md` reflects the complete OBSIDIAN GOLD — The Digital Atelier creative direction.
+- [ ] Global design tokens in `style.css` updated to Obsidian (`#080808`), Champagne Gold (`#D6B46A`), Antique Gold (`#9D7B3C`), and Warm Ivory (`#F3EFE6`).
+- [ ] Typography upgraded with Google Fonts: `Cormorant Garamond`, `Manrope`, and `JetBrains Mono`.
+- [ ] Hexagonal gold ZS monogram logo (`ZS fav icon.png`) integrated into site navigation, footer, and preloader.
+- [ ] Favicon verified and functioning across all pages (`ZS fav icon.png`).
+- [ ] Profile photo (`Profile Pic.jpg`) prominently featured in the homepage hero and about narrative with editorial framing.
+- [ ] Homepage hero features oversized typography: `ZEERAK SHAFIQUE` and `BCA STUDENT / ASPIRING CREATIVE DEVELOPER`.
+- [ ] Interactive 3D metallic golden sculpture implemented with Three.js and graceful CSS fallback.
+- [ ] Multipage architecture preserved: `index.html`, `about.html`, `projects.html`, `skills.html`, `contact.html` all redesigned and fully functional.
+- [ ] Genuine contact information preserved: phone `+91 9580912686` and Instagram `@_siddiqui_._zeerak_` (`https://www.instagram.com/_siddiqui_._zeerak_/`). No fabricated emails or socials.
+- [ ] Indian Standard Time clock running accurately using `Asia/Kolkata` across footers.
+- [ ] All old Pakistan latitude/timezone references completely replaced with Indian coordinates.
+- [ ] Mobile and desktop layouts tested and verified with zero horizontal scroll overflow.
+- [ ] Local static server tested and working cleanly.
 
 ---
-
-### SECTION 08: FOOTER & COLOPHON
-**Intent:** Clean, editorial architectural closing.
-
-- **Elements:**
-  1. **Brand Signature:** `ZEERAK SHAFIQUE — CREATIVE DEVELOPER & BCA SCHOLAR`.
-  2. **Colophon Specifications:** `CRAFTED WITH VANILLA HTML5, MODERN CSS & THREE.JS. ZERO FRAMEWORK OVERHEAD. 60 FPS.`
-  3. **Real-Time World Clock:** `LOCAL TIME: NEW DELHI / IST (UTC+05:30) — [HH:MM:SS LIVE]`.
-  4. **Back to Top Elevator Button:** `[ RETURN TO APEX ↑ ]` with smooth native scroll reset.
-  5. **Copyright:** `© 2026 ZEERAK SHAFIQUE. ALL RIGHTS RESERVED.`
-
----
-
-## 7. 3D GRAPHICS & VISUAL IMPLEMENTATION STRATEGY
-
-### 7.1 Visual Concept: The Obsidian Monolith & Dual Orbital Rings
-Rather than a generic rotating cube or random particle field, the signature hero visual is **"The Monolith of Logic & The Rings of Creativity"**:
-- **The Core Monolith:** A tall, slender beveled rectangular prism (or stylized icosahedron) rendered in near-black obsidian material.
-- **The Dual Orbital Rings:** Two concentric, delicate wireframe rings (torus or ring geometry) orbiting the monolith on intersecting axes (35° and -25° inclinations).
-- **Metaphor:** The solid dark monolith represents the foundational, unyielding logic of **C and computer science**; the luminous, spinning orbital rings represent the fluid, expressive dynamism of **modern front-end development**.
-
-```
-             .----------------.
-          .-'   .----------.   '-.
-        .'    .'            '.    '.
-       /     /                \     \       <-- Orbital Ring 1 (Electric Violet Wireframe)
-      ;     ;   +----------+   ;     ;
-      |     |   |          |   |     |
-      |     |   | OBSIDIAN |   |     |      <-- Central Monolith (Specular Obsidian Mesh)
-      |     |   | MONOLITH |   |     |
-      ;     ;   +----------+   ;     ;
-       \     \                /     /       <-- Orbital Ring 2 (Icy Cyan Wireframe)
-        '.    '.            .'    .'
-          '-.   '----------'   .-'
-             '----------------'
-```
-
-### 7.2 Technical Implementation (Three.js via ESM / CDN)
-- **Library Choice:** Vanilla Three.js loaded via native ES Module CDN (`https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js` or `unpkg`).
-- **Why this choice?**
-  - Instant loading without requiring complex Node.js build pipelines or bundler configuration.
-  - Zero lock-in: runs cleanly in vanilla HTML/CSS/JS.
-  - Delivers hardware-accelerated WebGL performance.
-- **Scene Composition:**
-  1. **Renderer:**
-     - `antialias: true` on desktop; `alpha: true` (transparent background allowing CSS radial gradients to shine through).
-     - Device Pixel Ratio clamped strictly to `Math.min(window.devicePixelRatio, 2)` to eliminate GPU thermal throttling.
-     - `powerPreference: "high-performance"`.
-  2. **Materials & Shading:**
-     - Monolith: `THREE.MeshStandardMaterial` with `color: 0x0C0E14`, `roughness: 0.15`, `metalness: 0.85`, with edge wireframe lines rendered in `0x8B5CF6`.
-     - Rings: `THREE.MeshBasicMaterial` with `color: 0x00F2FE`, `wireframe: true`, and semi-transparent opacity `0.65`.
-  3. **Cinematic Lighting:**
-     - Ambient light: Low intensity (`0x111122`, intensity `0.4`).
-     - Point Light 1 (Upper Left): Electric Violet (`0x8B5CF6`, intensity `2.5`, distance `10`).
-     - Point Light 2 (Lower Right): Icy Cyan (`0x00F2FE`, intensity `2.0`, distance `10`).
-  4. **Kinetic Behavior & Physics:**
-     - Continuous slow resting gyration on Y and X axes.
-     - **Pointer Interaction (Parallax):** Mouse coordinates mapped to normalized `-1` to `+1`. The camera or monolith targets the mouse position using smooth linear interpolation (Lerp):
-       ```javascript
-       mesh.rotation.y += (targetRotationY - mesh.rotation.y) * 0.05;
-       mesh.rotation.x += (targetRotationX - mesh.rotation.x) * 0.05;
-       ```
-  5. **Scroll & Visibility Optimization:**
-     - An `IntersectionObserver` monitors `#hero`. When scrolled out of the viewport, the `requestAnimationFrame` loop **pauses completely**, saving 100% GPU cycles while the visitor reads other sections.
-  6. **Mobile & Graceful Degradation Fallback:**
-     - On devices with WebGL disabled or mobile devices with battery saver active, the scene automatically hides and falls back to a pure CSS luminous geometric emblem (a pulsing glowing SVG wireframe polygon with animated CSS rotation).
-
----
-
-## 8. INTERACTION & MOTION DESIGN LANGUAGE
-
-### 8.1 Motion Philosophy
-Animations must be **editorial, fluid, and purposeful**. No bouncing, no rubber-banding, no chaotic particle explosions. Every transition communicates structural solidity.
-
-### 8.2 Standard Easing & Duration Tokens
-- **Primary Fluid Ease:** `cubic-bezier(0.16, 1, 0.3, 1)` (Ultra-smooth deceleration, inspired by Apple & Awwwards best-in-class UI).
-- **Fast Micro-interaction:** `180ms` (buttons, link highlights, border shifts).
-- **Standard Transition:** `350ms` (card elevation, navigation drawer, accordion reveals).
-- **Editorial Reveal:** `800ms – 1100ms` (section titles, hero typography, staggered text).
-
-### 8.3 Interaction Specifications
-1. **Magnetic Interactive Buttons:**
-   - Buttons calculate cursor offset on `mousemove` and shift toward the cursor by up to 6px:
-     ```javascript
-     const deltaX = (e.clientX - rect.left - rect.width / 2) * 0.2;
-     const deltaY = (e.clientY - rect.top - rect.height / 2) * 0.2;
-     button.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-     ```
-2. **Scroll-Triggered Stagger Reveals:**
-   - Uses `IntersectionObserver` with `threshold: 0.15`.
-   - Elements enter with `opacity: 0; transform: translateY(32px);`.
-   - When active: `opacity: 1; transform: translateY(0);` staggered by `80ms` per child.
-3. **Card Perspective Hover Tilt:**
-   - Skill cards and project showcases feature subtle 3D rotational tilt (`max: 5deg`) tracking cursor position, paired with a specular radial glare overlay.
-4. **Custom Dual-State Cursor (Desktop Only):**
-   - Inner dot (`4px x 4px`, `#00F2FE`).
-   - Outer ring (`32px x 32px`, `rgba(139, 92, 246, 0.4)` border).
-   - On hovering links or buttons, the outer ring expands to `56px` with `backdrop-filter: invert(1)` or violet glow.
-   - Automatically disabled on touch screens and mobile devices (`@media (hover: none)`).
-
-### 8.4 Reduced Motion Compliance (`prefers-reduced-motion`)
-```css
-@media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .custom-cursor { display: none !important; }
-  #three-hero-canvas { display: none !important; }
-  .css-hero-fallback { display: block !important; }
-}
-```
-
----
-
-## 9. ACCESSIBILITY (A11Y) REQUIREMENTS
-
-1. **Semantic HTML5 DOM:**
-   - Single `<h1>` on page (Hero section).
-   - Hierarchical `<h2>` for each primary section, `<h3>` for nested cards.
-   - Semantic landmarks: `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`.
-2. **Color Contrast:**
-   - All body text (`#F8FAFC` and `#94A3B8`) on `#060709` and `#0C0E14` surfaces delivers contrast ratios exceeding **7:1** (AAA standard).
-   - Accent cyan and violet meet AA standard (>= 4.5:1) for interactive elements and headlines.
-3. **Keyboard Navigability & Focus Rings:**
-   - All interactive elements (`<a>`, `<button>`, inputs) have distinct focus states:
-     ```css
-     :focus-visible {
-       outline: 2px solid var(--accent-cyan);
-       outline-offset: 4px;
-       border-radius: 4px;
-     }
-     ```
-   - Skip to main content link:
-     ```html
-     <a href="#main-content" class="skip-link">Skip to Content [Tab]</a>
-     ```
-4. **Screen Reader Transparency:**
-   - Decorative visual elements (3D canvas, ambient background glows, technical ASCII lines) marked with `aria-hidden="true"`.
-   - Live availability badge equipped with descriptive label:
-     `<span class="status-dot" aria-hidden="true"></span><span class="sr-only">Status: Available for collaborations</span>`
-
----
-
-## 10. PERFORMANCE & ENGINEERING STANDARDS
-
-1. **Zero Framework Bloat / Vanilla Stack:**
-   - The entire experience is engineered using **clean Vanilla HTML5, Modern CSS, and modular ES6+ JavaScript**.
-   - No React, no Next.js, no bulky component library dependencies.
-   - Initial HTML payload < 25KB, total CSS bundle < 35KB, JS logic < 40KB (excluding CDN Three.js).
-2. **Core Web Vitals Thresholds:**
-   - **Largest Contentful Paint (LCP):** < 1.2s.
-   - **First Input Delay / INP:** < 50ms.
-   - **Cumulative Layout Shift (CLS):** `0.00` (all dimensions explicitly reserved).
-3. **Asset Optimization:**
-   - Google Fonts loaded with `display=swap` and preconnect hints:
-     ```html
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     ```
-   - Vector graphics utilized for all telemetry badges and icons (inline SVG, zero HTTP roundtrips).
-4. **Frame Budget:** Strict 60 FPS target maintained by leveraging `transform` and `opacity` exclusively for animations, triggering GPU compositing without layout recalculations.
-
----
-
-## 11. RECOMMENDED PROJECT DIRECTORY ARCHITECTURE
-
-To resolve the existing duplicate/nested folder anomaly cleanly during implementation, the codebase will adhere to this standard, professional file hierarchy:
-
-```
-c:\Users\siddi\Desktop\New folder\
-├── DESIGN.md                   # Authoritative Design Specification (this document)
-├── index.html                  # Root semantic HTML5 document
-├── style.css                   # Master CSS architecture (design tokens, layout, styling)
-├── script.js                   # Main application orchestration & lifecycle entry
-└── assets/                     # Media & modular resources (optional future growth)
-    ├── js/
-    │   ├── scene3d.js          # Three.js scene setup, shaders, monolith & orbital rings
-    │   ├── interactions.js     # Magnetic cursor, tilt physics, smooth scroll-spy
-    │   └── telemetry.js        # World clock, preloader counter, clipboard transmission
-    └── images/                 # Optimized project preview graphics (WebP format)
-```
-
-*(Note: During Phase 1 implementation, the AI agent will consolidate the project files directly at root level and clean up the empty nested directories).*
-
----
-
-## 12. STEP-BY-STEP IMPLEMENTATION ACCEPTANCE CHECKLIST
-
-Any AI coding agent or engineer implementing this website must satisfy every item on this checklist before marking the project complete:
-
-### A. Preloader & Foundation
-- [ ] Root `index.html` configured with proper meta tags, UTF-8 encoding, responsive viewport, SEO description, and Google Fonts (`Space Grotesk`, `Inter`, `JetBrains Mono`).
-- [ ] CSS token system defined in `:root` with all exact HEX/RGBA colors, fluid clamp scales, and spacing constants.
-- [ ] Fast, technical preloader HUD initializes, ticks to 100% in ~1s, and smoothly reveals the page.
-- [ ] Preloader failsafe timeout (`1500ms`) present and tested.
-
-### B. Navigation & Header
-- [ ] Floating glassmorphism capsule navigation anchored at top of viewport with backdrop blur.
-- [ ] Personal wordmark `ZS // 26` rendered with pulsing emerald status dot.
-- [ ] Desktop navigation links functional with smooth scroll targets (`#about`, `#skills`, `#projects`, `#contact`).
-- [ ] Active section scroll-spy updates navigation indicators as user scrolls.
-- [ ] Fullscreen mobile navigation overlay responsive, tested, and functional on `< 768px`.
-
-### C. Hero Section
-- [ ] High-contrast, oversized typography introducing Zeerak Shafique with fluid responsive scaling.
-- [ ] Subheading accurately portrays Zeerak as an aspiring creative developer and BCA student.
-- [ ] Asymmetrical layout with telemetry coordinates and monospace sector badges.
-- [ ] Dual action CTAs: `EXPLORE ARCHIVE [↓]` and `INITIALIZE CONTACT [↗]`.
-- [ ] Three.js 3D canvas active, rendering the Obsidian Monolith with dual wireframe orbital rings.
-- [ ] Mouse parallax smoothly tilts the 3D scene on desktop.
-- [ ] `IntersectionObserver` halts Three.js render loop when scrolled past hero section.
-- [ ] Pure CSS geometric fallback renders seamlessly if WebGL is unavailable.
-
-### D. About Section
-- [ ] Editorial two-column layout with authentic, dignified personal story.
-- [ ] Honest depiction of BCA student journey; zero fabricated corporate experience or fake awards.
-- [ ] Structured System Dossier with monospace telemetry tags and crosshair styling.
-
-### E. Skills & Technology Section
-- [ ] 4 Core Architectural Pillars displayed: HTML5, CSS3, JavaScript (ES6+), C Programming.
-- [ ] Zero arbitrary percentage progress bars.
-- [ ] Hover micro-interactions reveal live architectural code snippets and perspective tilt.
-
-### F. Selected Works Section
-- [ ] Bespoke project dossiers with index counters `[ 01 / 03 ]`.
-- [ ] Project 01 features this living portfolio with live status tag and repository placeholder.
-- [ ] Projects 02 and 03 present structured upcoming concepts (C algorithm visualizer, WebGL shader lab).
-- [ ] Technologies, metadata, and preview treatments fully populated without broken links.
-
-### G. Trajectory & Learning Focus
-- [ ] Clear growth vector showing active focus areas and next learning horizons.
-- [ ] Genuine, ambitious, and technically accurate tone.
-
-### H. Contact Section & Footer
-- [ ] Monumental display headline: `LET'S BUILD THE FUTURE.`
-- [ ] One-click email copy capsule with clipboard confirmation feedback.
-- [ ] Verified direct channels: Direct Phone Line (+91 9580912686) and Instagram (@_siddiqui_._zeerak_).
-- [ ] Live Indian Standard Time (IST) world clock in footer.
-- [ ] Smooth "Return to Apex" back-to-top button.
-
-### I. Interactions, a11y & Performance
-- [ ] Custom dual-state cursor active on desktop, hidden on touch screens.
-- [ ] Complete `@media (prefers-reduced-motion: reduce)` support.
-- [ ] Semantic HTML5 elements and full keyboard tab navigation verified.
-- [ ] Zero horizontal scroll overflow on any screen size from 320px to 2560px.
-- [ ] Smooth 60 FPS animations and fast page load times.
-
----
-
-**END OF SPECIFICATION: DESIGN.md**  
-*Ready for immediate implementation by any AI coding agent without requiring further design clarification.*
+**END OF SPECIFICATION: DESIGN.md**

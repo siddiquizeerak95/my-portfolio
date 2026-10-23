@@ -1,8 +1,9 @@
 @echo off
-title Zeerak Shafique - Digital Afterdark Portfolio
+title Zeerak Shafique - Obsidian Gold Portfolio // The Digital Atelier
 echo ========================================================
-echo   ZEERAK SHAFIQUE // DIGITAL AFTERDARK PORTFOLIO
-echo   Role: BCA Student & Aspiring Creative Developer
+echo   ZEERAK SHAFIQUE // OBSIDIAN GOLD PORTFOLIO
+echo   The Digital Atelier - Luxury Creative Web Experience
+echo   Role: BCA Student ^& Aspiring Creative Developer
 echo   Server: http://localhost:8080/index.html
 echo ========================================================
 echo.
