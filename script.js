@@ -1,289 +1,62 @@
 /**
- * OBSIDIAN GOLD — THE DIGITAL ATELIER
- * Master Interactive Architecture & 3D Visual System
- * Specification: DESIGN.md (v3.0 Master Redesign)
+ * DIGITAL WORLD — CINEMATIC FUTURISTIC PORTFOLIO ARCHITECTURE
+ * Awwwards-Inspired Creative Experience & 3D Spatial Systems
+ * Specification: DESIGN.md (v5.0 Master Redesign)
  * Author: Zeerak Shafique Portfolio Engineering
  */
 
 // -----------------------------------------------------------------------------
-// 01. PRELOADER HUD CONTROLLER (WITH FAILSAFE)
+// 01. IMMEDIATE PAGE CONTENT REVEAL
 // -----------------------------------------------------------------------------
 function initPreloader() {
   const preloader = document.getElementById('preloader');
-  const counter = document.getElementById('preloader-counter');
-  const progressBar = document.getElementById('preloader-progress-bar');
-  const statusText = document.getElementById('preloader-status-text');
-
-  if (!preloader) {
-    revealPageItems();
-    return;
+  if (preloader) {
+    preloader.style.display = 'none';
   }
-
-  let progress = 0;
-  let isDismissed = false;
-
-  const dismiss = () => {
-    if (isDismissed) return;
-    isDismissed = true;
-    preloader.classList.add('dismissed');
-    document.body.classList.add('system-ready');
-    revealPageItems();
-  };
-
-  const interval = setInterval(() => {
-    progress += Math.floor(Math.random() * 18) + 10;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(interval);
-      if (counter) counter.textContent = '100%';
-      if (progressBar) progressBar.style.width = '100%';
-      if (statusText) statusText.textContent = 'ATELIER INITIALIZED // ALL SYSTEMS ONLINE';
-      setTimeout(dismiss, 180);
-    } else {
-      if (counter) counter.textContent = `${progress.toString().padStart(2, '0')}%`;
-      if (progressBar) progressBar.style.width = `${progress}%`;
-    }
-  }, 35);
-
-  // Hard Failsafe: Guarantees page access under 1.2s
-  setTimeout(dismiss, 1200);
+  document.body.classList.add('system-ready');
+  revealPageItems();
 }
 
 function revealPageItems() {
   const heroItems = document.querySelectorAll('.hero-section .reveal-item, .page-hero-banner .reveal-item');
-  heroItems.forEach((item, index) => {
-    setTimeout(() => {
-      item.classList.add('revealed');
-    }, index * 70);
+  heroItems.forEach((item) => {
+    item.classList.add('revealed');
   });
 }
 
 // -----------------------------------------------------------------------------
-// 02. THREE.JS 3D KINETIC CENTERPIECE — THE GOLDEN GYROSCOPE & OBSIDIAN CORE
+// 02. EDITORIAL MINIMALIST ARCHITECTURE (THREE.JS RETIRED)
 // -----------------------------------------------------------------------------
-async function initThreeScene() {
-  const container = document.getElementById('canvas-container');
-  const fallback = document.getElementById('hero-fallback');
-  const rotReadout = document.getElementById('hud-rotation-readout');
-
-  if (!container) return;
-
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    if (fallback) fallback.style.display = 'block';
-    return;
-  }
-
-  let THREE;
-  try {
-    THREE = await import('three');
-  } catch (err) {
-    console.warn('Three.js CDN fallback active:', err);
-    if (fallback) fallback.style.display = 'block';
-    return;
-  }
-
-  try {
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(45, (container.clientWidth || 190) / (container.clientHeight || 380), 0.1, 1000);
-    camera.position.set(0, 0, 7.5);
-
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: 'high-performance'
-    });
-    renderer.setSize(container.clientWidth || 190, container.clientHeight || 380);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
-    container.appendChild(renderer.domElement);
-
-    const rootGroup = new THREE.Group();
-    scene.add(rootGroup);
-
-    // Central Obsidian Polyhedron Core (Scaled to sit comfortably in dedicated card)
-    const coreGeo = new THREE.DodecahedronGeometry(1.0, 0);
-    const coreMat = new THREE.MeshStandardMaterial({
-      color: 0x121110,
-      metalness: 0.92,
-      roughness: 0.16
-    });
-    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-    rootGroup.add(coreMesh);
-
-    // Champagne Gold Architectural Edges
-    const edgeGeo = new THREE.EdgesGeometry(coreGeo);
-    const edgeMat = new THREE.LineBasicMaterial({
-      color: 0xD6B46A,
-      linewidth: 1.5,
-      transparent: true,
-      opacity: 0.88
-    });
-    const wireframeEdges = new THREE.LineSegments(edgeGeo, edgeMat);
-    coreMesh.add(wireframeEdges);
-
-    // Dual Concentric Golden Orbital Rings (Calibrated radii to avoid clipping)
-    const ring1Geo = new THREE.TorusGeometry(1.55, 0.015, 16, 100);
-    const ring1Mat = new THREE.MeshBasicMaterial({
-      color: 0xD6B46A,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.75
-    });
-    const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
-    ring1.rotation.x = Math.PI * 0.38;
-    rootGroup.add(ring1);
-
-    const ring2Geo = new THREE.TorusGeometry(2.05, 0.012, 16, 120);
-    const ring2Mat = new THREE.MeshBasicMaterial({
-      color: 0x9D7B3C,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.55
-    });
-    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
-    ring2.rotation.x = -Math.PI * 0.26;
-    rootGroup.add(ring2);
-
-    // Luxurious Studio Lighting
-    const ambientLight = new THREE.AmbientLight(0x1a1610, 0.75);
-    scene.add(ambientLight);
-
-    const goldKeyLight = new THREE.PointLight(0xD6B46A, 4.2, 18);
-    goldKeyLight.position.set(4, 3.5, 4);
-    scene.add(goldKeyLight);
-
-    const warmRimLight = new THREE.PointLight(0xF3EFE6, 2.2, 16);
-    warmRimLight.position.set(-4, -3, 3);
-    scene.add(warmRimLight);
-
-    let targetRotX = 0;
-    let targetRotY = 0;
-
-    // Dynamic Camera Distance calculation ensuring 3D sculpture never clips
-    function updateViewport() {
-      if (!container || !renderer || !camera) return;
-      const width = Math.max(container.clientWidth, 60);
-      const height = Math.max(container.clientHeight, 60);
-      const aspect = width / height;
-      camera.aspect = aspect;
-
-      // Outer ring geometry radius is 2.05 + tube. Margin target is 2.35.
-      const targetRadius = 2.35;
-      const vFovRad = (camera.fov * Math.PI) / 180;
-      const distV = targetRadius / Math.sin(vFovRad / 2);
-      const hFovRad = 2 * Math.atan(Math.tan(vFovRad / 2) * aspect);
-      const distH = targetRadius / Math.sin(hFovRad / 2);
-      camera.position.z = Math.max(distV, distH, 6.2);
-
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-
-      // On narrow mobile devices (< 480px), simplify orbit to save GPU cycles and maintain focus
-      if (ring2) {
-        ring2.visible = window.innerWidth >= 480;
-      }
-    }
-
-    updateViewport();
-
-    // Use ResizeObserver on container for exact responsiveness
-    if (typeof ResizeObserver !== 'undefined') {
-      const resizeObserver = new ResizeObserver(() => {
-        updateViewport();
-      });
-      resizeObserver.observe(container);
-    }
-    window.addEventListener('resize', updateViewport, { passive: true });
-
-    // Interactive Drag & Pointer Tracking
-    let isDragging = false;
-    let prevPointerX = 0;
-    let prevPointerY = 0;
-    const sculptureCard = container.closest('.hero-sculpture-card') || container;
-
-    sculptureCard.addEventListener('pointerdown', (e) => {
-      isDragging = true;
-      prevPointerX = e.clientX;
-      prevPointerY = e.clientY;
-      try { sculptureCard.setPointerCapture(e.pointerId); } catch (_) {}
-    });
-
-    const endDrag = (e) => {
-      if (isDragging) {
-        isDragging = false;
-        try { sculptureCard.releasePointerCapture(e.pointerId); } catch (_) {}
-      }
-    };
-    window.addEventListener('pointerup', endDrag);
-    window.addEventListener('pointercancel', endDrag);
-
-    const onPointerMove = (e) => {
-      const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0].clientX) || 0;
-      const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0].clientY) || 0;
-
-      if (isDragging) {
-        const dx = clientX - prevPointerX;
-        const dy = clientY - prevPointerY;
-        prevPointerX = clientX;
-        prevPointerY = clientY;
-        targetRotY += dx * 0.016;
-        targetRotX += dy * 0.016;
-        return;
-      }
-
-      const rect = container.getBoundingClientRect();
-      if (rect.width > 0 && rect.height > 0) {
-        const mouseX = ((clientX - rect.left) / rect.width) * 2 - 1;
-        const mouseY = -(((clientY - rect.top) / rect.height) * 2 - 1);
-        targetRotY = Math.max(-1.4, Math.min(1.4, mouseX * 0.75));
-        targetRotX = Math.max(-1.1, Math.min(1.1, -mouseY * 0.60));
-      }
-    };
-
-    window.addEventListener('pointermove', onPointerMove, { passive: true });
-
-    let isSceneVisible = true;
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        isSceneVisible = entry.isIntersecting;
-      });
-    }, { threshold: 0.1 });
-    observer.observe(container);
-
-    let clock = new THREE.Clock();
-    const animate = () => {
-      requestAnimationFrame(animate);
-      if (!isSceneVisible) return;
-
-      const elapsedTime = clock.getElapsedTime();
-      coreMesh.rotation.y += (targetRotY - coreMesh.rotation.y) * 0.055;
-      coreMesh.rotation.x += (targetRotX - coreMesh.rotation.x) * 0.055;
-
-      rootGroup.rotation.y = elapsedTime * 0.11;
-      ring1.rotation.z += 0.008;
-      if (ring2 && ring2.visible) {
-        ring2.rotation.z -= 0.005;
-      }
-
-      if (rotReadout) {
-        const degX = (coreMesh.rotation.x * (180 / Math.PI)).toFixed(1);
-        const degY = (coreMesh.rotation.y * (180 / Math.PI)).toFixed(1);
-        rotReadout.textContent = `ROT_X: ${degX}° | ROT_Y: ${degY}°`;
-      }
-
-      renderer.render(scene, camera);
-    };
-
-    animate();
-  } catch (sceneErr) {
-    console.error('WebGL scene error:', sceneErr);
-    if (fallback) fallback.style.display = 'block';
-  }
+function initThreeScene() {
+  // 3D canvas replaced with clean monochrome portrait frame
 }
 
 // -----------------------------------------------------------------------------
-// 03. SHARED MULTIPAGE NAVIGATION & MOBILE DRAWER
+// 03. SHARED MULTIPAGE NAVIGATION & STICKY SCROLL
 // -----------------------------------------------------------------------------
+function initHeaderScroll() {
+  const header = document.getElementById('site-header') || document.querySelector('.site-header');
+  if (!header) return;
+
+  let ticking = false;
+  const handleScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 20) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+}
+
 function initNavigation() {
   const currentPage = document.body.getAttribute('data-page') || 'home';
   const navItems = document.querySelectorAll('.nav-item');
@@ -291,31 +64,33 @@ function initNavigation() {
   const mobileToggle = document.getElementById('mobile-toggle');
   const mobileClose = document.getElementById('mobile-close');
   const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileBackdrop = document.getElementById('mobile-drawer-backdrop');
+  const drawerCta = document.querySelectorAll('.btn-drawer-cta, .drawer-link-btn');
 
-  // Highlight active link matching current page
-  navItems.forEach((link) => {
-    const href = link.getAttribute('href') || '';
-    if (
-      (currentPage === 'home' && (href === 'index.html' || href === './' || href === '/')) ||
-      href.includes(currentPage)
-    ) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
+  // Highlight active link matching current page across all 5 routes
+  const setActiveState = (links) => {
+    links.forEach((link) => {
+      const href = link.getAttribute('href') || '';
+      let isCurrent = false;
 
-  mobileLinks.forEach((link) => {
-    const href = link.getAttribute('href') || '';
-    if (
-      (currentPage === 'home' && (href === 'index.html' || href === './' || href === '/')) ||
-      href.includes(currentPage)
-    ) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
-  });
+      if (currentPage === 'home' && (href === 'index.html' || href === './' || href === '/' || href === '')) {
+        isCurrent = true;
+      } else if (currentPage !== 'home' && href.includes(currentPage)) {
+        isCurrent = true;
+      }
+
+      if (isCurrent) {
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.classList.remove('active');
+        link.removeAttribute('aria-current');
+      }
+    });
+  };
+
+  setActiveState(navItems);
+  setActiveState(mobileLinks);
 
   // Mobile Drawer Toggle
   if (mobileToggle && mobileDrawer) {
@@ -325,13 +100,31 @@ function initNavigation() {
       mobileToggle.setAttribute('aria-expanded', isOpen.toString());
       mobileDrawer.setAttribute('aria-hidden', (!isOpen).toString());
       document.body.style.overflow = isOpen ? 'hidden' : '';
+
+      if (isOpen) {
+        const firstLink = mobileDrawer.querySelector('.mobile-close, .mobile-link');
+        if (firstLink) setTimeout(() => firstLink.focus(), 100);
+      } else {
+        mobileToggle.focus();
+      }
     };
 
     mobileToggle.addEventListener('click', () => toggleDrawer());
     if (mobileClose) mobileClose.addEventListener('click', () => toggleDrawer(false));
+    if (mobileBackdrop) mobileBackdrop.addEventListener('click', () => toggleDrawer(false));
+
+    mobileDrawer.addEventListener('click', (e) => {
+      if (e.target === mobileDrawer) {
+        toggleDrawer(false);
+      }
+    });
 
     mobileLinks.forEach((link) => {
       link.addEventListener('click', () => toggleDrawer(false));
+    });
+
+    drawerCta.forEach((btn) => {
+      btn.addEventListener('click', () => toggleDrawer(false));
     });
 
     window.addEventListener('keydown', (e) => {
@@ -343,59 +136,7 @@ function initNavigation() {
 }
 
 // -----------------------------------------------------------------------------
-// 04. ONE-CLICK EMAIL / TRANSMISSION ADDRESS CAPSULE
-// -----------------------------------------------------------------------------
-function initEmailTransmission() {
-  const emailCapsule = document.getElementById('email-capsule');
-  const copyBtn = document.getElementById('btn-copy-email');
-  const copyLabel = document.getElementById('copy-btn-label');
-  const targetEmail = document.getElementById('target-email');
-
-  const copyAddress = async () => {
-    const emailToCopy = targetEmail ? targetEmail.textContent.trim() : 'siddiquizeerak@gmail.com';
-
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(emailToCopy);
-      } else {
-        const textArea = document.createElement('textarea');
-        textArea.value = emailToCopy;
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-9999px';
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-      }
-
-      if (copyLabel) copyLabel.textContent = 'COPIED TO CLIPBOARD // OK';
-      if (copyBtn) copyBtn.classList.add('copied');
-
-      setTimeout(() => {
-        if (copyLabel) copyLabel.textContent = 'COPY ADDRESS';
-        if (copyBtn) copyBtn.classList.remove('copied');
-      }, 2500);
-    } catch (err) {
-      console.error('Failed to copy address:', err);
-      if (copyLabel) copyLabel.textContent = 'COPY FAILED';
-    }
-  };
-
-  if (copyBtn) {
-    copyBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      copyAddress();
-    });
-  }
-
-  if (emailCapsule) {
-    emailCapsule.addEventListener('click', copyAddress);
-  }
-}
-
-// -----------------------------------------------------------------------------
-// 05. REAL-TIME INDIAN STANDARD TIME WORLD CLOCK (ASIA/KOLKATA)
+// 04. REAL-TIME INDIAN STANDARD TIME WORLD CLOCK (ASIA/KOLKATA)
 // -----------------------------------------------------------------------------
 const indiaTimeFormatter = new Intl.DateTimeFormat('en-IN', {
   timeZone: 'Asia/Kolkata',
@@ -447,7 +188,7 @@ function initWorldClock() {
 }
 
 // -----------------------------------------------------------------------------
-// 06. 3D CARD PERSPECTIVE TILT (DATA-TILT)
+// 05. 3D CARD PERSPECTIVE TILT (DATA-TILT)
 // -----------------------------------------------------------------------------
 function initCardTilt() {
   if (window.matchMedia('(hover: none)').matches) return;
@@ -476,7 +217,7 @@ function initCardTilt() {
 }
 
 // -----------------------------------------------------------------------------
-// 07. CUSTOM DUAL-STATE PRECISION GOLD CURSOR
+// 06. CUSTOM DUAL-STATE PRECISION CYAN CURSOR
 // -----------------------------------------------------------------------------
 function initCustomCursor() {
   if (window.matchMedia('(hover: none)').matches) return;
@@ -507,7 +248,7 @@ function initCustomCursor() {
   requestAnimationFrame(updateRing);
 
   const updateHoverTargets = () => {
-    const targets = document.querySelectorAll('a, button, [data-tilt], .skill-card, .email-capsule, input, textarea, select');
+    const targets = document.querySelectorAll('a, button, [data-tilt], .skill-card, input, textarea, select');
     targets.forEach((el) => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
@@ -517,7 +258,7 @@ function initCustomCursor() {
 }
 
 // -----------------------------------------------------------------------------
-// 08. SCROLL REVEAL (INTERSECTION OBSERVER)
+// 07. SCROLL REVEAL (INTERSECTION OBSERVER)
 // -----------------------------------------------------------------------------
 function initScrollReveal() {
   const revealItems = document.querySelectorAll('.section:not(#hero) .reveal-item, .projects-dossier-list .reveal-item');
@@ -543,7 +284,7 @@ function initScrollReveal() {
 }
 
 // -----------------------------------------------------------------------------
-// 09. MAGNETIC BUTTON MICRO-INTERACTION
+// 08. MAGNETIC BUTTON MICRO-INTERACTION
 // -----------------------------------------------------------------------------
 function initMagneticButtons() {
   if (window.matchMedia('(hover: none)').matches) return;
@@ -565,7 +306,7 @@ function initMagneticButtons() {
 }
 
 // -----------------------------------------------------------------------------
-// 10. PROJECT CATEGORY FILTERING (FOR PROJECTS PAGE)
+// 09. PROJECT CATEGORY FILTERING (FOR PROJECTS PAGE)
 // -----------------------------------------------------------------------------
 function initProjectFilters() {
   const filterBtns = document.querySelectorAll('.filter-btn');
@@ -600,7 +341,7 @@ function initProjectFilters() {
 }
 
 // -----------------------------------------------------------------------------
-// 11. CONTACT TRANSMISSION FORM HANDLER
+// 10. CONTACT TRANSMISSION FORM HANDLER
 // -----------------------------------------------------------------------------
 function initContactForm() {
   const form = document.getElementById('contact-transmission-form');
@@ -632,15 +373,44 @@ function initContactForm() {
     statusMsg.className = 'form-status-msg success';
     statusMsg.innerHTML = `TRANSMISSION VALIDATED // PREPARING MAIL CLIENT FOR ${name.toUpperCase()}...`;
 
-    const encodedSubject = encodeURIComponent(`[Portfolio Transmission] ${subject} - from ${name}`);
+    const encodedSubject = encodeURIComponent(`[Digital World Transmission] ${subject} - from ${name}`);
     const encodedBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nClassification: ${subject}\n\nMessage Payload:\n${message}\n\n---\nSent via Zeerak Shafique Atelier Terminal`
+      `Name: ${name}\nEmail: ${email}\nClassification: ${subject}\n\nMessage Payload:\n${message}\n\n---\nSent via Zeerak Shafique Digital World Terminal`
     );
 
     setTimeout(() => {
       window.location.href = `mailto:siddiquizeerak@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
-      statusMsg.innerHTML = `TRANSMISSION DISPATCHED // Mail client launched. If it didn't open, please send directly to <a href="mailto:siddiquizeerak@gmail.com" style="color: #D6B46A;">siddiquizeerak@gmail.com</a>.`;
-    }, 700);
+      statusMsg.innerHTML = `Message validated. Mail client launched. You can also reach Zeerak directly at <a href="tel:+919580912686" style="color: #F5F5F5; text-decoration: underline;">+91 9580912686</a> or on Instagram <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" style="color: #F5F5F5; text-decoration: underline;">@_siddiqui_._zeerak_</a>.`;
+    }, 600);
+  });
+}
+
+// -----------------------------------------------------------------------------
+// 11. BIDIRECTIONAL LIGHT / DARK THEME SYSTEM
+// -----------------------------------------------------------------------------
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramTheme = urlParams.get('theme');
+  const savedTheme = paramTheme || localStorage.getItem('zs_theme') || document.documentElement.getAttribute('data-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  if (!toggleBtn) return;
+
+  const updateAria = (theme) => {
+    const isDark = theme === 'dark';
+    toggleBtn.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+    toggleBtn.setAttribute('title', isDark ? 'Switch to light theme' : 'Switch to dark theme');
+  };
+
+  updateAria(savedTheme);
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+    const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('zs_theme', nextTheme);
+    updateAria(nextTheme);
   });
 }
 
@@ -648,10 +418,11 @@ function initContactForm() {
 // 12. MASTER DOM INITIALIZATION
 // -----------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
+  initThemeToggle();
   initPreloader();
   initThreeScene();
+  initHeaderScroll();
   initNavigation();
-  initEmailTransmission();
   initWorldClock();
   initCardTilt();
   initCustomCursor();

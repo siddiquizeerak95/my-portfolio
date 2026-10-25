@@ -5,27 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Projects &amp; Case Studies — Zeerak Shafique | The Digital Atelier</title>
-  <meta name="title" content="Projects &amp; Works — Zeerak Shafique">
-  <meta name="description" content="Showcase of creative developer works, front-end architecture, C algorithms, and WebGL experiments by Zeerak Shafique.">
+  <title>Projects — Zeerak Shafique</title>
+  <meta name="title" content="Projects — Zeerak Shafique">
+  <meta name="description" content="Selected projects, software creations, and web experiments by Zeerak Shafique.">
   <meta name="author" content="Zeerak Shafique">
   <meta name="theme-color" content="#080808">
 
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Projects &amp; Case Studies — Zeerak Shafique">
-  <meta property="og:description" content="Selected case studies exploring computational aesthetics, performance-first front-end engineering, and algorithmic visualizers.">
-  <meta property="og:image" content="Profile%20Pic.jpg">
+  <meta property="og:title" content="Projects — Zeerak Shafique">
+  <meta property="og:description" content="Technical portfolio of creative web experiences and software projects by Zeerak Shafique.">
+  <meta property="og:image" content="./Profile%20Pic.jpg">
 
   <!-- Favicon / Brand Identity -->
-  <link rel="icon" type="image/png" href="ZS%20fav%20icon.png">
-  <link rel="shortcut icon" type="image/png" href="ZS%20fav%20icon.png">
-  <link rel="apple-touch-icon" href="ZS%20fav%20icon.png">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
 
-  <!-- Google Fonts Preconnect & Curated Luxury Typography -->
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts Preconnect & Curated Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -34,102 +42,95 @@
   <!-- Skip Navigation for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
 
-  <!-- Custom Precision Gold Cursor (Desktop Only) -->
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
   </div>
 
-  <!-- Ambient Cinematic Lighting Strata -->
-  <div class="ambient-light-container" aria-hidden="true">
-    <div class="ambient-light ambient-gold"></div>
-    <div class="ambient-light ambient-warm"></div>
-    <div class="telemetry-grid-overlay"></div>
-  </div>
+  <!-- SITE HEADER (REFERENCE SPECIFICATION) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Monogram Logo + Brand Name -->
+        <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="40" height="40" loading="eager">
+          <span class="header-brand-name">ZS STUDIO</span>
+        </a>
 
-  <!-- SHARED NAVIGATION -->
-  <header class="site-header">
-    <nav class="nav-capsule" aria-label="Main Navigation">
-      <!-- Personal Brand Mark with Genuine ZS Hexagonal Emblem -->
-      <a href="index.html" class="brand-mark" aria-label="Zeerak Shafique Home">
-        <img src="ZS%20fav%20icon.png" alt="Zeerak Shafique ZS Logo" class="brand-logo-img" width="36" height="36">
-        <div class="brand-text-block">
-          <span class="brand-name">ZEERAK SHAFIQUE</span>
-          <span class="brand-role-micro">THE DIGITAL ATELIER</span>
+        <!-- Center / Main: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item active" aria-current="page">Projects</a></li>
+          <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
         </div>
-      </a>
+      </nav>
+    </div>
 
-      <!-- Desktop Multipage Links -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="nav-item"><span class="nav-index">// 00.</span> HOME</a></li>
-        <li><a href="about.html" class="nav-item"><span class="nav-index">// 01.</span> ABOUT</a></li>
-        <li><a href="projects.html" class="nav-item active"><span class="nav-index">// 02.</span> PROJECTS</a></li>
-        <li><a href="skills.html" class="nav-item"><span class="nav-index">// 03.</span> SKILLS</a></li>
-        <li><a href="contact.html" class="nav-item"><span class="nav-index">// 04.</span> CONTACT</a></li>
-      </ul>
-
-      <!-- Live Availability Beacon -->
-      <div class="availability-badge" title="Status: Available for creative collaborations">
-        <span class="status-dot"></span>
-        <span class="availability-text">AVAILABLE // BCA '26</span>
-      </div>
-
-      <!-- Action Button & Instagram -->
-      <div class="nav-cta-cluster">
-        <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="nav-social-btn" aria-label="Visit Zeerak on Instagram (@_siddiqui_._zeerak_)" title="@_siddiqui_._zeerak_">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
-        <a href="contact.html" class="btn btn-nav">
-          <span>CONTACT</span>
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-
-        <!-- Mobile Menu Trigger -->
-        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle Navigation Menu">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Mobile Drawer Overlay -->
+    <!-- Mobile Navigation Drawer Overlay -->
     <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
       <div class="mobile-drawer-inner">
         <div class="mobile-telemetry-header">
-          <span>ATELIER NAVIGATION // ACTIVE</span>
-          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ESC / ✕ ]</button>
-        </div>
-        <ul class="mobile-nav-links">
-          <li><a href="index.html" class="mobile-link"><span class="mob-index">00</span> HOME</a></li>
-          <li><a href="about.html" class="mobile-link"><span class="mob-index">01</span> ABOUT</a></li>
-          <li><a href="projects.html" class="mobile-link active"><span class="mob-index">02</span> PROJECTS</a></li>
-          <li><a href="skills.html" class="mobile-link"><span class="mob-index">03</span> SKILLS</a></li>
-          <li><a href="contact.html" class="mobile-link"><span class="mob-index">04</span> CONTACT</a></li>
-        </ul>
-        <div class="mobile-drawer-footer">
-          <div class="drawer-telemetry">
-            <div>NODE: ZEERAK.ATELIER</div>
-            <div>STATUS: ONLINE // 60 FPS</div>
-            <div>COORDS: LAT 28.6139° N // IST</div>
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
           </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link active" aria-current="page">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+
           <div class="drawer-contact-links">
             <a href="tel:+919580912686" class="drawer-link-btn" aria-label="Call +91 9580912686">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <span>CALL: +91 9580912686</span>
+              <span>+91 9580912686</span>
             </a>
             <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               <span>@_siddiqui_._zeerak_</span>
             </a>
           </div>
-          <a href="contact.html" class="btn btn-primary btn-block">INITIALIZE CONTACT</a>
         </div>
       </div>
     </div>
@@ -142,14 +143,14 @@
         <div class="breadcrumb-nav reveal-item">
           <a href="index.html">HOME</a>
           <span class="sep">/</span>
-          <span>SELECTED CREATIONS &amp; DOSSIERS</span>
+          <span>PROJECTS</span>
         </div>
         <h1 class="page-title reveal-item">
-          Architectural works.<br>
-          <span class="text-gradient-gold">Mathematical experiments.</span>
+          Selected creations.<br>
+          Modern web experiences.
         </h1>
         <p class="page-lead reveal-item">
-          Genuine projects and academic explorations. Featuring this live personal portfolio atelier alongside upcoming algorithmic systems visualizers.
+          Genuine projects and academic explorations. Featuring this live personal portfolio alongside algorithmic systems and web applications.
         </p>
       </div>
     </section>
@@ -178,14 +179,17 @@
 
             <div class="dossier-content-col">
               <div class="project-category">CREATIVE ENGINEERING &bull; MULTIPAGE ARCHITECTURE</div>
-              <h2 class="project-title">Obsidian Gold // Personal Digital Atelier</h2>
+              <h2 class="project-title">Digital Future // Personal Creative Laboratory</h2>
               <p class="project-description">
-                The website you are currently exploring. Designed and engineered from first principles as a bespoke luxury atelier. Features a mathematical fluid clamp scale, pure semantic DOM structuring, real-time Indian Standard Time telemetry, and an interactive Three.js 3D kinetic gyroscope with zero runtime framework bloat.
+                The website you are currently exploring. Designed and engineered from first principles as a bespoke
+                futuristic laboratory. Features a mathematical fluid clamp scale, pure semantic DOM structuring, real-time
+                Indian Standard Time telemetry, and an interactive Three.js 3D kinetic quantum nexus with zero runtime
+                framework bloat.
               </p>
 
               <div class="project-tech-tags">
                 <span class="tech-tag">HTML5 Semantic DOM</span>
-                <span class="tech-tag">CSS Design Tokens</span>
+                <span class="tech-tag">Electric Cyan Design Tokens</span>
                 <span class="tech-tag">Vanilla JS (ES6+)</span>
                 <span class="tech-tag">Three.js WebGL</span>
                 <span class="tech-tag">WCAG 2.1 AA</span>
@@ -204,8 +208,8 @@
             <div class="dossier-preview-col">
               <div class="preview-frame">
                 <div class="preview-hud">
-                  <span>ATELIER: ACTIVE</span>
-                  <span>FPS: 60</span>
+                  <span>LABORATORY: LIVE_VIEWPORT</span>
+                  <span>INTERACTIVE</span>
                 </div>
                 <div class="preview-visual">
                   <div class="schematic-circle"></div>
@@ -225,8 +229,8 @@
               <div class="project-index">[ 02 / 03 ]</div>
               <div class="project-year">YEAR: 2026 (IN DEVELOPMENT)</div>
               <div class="project-status-chip">
-                <span class="status-pulse-dot" style="background-color: var(--gold-antique);"></span>
-                <span style="color: var(--gold-antique);">PROTOTYPE PHASE</span>
+                <span class="status-pulse-dot" style="background-color: var(--accent-blue);"></span>
+                <span style="color: var(--accent-blue);">PROTOTYPE PHASE</span>
               </div>
             </div>
 
@@ -234,7 +238,9 @@
               <div class="project-category">SYSTEMS LOGIC &bull; CANVAS COMPUTING</div>
               <h2 class="project-title">Algo.Core // Computational Sorting &amp; Memory Visualizer</h2>
               <p class="project-description">
-                An interactive educational visualizer bridging procedural algorithms written in C with real-time web canvas rendering. Designed to illustrate sorting dynamics (QuickSort, MergeSort), pointer traversals across linked lists, and call stack memory behaviors.
+                An interactive educational visualizer bridging procedural algorithms written in C with real-time web
+                canvas rendering. Designed to illustrate sorting dynamics (QuickSort, MergeSort), pointer traversals
+                across linked lists, and call stack memory behaviors.
               </p>
 
               <div class="project-tech-tags">
@@ -245,7 +251,8 @@
               </div>
 
               <div class="project-actions">
-                <button type="button" class="btn btn-secondary btn-sm" disabled style="opacity: 0.6; cursor: not-allowed;">
+                <button type="button" class="btn btn-secondary btn-sm" disabled
+                  style="opacity: 0.6; cursor: not-allowed;">
                   <span>PROTOTYPE IN PROGRESS</span>
                 </button>
               </div>
@@ -261,7 +268,7 @@
                   <div class="schematic-code">
                     <span>QSORT() &bull; MERGESORT()</span>
                     <span>MALLOC // STACK_TRACE</span>
-                    <span style="color: var(--gold-antique);">COMING SOON</span>
+                    <span style="color: var(--accent-blue);">COMING SOON</span>
                   </div>
                 </div>
               </div>
@@ -283,7 +290,9 @@
               <div class="project-category">CREATIVE CODING &bull; SPATIAL GEOMETRY</div>
               <h2 class="project-title">Kinetic Geometry // Spatial Shader Laboratory</h2>
               <p class="project-description">
-                Upcoming research into procedural mathematical geometry, custom GLSL fragment shaders, and hardware-accelerated vertex displacement in the browser. Exploring how mathematical curves like Lissajous figures and Mobius strips can be rendered interactively.
+                Upcoming research into procedural mathematical geometry, custom GLSL fragment shaders, and
+                hardware-accelerated vertex displacement in the browser. Exploring how mathematical curves like
+                Lissajous figures and Mobius strips can be rendered interactively.
               </p>
 
               <div class="project-tech-tags">
@@ -294,7 +303,8 @@
               </div>
 
               <div class="project-actions">
-                <button type="button" class="btn btn-secondary btn-sm" disabled style="opacity: 0.6; cursor: not-allowed;">
+                <button type="button" class="btn btn-secondary btn-sm" disabled
+                  style="opacity: 0.6; cursor: not-allowed;">
                   <span>RESEARCH IN PROGRESS</span>
                 </button>
               </div>
@@ -310,7 +320,7 @@
                   <div class="schematic-code">
                     <span>GLSL &bull; FRAG_SHADER</span>
                     <span>MATHEMATICAL_NOISE</span>
-                    <span style="color: var(--gold-antique);">HORIZON FOCUS</span>
+                    <span style="color: var(--accent-blue);">HORIZON FOCUS</span>
                   </div>
                 </div>
               </div>
@@ -327,11 +337,11 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="ZS%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
+            <img src="./New%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
             <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
           </div>
           <p class="footer-role">
-            BCA Student &bull; Aspiring Creative Developer &bull; Exploring Computational Aesthetics &amp; Systems Architecture
+            BCA Student &bull; Aspiring Full-Stack Developer &bull; Exploring Computational Aesthetics &amp; Full-Stack Systems
           </p>
           <div class="footer-contact-cluster">
             <a href="tel:+919580912686" class="footer-contact-link" aria-label="Call Zeerak at +91 9580912686">

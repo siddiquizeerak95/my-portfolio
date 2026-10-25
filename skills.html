@@ -5,27 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Skills &amp; Architecture — Zeerak Shafique | The Digital Atelier</title>
-  <meta name="title" content="Skills &amp; Technical Foundation — Zeerak Shafique">
-  <meta name="description" content="Technical disciplines and engineering foundations of Zeerak Shafique: HTML5, modern CSS3 design tokens, JavaScript ES6+, and C systems programming.">
+  <title>Skills — Zeerak Shafique</title>
+  <meta name="title" content="Skills — Zeerak Shafique">
+  <meta name="description" content="Technical disciplines and foundational development skills of Zeerak Shafique: HTML5, CSS3, JavaScript, full-stack web systems, and C programming.">
   <meta name="author" content="Zeerak Shafique">
   <meta name="theme-color" content="#080808">
 
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Skills &amp; Technical Architecture — Zeerak Shafique">
-  <meta property="og:description" content="Core programming disciplines: procedural C systems, accessible semantic DOM, modern CSS mathematics, and vanilla JavaScript.">
-  <meta property="og:image" content="Profile%20Pic.jpg">
+  <meta property="og:title" content="Skills — Zeerak Shafique">
+  <meta property="og:description" content="Technical disciplines and foundational skills of Zeerak Shafique.">
+  <meta property="og:image" content="./Profile%20Pic.jpg">
 
   <!-- Favicon / Brand Identity -->
-  <link rel="icon" type="image/png" href="ZS%20fav%20icon.png">
-  <link rel="shortcut icon" type="image/png" href="ZS%20fav%20icon.png">
-  <link rel="apple-touch-icon" href="ZS%20fav%20icon.png">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
 
-  <!-- Google Fonts Preconnect & Curated Luxury Typography -->
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts Preconnect & Curated Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -34,102 +42,95 @@
   <!-- Skip Navigation for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
 
-  <!-- Custom Precision Gold Cursor (Desktop Only) -->
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
   </div>
 
-  <!-- Ambient Cinematic Lighting Strata -->
-  <div class="ambient-light-container" aria-hidden="true">
-    <div class="ambient-light ambient-gold"></div>
-    <div class="ambient-light ambient-warm"></div>
-    <div class="telemetry-grid-overlay"></div>
-  </div>
+  <!-- SITE HEADER (REFERENCE SPECIFICATION) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Monogram Logo + Brand Name -->
+        <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="40" height="40" loading="eager">
+          <span class="header-brand-name">ZS STUDIO</span>
+        </a>
 
-  <!-- SHARED NAVIGATION -->
-  <header class="site-header">
-    <nav class="nav-capsule" aria-label="Main Navigation">
-      <!-- Personal Brand Mark with Genuine ZS Hexagonal Emblem -->
-      <a href="index.html" class="brand-mark" aria-label="Zeerak Shafique Home">
-        <img src="ZS%20fav%20icon.png" alt="Zeerak Shafique ZS Logo" class="brand-logo-img" width="36" height="36">
-        <div class="brand-text-block">
-          <span class="brand-name">ZEERAK SHAFIQUE</span>
-          <span class="brand-role-micro">THE DIGITAL ATELIER</span>
+        <!-- Center / Main: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item">Projects</a></li>
+          <li><a href="skills.html" class="nav-item active" aria-current="page">Skills</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
         </div>
-      </a>
+      </nav>
+    </div>
 
-      <!-- Desktop Multipage Links -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="nav-item"><span class="nav-index">// 00.</span> HOME</a></li>
-        <li><a href="about.html" class="nav-item"><span class="nav-index">// 01.</span> ABOUT</a></li>
-        <li><a href="projects.html" class="nav-item"><span class="nav-index">// 02.</span> PROJECTS</a></li>
-        <li><a href="skills.html" class="nav-item active"><span class="nav-index">// 03.</span> SKILLS</a></li>
-        <li><a href="contact.html" class="nav-item"><span class="nav-index">// 04.</span> CONTACT</a></li>
-      </ul>
-
-      <!-- Live Availability Beacon -->
-      <div class="availability-badge" title="Status: Available for creative collaborations">
-        <span class="status-dot"></span>
-        <span class="availability-text">AVAILABLE // BCA '26</span>
-      </div>
-
-      <!-- Action Button & Instagram -->
-      <div class="nav-cta-cluster">
-        <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="nav-social-btn" aria-label="Visit Zeerak on Instagram (@_siddiqui_._zeerak_)" title="@_siddiqui_._zeerak_">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
-        <a href="contact.html" class="btn btn-nav">
-          <span>CONTACT</span>
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-
-        <!-- Mobile Menu Trigger -->
-        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle Navigation Menu">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Mobile Drawer Overlay -->
+    <!-- Mobile Navigation Drawer Overlay -->
     <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
       <div class="mobile-drawer-inner">
         <div class="mobile-telemetry-header">
-          <span>ATELIER NAVIGATION // ACTIVE</span>
-          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ESC / ✕ ]</button>
-        </div>
-        <ul class="mobile-nav-links">
-          <li><a href="index.html" class="mobile-link"><span class="mob-index">00</span> HOME</a></li>
-          <li><a href="about.html" class="mobile-link"><span class="mob-index">01</span> ABOUT</a></li>
-          <li><a href="projects.html" class="mobile-link"><span class="mob-index">02</span> PROJECTS</a></li>
-          <li><a href="skills.html" class="mobile-link active"><span class="mob-index">03</span> SKILLS</a></li>
-          <li><a href="contact.html" class="mobile-link"><span class="mob-index">04</span> CONTACT</a></li>
-        </ul>
-        <div class="mobile-drawer-footer">
-          <div class="drawer-telemetry">
-            <div>NODE: ZEERAK.ATELIER</div>
-            <div>STATUS: ONLINE // 60 FPS</div>
-            <div>COORDS: LAT 28.6139° N // IST</div>
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
           </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link active" aria-current="page">Skills</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+
           <div class="drawer-contact-links">
             <a href="tel:+919580912686" class="drawer-link-btn" aria-label="Call +91 9580912686">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <span>CALL: +91 9580912686</span>
+              <span>+91 9580912686</span>
             </a>
             <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
               <span>@_siddiqui_._zeerak_</span>
             </a>
           </div>
-          <a href="contact.html" class="btn btn-primary btn-block">INITIALIZE CONTACT</a>
         </div>
       </div>
     </div>
@@ -142,14 +143,14 @@
         <div class="breadcrumb-nav reveal-item">
           <a href="index.html">HOME</a>
           <span class="sep">/</span>
-          <span>SYSTEM ARCHITECTURE &amp; DISCIPLINES</span>
+          <span>SKILLS</span>
         </div>
         <h1 class="page-title reveal-item">
           Engineering foundations.<br>
-          <span class="text-gradient-gold">First-principles mastery.</span>
+          Core programming disciplines.
         </h1>
         <p class="page-lead reveal-item">
-          A transparent matrix of the programming languages and web standards I actively study, practice, and build with. Zero arbitrary percentage ratings.
+          A clear matrix of the programming languages and web standards I actively study, practice, and build with.
         </p>
       </div>
     </section>
@@ -261,33 +262,33 @@
     <!-- SECTION: THE DUALITY PHILOSOPHY (HOW C INFORMS FRONTEND) -->
     <section class="section" style="padding-top: 0;" aria-label="Engineering Philosophy">
       <div class="container">
-        <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-subtle); border-top: 2px solid var(--gold-champagne); padding: 36px; border-radius: 2px;" class="reveal-item">
+        <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); border-top: 2px solid var(--accent-cyan); padding: 36px; border-radius: var(--radius-md); box-shadow: var(--shadow-elevation);" class="reveal-item">
           <div class="section-meta">
             <span class="section-index">// 02.2</span>
             <span class="section-tag">ENGINEERING PRINCIPLE: THE LOW-TO-HIGH DUALITY</span>
           </div>
 
-          <h2 style="font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 3rem); color: var(--text-ivory); margin-bottom: 20px;">
+          <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 3.2vw, 2.8rem); color: var(--text-primary); margin-bottom: 20px; letter-spacing: -0.02em;">
             How Low-Level Systems Thinking Transforms Web Development
           </h2>
 
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
-            <div style="background: #080808; padding: 24px; border-radius: 2px; border: 1px solid var(--border-subtle);">
-              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold-champagne); margin-bottom: 10px;">[CONCEPT: MEMORY AWARENESS]</div>
+            <div style="background: var(--bg-primary); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan); margin-bottom: 10px; font-weight: 600;">[CONCEPT: MEMORY AWARENESS]</div>
               <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.65;">
                 In C, unmanaged memory causes immediate crashes or leaks. In JavaScript, understanding garbage collection prevents hidden memory retention in detached DOM nodes and animation loops.
               </p>
             </div>
 
-            <div style="background: #080808; padding: 24px; border-radius: 2px; border: 1px solid var(--border-subtle);">
-              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold-champagne); margin-bottom: 10px;">[CONCEPT: TIME COMPLEXITY]</div>
+            <div style="background: var(--bg-primary); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan); margin-bottom: 10px; font-weight: 600;">[CONCEPT: TIME COMPLEXITY]</div>
               <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.65;">
                 Writing sorting algorithms in C clarifies why unoptimized iterations freeze the browser thread. Every DOM query and array transformation is evaluated for computational cost.
               </p>
             </div>
 
-            <div style="background: #080808; padding: 24px; border-radius: 2px; border: 1px solid var(--border-subtle);">
-              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold-champagne); margin-bottom: 10px;">[CONCEPT: ARCHITECTURAL DISCIPLINE]</div>
+            <div style="background: var(--bg-primary); padding: 24px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan); margin-bottom: 10px; font-weight: 600;">[CONCEPT: ARCHITECTURAL DISCIPLINE]</div>
               <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.65;">
                 C demands strict compilation and zero implicit magic. This translates into disciplined, modular vanilla JavaScript with explicit variable scopes and predictable state flow.
               </p>
@@ -314,16 +315,16 @@
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
           <!-- Vector 1 -->
-          <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-subtle); padding: 32px; border-radius: 2px;" class="reveal-item">
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 32px; border-radius: var(--radius-md); box-shadow: var(--shadow-elevation);" class="reveal-item">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-family: var(--font-mono); font-size: 11px;">
-              <span style="color: var(--gold-champagne);">VECTOR 01</span>
-              <span style="color: var(--text-muted); background: #080808; padding: 3px 8px; border: 1px solid var(--border-subtle);">ACTIVE FOCUS</span>
+              <span style="color: var(--text-primary); font-weight: 600;">VECTOR 01</span>
+              <span style="color: #F5F5F5; background: #141414; padding: 3px 8px; border: 1px solid #252525; border-radius: 4px;">ACTIVE FOCUS</span>
             </div>
-            <h3 style="font-family: var(--font-serif); font-size: 22px; color: var(--text-ivory); margin-bottom: 12px;">JavaScript Internals &amp; Advanced C</h3>
+            <h3 style="font-family: var(--font-display); font-size: 20px; color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">JavaScript Internals &amp; Advanced C</h3>
             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
               Deepening understanding of the V8 execution model, microtask queues, and event loops alongside linked lists, stacks, and binary trees in C.
             </p>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold-antique); line-height: 1.8;">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-blue); line-height: 1.8;">
               <div>&bull; Event loop concurrency &amp; Web Workers</div>
               <div>&bull; Dynamic memory management &amp; file I/O in C</div>
               <div>&bull; Modular ES6+ bundling principles</div>
@@ -331,16 +332,16 @@
           </div>
 
           <!-- Vector 2 -->
-          <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-subtle); padding: 32px; border-radius: 2px;" class="reveal-item">
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 32px; border-radius: var(--radius-md); box-shadow: var(--shadow-elevation);" class="reveal-item">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-family: var(--font-mono); font-size: 11px;">
-              <span style="color: var(--gold-champagne);">VECTOR 02</span>
-              <span style="color: var(--text-muted); background: #080808; padding: 3px 8px; border: 1px solid var(--border-subtle);">NEXT HORIZON</span>
+              <span style="color: var(--accent-cyan); font-weight: 600;">VECTOR 02</span>
+              <span style="color: var(--accent-blue); background: rgba(139, 157, 255, 0.1); padding: 3px 8px; border: 1px solid rgba(139, 157, 255, 0.3); border-radius: 4px;">NEXT HORIZON</span>
             </div>
-            <h3 style="font-family: var(--font-serif); font-size: 22px; color: var(--text-ivory); margin-bottom: 12px;">Custom GLSL Shaders &amp; Modern Tooling</h3>
+            <h3 style="font-family: var(--font-display); font-size: 20px; color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">Custom GLSL Shaders &amp; Modern Tooling</h3>
             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
               Progressing from basic Three.js into custom vertex/fragment shaders written in GLSL, paired with modern build pipelines and TypeScript.
             </p>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold-antique); line-height: 1.8;">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-blue); line-height: 1.8;">
               <div>&bull; GLSL math: vector transformations &amp; noise</div>
               <div>&bull; Component architecture &amp; TypeScript basics</div>
               <div>&bull; Web Accessibility (WCAG AAA standards)</div>
@@ -348,16 +349,16 @@
           </div>
 
           <!-- Vector 3 -->
-          <div style="background: var(--bg-surface-secondary); border: 1px solid var(--border-subtle); padding: 32px; border-radius: 2px;" class="reveal-item">
+          <div style="background: var(--bg-surface); border: 1px solid var(--border-subtle); padding: 32px; border-radius: var(--radius-md); box-shadow: var(--shadow-elevation);" class="reveal-item">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-family: var(--font-mono); font-size: 11px;">
-              <span style="color: var(--gold-champagne);">VECTOR 03</span>
-              <span style="color: var(--text-muted); background: #080808; padding: 3px 8px; border: 1px solid var(--border-subtle);">VISION</span>
+              <span style="color: var(--accent-cyan); font-weight: 600;">VECTOR 03</span>
+              <span style="color: var(--text-muted); background: var(--bg-primary); padding: 3px 8px; border: 1px solid var(--border-subtle); border-radius: 4px;">VISION</span>
             </div>
-            <h3 style="font-family: var(--font-serif); font-size: 22px; color: var(--text-ivory); margin-bottom: 12px;">High-Craft Creative Development</h3>
+            <h3 style="font-family: var(--font-display); font-size: 20px; color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">High-Craft Creative Development</h3>
             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
               Evolving into a versatile creative developer capable of conceptualizing and engineering digital experiences celebrated for aesthetic and technical excellence.
             </p>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gold-antique); line-height: 1.8;">
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-blue); line-height: 1.8;">
               <div>&bull; Interactive 3D spatial web design</div>
               <div>&bull; High-performance computational layouts</div>
               <div>&bull; Scholastic excellence in Computer Applications</div>
@@ -380,11 +381,11 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="ZS%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
+            <img src="./New%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
             <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
           </div>
           <p class="footer-role">
-            BCA Student &bull; Aspiring Creative Developer &bull; Exploring Computational Aesthetics &amp; Systems Architecture
+            BCA Student &bull; Aspiring Full-Stack Developer &bull; Exploring Computational Aesthetics &amp; Full-Stack Systems
           </p>
           <div class="footer-contact-cluster">
             <a href="tel:+919580912686" class="footer-contact-link" aria-label="Call Zeerak at +91 9580912686">

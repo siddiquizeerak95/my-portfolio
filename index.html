@@ -1,325 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- Primary Meta Tags -->
-  <title>Zeerak Shafique — The Digital Atelier | Creative Developer &amp; BCA Student</title>
-  <meta name="title" content="Zeerak Shafique — The Digital Atelier">
-  <meta name="description" content="Obsidian Gold — The personal creative developer portfolio of Zeerak Shafique. Exploring the synthesis of systems programming in C, modern web architecture, and luxury spatial 3D experiences.">
+  <title>ZEERAK — Zeerak Shafique | Creative Developer</title>
+  <meta name="title" content="ZEERAK — Zeerak Shafique | Creative Developer">
+  <meta name="description"
+    content="The personal portfolio of Zeerak Shafique. Creative developer building clean, modern digital experiences with thoughtful design and code.">
   <meta name="author" content="Zeerak Shafique">
   <meta name="theme-color" content="#080808">
 
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Zeerak Shafique — The Digital Atelier">
-  <meta property="og:description" content="A cinematic luxury personal developer universe bridging low-level computational logic and modern spatial web aesthetics.">
-  <meta property="og:image" content="Profile%20Pic.jpg">
+  <meta property="og:title" content="ZEERAK — Zeerak Shafique">
+  <meta property="og:description"
+    content="Creative developer portfolio of Zeerak Shafique. Clean, modern digital experiences with thoughtful design and code.">
+  <meta property="og:image" content="./Profile%20Pic.jpg">
 
   <!-- Favicon / Brand Identity -->
-  <link rel="icon" type="image/png" href="ZS%20fav%20icon.png">
-  <link rel="shortcut icon" type="image/png" href="ZS%20fav%20icon.png">
-  <link rel="apple-touch-icon" href="ZS%20fav%20icon.png">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
 
-  <!-- Google Fonts Preconnect & Curated Luxury Typography -->
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts Preconnect & Curated Modern Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="style.css">
-
-  <!-- Three.js CDN for 3D Kinetic Scene (ES Module) -->
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.min.js"
-      }
-    }
-  </script>
 </head>
+
 <body data-page="home">
   <!-- Skip Navigation for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
 
-  <!-- Custom Precision Gold Cursor (Desktop Only) -->
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
   </div>
 
-  <!-- Ambient Cinematic Lighting Strata -->
-  <div class="ambient-light-container" aria-hidden="true">
-    <div class="ambient-light ambient-gold"></div>
-    <div class="ambient-light ambient-warm"></div>
-    <div class="telemetry-grid-overlay"></div>
-  </div>
+  <!-- SITE HEADER (REFERENCE SPECIFICATION) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Monogram Logo + Brand Name -->
+        <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="40" height="40" loading="eager">
+          <span class="header-brand-name">ZS STUDIO</span>
+        </a>
 
-  <!-- SECTION 00: SYSTEM PRELOADER HUD (THE DIGITAL ATELIER) -->
-  <div class="preloader-overlay" id="preloader" role="status" aria-live="polite">
-    <div class="preloader-terminal">
-      <div class="terminal-header">
-        <span class="terminal-dot gold"></span>
-        <span class="terminal-dot antique"></span>
-        <span class="terminal-dot"></span>
-        <span class="terminal-title">ATELIER.INIT // ZEERAK.SHF_V3.0</span>
-      </div>
-      <div class="terminal-body">
-        <div class="terminal-emblem-wrap">
-          <img src="ZS%20fav%20icon.png" alt="ZS Emblem" class="preloader-logo-img">
+        <!-- Center / Main: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item active" aria-current="page">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item">Projects</a></li>
+          <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
         </div>
-        <div class="terminal-line"><span class="prompt">&gt;&gt;</span> MOUNTING OBSIDIAN ATELIER... <span class="status-ok">OK</span></div>
-        <div class="terminal-line"><span class="prompt">&gt;&gt;</span> CALIBRATING 3D GOLDEN GYROSCOPE... <span class="status-ok">OK</span></div>
-        <div class="terminal-line"><span class="prompt">&gt;&gt;</span> AUTHENTICATING BIOMETRIC ASSET... <span class="status-ok">OK</span></div>
-        <div class="terminal-line"><span class="prompt">&gt;&gt;</span> SYNCHRONIZING TIMEZONE [IST // ASIA/KOLKATA]... <span class="status-ok">OK</span></div>
-        <div class="progress-container">
-          <div class="progress-bar" id="preloader-progress-bar"></div>
-        </div>
-        <div class="progress-footer">
-          <span class="progress-text" id="preloader-status-text">ATELIER INITIALIZATION IN PROGRESS</span>
-          <span class="progress-counter" id="preloader-counter">00%</span>
-        </div>
-      </div>
+      </nav>
     </div>
-  </div>
 
-  <!-- SHARED NAVIGATION -->
-  <header class="site-header">
-    <nav class="nav-capsule" aria-label="Main Navigation">
-      <!-- Personal Brand Mark with Genuine ZS Hexagonal Emblem -->
-      <a href="index.html" class="brand-mark" aria-label="Zeerak Shafique Home">
-        <img src="ZS%20fav%20icon.png" alt="Zeerak Shafique ZS Logo" class="brand-logo-img" width="36" height="36">
-        <div class="brand-text-block">
-          <span class="brand-name">ZEERAK SHAFIQUE</span>
-          <span class="brand-role-micro">THE DIGITAL ATELIER</span>
-        </div>
-      </a>
-
-      <!-- Desktop Multipage Links -->
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" class="nav-item active"><span class="nav-index">// 00.</span> HOME</a></li>
-        <li><a href="about.html" class="nav-item"><span class="nav-index">// 01.</span> ABOUT</a></li>
-        <li><a href="projects.html" class="nav-item"><span class="nav-index">// 02.</span> PROJECTS</a></li>
-        <li><a href="skills.html" class="nav-item"><span class="nav-index">// 03.</span> SKILLS</a></li>
-        <li><a href="contact.html" class="nav-item"><span class="nav-index">// 04.</span> CONTACT</a></li>
-      </ul>
-
-      <!-- Live Availability Beacon -->
-      <div class="availability-badge" title="Status: Available for creative collaborations">
-        <span class="status-dot"></span>
-        <span class="availability-text">AVAILABLE // BCA '26</span>
-      </div>
-
-      <!-- Action Button & Instagram -->
-      <div class="nav-cta-cluster">
-        <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="nav-social-btn" aria-label="Visit Zeerak on Instagram (@_siddiqui_._zeerak_)" title="@_siddiqui_._zeerak_">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
-        <a href="contact.html" class="btn btn-nav">
-          <span>CONTACT</span>
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
-
-        <!-- Mobile Menu Trigger -->
-        <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Toggle Navigation Menu">
-          <span class="hamburger-bar"></span>
-          <span class="hamburger-bar"></span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Mobile Drawer Overlay -->
+    <!-- Mobile Navigation Drawer Overlay -->
     <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
       <div class="mobile-drawer-inner">
         <div class="mobile-telemetry-header">
-          <span>ATELIER NAVIGATION // ACTIVE</span>
-          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ESC / ✕ ]</button>
-        </div>
-        <ul class="mobile-nav-links">
-          <li><a href="index.html" class="mobile-link active"><span class="mob-index">00</span> HOME</a></li>
-          <li><a href="about.html" class="mobile-link"><span class="mob-index">01</span> ABOUT</a></li>
-          <li><a href="projects.html" class="mobile-link"><span class="mob-index">02</span> PROJECTS</a></li>
-          <li><a href="skills.html" class="mobile-link"><span class="mob-index">03</span> SKILLS</a></li>
-          <li><a href="contact.html" class="mobile-link"><span class="mob-index">04</span> CONTACT</a></li>
-        </ul>
-        <div class="mobile-drawer-footer">
-          <div class="drawer-telemetry">
-            <div>NODE: ZEERAK.ATELIER</div>
-            <div>STATUS: ONLINE // 60 FPS</div>
-            <div>COORDS: LAT 28.6139° N // IST</div>
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
           </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link active" aria-current="page">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+
           <div class="drawer-contact-links">
             <a href="tel:+919580912686" class="drawer-link-btn" aria-label="Call +91 9580912686">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-              <span>CALL: +91 9580912686</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>+91 9580912686</span>
             </a>
-            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
               <span>@_siddiqui_._zeerak_</span>
             </a>
           </div>
-          <a href="contact.html" class="btn btn-primary btn-block">INITIALIZE CONTACT</a>
         </div>
       </div>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- SECTION 01: HERO — CINEMATIC SPLIT EDITORIAL WITH PORTRAIT & 3D GYROSCOPE -->
+    <!-- SECTION 01: HERO — CINEMATIC DEVELOPER SHOWCASE -->
     <section id="hero" class="section hero-section" aria-label="Hero Introduction">
       <div class="container hero-container">
-        <!-- Telemetry Header -->
-        <div class="hero-telemetry-bar reveal-item">
-          <div class="telemetry-chip">
-            <span class="chip-dot"></span>
-            <span class="chip-text">ATELIER.INIT // ARCHITECTURAL_DIRECTION</span>
-          </div>
-          <div class="telemetry-coordinates">
-            <span>LAT: 28.6139° N</span>
-            <span class="separator">/</span>
-            <span>ZONE: IST (UTC+05:30)</span>
-            <span class="separator">/</span>
-            <span class="fps-badge">STATUS: ONLINE</span>
-          </div>
-        </div>
-
         <div class="hero-split-grid">
-          <!-- Hero Typography & Identity (Left Column) -->
-          <div class="hero-editorial-col">
-            <div class="role-badge reveal-item">
-              <span class="badge-prefix">// SCHOLASTIC &amp; CREATIVE IDENTITY</span>
-              <span class="badge-title">BCA STUDENT / ASPIRING CREATIVE DEVELOPER</span>
-            </div>
+          <!-- Left Column: Typography & Actions -->
+          <div class="hero-editorial-col reveal-item">
+            <p class="hero-intro-label">CREATIVE DEVELOPER</p>
 
-            <h1 class="hero-title reveal-item">
-              <span class="title-row">ZEERAK</span>
-              <span class="title-row title-accent">SHAFIQUE</span>
-            </h1>
+            <h1 class="hero-headline"><span class="hero-greeting">Hi, I'm</span> <span class="hero-name-glow">Zeerak Siddiqui</span></h1>
 
-            <p class="hero-lead reveal-item">
-              Undergraduate student in Computer Applications bridging computational logic with sensory, spatial web aesthetics. Exploring foundational programming in C, modern web architecture, and luxury interactive design.
+            <p class="hero-description">
+              I build clean, modern digital experiences with thoughtful design and code.
             </p>
 
-            <div class="hero-cta-group reveal-item">
-              <a href="projects.html" class="btn btn-primary magnetic-btn" id="btn-explore">
-                <span>EXPLORE PROJECTS</span>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="7" y1="17" x2="17" y2="7"></line>
-                  <polyline points="7 7 17 7 17 17"></polyline>
-                </svg>
+            <div class="hero-cta-group">
+              <a href="projects.html" class="hero-btn-primary" id="btn-hero-work" aria-label="View My Work">
+                View My Work &rarr;
               </a>
+              <a href="contact.html" class="hero-btn-secondary" id="btn-hero-contact" aria-label="Contact Me">
+                Contact Me
+              </a>
+            </div>
+          </div>
 
-              <a href="about.html" class="btn btn-secondary magnetic-btn" id="btn-about">
-                <span>ABOUT ME</span>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <!-- Right Column: Profile Portrait & Circuit Board Composition -->
+          <div class="hero-portrait-col reveal-item">
+            <div class="hero-circuit-stage">
+              <!-- Soft ambient grayscale lighting around head and shoulders -->
+              <div class="hero-ambient-halo" aria-hidden="true"></div>
+
+              <!-- Circuit Board Vector Trace Network -->
+              <svg class="hero-circuit-svg" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Circuit Traces Group -->
+                <g class="circuit-trace-group">
+                  <!-- LEFT FLANK TRACES -->
+                  <!-- L1: Upper branch with via & SMD pad -->
+                  <path d="M 220 236 L 150 236 L 126 212 L 50 212" class="circuit-trace trace-primary" />
+                  <path d="M 50 212 L 50 226" class="circuit-trace trace-branch" />
+                  <circle cx="50" cy="212" r="3.5" class="circuit-via-ring" />
+                  <circle cx="50" cy="212" r="1.5" class="circuit-via-dot" />
+                  <rect x="46" y="226" width="8" height="4" rx="1" class="circuit-smd-pad" />
+                  <circle cx="100" cy="212" r="2" class="circuit-node-dot" />
+
+                  <!-- L2: Bus Track A with terminal via -->
+                  <path d="M 230 265 L 160 265 L 140 285 L 85 285" class="circuit-trace trace-primary" />
+                  <circle cx="120" cy="285" r="2" class="circuit-node-dot" />
+                  <circle cx="85" cy="285" r="3" class="circuit-via-ring" />
+                  <circle cx="85" cy="285" r="1.5" class="circuit-via-dot" />
+
+                  <!-- L3: Bus Track B with test pad -->
+                  <path d="M 235 277 L 165 277 L 145 297 L 95 297 L 95 306 L 25 306" class="circuit-trace trace-primary" />
+                  <circle cx="60" cy="306" r="2" class="circuit-node-dot" />
+                  <rect x="18" y="304" width="7" height="4" rx="1" class="circuit-smd-pad" />
+
+                  <!-- L4: Lower Flank Trace with dual 45-deg offsets -->
+                  <path d="M 245 308 L 190 308 L 170 328 L 110 328 L 94 344 L 38 344" class="circuit-trace trace-primary" />
+                  <circle cx="140" cy="328" r="2" class="circuit-node-dot" />
+                  <circle cx="38" cy="344" r="3" class="circuit-via-ring" />
+                  <circle cx="38" cy="344" r="1.5" class="circuit-via-dot" />
+
+                  <!-- L5: Bottom Connector Trace -->
+                  <path d="M 260 330 L 220 330 L 195 355 L 125 355" class="circuit-trace trace-subtle" />
+                  <circle cx="125" cy="355" r="2" class="circuit-node-dot" />
+
+                  <!-- Left Data / Clock Micro-Package -->
+                  <rect x="32" y="254" width="52" height="24" rx="2" class="circuit-chip-body" />
+                  <line x1="84" y1="262" x2="94" y2="262" class="circuit-trace trace-pin" />
+                  <line x1="84" y1="270" x2="94" y2="270" class="circuit-trace trace-pin" />
+                  <text x="40" y="265" class="chip-text chip-title">IO // BUS</text>
+                  <text x="40" y="274" class="chip-subtext">32.7 kHz</text>
+
+                  <!-- RIGHT FLANK TRACES -->
+                  <!-- R1: Upper branch with via & SMD pad -->
+                  <path d="M 380 236 L 450 236 L 474 212 L 550 212" class="circuit-trace trace-primary" />
+                  <path d="M 550 212 L 550 226" class="circuit-trace trace-branch" />
+                  <circle cx="550" cy="212" r="3.5" class="circuit-via-ring" />
+                  <circle cx="550" cy="212" r="1.5" class="circuit-via-dot" />
+                  <rect x="546" y="226" width="8" height="4" rx="1" class="circuit-smd-pad" />
+                  <circle cx="500" cy="212" r="2" class="circuit-node-dot" />
+
+                  <!-- R2: Bus Track A running to ZS Micro-IC Pin 1 -->
+                  <path d="M 370 265 L 440 265 L 460 285 L 515 285" class="circuit-trace trace-primary" />
+                  <circle cx="480" cy="285" r="2" class="circuit-node-dot" />
+
+                  <!-- R3: Bus Track B running to ZS Micro-IC Pin 2 -->
+                  <path d="M 365 277 L 435 277 L 455 297 L 515 297" class="circuit-trace trace-primary" />
+
+                  <!-- R4: Lower Flank running to ZS Micro-IC Pin 3 & Exit via -->
+                  <path d="M 355 308 L 410 308 L 430 328 L 515 328" class="circuit-trace trace-primary" />
+                  <path d="M 575 328 L 585 338" class="circuit-trace trace-branch" />
+                  <circle cx="585" cy="338" r="3" class="circuit-via-ring" />
+                  <circle cx="585" cy="338" r="1.5" class="circuit-via-dot" />
+
+                  <!-- R5: Bottom Connector Trace -->
+                  <path d="M 340 330 L 380 330 L 405 355 L 475 355" class="circuit-trace trace-subtle" />
+                  <circle cx="475" cy="355" r="2" class="circuit-node-dot" />
+
+                  <!-- Right ZS Micro-IC Package (Geometric ZS Monogram Integration) -->
+                  <rect x="515" y="278" width="60" height="60" rx="3" class="circuit-chip-body" />
+                  <!-- Chip pins on left -->
+                  <line x1="507" y1="285" x2="515" y2="285" class="circuit-trace trace-pin" />
+                  <line x1="507" y1="297" x2="515" y2="297" class="circuit-trace trace-pin" />
+                  <line x1="507" y1="328" x2="515" y2="328" class="circuit-trace trace-pin" />
+                  <!-- Chip pins on right -->
+                  <line x1="575" y1="297" x2="583" y2="297" class="circuit-trace trace-pin" />
+                  <line x1="575" y1="328" x2="583" y2="328" class="circuit-trace trace-pin" />
+                  <!-- Authentic ZS Geometric Monogram inside chip -->
+                  <image href="./New%20fav%20icon.png" x="522" y="284" width="24" height="24" class="circuit-zs-icon" />
+                  <text x="556" y="296" class="chip-text chip-brand">ZS</text>
+                  <text x="556" y="306" class="chip-subtext">CORE</text>
+                  <text x="545" y="326" text-anchor="middle" class="chip-text chip-mono">// 01 DEV</text>
+                </g>
+              </svg>
+
+              <!-- Profile Photograph Frame (Foreground) -->
+              <div class="hero-portrait-frame">
+                <img src="./Profile%20Pic.jpg" alt="Zeerak Siddiqui" class="hero-portrait-img" width="340" height="340" loading="eager">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02: INTRODUCTION / ABOUT (PHASE 6) -->
+    <section id="home-about" class="section home-about-section" aria-label="About Zeerak Shafique">
+      <div class="container">
+        <div class="section-meta reveal-item">
+          <span class="section-index">// 01</span>
+          <span class="section-tag">INTRODUCTION &bull; PHILOSOPHY</span>
+        </div>
+
+        <div class="home-about-grid">
+          <div class="home-about-content reveal-item">
+            <h2 class="home-about-headline">
+              Curious by nature.<br>
+              Building for the web.
+            </h2>
+
+            <p class="home-about-lead">
+              I'm Zeerak Shafique, a BCA student developing my skills in web development and software engineering. I enjoy turning ideas into useful digital experiences and learning how modern applications are designed and built.
+            </p>
+
+            <div class="home-about-meta-tags">
+              <span class="tech-tag">BCA Scholar 2026</span>
+              <span class="tech-tag">Full-Stack Foundations</span>
+              <span class="tech-tag">Systems Logic in C</span>
+              <span class="tech-tag">Vanilla Web Architecture</span>
+            </div>
+
+            <div class="home-about-actions">
+              <a href="about.html" class="btn btn-secondary magnetic-btn">
+                <span>READ FULL ABOUT DOSSIER</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
               </a>
             </div>
-
-            <!-- Atelier Micro-readout -->
-            <div class="hero-footnote reveal-item">
-              <span class="footnote-tag">[AUTHENTICITY]</span>
-              <span class="footnote-text">Real identity authenticated &bull; Zero template abstractions &bull; Pure native stack</span>
-            </div>
           </div>
 
-          <!-- Hero Visual Column: Unobstructed Portrait + Dedicated 3D Kinetic Sculpture -->
-          <div class="hero-canvas-col reveal-item">
-            <!-- 1. Real Portrait Card (100% Unobstructed, Highest Visual Priority) -->
-            <div class="hero-portrait-card" data-tilt title="Zeerak Shafique — Portrait">
-              <div class="portrait-inner-frame">
-                <!-- Real Profile Photo Supplied by User -->
-                <img 
-                  src="Profile%20Pic.jpg" 
-                  alt="Zeerak Shafique — Portrait of BCA Student and Aspiring Creative Developer" 
-                  class="hero-portrait-img" 
-                  loading="eager"
-                  width="1254"
-                  height="1254"
-                >
-
-                <div class="portrait-vignette" aria-hidden="true"></div>
-
-                <!-- HUD Overlay Markers -->
-                <div class="portrait-hud-header" aria-hidden="true">
-                  <span class="portrait-hud-badge">
-                    <span class="chip-dot"></span>
-                    <span>SUBJECT: ZEERAK SHAFIQUE</span>
-                  </span>
-                  <span class="portrait-hud-beacon">
-                    <span class="status-dot"></span>
-                    <span>ONLINE</span>
-                  </span>
+          <div class="home-about-aside reveal-item">
+            <div class="home-about-card" data-tilt>
+              <p class="home-about-quote">
+                "Writing clean, thoughtful software by mastering computational foundations first."
+              </p>
+              <div class="home-about-stats">
+                <div class="stat-item">
+                  <div class="stat-label">DISCIPLINE</div>
+                  <div class="stat-value">COMPUTER APPLICATIONS</div>
                 </div>
-
-                <div class="portrait-hud-footer" aria-hidden="true">
-                  <div class="portrait-name-tag">
-                    <span class="name">ZEERAK SHAFIQUE</span>
-                    <span class="sub">BCA SCHOLAR // SOUTH ASIA</span>
-                  </div>
-                  <span class="portrait-hud-fps">VERIFIED ID</span>
+                <div class="stat-item">
+                  <div class="stat-label">LOCATION</div>
+                  <div class="stat-value">INDIA (ASIA/KOLKATA)</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-label">STACK</div>
+                  <div class="stat-value">ZERO BLOAT / VANILLA</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-label">DIRECTION</div>
+                  <div class="stat-value">FULL-STACK &amp; 3D</div>
                 </div>
               </div>
             </div>
-
-            <!-- 2. Dedicated 3D Kinetic Sculpture Card (Positioned Cleanly Beside Portrait) -->
-            <aside class="hero-sculpture-card" aria-label="Interactive 3D Kinetic Sculpture">
-              <div class="sculpture-card-header">
-                <span class="sculpture-label">
-                  <span class="sculpture-beacon"></span>
-                  <span>KINETIC CORE</span>
-                </span>
-                <span class="sculpture-version">v3.0 // 3D</span>
-              </div>
-
-              <!-- Dedicated 3D Three.js Canvas Container (Zero Overlap with Portrait) -->
-              <div id="canvas-container" class="sculpture-canvas-wrap" aria-hidden="true">
-                <div id="hero-fallback" class="hero-fallback"></div>
-              </div>
-
-              <div class="sculpture-card-footer">
-                <span id="hud-rotation-readout" class="hud-rotation-readout">ROT_X: 0.0° | ROT_Y: 0.0°</span>
-                <span class="sculpture-hint">DRAG / HOVER</span>
-              </div>
-            </aside>
           </div>
-        </div>
-
-        <!-- Scroll Down Link -->
-        <div class="hero-scroll-indicator reveal-item">
-          <a href="#preview-skills" class="scroll-link" aria-label="Scroll to Skills Overview">
-            <span class="scroll-text">DISCOVER SYSTEM ARCHITECTURE</span>
-            <div class="scroll-line">
-              <div class="scroll-line-progress"></div>
-            </div>
-          </a>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 02: SKILLS OVERVIEW PREVIEW -->
+    <!-- SECTION 03: SKILLS OVERVIEW PREVIEW (PHASE 7) -->
     <section id="preview-skills" class="section skills-section" aria-label="Skills Overview">
       <div class="container">
         <div class="section-meta reveal-item">
-          <span class="section-index">// 01</span>
+          <span class="section-index">// 02</span>
           <span class="section-tag">ENGINEERING PILLARS OVERVIEW</span>
         </div>
 
         <div class="section-intro reveal-item">
           <h2 class="section-heading">Foundational Disciplines</h2>
           <p class="section-subheading">
-            Zero fabricated percentage bars. These are the core programming languages and web standards I actively study and practice.
+            Zero fabricated percentage bars. These are the core programming languages and web standards I actively study
+            and practice.
           </p>
         </div>
 
@@ -333,7 +372,8 @@
               </div>
               <h3 class="skill-title">HTML5 Architecture</h3>
               <p class="skill-desc">
-                Semantic, high-performance, and accessible document structures. Clean DOM trees, WCAG 2.1 AA accessibility standards, and SEO microdata.
+                Semantic, high-performance, and accessible document structures. Clean DOM trees, WCAG 2.1 AA
+                accessibility standards, and SEO microdata.
               </p>
               <div class="skill-code-preview" aria-hidden="true">
                 <code>&lt;main role="main" aria-label="core"&gt;</code>
@@ -350,7 +390,8 @@
               </div>
               <h3 class="skill-title">CSS3 &amp; Design Tokens</h3>
               <p class="skill-desc">
-                Mathematical layout systems, fluid clamp() typography equations, asymmetric CSS Grid, and hardware-accelerated 3D transitions.
+                Mathematical layout systems, fluid clamp() typography equations, asymmetric CSS Grid, and
+                hardware-accelerated 3D transitions.
               </p>
               <div class="skill-code-preview" aria-hidden="true">
                 <code>clamp(2.5rem, 5vw + 1rem, 6rem);</code>
@@ -367,7 +408,8 @@
               </div>
               <h3 class="skill-title">JavaScript (ES6+)</h3>
               <p class="skill-desc">
-                Interactive client-side logic, asynchronous promise pipelines, DOM reactivity, and spatial canvas animation loops using vanilla JavaScript.
+                Interactive client-side logic, asynchronous promise pipelines, DOM reactivity, and spatial canvas
+                animation loops using vanilla JavaScript.
               </p>
               <div class="skill-code-preview" aria-hidden="true">
                 <code>requestAnimationFrame(renderLoop);</code>
@@ -384,7 +426,8 @@
               </div>
               <h3 class="skill-title">C Programming</h3>
               <p class="skill-desc">
-                Foundations of computational thinking: dynamic memory allocation (malloc/free), pointer arithmetic, structs, and data structures.
+                Foundations of computational thinking: dynamic memory allocation (malloc/free), pointer arithmetic,
+                structs, and data structures.
               </p>
               <div class="skill-code-preview" aria-hidden="true">
                 <code>int *mem = malloc(sizeof(int) * 64);</code>
@@ -396,7 +439,8 @@
         <div class="section-cta-center reveal-item" style="margin-top: 48px; text-align: center;">
           <a href="skills.html" class="btn btn-secondary">
             <span>EXPLORE FULL SKILLS ARCHITECTURE</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -405,11 +449,11 @@
       </div>
     </section>
 
-    <!-- SECTION 03: FEATURED PROJECTS PREVIEW -->
+    <!-- SECTION 04: FEATURED PROJECTS PREVIEW (PHASE 8) -->
     <section id="preview-projects" class="section projects-section" aria-label="Featured Works Preview">
       <div class="container">
         <div class="section-meta reveal-item">
-          <span class="section-index">// 02</span>
+          <span class="section-index">// 03</span>
           <span class="section-tag">FEATURED WORK PREVIEW</span>
         </div>
 
@@ -433,14 +477,16 @@
 
           <div class="dossier-content-col">
             <div class="project-category">CREATIVE ENGINEERING &bull; MULTIPAGE ARCHITECTURE</div>
-            <h3 class="project-title">Obsidian Gold // Personal Digital Atelier</h3>
+            <h3 class="project-title">Digital Future // Personal Creative Laboratory</h3>
             <p class="project-description">
-              The website you are currently experiencing. Designed and built from first principles as an editorial, luxury universe. Combines custom responsive layout mathematics, zero-bloat vanilla scripts, and complete accessibility compliance.
+              The website you are currently experiencing. Designed and built from first principles as an immersive,
+              futuristic digital universe. Combines custom responsive layout mathematics, zero-bloat vanilla scripts,
+              and complete accessibility compliance.
             </p>
 
             <div class="project-tech-tags">
               <span class="tech-tag">HTML5 Semantic DOM</span>
-              <span class="tech-tag">Gold Design Tokens</span>
+              <span class="tech-tag">Electric Cyan Design Tokens</span>
               <span class="tech-tag">Vanilla JS (ES6+)</span>
               <span class="tech-tag">Three.js WebGL</span>
             </div>
@@ -458,8 +504,8 @@
           <div class="dossier-preview-col">
             <div class="preview-frame">
               <div class="preview-hud">
-                <span>ATELIER: LIVE_VIEWPORT</span>
-                <span>FPS: 60</span>
+                <span>LABORATORY: LIVE_VIEWPORT</span>
+                <span>INTERACTIVE</span>
               </div>
               <div class="preview-visual">
                 <div class="schematic-circle"></div>
@@ -476,7 +522,8 @@
         <div class="section-cta-center reveal-item" style="margin-top: 48px; text-align: center;">
           <a href="projects.html" class="btn btn-secondary">
             <span>VIEW ALL PROJECTS &amp; CASE STUDIES</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="5" y1="12" x2="19" y2="12"></line>
               <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
@@ -485,7 +532,71 @@
       </div>
     </section>
 
-    <!-- SECTION 04: DIRECT CONTACT INVITATION -->
+    <!-- SECTION 05: CREATIVE PROCESS & DEVELOPER JOURNEY (PHASE 9) -->
+    <section id="developer-journey" class="section journey-section" aria-label="Creative Process and Developer Journey">
+      <div class="container">
+        <div class="section-meta reveal-item">
+          <span class="section-index">// 04</span>
+          <span class="section-tag">ENGINEERING METHODOLOGY</span>
+        </div>
+
+        <div class="section-intro reveal-item">
+          <h2 class="section-heading">Developer Journey</h2>
+          <p class="section-subheading">
+            A structured, first-principles approach to software engineering and creative digital development.
+          </p>
+        </div>
+
+        <div class="journey-timeline">
+          <!-- Step 1 -->
+          <div class="journey-step reveal-item" data-tilt>
+            <span class="journey-step-badge">STAGE 01</span>
+            <h3 class="journey-step-title">EXPLORE</h3>
+            <p class="journey-step-desc">
+              Understand the core idea, research user requirements, and define problem constraints before writing code.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="journey-step reveal-item" data-tilt>
+            <span class="journey-step-badge">STAGE 02</span>
+            <h3 class="journey-step-title">DESIGN</h3>
+            <p class="journey-step-desc">
+              Plan the user experience, wireframe typography hierarchies, and model state systems for intuitive interaction.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="journey-step reveal-item" data-tilt>
+            <span class="journey-step-badge">STAGE 03</span>
+            <h3 class="journey-step-title">DEVELOP</h3>
+            <p class="journey-step-desc">
+              Build resilient functionality and clean semantic DOM structure using zero-bloat vanilla web standards.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="journey-step reveal-item" data-tilt>
+            <span class="journey-step-badge">STAGE 04</span>
+            <h3 class="journey-step-title">REFINE</h3>
+            <p class="journey-step-desc">
+              Test responsiveness across viewports, optimize 60fps rendering, and ensure strict WCAG accessibility compliance.
+            </p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="journey-step reveal-item" data-tilt>
+            <span class="journey-step-badge">STAGE 05</span>
+            <h3 class="journey-step-title">DEPLOY</h3>
+            <p class="journey-step-desc">
+              Audit production assets, verify clean HTTP responses, and prepare high-performance deployment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: DIRECT CONTACT INVITATION (PHASE 10) -->
     <section class="section contact-section" aria-label="Contact Invitation">
       <div class="container">
         <div class="contact-terminal-box reveal-item">
@@ -503,24 +614,36 @@
 
           <div class="contact-body">
             <h2 class="contact-headline">
-              LET'S BUILD<br>
-              <span class="text-gradient-gold">THE FUTURE.</span>
+              HAVE AN IDEA?<br>
+              LET'S BUILD IT.
             </h2>
 
             <p class="contact-subhead">
-              Whether you have an internship opportunity, a creative inquiry, or wish to collaborate on innovative web projects—my direct line is always open.
+              Whether you have an internship opportunity, a creative inquiry, or wish to collaborate on innovative web
+              projects—my direct line is always open.
             </p>
 
             <!-- Direct Voice & Social Channels -->
             <div class="contact-channels-strip">
               <a href="tel:+919580912686" class="channel-chip" aria-label="Call Zeerak at +91 9580912686">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                  </path>
+                </svg>
                 <span class="chip-label">CALL DIRECT:</span>
                 <span class="chip-val">+91 9580912686</span>
               </a>
 
-              <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="channel-chip instagram-chip" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+                class="channel-chip instagram-chip" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
                 <span class="chip-label">INSTAGRAM:</span>
                 <span class="chip-val">@_siddiqui_._zeerak_</span>
                 <span class="chip-arrow">↗</span>
@@ -528,7 +651,8 @@
 
               <a href="contact.html" class="btn btn-primary" style="margin-left: auto;">
                 <span>OPEN CONTACT TERMINAL</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="7" y1="17" x2="17" y2="7"></line>
                   <polyline points="7 7 17 7 17 17"></polyline>
                 </svg>
@@ -546,20 +670,31 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="ZS%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
+            <img src="./New%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
             <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
           </div>
           <p class="footer-role">
-            BCA Student &bull; Aspiring Creative Developer &bull; Exploring Computational Aesthetics &amp; Systems Architecture
+            BCA Student &bull; Aspiring Full-Stack Developer &bull; Exploring Computational Aesthetics &amp; Full-Stack Systems
           </p>
           <div class="footer-contact-cluster">
             <a href="tel:+919580912686" class="footer-contact-link" aria-label="Call Zeerak at +91 9580912686">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
               <span>+91 9580912686</span>
             </a>
             <span class="footer-contact-sep">/</span>
-            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="footer-contact-link" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="footer-contact-link" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
               <span>@_siddiqui_._zeerak_</span>
             </a>
           </div>
@@ -588,7 +723,8 @@
         <div class="footer-elevator">
           <a href="#hero" class="btn btn-elevator" id="btn-back-top" aria-label="Return to top of page">
             <span>RETURN TO APEX</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="12" y1="19" x2="12" y2="5"></line>
               <polyline points="5 12 12 5 19 12"></polyline>
             </svg>
@@ -616,4 +752,5 @@
   <!-- Main JavaScript Orchestrator (ES Module) -->
   <script type="module" src="script.js"></script>
 </body>
+
 </html>
