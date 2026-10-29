@@ -48,20 +48,25 @@
 
 ---
 
-## 3. TYPOGRAPHY SYSTEM
+## 3. TYPOGRAPHY SYSTEM (ELEGANT LUXURY & SWISS MINIMALISM)
 
-- **Display Headlines:** `Space Grotesk` (weights 600, 700). Confident, large, architectural editorial headings.
-- **Body & Prose:** `Inter` (weights 400, 500, 600). Highly readable, clean sans-serif body copy with 1.65–1.75 line height.
-- **Metadata & Indices:** `JetBrains Mono` (weights 400, 500). Minimal monospace for numbering (`01`, `02`) and breadcrumbs in neutral gray `#929292`.
+- **Luxury Editorial Headings:** `Cormorant Garamond` (weights 400, 500, 600, 700, and italic). High-contrast, razor-sharp serif used selectively for important headings, hero name focal point ("Zeerak Siddiqui"), page titles, and editorial blockquotes.
+- **Swiss Sans-Serif Body & UI:** `Inter` (weights 300, 400, 500, 600, 700). Clean Swiss neo-grotesque sans-serif for body prose, lead lines ("Hi, I'm"), card descriptions, buttons, and navigation with 1.65–1.8 line height and optimal legibility.
+- **Architectural Monospace:** `IBM Plex Mono` (weights 400, 500, 600). Rationalist monospace for numbering, section indices (`01`, `02`), technical focus tags, telemetry chips, and metadata.
+- **Custom ZEERAK Wordmark:** `Inter` uppercase with refined Swiss tracking (`letter-spacing: 0.22em`), semibold weight, optical alignment, and restrained hover transition.
+- **Custom ZS Monogram:** Interlocking geometric vector monogram (`zs-monogram.svg`) based on 45° Swiss diagonal weave, uniform stroke geometry, and central focal axis dot.
 
 ---
 
 ## 4. COMPONENT & SECTION SPECIFICATIONS
 
-### 4.1 Slim Reference Header & Theme System (All 5 Pages)
+### 4.1 Slim Reference Header & Theme System (All 9 Pages)
 - **Left Side:**
-  - Dedicated reserved empty slot (`44×44px`) reserved for future custom logo.
-  - Zero placeholder text, initials, dummy icons, or images.
+  - **ZS Logo Brand Mark:** Existing high-resolution ZS logo image (`New fav icon.png`), 50×50px on desktop with `object-fit: contain` and 1:1 aspect ratio.
+  - **Subtle Architectural Divider:** Hairline vertical divider (`1px × 22px`, `var(--border-subtle)`).
+  - **ZEERAK Wordmark:** Elegant Swiss uppercase lettering with `letter-spacing: 0.22em`, semibold weight, linked to the homepage.
+  - **Theme Adaptation:** Seamless Dark Mode blending via `mix-blend-mode: screen;` (pure black background becomes transparent, white/silver emblem renders crisp and sharp); Light Mode adaptation via `filter: invert(1); mix-blend-mode: multiply;` (turns white background transparent and emblem deep black).
+  - **Responsive Scaling:** Reduced to `40×40px` on mobile (<860px) and `36×36px` on narrow mobile (<420px).
 - **Center Navigation:**
   - Horizontal row of navigation links across valid project routes:
     1. **Home** (`index.html`)

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary Meta Tags -->
+  <title>Why I Prefer Minimalist Web Design — ZEERAK / ZS STUDIO</title>
+  <meta name="title" content="Why I Prefer Minimalist Web Design — ZEERAK / ZS STUDIO">
+  <meta name="description"
+    content="Why reducing visual noise, embracing a monochromatic palette, and prioritizing typography creates web experiences that are timeless, fast, and accessible.">
+  <meta name="author" content="Zeerak Shafique">
+  <meta name="theme-color" content="#080808">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Why I Prefer Minimalist Web Design — Zeerak Shafique">
+  <meta property="og:description"
+    content="Design philosophy, typography discipline, and the power of whitespace in modern web design.">
+  <meta property="og:image" content="./Profile%20Pic.jpg">
+
+  <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts Preconnect & Curated Modern Typography (Luxury Editorial Serif & Swiss Minimalism) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="blog">
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
+
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- SITE HEADER (STANDARD ZS STUDIO ARCHITECTURE) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Logo + ZEERAK Wordmark -->
+        <a href="index.html" class="header-brand" aria-label="ZEERAK Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" loading="eager">
+          <span class="header-brand-divider" aria-hidden="true"></span>
+          <span class="header-brand-name">ZEERAK</span>
+        </a>
+
+        <!-- Center / Main: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item">Projects</a></li>
+          <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="blog.html" class="nav-item active" aria-current="page">Blog</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
+      <div class="mobile-drawer-inner">
+        <div class="mobile-telemetry-header">
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
+          </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link active" aria-current="page">Blog</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+
+          <div class="drawer-contact-links">
+            <a href="tel:+919580912686" class="drawer-link-btn" aria-label="Call +91 9580912686">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>+91 9580912686</span>
+            </a>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>@_siddiqui_._zeerak_</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article class="article-section">
+      <div class="container article-container">
+        <!-- Back Navigation to Blog -->
+        <div class="article-back-nav reveal-item">
+          <a href="blog.html" class="article-back-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>RETURN TO BLOG DIRECTORY</span>
+          </a>
+        </div>
+
+        <!-- Article Header -->
+        <header class="article-header reveal-item">
+          <div class="article-meta-row">
+            <span class="article-category-chip">DESIGN PHILOSOPHY</span>
+            <span>&bull;</span>
+            <span>[ ARTICLE // 02 ]</span>
+            <span>&bull;</span>
+            <span>5 MIN READ</span>
+            <span>&bull;</span>
+            <span>OCTOBER 2026</span>
+          </div>
+
+          <h1 class="article-title">
+            Why I Prefer Minimalist Web Design: Restraint, Contrast, and the Power of Whitespace
+          </h1>
+
+          <p class="article-lead">
+            An exploration of why reducing visual clutter, embracing a strict monochromatic palette, and prioritizing typography creates digital experiences that feel timeless, accessible, and fast.
+          </p>
+
+          <div class="article-author-cluster">
+            <div class="author-avatar-monogram">ZS</div>
+            <div class="author-meta-text">
+              <span class="author-name">Zeerak Shafique</span>
+              <span class="author-descriptor">BCA Student &bull; Creative Developer &bull; ZS Studio</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Article Body -->
+        <div class="article-body reveal-item">
+          <p>
+            Browse the modern web for ten minutes, and you will notice a persistent trend. Many websites are screaming for your attention. Bright gradients, pulsing call-to-action buttons, animated popups asking for your email, and kinetic background graphics compete for every millisecond of your focus.
+          </p>
+
+          <p>
+            When designing my own portfolio and web projects, I deliberately stepped in the opposite direction. I chose <strong>dark cinematic minimalism and a black-and-white editorial aesthetic</strong>. In this essay, I want to explain why minimalism is not about making things empty—it is about making what matters undeniably clear.
+          </p>
+
+          <h2>1. The Definition of Minimalism: Clarity Over Emptiness</h2>
+          <p>
+            A common misconception among beginner developers is that minimalism means "not having enough content" or creating a sterile, boring page. In reality, minimalism is a discipline of subtraction. It asks one simple question:
+          </p>
+
+          <div class="article-quote">
+            <p>
+              "Does this visual element help the visitor understand, read, or navigate—or is it just decorative noise?"
+            </p>
+          </div>
+
+          <p>
+            If an element does not serve a functional or emotional purpose, removing it makes everything that remains stronger. When you remove five competing colors, the one heading on the page suddenly carries immense weight and authority.
+          </p>
+
+          <h2>2. The Discipline of a Monochromatic Palette</h2>
+          <p>
+            When I designed ZS Studio, I established a strict rule: <strong>zero bright rainbow colors, zero cyan glows, zero gold trims. Only pure black, white, and balanced shades of neutral gray.</strong>
+          </p>
+          <p>
+            Restricting yourself to monochrome forces you to become a better designer. When you cannot rely on an eye-catching purple or yellow button to attract clicks, you have to master:
+          </p>
+          <ul>
+            <li><strong>Contrast ratios:</strong> Making sure crisp white text (<code>#F5F5F5</code>) is immediately legible against a deep dark background (<code>#080808</code>).</li>
+            <li><strong>Scale and hierarchy:</strong> Ensuring headlines are distinctly larger and bolder than body copy so the eye naturally scans the hierarchy.</li>
+            <li><strong>Hairline borders:</strong> Using subtle 1-pixel borders (<code>#252525</code>) to structure content into clean rectangular modules without visual clutter.</li>
+          </ul>
+
+          <div class="article-code-block">
+            <div class="code-header">
+              <span class="code-file-label">// style.css (Monochromatic System Tokens)</span>
+              <span class="code-lang-tag">CSS3</span>
+            </div>
+            <pre><code>:root {
+  --bg-main: #080808;      /* Deep cinematic dark canvas */
+  --bg-surface: #0D0D0D;   /* Quiet rectangular surface */
+  --text-primary: #F5F5F5; /* High-contrast editorial headlines */
+  --text-secondary: #929292; /* Comfortable narrative prose */
+  --border-subtle: #252525;  /* Hairline structural partition */
+}</code></pre>
+          </div>
+
+          <h2>3. Whitespace is an Active Interface Element</h2>
+          <p>
+            Many creators feel an urge to fill every square pixel of the screen. If there is empty space on the right side of a section, they look for an extra icon, a decorative sticker, or an artificial telemetry badge to put there.
+          </p>
+          <p>
+            In editorial design, <strong>whitespace is not empty space—it is breathing room</strong>. Generous margins and calculated padding give the human eye a resting point. They create pacing. When reading an article or reviewing a project dossier, ample whitespace reduces cognitive strain and lets the reader absorb information comfortably.
+          </p>
+
+          <div class="article-takeaway-box">
+            <div class="takeaway-header">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>Practical Lesson // Whitespace Management</span>
+            </div>
+            <div class="takeaway-content">
+              If a section feels cramped or chaotic, your first instinct should almost never be to change the colors or add icons. Increase the vertical padding by 24 pixels and increase the paragraph line-height to 1.75. More often than not, the layout immediately looks professional.
+            </div>
+          </div>
+
+          <h2>4. Typography Doing the Heavy Lifting</h2>
+          <p>
+            In a minimalist website, typography is not just how text looks—<strong>typography is the entire user interface</strong>.
+          </p>
+          <p>
+            On my portfolio, each typeface has a specific job:
+          </p>
+          <ul>
+            <li><strong>Space Grotesk:</strong> Bold, architectural display headings that give the site a contemporary editorial identity.</li>
+            <li><strong>Inter:</strong> A highly neutral, legible sans-serif designed for digital screens, making long-form articles easy to read on both phones and laptops.</li>
+            <li><strong>JetBrains Mono:</strong> Precise monospace characters used for dates, article numbers (<code>[ ARTICLE // 02 ]</code>), and technical metadata.</li>
+          </ul>
+          <p>
+            Because these three fonts complement each other, the interface feels structured and intentional without needing graphical ornaments.
+          </p>
+
+          <h2>5. Performance is the Ultimate Form of Respect</h2>
+          <p>
+            There is a direct correlation between minimalist design and technical performance. A website stripped of unnecessary 3D canvas libraries, third-party trackers, and bloated CSS frameworks loads almost instantaneously.
+          </p>
+          <p>
+            When a user visits your portfolio, they are spending their time and mobile data. Making them wait 5 seconds while a heavy loading spinner animates is not a good user experience. Serving clean, semantic HTML and streamlined CSS respects the visitor's device, battery, and attention.
+          </p>
+
+          <h2>6. Practical Design Checklist for Your Next Project</h2>
+          <p>
+            If you want to incorporate minimalist design principles into your own web projects, try this simple audit:
+          </p>
+          <ol>
+            <li><strong>Design in grayscale first:</strong> Build your complete layout using only black, white, and two shades of gray before deciding if you even need an accent color.</li>
+            <li><strong>Limit your font family count:</strong> Use no more than two or three curated typefaces. Rely on font-weight and size scale for variety.</li>
+            <li><strong>Ensure high accessibility contrast:</strong> Always test that your text passes WCAG AA contrast standards. Light gray text on dark gray backgrounds may look subtle, but it is unreadable.</li>
+            <li><strong>Remove ornamental animations:</strong> Subtle micro-interactions on hover or scroll are pleasant; continuous bouncing, floating, or looping animations are tiring.</li>
+          </ol>
+        </div>
+
+        <!-- Article Post Footer -->
+        <footer class="article-post-footer reveal-item">
+          <!-- Article Pagination Grid -->
+          <div class="article-pagination-grid">
+            <a href="blog-how-i-built-my-portfolio.html" class="pagination-card">
+              <span class="pagination-label">&larr; PREVIOUS ESSAY</span>
+              <span class="pagination-title">How I Built My Personal Portfolio</span>
+            </a>
+            <a href="blog-my-journey-as-a-developer.html" class="pagination-card" style="text-align: right;">
+              <span class="pagination-label">NEXT ESSAY &rarr;</span>
+              <span class="pagination-title">My Journey as a Developer</span>
+            </a>
+          </div>
+
+          <!-- Author Bio Dossier -->
+          <div class="article-author-card">
+            <img src="./Profile%20Pic.jpg" alt="Zeerak Shafique" class="author-bio-avatar" width="64" height="64">
+            <div class="author-bio-content">
+              <div class="author-bio-name">Zeerak Shafique</div>
+              <p class="author-bio-desc">
+                Undergraduate BCA student and creative developer. Focused on low-level computing fundamentals, semantic web engineering, and dark minimalist aesthetics.
+              </p>
+              <div class="author-bio-links">
+                <a href="tel:+919580912686">+91 9580912686</a>
+                <span>&bull;</span>
+                <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer">@_siddiqui_._zeerak_</a>
+                <span>&bull;</span>
+                <a href="contact.html">Send Transmission</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="article-action-buttons">
+            <a href="blog.html" class="btn btn-secondary">
+              <span>&larr; BACK TO BLOG ARCHIVE</span>
+            </a>
+            <a href="#main-content" class="btn btn-secondary">
+              <span>RETURN TO APEX &uarr;</span>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <!-- SHARED FOOTER & ARCHITECTURAL COLOPHON -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="./zs-monogram.svg" alt="ZS Emblem" class="footer-logo-img" width="40" height="40">
+            <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
+          </div>
+          <p class="footer-role">
+            BCA Student &bull; Aspiring Full-Stack Developer &bull; Exploring Computational Aesthetics &amp; Full-Stack Systems
+          </p>
+          <div class="footer-contact-cluster">
+            <a href="tel:+919580912686" class="footer-contact-link" aria-label="Call Zeerak at +91 9580912686">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>+91 9580912686</span>
+            </a>
+            <span class="footer-contact-sep">/</span>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="footer-contact-link" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>@_siddiqui_._zeerak_</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Shared Page Navigation Links in Footer -->
+        <div class="footer-nav-block">
+          <div class="clock-label">NAVIGATION DIRECTORY</div>
+          <ul class="footer-nav-links">
+            <li><a href="index.html">// 00. HOME</a></li>
+            <li><a href="about.html">// 01. ABOUT</a></li>
+            <li><a href="projects.html">// 02. PROJECTS</a></li>
+            <li><a href="skills.html">// 03. SKILLS</a></li>
+            <li><a href="blog.html" style="color: var(--text-primary); font-weight: 600;">// 04. BLOG</a></li>
+            <li><a href="contact.html">// 05. CONTACT</a></li>
+          </ul>
+        </div>
+
+        <!-- Real-Time World Clock (Indian Standard Time) -->
+        <div class="footer-telemetry-clock">
+          <div class="clock-label">SYSTEM TIME // IST (UTC+05:30)</div>
+          <div class="clock-time" id="live-clock">--:--:-- IST</div>
+          <div class="clock-sub">LOCATION: SOUTH ASIA (ASIA/KOLKATA)</div>
+        </div>
+
+        <!-- Back to Top Elevator -->
+        <div class="footer-elevator">
+          <a href="#main-content" class="btn btn-elevator" id="btn-back-top" aria-label="Return to top of page">
+            <span>RETURN TO APEX</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; <span id="current-year">2026</span> ZEERAK SHAFIQUE. ALL RIGHTS RESERVED.
+        </div>
+        <div class="footer-specs">
+          <span>VANILLA HTML5 + CSS3 + MULTIPAGE</span>
+          <span class="dot">&bull;</span>
+          <span>ZERO FRAMEWORK OVERHEAD</span>
+          <span class="dot">&bull;</span>
+          <span>HARDWARE ACCELERATED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Orchestrator (ES Module) -->
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
+

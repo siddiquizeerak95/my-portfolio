@@ -22,8 +22,9 @@
   <meta property="og:image" content="./Profile%20Pic.jpg">
 
   <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
   <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
-  <link rel="shortcut icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="./zs-monogram.svg">
   <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
 
   <!-- Theme Init Script (Zero Flash) -->
@@ -34,11 +35,11 @@
     })();
   </script>
 
-  <!-- Google Fonts Preconnect & Curated Modern Typography -->
+  <!-- Google Fonts Preconnect & Curated Modern Typography (Luxury Editorial Serif & Swiss Minimalism) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
   <!-- Master Stylesheet -->
@@ -50,6 +51,7 @@
   <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
 
   <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
@@ -59,10 +61,11 @@
   <header class="site-header" id="site-header">
     <div class="header-container">
       <nav class="header-nav" aria-label="Main Navigation">
-        <!-- Far Left: ZS Monogram Logo + Brand Name -->
-        <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="40" height="40" loading="eager">
-          <span class="header-brand-name">ZS STUDIO</span>
+        <!-- Far Left: ZS Logo + ZEERAK Wordmark -->
+        <a href="index.html" class="header-brand" aria-label="ZEERAK Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" loading="eager">
+          <span class="header-brand-divider" aria-hidden="true"></span>
+          <span class="header-brand-name">ZEERAK</span>
         </a>
 
         <!-- Center / Main: Horizontal Navigation Links -->
@@ -71,6 +74,7 @@
           <li><a href="about.html" class="nav-item">About</a></li>
           <li><a href="projects.html" class="nav-item">Projects</a></li>
           <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
           <li><a href="contact.html" class="nav-item">Contact</a></li>
         </ul>
 
@@ -120,6 +124,7 @@
           <li><a href="about.html" class="mobile-link">About</a></li>
           <li><a href="projects.html" class="mobile-link">Projects</a></li>
           <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link">Blog</a></li>
           <li><a href="contact.html" class="mobile-link">Contact</a></li>
         </ul>
 
@@ -169,6 +174,14 @@
               I build clean, modern digital experiences with thoughtful design and code.
             </p>
 
+            <!-- Outlined Technical Tags -->
+            <div class="hero-tech-tags" aria-label="Technical Focus Areas">
+              <span class="hero-tech-tag">BCA STUDENT</span>
+              <span class="hero-tech-tag">WEB DEVELOPMENT</span>
+              <span class="hero-tech-tag">FULL-STACK FOUNDATIONS</span>
+              <span class="hero-tech-tag">VANILLA WEB TECHNOLOGIES</span>
+            </div>
+
             <div class="hero-cta-group">
               <a href="projects.html" class="hero-btn-primary" id="btn-hero-work" aria-label="View My Work">
                 View My Work &rarr;
@@ -184,6 +197,17 @@
             <div class="hero-circuit-stage">
               <!-- Soft ambient grayscale lighting around head and shoulders -->
               <div class="hero-ambient-halo" aria-hidden="true"></div>
+
+              <!-- Thin Orbital Lines (Delicate Planetary Rings Behind Portrait) -->
+              <div class="hero-orbital-system" aria-hidden="true">
+                <div class="orbital-ring orbital-ring-inner">
+                  <span class="orbital-satellite-node node-1"></span>
+                </div>
+                <div class="orbital-ring orbital-ring-outer">
+                  <span class="orbital-satellite-node node-2"></span>
+                </div>
+                <div class="orbital-ring orbital-ring-arc"></div>
+              </div>
 
               <!-- Circuit Board Vector Trace Network -->
               <svg class="hero-circuit-svg" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -272,6 +296,28 @@
               <!-- Profile Photograph Frame (Foreground) -->
               <div class="hero-portrait-frame">
                 <img src="./Profile%20Pic.jpg" alt="Zeerak Siddiqui" class="hero-portrait-img" width="340" height="340" loading="eager">
+              </div>
+
+              <!-- Floating Information Card (Orbital Telemetry Dossier) -->
+              <div class="hero-info-card" aria-label="Developer Information Dossier">
+                <div class="hero-info-card-header">
+                  <span class="hero-info-status-dot" aria-hidden="true"></span>
+                  <span class="hero-info-header-tag">ACTIVE EXPERIENCE // 2026</span>
+                </div>
+                <div class="hero-info-card-rows">
+                  <div class="hero-info-row">
+                    <span class="hero-info-label">ROLE</span>
+                    <span class="hero-info-val">Creative Developer</span>
+                  </div>
+                  <div class="hero-info-row">
+                    <span class="hero-info-label">FOCUS</span>
+                    <span class="hero-info-val">Web Development</span>
+                  </div>
+                  <div class="hero-info-row">
+                    <span class="hero-info-label">STACK</span>
+                    <span class="hero-info-val">HTML5 &bull; CSS3 &bull; Vanilla JS</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -596,7 +642,156 @@
       </div>
     </section>
 
-    <!-- SECTION 06: DIRECT CONTACT INVITATION (PHASE 10) -->
+    <!-- SECTION 06: EDITORIAL BLOG // NOTES FROM THE STUDIO -->
+    <section id="home-blog" class="section blog-preview-section" aria-label="Latest Editorial Articles">
+      <div class="container">
+        <div class="section-meta reveal-item">
+          <span class="section-index">// 05</span>
+          <span class="section-tag">EDITORIAL ESSAYS &amp; TECHNICAL NOTES</span>
+        </div>
+
+        <div class="section-intro reveal-item" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; margin-bottom: 48px;">
+          <div>
+            <h2 class="section-heading">Featured Dispatches</h2>
+            <p class="section-subheading">
+              Thoughts on computational fundamentals, minimalist design discipline, and building for the open web.
+            </p>
+          </div>
+          <div>
+            <a href="blog.html" class="btn btn-secondary btn-sm">
+              <span>EXPLORE ALL ARTICLES (03) ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="blog-listing">
+          <!-- Article 01 -->
+          <article class="blog-dossier-item reveal-item" data-category="architecture" data-tilt>
+            <div class="blog-meta-col">
+              <span class="blog-item-number">[ 01 / 03 ]</span>
+              <div class="blog-meta-pill">
+                <span class="blog-meta-dot"></span>
+                <span>6 MIN READ</span>
+              </div>
+              <span class="blog-date-badge">OCT 2026</span>
+            </div>
+
+            <div class="blog-content-col">
+              <span class="blog-category-tag">WEB ARCHITECTURE &amp; CRAFT</span>
+              <h3 class="blog-item-title">
+                <a href="blog-how-i-built-my-portfolio.html">How I Built My Personal Portfolio: From a Basic Starter to a Black-and-White Editorial Studio</a>
+              </h3>
+              <p class="blog-item-excerpt">
+                A transparent breakdown of how I designed and engineered this portfolio from first principles. Why I chose vanilla HTML5, CSS3, and ES6+ JavaScript over bulky frameworks, and how mathematical clamp() scaling and a zero-flash theme architecture power the experience.
+              </p>
+
+              <div class="blog-item-footer">
+                <a href="blog-how-i-built-my-portfolio.html" class="blog-read-link" aria-label="Read Article 01: How I Built My Personal Portfolio">
+                  <span>Read Article &rarr;</span>
+                </a>
+                <div class="project-tech-tags" style="margin-top: 0;">
+                  <span class="tech-tag">HTML5 DOM</span>
+                  <span class="tech-tag">CSS3 clamp()</span>
+                  <span class="tech-tag">Zero Bloat</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-preview-col">
+              <div class="blog-schematic-badge">
+                <div class="badge-row"><span>RUNTIME</span><span class="badge-val">VANILLA</span></div>
+                <div class="badge-row"><span>FRAMEWORKS</span><span class="badge-val">0%</span></div>
+                <div class="badge-row"><span>THEME FLASH</span><span class="badge-val">0ms</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 02 -->
+          <article class="blog-dossier-item reveal-item" data-category="design" data-tilt>
+            <div class="blog-meta-col">
+              <span class="blog-item-number">[ 02 / 03 ]</span>
+              <div class="blog-meta-pill">
+                <span class="blog-meta-dot"></span>
+                <span>5 MIN READ</span>
+              </div>
+              <span class="blog-date-badge">OCT 2026</span>
+            </div>
+
+            <div class="blog-content-col">
+              <span class="blog-category-tag">DESIGN PHILOSOPHY</span>
+              <h3 class="blog-item-title">
+                <a href="blog-why-i-prefer-minimalist-web-design.html">Why I Prefer Minimalist Web Design: Restraint, Contrast, and the Power of Whitespace</a>
+              </h3>
+              <p class="blog-item-excerpt">
+                Why stripping away artificial neon glows, busy animations, and visual noise creates a superior user experience. Exploring how strict monochromatic palettes force purposeful typography and how fast load times reflect genuine respect for the reader.
+              </p>
+
+              <div class="blog-item-footer">
+                <a href="blog-why-i-prefer-minimalist-web-design.html" class="blog-read-link" aria-label="Read Article 02: Why I Prefer Minimalist Web Design">
+                  <span>Read Article &rarr;</span>
+                </a>
+                <div class="project-tech-tags" style="margin-top: 0;">
+                  <span class="tech-tag">Monochrome</span>
+                  <span class="tech-tag">Space Grotesk</span>
+                  <span class="tech-tag">Inter</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-preview-col">
+              <div class="blog-schematic-badge">
+                <div class="badge-row"><span>PALETTE</span><span class="badge-val">B &amp; W</span></div>
+                <div class="badge-row"><span>CONTRAST</span><span class="badge-val">WCAG AA</span></div>
+                <div class="badge-row"><span>CLUTTER</span><span class="badge-val">NONE</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 03 -->
+          <article class="blog-dossier-item reveal-item" data-category="journey" data-tilt>
+            <div class="blog-meta-col">
+              <span class="blog-item-number">[ 03 / 03 ]</span>
+              <div class="blog-meta-pill">
+                <span class="blog-meta-dot"></span>
+                <span>7 MIN READ</span>
+              </div>
+              <span class="blog-date-badge">OCT 2026</span>
+            </div>
+
+            <div class="blog-content-col">
+              <span class="blog-category-tag">DEVELOPER JOURNEY</span>
+              <h3 class="blog-item-title">
+                <a href="blog-my-journey-as-a-developer.html">My Journey as a Developer: Embracing Fundamentals, Low-Level Logic, and the Open Web</a>
+              </h3>
+              <p class="blog-item-excerpt">
+                An honest reflection on learning to code as an undergraduate BCA student. How studying low-level C programming, memory addresses, and data structures cured tutorial paralysis and gave me the confidence to build real projects on the open web.
+              </p>
+
+              <div class="blog-item-footer">
+                <a href="blog-my-journey-as-a-developer.html" class="blog-read-link" aria-label="Read Article 03: My Journey as a Developer">
+                  <span>Read Article &rarr;</span>
+                </a>
+                <div class="project-tech-tags" style="margin-top: 0;">
+                  <span class="tech-tag">BCA Scholar</span>
+                  <span class="tech-tag">C Language</span>
+                  <span class="tech-tag">First Principles</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-preview-col">
+              <div class="blog-schematic-badge">
+                <div class="badge-row"><span>ACADEMIC</span><span class="badge-val">BCA</span></div>
+                <div class="badge-row"><span>CORE LOGIC</span><span class="badge-val">C LANG</span></div>
+                <div class="badge-row"><span>GROWTH</span><span class="badge-val">ACTIVE</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07: DIRECT CONTACT INVITATION (PHASE 10) -->
     <section class="section contact-section" aria-label="Contact Invitation">
       <div class="container">
         <div class="contact-terminal-box reveal-item">
@@ -670,7 +865,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="./New%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
+            <img src="./zs-monogram.svg" alt="ZS Emblem" class="footer-logo-img" width="40" height="40">
             <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
           </div>
           <p class="footer-role">
@@ -708,7 +903,8 @@
             <li><a href="about.html">// 01. ABOUT</a></li>
             <li><a href="projects.html">// 02. PROJECTS</a></li>
             <li><a href="skills.html">// 03. SKILLS</a></li>
-            <li><a href="contact.html">// 04. CONTACT</a></li>
+            <li><a href="blog.html">// 04. BLOG</a></li>
+            <li><a href="contact.html">// 05. CONTACT</a></li>
           </ul>
         </div>
 

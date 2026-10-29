@@ -18,8 +18,9 @@
   <meta property="og:image" content="./Profile%20Pic.jpg">
 
   <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
   <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
-  <link rel="shortcut icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="./zs-monogram.svg">
   <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
 
   <!-- Theme Init Script (Zero Flash) -->
@@ -30,10 +31,12 @@
     })();
   </script>
 
-  <!-- Google Fonts Preconnect & Curated Modern Typography -->
+  <!-- Google Fonts Preconnect & Curated Modern Typography (Luxury Editorial Serif & Swiss Minimalism) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
 
   <!-- Master Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -43,6 +46,7 @@
   <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
 
   <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-ring" id="cursor-ring"></div>
@@ -52,10 +56,11 @@
   <header class="site-header" id="site-header">
     <div class="header-container">
       <nav class="header-nav" aria-label="Main Navigation">
-        <!-- Far Left: ZS Monogram Logo + Brand Name -->
-        <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="40" height="40" loading="eager">
-          <span class="header-brand-name">ZS STUDIO</span>
+        <!-- Far Left: ZS Logo + ZEERAK Wordmark -->
+        <a href="index.html" class="header-brand" aria-label="ZEERAK Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" loading="eager">
+          <span class="header-brand-divider" aria-hidden="true"></span>
+          <span class="header-brand-name">ZEERAK</span>
         </a>
 
         <!-- Center / Main: Horizontal Navigation Links -->
@@ -64,6 +69,8 @@
           <li><a href="about.html" class="nav-item">About</a></li>
           <li><a href="projects.html" class="nav-item">Projects</a></li>
           <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link">Blog</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
           <li><a href="contact.html" class="nav-item active" aria-current="page">Contact</a></li>
         </ul>
 
@@ -113,6 +120,8 @@
           <li><a href="about.html" class="mobile-link">About</a></li>
           <li><a href="projects.html" class="mobile-link">Projects</a></li>
           <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link">Blog</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
           <li><a href="contact.html" class="mobile-link active" aria-current="page">Contact</a></li>
         </ul>
 
@@ -303,7 +312,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <div class="footer-logo">
-            <img src="./New%20fav%20icon.png" alt="ZS Emblem" class="footer-logo-img" width="44" height="44">
+            <img src="./zs-monogram.svg" alt="ZS Emblem" class="footer-logo-img" width="40" height="40">
             <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
           </div>
           <p class="footer-role">
@@ -330,7 +339,8 @@
             <li><a href="about.html">// 01. ABOUT</a></li>
             <li><a href="projects.html">// 02. PROJECTS</a></li>
             <li><a href="skills.html">// 03. SKILLS</a></li>
-            <li><a href="contact.html">// 04. CONTACT</a></li>
+            <li><a href="blog.html">// 04. BLOG</a></li>
+            <li><a href="contact.html">// 05. CONTACT</a></li>
           </ul>
         </div>
 

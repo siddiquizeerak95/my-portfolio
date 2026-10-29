@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary Meta Tags -->
+  <title>BLOG // Editorial Dispatches &amp; Technical Essays — ZEERAK / ZS STUDIO</title>
+  <meta name="title" content="BLOG // Editorial Dispatches & Technical Essays — ZEERAK / ZS STUDIO">
+  <meta name="description"
+    content="Essays, architectural notes, and personal reflections on web development, minimalist design, and software fundamentals by Zeerak Shafique.">
+  <meta name="author" content="Zeerak Shafique">
+  <meta name="theme-color" content="#080808">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BLOG // ZEERAK — Zeerak Shafique">
+  <meta property="og:description"
+    content="Editorial dispatches on web architecture, minimalist design, and developer growth by Zeerak Shafique.">
+  <meta property="og:image" content="./Profile%20Pic.jpg">
+
+  <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts Preconnect & Curated Modern Typography (Luxury Editorial Serif & Swiss Minimalism) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="blog">
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
+
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- SITE HEADER (STANDARD ZS STUDIO ARCHITECTURE) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Logo + ZEERAK Wordmark -->
+        <a href="index.html" class="header-brand" aria-label="ZEERAK Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" loading="eager">
+          <span class="header-brand-divider" aria-hidden="true"></span>
+          <span class="header-brand-name">ZEERAK</span>
+        </a>
+
+        <!-- Center / Main: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item">Projects</a></li>
+          <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="blog.html" class="nav-item active" aria-current="page">Blog</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
+      <div class="mobile-drawer-inner">
+        <div class="mobile-telemetry-header">
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
+          </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link active" aria-current="page">Blog</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+
+          <div class="drawer-contact-links">
+            <a href="tel:+919580912686" class="drawer-link-btn" aria-label="Call +91 9580912686">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>+91 9580912686</span>
+            </a>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>@_siddiqui_._zeerak_</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- SUBPAGE HERO BANNER -->
+    <section class="page-hero-banner" aria-label="Blog Page Introduction">
+      <div class="container">
+        <div class="breadcrumb-nav reveal-item">
+          <a href="index.html">HOME</a>
+          <span class="sep">/</span>
+          <span>BLOG</span>
+        </div>
+        <h1 class="page-title reveal-item">
+          Editorial dispatches.<br>
+          Code, design &amp; growth.
+        </h1>
+        <p class="page-lead reveal-item">
+          Essays and practical reflections on building modern web experiences with zero framework bloat, the discipline of monochromatic minimalism, and learning software engineering from first principles.
+        </p>
+
+        <div class="blog-intro-stats reveal-item">
+          <div class="blog-stat-item">
+            <strong>03</strong> ARTICLES PUBLISHED
+          </div>
+          <div class="blog-stat-item">
+            <strong>100%</strong> AUTHENTIC CONTEXT
+          </div>
+          <div class="blog-stat-item">
+            <strong>0%</strong> FRAMEWORK BLOAT
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDITORIAL BLOG DOSSIER SECTION -->
+    <section class="section blog-section" aria-label="Published Articles">
+      <div class="container">
+        <!-- Interactive Category Filters -->
+        <div class="blog-filter-bar reveal-item" role="tablist" aria-label="Blog category filters">
+          <button class="blog-filter-btn active" data-filter="all" role="tab" aria-selected="true">ALL ARTICLES (03)</button>
+          <button class="blog-filter-btn" data-filter="architecture" role="tab" aria-selected="false">WEB ARCHITECTURE (01)</button>
+          <button class="blog-filter-btn" data-filter="design" role="tab" aria-selected="false">DESIGN PHILOSOPHY (01)</button>
+          <button class="blog-filter-btn" data-filter="journey" role="tab" aria-selected="false">DEVELOPER JOURNEY (01)</button>
+        </div>
+
+        <!-- Blog Articles Listing -->
+        <div class="blog-listing">
+          <!-- Article 01: How I Built My Personal Portfolio -->
+          <article class="blog-dossier-item reveal-item" data-category="architecture" data-tilt>
+            <div class="blog-meta-col">
+              <span class="blog-item-number">[ ARTICLE // 01 ]</span>
+              <div class="blog-meta-pill">
+                <span class="blog-meta-dot"></span>
+                <span>6 MIN READ</span>
+              </div>
+              <span class="blog-date-badge">YEAR: 2026</span>
+            </div>
+
+            <div class="blog-content-col">
+              <span class="blog-category-tag">WEB ARCHITECTURE &amp; CRAFT</span>
+              <h2 class="blog-item-title">
+                <a href="blog-how-i-built-my-portfolio.html">How I Built My Personal Portfolio: From a Basic Starter to a Black-and-White Editorial Studio</a>
+              </h2>
+              <p class="blog-item-excerpt">
+                A transparent breakdown of how I designed and engineered this portfolio from first principles. Why I chose vanilla HTML5, CSS3, and ES6+ JavaScript over bulky frameworks, and how mathematical clamp() scaling and a zero-flash theme architecture power the experience.
+              </p>
+
+              <div class="blog-item-footer">
+                <a href="blog-how-i-built-my-portfolio.html" class="blog-read-link" aria-label="Read Article 01: How I Built My Personal Portfolio">
+                  <span>Read Article &rarr;</span>
+                </a>
+                <div class="project-tech-tags" style="margin-top: 0;">
+                  <span class="tech-tag">HTML5 DOM</span>
+                  <span class="tech-tag">CSS3 clamp()</span>
+                  <span class="tech-tag">Vanilla JS</span>
+                  <span class="tech-tag">Zero Bloat</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-preview-col">
+              <div class="blog-schematic-badge">
+                <div class="badge-row"><span>RUNTIME</span><span class="badge-val">VANILLA</span></div>
+                <div class="badge-row"><span>FRAMEWORKS</span><span class="badge-val">0%</span></div>
+                <div class="badge-row"><span>THEME FLASH</span><span class="badge-val">0ms</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 02: Why I Prefer Minimalist Web Design -->
+          <article class="blog-dossier-item reveal-item" data-category="design" data-tilt>
+            <div class="blog-meta-col">
+              <span class="blog-item-number">[ ARTICLE // 02 ]</span>
+              <div class="blog-meta-pill">
+                <span class="blog-meta-dot"></span>
+                <span>5 MIN READ</span>
+              </div>
+              <span class="blog-date-badge">YEAR: 2026</span>
+            </div>
+
+            <div class="blog-content-col">
+              <span class="blog-category-tag">DESIGN PHILOSOPHY</span>
+              <h2 class="blog-item-title">
+                <a href="blog-why-i-prefer-minimalist-web-design.html">Why I Prefer Minimalist Web Design: Restraint, Contrast, and the Power of Whitespace</a>
+              </h2>
+              <p class="blog-item-excerpt">
+                Why stripping away artificial neon glows, busy animations, and visual noise creates a superior user experience. Exploring how strict monochromatic palettes force purposeful typography and how fast load times reflect genuine respect for the reader.
+              </p>
+
+              <div class="blog-item-footer">
+                <a href="blog-why-i-prefer-minimalist-web-design.html" class="blog-read-link" aria-label="Read Article 02: Why I Prefer Minimalist Web Design">
+                  <span>Read Article &rarr;</span>
+                </a>
+                <div class="project-tech-tags" style="margin-top: 0;">
+                  <span class="tech-tag">Monochrome</span>
+                  <span class="tech-tag">Space Grotesk</span>
+                  <span class="tech-tag">Inter</span>
+                  <span class="tech-tag">Typography</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-preview-col">
+              <div class="blog-schematic-badge">
+                <div class="badge-row"><span>PALETTE</span><span class="badge-val">B &amp; W</span></div>
+                <div class="badge-row"><span>CONTRAST</span><span class="badge-val">WCAG AA</span></div>
+                <div class="badge-row"><span>CLUTTER</span><span class="badge-val">NONE</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article 03: My Journey as a Developer -->
+          <article class="blog-dossier-item reveal-item" data-category="journey" data-tilt>
+            <div class="blog-meta-col">
+              <span class="blog-item-number">[ ARTICLE // 03 ]</span>
+              <div class="blog-meta-pill">
+                <span class="blog-meta-dot"></span>
+                <span>7 MIN READ</span>
+              </div>
+              <span class="blog-date-badge">YEAR: 2026</span>
+            </div>
+
+            <div class="blog-content-col">
+              <span class="blog-category-tag">DEVELOPER JOURNEY</span>
+              <h2 class="blog-item-title">
+                <a href="blog-my-journey-as-a-developer.html">My Journey as a Developer: Embracing Fundamentals, Low-Level Logic, and the Open Web</a>
+              </h2>
+              <p class="blog-item-excerpt">
+                An honest reflection on learning to code as an undergraduate BCA student. How studying low-level C programming, memory addresses, and data structures cured tutorial paralysis and gave me the confidence to build real projects on the open web.
+              </p>
+
+              <div class="blog-item-footer">
+                <a href="blog-my-journey-as-a-developer.html" class="blog-read-link" aria-label="Read Article 03: My Journey as a Developer">
+                  <span>Read Article &rarr;</span>
+                </a>
+                <div class="project-tech-tags" style="margin-top: 0;">
+                  <span class="tech-tag">BCA Scholar</span>
+                  <span class="tech-tag">C Language</span>
+                  <span class="tech-tag">Memory Logic</span>
+                  <span class="tech-tag">First Principles</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="blog-preview-col">
+              <div class="blog-schematic-badge">
+                <div class="badge-row"><span>ACADEMIC</span><span class="badge-val">BCA</span></div>
+                <div class="badge-row"><span>CORE LOGIC</span><span class="badge-val">C LANG</span></div>
+                <div class="badge-row"><span>GROWTH</span><span class="badge-val">ACTIVE</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SHARED FOOTER & ARCHITECTURAL COLOPHON -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="./zs-monogram.svg" alt="ZS Emblem" class="footer-logo-img" width="40" height="40">
+            <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
+          </div>
+          <p class="footer-role">
+            BCA Student &bull; Aspiring Full-Stack Developer &bull; Exploring Computational Aesthetics &amp; Full-Stack Systems
+          </p>
+          <div class="footer-contact-cluster">
+            <a href="tel:+919580912686" class="footer-contact-link" aria-label="Call Zeerak at +91 9580912686">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>+91 9580912686</span>
+            </a>
+            <span class="footer-contact-sep">/</span>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="footer-contact-link" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>@_siddiqui_._zeerak_</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Shared Page Navigation Links in Footer -->
+        <div class="footer-nav-block">
+          <div class="clock-label">NAVIGATION DIRECTORY</div>
+          <ul class="footer-nav-links">
+            <li><a href="index.html">// 00. HOME</a></li>
+            <li><a href="about.html">// 01. ABOUT</a></li>
+            <li><a href="projects.html">// 02. PROJECTS</a></li>
+            <li><a href="skills.html">// 03. SKILLS</a></li>
+            <li><a href="blog.html" style="color: var(--text-primary); font-weight: 600;">// 04. BLOG</a></li>
+            <li><a href="contact.html">// 05. CONTACT</a></li>
+          </ul>
+        </div>
+
+        <!-- Real-Time World Clock (Indian Standard Time) -->
+        <div class="footer-telemetry-clock">
+          <div class="clock-label">SYSTEM TIME // IST (UTC+05:30)</div>
+          <div class="clock-time" id="live-clock">--:--:-- IST</div>
+          <div class="clock-sub">LOCATION: SOUTH ASIA (ASIA/KOLKATA)</div>
+        </div>
+
+        <!-- Back to Top Elevator -->
+        <div class="footer-elevator">
+          <a href="#main-content" class="btn btn-elevator" id="btn-back-top" aria-label="Return to top of page">
+            <span>RETURN TO APEX</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; <span id="current-year">2026</span> ZEERAK SHAFIQUE. ALL RIGHTS RESERVED.
+        </div>
+        <div class="footer-specs">
+          <span>VANILLA HTML5 + CSS3 + MULTIPAGE</span>
+          <span class="dot">&bull;</span>
+          <span>ZERO FRAMEWORK OVERHEAD</span>
+          <span class="dot">&bull;</span>
+          <span>HARDWARE ACCELERATED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Orchestrator (ES Module) -->
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
+

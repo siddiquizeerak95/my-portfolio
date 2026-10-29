@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary Meta Tags -->
+  <title>How I Built My Personal Portfolio — ZEERAK / ZS STUDIO</title>
+  <meta name="title" content="How I Built My Personal Portfolio — ZEERAK / ZS STUDIO">
+  <meta name="description"
+    content="How I designed and engineered my personal portfolio using semantic HTML5, CSS3 clamp math, and vanilla JavaScript with zero framework overhead.">
+  <meta name="author" content="Zeerak Shafique">
+  <meta name="theme-color" content="#080808">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How I Built My Personal Portfolio — Zeerak Shafique">
+  <meta property="og:description"
+    content="The architectural breakdown of building a high-craft black-and-white editorial portfolio with vanilla web standards.">
+  <meta property="og:image" content="./Profile%20Pic.jpg">
+
+  <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts Preconnect & Curated Modern Typography (Luxury Editorial Serif & Swiss Minimalism) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="blog">
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
+
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- SITE HEADER (STANDARD ZS STUDIO ARCHITECTURE) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Logo + ZEERAK Wordmark -->
+        <a href="index.html" class="header-brand" aria-label="ZEERAK Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" loading="eager">
+          <span class="header-brand-divider" aria-hidden="true"></span>
+          <span class="header-brand-name">ZEERAK</span>
+        </a>
+
+        <!-- Center / Main: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item">Projects</a></li>
+          <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="blog.html" class="nav-item active" aria-current="page">Blog</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
+      <div class="mobile-drawer-inner">
+        <div class="mobile-telemetry-header">
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
+          </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link active" aria-current="page">Blog</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+
+          <div class="drawer-contact-links">
+            <a href="tel:+919580912686" class="drawer-link-btn" aria-label="Call +91 9580912686">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>+91 9580912686</span>
+            </a>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>@_siddiqui_._zeerak_</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article class="article-section">
+      <div class="container article-container">
+        <!-- Back Navigation to Blog -->
+        <div class="article-back-nav reveal-item">
+          <a href="blog.html" class="article-back-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            <span>RETURN TO BLOG DIRECTORY</span>
+          </a>
+        </div>
+
+        <!-- Article Header -->
+        <header class="article-header reveal-item">
+          <div class="article-meta-row">
+            <span class="article-category-chip">WEB ARCHITECTURE &amp; CRAFT</span>
+            <span>&bull;</span>
+            <span>[ ARTICLE // 01 ]</span>
+            <span>&bull;</span>
+            <span>6 MIN READ</span>
+            <span>&bull;</span>
+            <span>OCTOBER 2026</span>
+          </div>
+
+          <h1 class="article-title">
+            How I Built My Personal Portfolio: From a Basic Starter to a Black-and-White Editorial Studio
+          </h1>
+
+          <p class="article-lead">
+            The technical story of engineering a modern, high-craft creative portfolio from scratch using semantic HTML5, fluid CSS3 clamp math, and vanilla JavaScript—with zero runtime framework dependencies.
+          </p>
+
+          <div class="article-author-cluster">
+            <div class="author-avatar-monogram">ZS</div>
+            <div class="author-meta-text">
+              <span class="author-name">Zeerak Shafique</span>
+              <span class="author-descriptor">BCA Student &bull; Creative Developer &bull; ZS Studio</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Article Body -->
+        <div class="article-body reveal-item">
+          <p>
+            When I began planning my personal website as a Bachelor of Computer Applications (BCA) student, I faced a common choice. I could have downloaded an off-the-shelf theme, installed a heavy single-page application framework, or stacked dozens of third-party packages to make things look complex. Instead, I chose a different path: <strong>build the entire site from scratch using vanilla web standards.</strong>
+          </p>
+
+          <p>
+            I wanted a portfolio that felt authentic, lightweight, and genuinely reflective of the engineering discipline I practice daily. Here is the step-by-step story of how this website came together, the architectural decisions behind it, and the lessons I learned along the way.
+          </p>
+
+          <h2>1. The Starting Point: Moving Beyond Generic Templates</h2>
+          <p>
+            My very first version began as a minimal starter template. It had standard blue links, default browser margins, and plain section divisions. While it was functional, it lacked identity and craft. It did not reflect how I think about software.
+          </p>
+          <p>
+            In my computer science studies, I have spent significant time working with the <strong>C programming language</strong>. Studying C teaches you to respect the machine—how bytes are arranged in memory, why pointer arithmetic matters, and why adding unnecessary layers slows down execution.
+          </p>
+          <p>
+            I decided to apply that exact same philosophy to my website. Before adding any flashy scripts or visual embellishments, the underlying markup had to be lean, semantic, and structurally sound.
+          </p>
+
+          <div class="article-quote">
+            <p>
+              "Building from first principles forces you to understand every single line of code in your project. There are no black boxes."
+            </p>
+          </div>
+
+          <h2>2. The Architecture: Choosing Pure Vanilla Web Standards</h2>
+          <p>
+            Modern web development often tempts beginners to jump straight into heavy UI frameworks before understanding how the browser actually parses a webpage. For my portfolio, I chose:
+          </p>
+          <ul>
+            <li><strong>Semantic HTML5:</strong> Using landmark tags like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;nav&gt;</code> for accessible, clean document structure.</li>
+            <li><strong>Modern CSS3:</strong> Custom Properties (variables), CSS Grid, Flexbox, and fluid mathematical formulas.</li>
+            <li><strong>Vanilla JavaScript (ES6+):</strong> Native DOM event listeners, the IntersectionObserver API for scroll animations, and localStorage for state persistence.</li>
+          </ul>
+          <p>
+            The result is zero runtime framework overhead. The entire site downloads in milliseconds, renders immediately, and runs at a fluid 60 frames per second without requiring megabytes of vendor bundles.
+          </p>
+
+          <h2>3. Crafting the Black-and-White Editorial Palette</h2>
+          <p>
+            Early during design exploration, it was tempting to add glowing neon buttons, cyan gradients, or futuristic cybernetic telemetry badges. However, the more I experimented, the more I realized that those elements were distracting rather than impressive.
+          </p>
+          <p>
+            I transitioned to a strictly <strong>monochromatic editorial style</strong> inspired by premium architectural magazines:
+          </p>
+          <ul>
+            <li><strong>Dark Canvas:</strong> <code>#080808</code> as the primary backdrop for deep cinematic contrast.</li>
+            <li><strong>Elevated Surfaces:</strong> <code>#0D0D0D</code> and <code>#141414</code> for content cards and panels.</li>
+            <li><strong>High-Contrast Text:</strong> <code>#F5F5F5</code> for headlines and crisp markers, with <code>#929292</code> for comfortable long-form reading.</li>
+            <li><strong>Hairline Boundaries:</strong> <code>#252525</code> borders that define structure without shouting for attention.</li>
+          </ul>
+
+          <div class="article-takeaway-box">
+            <div class="takeaway-header">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>Practical Lesson // Color Discipline</span>
+            </div>
+            <div class="takeaway-content">
+              When you eliminate bright colors, you can no longer rely on colored highlights to rescue poor spacing or weak typography. Every margin, font size, and layout proportion has to stand on its own merits.
+            </div>
+          </div>
+
+          <h2>4. Responsive Typography with Fluid clamp() Math</h2>
+          <p>
+            One problem that frequently frustrates web creators is making text look well-proportioned across vastly different screen sizes—from a 360-pixel mobile screen to a 1440-pixel desktop monitor.
+          </p>
+          <p>
+            Instead of writing dozens of fragile media query overrides, I utilized CSS <code>clamp()</code> equations. With <code>clamp(minimum, preferred, maximum)</code>, font sizes and section padding adjust smoothly along the viewport scale:
+          </p>
+
+          <div class="article-code-block">
+            <div class="code-header">
+              <span class="code-file-label">// style.css (Fluid Typography Formula)</span>
+              <span class="code-lang-tag">CSS3</span>
+            </div>
+            <pre><code>/* Confident display headline scaling smoothly across all devices */
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.0vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}</code></pre>
+          </div>
+
+          <p>
+            By coupling this fluid scale with three curated typefaces—<strong>Space Grotesk</strong> for confident editorial headlines, <strong>Inter</strong> for readable body prose, and <strong>JetBrains Mono</strong> for technical indices and metadata—the portfolio feels coherent and grounded.
+          </p>
+
+          <h2>5. Zero-Flash Light and Dark Theme Architecture</h2>
+          <p>
+            A common bug on many custom dark mode websites is the dreaded "white flash of unstyled content" (FOUC). If a dark mode script waits for the entire DOM to load before applying attributes, the screen flashes bright white for a split second on reload.
+          </p>
+          <p>
+            To prevent this, I implemented an ultra-lightweight inline execution snippet at the very top of the HTML <code>&lt;head&gt;</code> before any CSS or body elements are evaluated:
+          </p>
+
+          <div class="article-code-block">
+            <div class="code-header">
+              <span class="code-file-label">// index.html (Early Theme Evaluation)</span>
+              <span class="code-lang-tag">JAVASCRIPT</span>
+            </div>
+            <pre><code>&lt;!-- Evaluates in head before DOM paint to prevent flash --&gt;
+&lt;script&gt;
+  (function () {
+    const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+&lt;/script&gt;</code></pre>
+          </div>
+
+          <p>
+            The user's preference is stored in <code>localStorage</code>. When the theme toggle button in the header is clicked, CSS variables automatically switch between the dark and light tokens without any full-page reload or style glitch.
+          </p>
+
+          <h2>6. Key Takeaways for Fellow Beginners</h2>
+          <p>
+            Building this website has been one of the most rewarding learning experiences of my computer applications degree. If you are starting your own developer portfolio, here are four practical recommendations:
+          </p>
+          <ol>
+            <li><strong>Master the semantic DOM first:</strong> Good HTML structure makes styling with CSS enjoyable and keeps your site accessible to screen readers out of the box.</li>
+            <li><strong>Do not rush to install frameworks:</strong> Modern CSS Grid, Flexbox, and Custom Properties solve 95% of layout problems that developers used to rely on heavy libraries to fix.</li>
+            <li><strong>Focus on typography and whitespace:</strong> Most websites do not need complex 3D graphics or kinetic animations. Confident typography and generous whitespace will immediately elevate your work.</li>
+            <li><strong>Test on a real mobile device:</strong> Emulators in browser developer tools are useful, but tapping through your site on an actual phone reveals ergonomic flaws that mouse clicks never show.</li>
+          </ol>
+        </div>
+
+        <!-- Article Post Footer -->
+        <footer class="article-post-footer reveal-item">
+          <!-- Article Pagination Grid -->
+          <div class="article-pagination-grid">
+            <a href="blog.html" class="pagination-card">
+              <span class="pagination-label">&larr; BLOG DIRECTORY</span>
+              <span class="pagination-title">Return to All Published Dispatches</span>
+            </a>
+            <a href="blog-why-i-prefer-minimalist-web-design.html" class="pagination-card" style="text-align: right;">
+              <span class="pagination-label">NEXT ESSAY &rarr;</span>
+              <span class="pagination-title">Why I Prefer Minimalist Web Design</span>
+            </a>
+          </div>
+
+          <!-- Author Bio Dossier -->
+          <div class="article-author-card">
+            <img src="./Profile%20Pic.jpg" alt="Zeerak Shafique" class="author-bio-avatar" width="64" height="64">
+            <div class="author-bio-content">
+              <div class="author-bio-name">Zeerak Shafique</div>
+              <p class="author-bio-desc">
+                Undergraduate BCA student and creative developer. Focused on low-level computing fundamentals, semantic web engineering, and dark minimalist aesthetics.
+              </p>
+              <div class="author-bio-links">
+                <a href="tel:+919580912686">+91 9580912686</a>
+                <span>&bull;</span>
+                <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer">@_siddiqui_._zeerak_</a>
+                <span>&bull;</span>
+                <a href="contact.html">Send Transmission</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Action Buttons -->
+          <div class="article-action-buttons">
+            <a href="blog.html" class="btn btn-secondary">
+              <span>&larr; BACK TO BLOG ARCHIVE</span>
+            </a>
+            <a href="#main-content" class="btn btn-secondary">
+              <span>RETURN TO APEX &uarr;</span>
+            </a>
+          </div>
+        </footer>
+      </div>
+    </article>
+  </main>
+
+  <!-- SHARED FOOTER & ARCHITECTURAL COLOPHON -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="./zs-monogram.svg" alt="ZS Emblem" class="footer-logo-img" width="40" height="40">
+            <span class="footer-logo-text">ZEERAK SHAFIQUE</span>
+          </div>
+          <p class="footer-role">
+            BCA Student &bull; Aspiring Full-Stack Developer &bull; Exploring Computational Aesthetics &amp; Full-Stack Systems
+          </p>
+          <div class="footer-contact-cluster">
+            <a href="tel:+919580912686" class="footer-contact-link" aria-label="Call Zeerak at +91 9580912686">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <span>+91 9580912686</span>
+            </a>
+            <span class="footer-contact-sep">/</span>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="footer-contact-link" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span>@_siddiqui_._zeerak_</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Shared Page Navigation Links in Footer -->
+        <div class="footer-nav-block">
+          <div class="clock-label">NAVIGATION DIRECTORY</div>
+          <ul class="footer-nav-links">
+            <li><a href="index.html">// 00. HOME</a></li>
+            <li><a href="about.html">// 01. ABOUT</a></li>
+            <li><a href="projects.html">// 02. PROJECTS</a></li>
+            <li><a href="skills.html">// 03. SKILLS</a></li>
+            <li><a href="blog.html" style="color: var(--text-primary); font-weight: 600;">// 04. BLOG</a></li>
+            <li><a href="contact.html">// 05. CONTACT</a></li>
+          </ul>
+        </div>
+
+        <!-- Real-Time World Clock (Indian Standard Time) -->
+        <div class="footer-telemetry-clock">
+          <div class="clock-label">SYSTEM TIME // IST (UTC+05:30)</div>
+          <div class="clock-time" id="live-clock">--:--:-- IST</div>
+          <div class="clock-sub">LOCATION: SOUTH ASIA (ASIA/KOLKATA)</div>
+        </div>
+
+        <!-- Back to Top Elevator -->
+        <div class="footer-elevator">
+          <a href="#main-content" class="btn btn-elevator" id="btn-back-top" aria-label="Return to top of page">
+            <span>RETURN TO APEX</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          &copy; <span id="current-year">2026</span> ZEERAK SHAFIQUE. ALL RIGHTS RESERVED.
+        </div>
+        <div class="footer-specs">
+          <span>VANILLA HTML5 + CSS3 + MULTIPAGE</span>
+          <span class="dot">&bull;</span>
+          <span>ZERO FRAMEWORK OVERHEAD</span>
+          <span class="dot">&bull;</span>
+          <span>HARDWARE ACCELERATED</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Orchestrator (ES Module) -->
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
+
