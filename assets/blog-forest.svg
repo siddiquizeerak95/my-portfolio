@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="mistSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0c0d10"/>
+      <stop offset="45%" stop-color="#1f2229"/>
+      <stop offset="70%" stop-color="#2a2d36"/>
+      <stop offset="100%" stop-color="#0e1014"/>
+    </linearGradient>
+    <linearGradient id="mistCloud" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ridgeShade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#181a20"/>
+      <stop offset="100%" stop-color="#07080a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="600" height="400" fill="url(#mistSky)"/>
+
+  <!-- Sun/Atmosphere Glow in Mist -->
+  <circle cx="360" cy="180" r="140" fill="#ffffff" opacity="0.08"/>
+
+  <!-- Distant Mountain Ridges -->
+  <path d="M0,210 Q140,150 280,190 T540,140 L600,160 L600,400 L0,400 Z" fill="#13151b" opacity="0.7"/>
+
+  <!-- Mid Ridge with Misty Valley -->
+  <path d="M0,260 Q180,180 340,240 T600,200 L600,400 L0,400 Z" fill="url(#ridgeShade)"/>
+
+  <!-- Horizontal Mist Band Crossing the Valley -->
+  <ellipse cx="320" cy="230" rx="340" ry="45" fill="url(#mistCloud)"/>
+  <ellipse cx="260" cy="270" rx="280" ry="35" fill="url(#mistCloud)"/>
+
+  <!-- Foreground Dark Pine Forest Ridge (Layered silhouettes) -->
+  <path d="M0,400 L0,320 
+           L15,310 L25,325 L35,295 L45,330 L60,305 L75,328 L95,290 L115,335 
+           L135,310 L155,338 L180,295 L205,335 L235,300 L260,340 L290,315 
+           L325,350 L360,320 L395,348 L430,305 L465,338 L500,295 L535,330 
+           L570,305 L600,325 L600,400 Z" fill="#08090c"/>
+
+  <path d="M0,400 L0,345 
+           L20,335 L40,350 L65,330 L90,355 L120,325 L150,358 L185,330 
+           L220,360 L255,335 L290,365 L330,340 L370,368 L410,335 L450,365 
+           L490,330 L530,360 L570,335 L600,350 L600,400 Z" fill="#030405"/>
+</svg>

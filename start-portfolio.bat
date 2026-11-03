@@ -1,8 +1,8 @@
 @echo off
-title Zeerak Shafique - Digital World Portfolio // Aspiring Full-Stack Developer
+title ZEERAK — Zeerak Siddiqui | 3D Hybrid Creative Developer Portfolio
 echo ========================================================
-echo   ZEERAK SHAFIQUE // DIGITAL WORLD PORTFOLIO
-echo   Role: BCA Student ^& Aspiring Full-Stack Developer
+echo   ZEERAK // 3D HYBRID CREATIVE DEVELOPER PORTFOLIO
+echo   Role: BCA Student ^& Creative Developer
 echo   Server: http://localhost:8080/index.html
 echo ========================================================
 echo.

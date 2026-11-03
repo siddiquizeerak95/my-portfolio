@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" width="100%" height="100%">
+  <defs>
+    <!-- Facet Gradients for 3D metallic/origami shading -->
+    <linearGradient id="planeTopLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#d4d4d8"/>
+      <stop offset="100%" stop-color="#a1a1aa"/>
+    </linearGradient>
+    <linearGradient id="planeTopRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e4e4e7"/>
+      <stop offset="60%" stop-color="#a1a1aa"/>
+      <stop offset="100%" stop-color="#71717a"/>
+    </linearGradient>
+    <linearGradient id="planeUnderLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#52525b"/>
+      <stop offset="100%" stop-color="#27272a"/>
+    </linearGradient>
+    <linearGradient id="planeUnderRight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3f3f46"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </linearGradient>
+    <filter id="planeShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="12" stdDeviation="10" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#planeShadow)" transform="rotate(-6, 120, 90)">
+    <!-- Underside fold (Dark shadow facet) -->
+    <polygon points="120,135 220,30 80,110" fill="url(#planeUnderLeft)"/>
+    <polygon points="120,135 220,30 160,110" fill="url(#planeUnderRight)"/>
+
+    <!-- Left Wing (Illuminated top facet) -->
+    <polygon points="220,30 20,85 120,135" fill="url(#planeTopLeft)"/>
+
+    <!-- Right Wing (Subtly shaded top facet) -->
+    <polygon points="220,30 120,135 210,120" fill="url(#planeTopRight)"/>
+
+    <!-- Center Fold Spine Line -->
+    <line x1="220" y1="30" x2="120" y2="135" stroke="#ffffff" stroke-width="1.2" opacity="0.9"/>
+    <!-- Outer Wing Edge Highlight -->
+    <line x1="220" y1="30" x2="20" y2="85" stroke="#ffffff" stroke-width="1.4" opacity="0.9"/>
+  </g>
+</svg>

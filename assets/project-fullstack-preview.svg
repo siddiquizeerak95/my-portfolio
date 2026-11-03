@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B1E2B"/>
+      <stop offset="50%" stop-color="#151822"/>
+      <stop offset="100%" stop-color="#10121A"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" rx="16" fill="url(#bgGrad4)"/>
+  <rect x="1" y="1" width="798" height="478" rx="15" fill="none" stroke="#454D62" stroke-width="1.5"/>
+
+  <!-- Window Header -->
+  <rect x="0" y="0" width="800" height="44" rx="16" fill="#202534"/>
+  <rect x="0" y="28" width="800" height="16" fill="#202534"/>
+  <line x1="0" y1="44" x2="800" y2="44" stroke="#384054" stroke-width="1"/>
+  <circle cx="26" cy="22" r="5.5" fill="#FF5F56"/>
+  <circle cx="44" cy="22" r="5.5" fill="#FFBD2E"/>
+  <circle cx="62" cy="22" r="5.5" fill="#27C93F"/>
+  <rect x="220" y="10" width="360" height="24" rx="12" fill="#12151E" stroke="#3C4458" stroke-width="1"/>
+  <text x="400" y="26" fill="#D0D6E5" font-family="'IBM Plex Mono', monospace" font-size="11" text-anchor="middle">api-gateway // distributed-node-cluster</text>
+
+  <!-- Viewport -->
+  <g transform="translate(36, 64)">
+    <rect width="728" height="388" rx="10" fill="#131620" stroke="#32394C" stroke-width="1"/>
+    <!-- Dashboard Column Left -->
+    <rect x="20" y="20" width="206" height="348" rx="8" fill="#1B1F2D" stroke="#3B4459" stroke-width="1"/>
+    <text x="36" y="52" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="700" letter-spacing="0.04em">SERVICES ACTIVE</text>
+
+    <rect x="36" y="70" width="174" height="38" rx="6" fill="#252A3C" stroke="#3E475E" stroke-width="1"/>
+    <circle cx="52" cy="89" r="4.5" fill="#22C55E"/>
+    <text x="66" y="93" fill="#FFFFFF" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600">Auth Service :8081</text>
+
+    <rect x="36" y="118" width="174" height="38" rx="6" fill="#252A3C" stroke="#3E475E" stroke-width="1"/>
+    <circle cx="52" cy="137" r="4.5" fill="#22C55E"/>
+    <text x="66" y="141" fill="#FFFFFF" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600">REST Gateway :8080</text>
+
+    <rect x="36" y="166" width="174" height="38" rx="6" fill="#252A3C" stroke="#3E475E" stroke-width="1"/>
+    <circle cx="52" cy="185" r="4.5" fill="#22C55E"/>
+    <text x="66" y="189" fill="#FFFFFF" font-family="'IBM Plex Mono', monospace" font-size="11" font-weight="600">Telemetry WS :9001</text>
+
+    <!-- Main Chart / Analytics Panel -->
+    <rect x="242" y="20" width="466" height="348" rx="8" fill="#1B1F2D" stroke="#3B4459" stroke-width="1"/>
+    <text x="264" y="52" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="700" letter-spacing="0.04em">REQUEST PIPELINE THROUGHPUT</text>
+    <!-- Chart Grid -->
+    <g stroke="#353D52" stroke-width="0.8">
+      <line x1="264" y1="110" x2="682" y2="110"/>
+      <line x1="264" y1="170" x2="682" y2="170"/>
+      <line x1="264" y1="230" x2="682" y2="230"/>
+    </g>
+    <!-- Glowing Line Chart -->
+    <path d="M 264,220 L 320,180 L 380,200 L 440,130 L 500,160 L 560,95 L 620,110 L 682,80" 
+          fill="none" stroke="#FFFFFF" stroke-width="2.8"/>
+    <path d="M 264,220 L 320,180 L 380,200 L 440,130 L 500,160 L 560,95 L 620,110 L 682,80 L 682,250 L 264,250 Z" 
+          fill="#FFFFFF" opacity="0.12"/>
+    <!-- Metric callouts -->
+    <text x="264" y="305" fill="#B5BDCF" font-family="'Inter', sans-serif" font-size="12">LATENCY: <tspan fill="#00E676" font-weight="700">14ms</tspan></text>
+    <text x="430" y="305" fill="#B5BDCF" font-family="'Inter', sans-serif" font-size="12">UPTIME: <tspan fill="#61DAFB" font-weight="700">99.98%</tspan></text>
+    <text x="580" y="305" fill="#B5BDCF" font-family="'Inter', sans-serif" font-size="12">LOAD: <tspan fill="#22C55E" font-weight="700">OPTIMAL</tspan></text>
+  </g>
+</svg>

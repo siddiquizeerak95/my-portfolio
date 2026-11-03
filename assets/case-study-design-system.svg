@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141722"/>
+      <stop offset="100%" stop-color="#0A0B10"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="500" rx="16" fill="url(#dsGrad)" stroke="#2B3040" stroke-width="1.5"/>
+
+  <!-- Left Column: Color Palette Tokens -->
+  <g transform="translate(48, 48)">
+    <text x="0" y="20" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="16" font-weight="700">01. Color Palette Tokens</text>
+    <text x="0" y="38" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">High-contrast monochrome core with crimson focus accents</text>
+
+    <!-- Color Swatches Row -->
+    <g transform="translate(0, 56)">
+      <!-- Swatch 1: Obsidian -->
+      <rect width="80" height="80" rx="12" fill="#080808" stroke="#333A4D" stroke-width="1"/>
+      <text x="0" y="104" fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">#080808</text>
+      <text x="0" y="120" fill="#8891A8" font-family="'Inter', sans-serif" font-size="10">Main Void</text>
+
+      <!-- Swatch 2: Charcoal Surface -->
+      <rect x="100" width="80" height="80" rx="12" fill="#1A1D27" stroke="#333A4D" stroke-width="1"/>
+      <text x="100" y="104" fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">#1A1D27</text>
+      <text x="100" y="120" fill="#8891A8" font-family="'Inter', sans-serif" font-size="10">Elevated Card</text>
+
+      <!-- Swatch 3: Pure Crimson Accent -->
+      <rect x="200" width="80" height="80" rx="12" fill="#E5092B" stroke="#FF4D6A" stroke-width="1"/>
+      <text x="200" y="104" fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">#E5092B</text>
+      <text x="200" y="120" fill="#E5092B" font-family="'Inter', sans-serif" font-size="10" font-weight="600">Accent Focus</text>
+
+      <!-- Swatch 4: Primary Text -->
+      <rect x="300" width="80" height="80" rx="12" fill="#F5F5F5" stroke="#FFFFFF" stroke-width="1"/>
+      <text x="300" y="104" fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">#F5F5F5</text>
+      <text x="300" y="120" fill="#8891A8" font-family="'Inter', sans-serif" font-size="10">Primary Text</text>
+    </g>
+
+    <!-- Typography Scale Preview -->
+    <g transform="translate(0, 210)">
+      <text x="0" y="20" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="16" font-weight="700">02. Typographic Scale</text>
+      <text x="0" y="44" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-size="28" font-weight="700">Display 28px Space Grotesk</text>
+      <text x="0" y="76" fill="#F5F5F5" font-family="'Inter', sans-serif" font-size="18" font-weight="600">H1 Headline 18px SemiBold Inter</text>
+      <text x="0" y="104" fill="#B5BED6" font-family="'Inter', sans-serif" font-size="13">Body Regular 13px / 1.6 Line-Height Inter System</text>
+      <text x="0" y="130" fill="#8891A8" font-family="'JetBrains Mono', monospace" font-size="11">CODE &amp; TELEMETRY 11PX JETBRAINS MONO</text>
+    </g>
+  </g>
+
+  <!-- Right Column: Atomic UI Components -->
+  <g transform="translate(540, 48)">
+    <text x="0" y="20" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="16" font-weight="700">03. Component Library</text>
+    <text x="0" y="38" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">Interactive states, button tokens, inputs &amp; pills</text>
+
+    <!-- Component Row 1: Buttons -->
+    <g transform="translate(0, 60)">
+      <rect width="180" height="42" rx="10" fill="#1E222D" stroke="#3D4559" stroke-width="1.2"/>
+      <text x="35" y="26" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Default Button &#8594;</text>
+
+      <rect x="200" width="180" height="42" rx="10" fill="#2E3446" stroke="#525C77" stroke-width="1.2"/>
+      <text x="240" y="26" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Hover State &#8594;</text>
+    </g>
+
+    <!-- Component Row 2: Pills -->
+    <g transform="translate(0, 120)">
+      <rect width="80" height="28" rx="14" fill="#E5092B"/>
+      <text x="22" y="18" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="11" font-weight="600">Active</text>
+
+      <rect x="95" width="90" height="28" rx="14" fill="#1C202C" stroke="#333A4D" stroke-width="1"/>
+      <text x="110" y="18" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">Inactive</text>
+
+      <rect x="200" width="110" height="28" rx="14" fill="#182A22" stroke="#22543D" stroke-width="1"/>
+      <circle cx="214" cy="14" r="3.5" fill="#00E676"/>
+      <text x="226" y="18" fill="#00E676" font-family="'Inter', sans-serif" font-size="11" font-weight="600">Verified</text>
+    </g>
+
+    <!-- Component Row 3: Input Field -->
+    <g transform="translate(0, 170)">
+      <rect width="380" height="44" rx="10" fill="#141720" stroke="#3A4257" stroke-width="1.2"/>
+      <text x="16" y="27" fill="#F5F5F5" font-family="'Inter', sans-serif" font-size="12">elena.rostova@design.com</text>
+      <circle cx="355" cy="22" r="5" fill="#00E676"/>
+    </g>
+
+    <!-- Component Row 4: Card Component -->
+    <g transform="translate(0, 235)">
+      <rect width="380" height="135" rx="14" fill="#161822" stroke="#2B3040" stroke-width="1"/>
+      <rect x="16" y="16" width="65" height="65" rx="10" fill="#202432"/>
+      <text x="96" y="38" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="700">Chronos Kinetic 01</text>
+      <text x="96" y="58" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">EU 41 &#8226; Stealth Matte Edition</text>
+      <text x="96" y="80" fill="#E5092B" font-family="'Inter', sans-serif" font-size="13" font-weight="700">$280.00</text>
+      <line x1="16" y1="96" x2="364" y2="96" stroke="#262B3A" stroke-width="1"/>
+      <text x="16" y="118" fill="#00E676" font-family="'Inter', sans-serif" font-size="10" font-weight="600">&#8226; IN STOCK &#8226; DISPATCHES IN 24H</text>
+    </g>
+  </g>
+</svg>

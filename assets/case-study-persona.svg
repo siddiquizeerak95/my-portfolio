@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161822"/>
+      <stop offset="100%" stop-color="#0E1015"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="500" rx="16" fill="url(#pGrad)" stroke="#2B3040" stroke-width="1.5"/>
+
+  <!-- Left Column: Avatar & Profile -->
+  <g transform="translate(48, 48)">
+    <!-- Avatar Box -->
+    <rect width="180" height="200" rx="18" fill="#202534" stroke="#363C4E" stroke-width="1.5"/>
+    <circle cx="90" cy="80" r="40" fill="#2F364C"/>
+    <path d="M40 180 C40 135, 140 135, 140 180 Z" fill="#2F364C"/>
+    <circle cx="90" cy="80" r="14" fill="#E5092B" opacity="0.8"/>
+
+    <text x="0" y="235" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="20" font-weight="700">Elena Rostova</text>
+    <text x="0" y="258" fill="#E5092B" font-family="'Inter', sans-serif" font-size="12" font-weight="600">MINIMALIST TECH PROFESSIONAL</text>
+    
+    <g transform="translate(0, 280)">
+      <text y="16" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">Age: <tspan fill="#FFFFFF">28</tspan></text>
+      <text y="36" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">Role: <tspan fill="#FFFFFF">Senior UX Researcher</tspan></text>
+      <text y="56" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">Device: <tspan fill="#FFFFFF">iPhone 15 Pro, Mac</tspan></text>
+      <text y="76" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">Location: <tspan fill="#FFFFFF">Berlin, Germany</tspan></text>
+    </g>
+  </g>
+
+  <!-- Right Column: Goals, Frustrations, Behaviors -->
+  <g transform="translate(290, 48)">
+    <!-- Bio Quote -->
+    <rect width="660" height="64" rx="12" fill="#1C202C" stroke="#2E3446" stroke-width="1"/>
+    <text x="24" y="32" fill="#F5F5F5" font-family="'Inter', sans-serif" font-size="13" font-style="italic">"I value speed, zero clutter, and transparent pricing. If a checkout takes more than 2 steps, I leave."</text>
+    <text x="24" y="50" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">&#8226; Elena's shopping criteria &amp; mindset</text>
+
+    <!-- 3 Cards: Goals, Frustrations, Tech Habits -->
+    <g transform="translate(0, 84)">
+      <!-- Goals -->
+      <rect width="210" height="270" rx="14" fill="#161822" stroke="#2B3040" stroke-width="1"/>
+      <rect x="20" y="20" width="28" height="28" rx="8" fill="#1E2332"/>
+      <path d="M28 34 L33 39 L41 29" fill="none" stroke="#00E676" stroke-width="2"/>
+      <text x="56" y="38" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="14" font-weight="700">Core Goals</text>
+      
+      <text x="20" y="74" fill="#C5CBE0" font-family="'Inter', sans-serif" font-size="11" line-height="1.6">
+        &#8226; Find premium curated goods fast.<br/><br/>
+        &#8226; Verify materials and sizing accurately.<br/><br/>
+        &#8226; One-tap biometric checkout with zero account hurdles.<br/><br/>
+        &#8226; Real-time order dispatch notifications.
+      </text>
+
+      <!-- Frustrations -->
+      <rect x="225" width="210" height="270" rx="14" fill="#161822" stroke="#2B3040" stroke-width="1"/>
+      <rect x="245" y="20" width="28" height="28" rx="8" fill="#1E2332"/>
+      <path d="M253 28 L265 40 M265 28 L253 40" fill="none" stroke="#E5092B" stroke-width="2"/>
+      <text x="281" y="38" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="14" font-weight="700">Frustrations</text>
+      
+      <text x="245" y="74" fill="#C5CBE0" font-family="'Inter', sans-serif" font-size="11">
+        &#8226; Popups and aggressive discount banners.<br/><br/>
+        &#8226; Hidden shipping fees revealed only at final step.<br/><br/>
+        &#8226; Complex registration forms before purchasing.<br/><br/>
+        &#8226; Slow visual loading of product galleries.
+      </text>
+
+      <!-- Behaviors -->
+      <rect x="450" width="210" height="270" rx="14" fill="#161822" stroke="#2B3040" stroke-width="1"/>
+      <rect x="470" y="20" width="28" height="28" rx="8" fill="#1E2332"/>
+      <circle cx="484" cy="34" r="7" fill="none" stroke="#61DAFB" stroke-width="2"/>
+      <text x="506" y="38" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="14" font-weight="700">Behaviors</text>
+      
+      <text x="470" y="74" fill="#C5CBE0" font-family="'Inter', sans-serif" font-size="11">
+        &#8226; Shops primarily during evening commute on mobile.<br/><br/>
+        &#8226; Prefers Apple Pay or Google Pay over entering card details.<br/><br/>
+        &#8226; Bookmark items in wishlist for weekend consideration.
+      </text>
+    </g>
+  </g>
+</svg>

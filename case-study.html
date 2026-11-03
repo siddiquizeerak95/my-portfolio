@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modern E-commerce App — UI/UX Case Study | ZS STUDIO</title>
+  <meta name="description" content="UI/UX Case Study: Modern E-commerce App by Zeerak Siddiqui, UI/UX Designer &amp; Frontend Developer at ZS STUDIO. Comprehensive design process from user research to final UI prototype.">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-case-study" id="top">
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
+
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- SITE HEADER (ZS STUDIO MASTER SPECIFICATION) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Logo + ZS STUDIO Wordmark -->
+        <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="46" height="46" loading="eager">
+          <span class="header-brand-divider" aria-hidden="true"></span>
+          <span class="header-brand-name">ZS STUDIO</span>
+        </a>
+
+        <!-- Center: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item active" aria-current="page">Projects</a></li>
+          <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Social Links & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <div class="header-social-cluster" aria-label="Social Links">
+            <a href="https://github.com/ZeerakSiddiqui" target="_blank" rel="noopener noreferrer" class="header-social-btn" aria-label="GitHub">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="header-social-btn" aria-label="Instagram">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="mailto:zeeraksiddiqui@gmail.com" class="header-social-btn" aria-label="Email">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
+
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
+      <div class="mobile-drawer-inner">
+        <div class="mobile-telemetry-header">
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
+          </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link active" aria-current="page">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link">Blog</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- CASE STUDY HERO BANNER -->
+    <section class="case-study-hero" aria-label="Case Study Header">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb-nav reveal-item" style="margin-bottom: 24px;">
+          <a href="index.html">HOME</a>
+          <span class="sep">/</span>
+          <a href="projects.html">PROJECTS</a>
+          <span class="sep">/</span>
+          <span style="color: var(--accent-red);">CASE STUDY</span>
+        </div>
+
+        <div class="reveal-item" style="margin-bottom: 16px;">
+          <span class="concept-tag-badge">
+            <span class="concept-dot"></span>
+            Mobile App &bull; CONCEPT CASE STUDY
+          </span>
+        </div>
+
+        <h1 class="page-title reveal-item" style="font-size: clamp(2.4rem, 4.8vw, 3.8rem); line-height: 1.1; margin-bottom: 18px;">
+          Modern E-commerce App
+        </h1>
+
+        <p class="case-study-prose reveal-item" style="font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: #C5CBE0; max-width: 860px;">
+          Streamlining mobile product discovery and checkout flows through a high-contrast minimalist design system.
+        </p>
+
+        <!-- Project Metadata Bar -->
+        <div class="case-study-meta-grid reveal-item">
+          <div class="case-study-meta-item">
+            <div class="meta-label">ROLE</div>
+            <div class="meta-val">UI/UX Designer &amp; Prototyper</div>
+          </div>
+          <div class="case-study-meta-item">
+            <div class="meta-label">PROJECT TYPE</div>
+            <div class="meta-val">Concept Design Project</div>
+          </div>
+          <div class="case-study-meta-item">
+            <div class="meta-label">TIMELINE</div>
+            <div class="meta-val">4-Week Sprint (2026)</div>
+          </div>
+          <div class="case-study-meta-item">
+            <div class="meta-label">DESIGN TOOLS</div>
+            <div class="meta-val">Figma, Prototyping, Design System</div>
+          </div>
+        </div>
+
+        <!-- Hero Showcase Mockup -->
+        <div class="case-study-hero-showcase reveal-item">
+          <!-- Figma Placeholder: Replace with exported image from Figma (1200x680) -->
+          <img src="assets/case-study-hero-mockup.svg" alt="Modern E-commerce App Showcase Mockup" width="1200" height="680" loading="eager">
+          <div class="figma-replace-hint">
+            <span>&bull; FIGMA COVER MOCKUP &mdash; Ready for your high-res Figma export</span>
+            <span>Recommended export size: 1200 &times; 680 (WebP / PNG)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 01: PROJECT OVERVIEW -->
+    <section class="case-study-section" aria-label="Project Overview">
+      <div class="container">
+        <div class="case-study-section-header reveal-item">
+          <div class="section-tag-row">
+            <span class="section-red-dot" aria-hidden="true"></span>
+            <span class="section-tag-text">01 // CONTEXT</span>
+          </div>
+          <h2 class="case-study-section-title">Project Overview</h2>
+        </div>
+
+        <div class="case-study-prose reveal-item">
+          <p>
+            In today's digital landscape, mobile users demand uncompromising speed, intentional visual hierarchy, and frictionless interaction patterns. 
+            <strong>Modern E-commerce App</strong> was conceived as a self-initiated exploration to challenge bloated conventional interfaces and reconstruct the experience around human-centered usability, clean typography, and tactile micro-interactions.
+          </p>
+          <p>
+            The project focuses on removing cognitive load at every stage of the user journey—simplifying complex workflows into intuitive, single-handed mobile gestures while reinforcing brand sophistication through subtle dark-mode spatial depth.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 02 & 03: PROBLEM STATEMENT & DESIGN GOALS -->
+    <section class="case-study-section" aria-label="Problem and Goals">
+      <div class="container">
+        <div class="case-study-section-header reveal-item">
+          <div class="section-tag-row">
+            <span class="section-red-dot" aria-hidden="true"></span>
+            <span class="section-tag-text">02 // PROBLEM &amp; OBJECTIVES</span>
+          </div>
+          <h2 class="case-study-section-title">Problem Statement &amp; Design Goals</h2>
+        </div>
+
+        <div class="case-study-duo-grid reveal-item">
+          <!-- Problem Card -->
+          <div class="case-study-panel-card">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E5092B" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              The Problem Statement
+            </h4>
+            <p class="case-study-prose" style="font-size: 14px; margin-bottom: 0;">
+              Users are constantly overwhelmed by aggressive marketing popups, cluttered multi-step checkout funnels, and lack of upfront fee transparency. Research shows that <strong>over 68% of mobile shoppers abandon transactions</strong> due to excessive cognitive friction, forced registration barriers, and unpredictable interface latency.
+            </p>
+          </div>
+
+          <!-- Design Goals Card -->
+          <div class="case-study-panel-card">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00E676" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Target Design Goals
+            </h4>
+            <div style="font-size: 14px; color: #B5B5B5; line-height: 1.7;">
+              <div>&bull; <strong style="color: #F5F5F5;">Frictionless Speed:</strong> Eliminate unnecessary multi-screen transitions in favor of contextual bottom drawers.</div>
+              <div>&bull; <strong style="color: #F5F5F5;">Visual Clarity:</strong> Employ high-contrast Swiss-inspired typography with zero visual clutter.</div>
+              <div>&bull; <strong style="color: #F5F5F5;">Tactile Confidence:</strong> Integrate responsive micro-interactions and instant biometric authorization.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 04: DESIGN PROCESS -->
+    <section class="case-study-section" aria-label="Design Process Framework">
+      <div class="container">
+        <div class="case-study-section-header reveal-item">
+          <div class="section-tag-row">
+            <span class="section-red-dot" aria-hidden="true"></span>
+            <span class="section-tag-text">03 // METHODOLOGY</span>
+          </div>
+          <h2 class="case-study-section-title">Design Process</h2>
+          <p class="case-study-prose">
+            A structured 5-stage iterative product design methodology balancing user empathy with technical feasibility.
+          </p>
+        </div>
+
+        <div class="design-process-stepper reveal-item">
+          <div class="process-step-card">
+            <div class="process-step-num">STAGE 01</div>
+            <div class="process-step-name">Discover</div>
+            <p class="process-step-desc">Target audience interviews, competitive matrix audits, and quantitative friction analysis.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="process-step-num">STAGE 02</div>
+            <div class="process-step-name">Define</div>
+            <p class="process-step-desc">User persona creation, pain point synthesis, and core job-to-be-done (JTBD) frameworks.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="process-step-num">STAGE 03</div>
+            <div class="process-step-name">Ideate</div>
+            <p class="process-step-desc">Low-fidelity paper sketches, user flow mapping, and architectural wireframing in Figma.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="process-step-num">STAGE 04</div>
+            <div class="process-step-name">Prototype</div>
+            <p class="process-step-desc">High-fidelity UI design, atomic component library, responsive auto-layout, and interactive states.</p>
+          </div>
+          <div class="process-step-card">
+            <div class="process-step-num">STAGE 05</div>
+            <div class="process-step-name">Test</div>
+            <p class="process-step-desc">Usability testing sessions, System Usability Scale (SUS) benchmarking, and UI refinement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 05: USER RESEARCH & PERSONA -->
+    <section class="case-study-section" aria-label="User Research and Persona">
+      <div class="container">
+        <div class="case-study-section-header reveal-item">
+          <div class="section-tag-row">
+            <span class="section-red-dot" aria-hidden="true"></span>
+            <span class="section-tag-text">04 // EMPATHY &amp; RESEARCH</span>
+          </div>
+          <h2 class="case-study-section-title">User Research &amp; Target Persona</h2>
+          <p class="case-study-prose">
+            Semi-structured qualitative interviews were conducted across 16 target digital consumers. Insights revealed that users value immediate transparency over discounts, and 82% prefer one-handed bottom drawer navigation over header navigation.
+          </p>
+        </div>
+
+        <!-- Persona Diagram Placeholder -->
+        <div class="figma-placeholder-box reveal-item">
+          <!-- Figma Placeholder: Replace with exported Persona graphic from Figma -->
+          <img src="assets/case-study-persona.svg" alt="User Persona Diagram" width="1000" height="500" loading="lazy">
+          <div class="figma-replace-hint">
+            <span>&bull; USER PERSONA SPECIFICATION &mdash; Replace with your Figma Persona export</span>
+            <span>Recommended format: 1000 &times; 500 (WebP / PNG)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 06: WIREFRAMES & USER FLOW -->
+    <section class="case-study-section" aria-label="Wireframes and Architecture">
+      <div class="container">
+        <div class="case-study-section-header reveal-item">
+          <div class="section-tag-row">
+            <span class="section-red-dot" aria-hidden="true"></span>
+            <span class="section-tag-text">05 // ARCHITECTURE</span>
+          </div>
+          <h2 class="case-study-section-title">Wireframes &amp; Information Architecture</h2>
+          <p class="case-study-prose">
+            Low-fidelity wireframing explored rapid layout variations to test thumb-reach zones and visual hierarchy. By prioritizing essential product attributes and housing secondary details inside expandable sheets, screen transitions were reduced by 60%.
+          </p>
+        </div>
+
+        <!-- Wireframes Diagram Placeholder -->
+        <div class="figma-placeholder-box reveal-item">
+          <!-- Figma Placeholder: Replace with exported Wireframes from Figma -->
+          <img src="assets/case-study-wireframes.svg" alt="Low-Fidelity Wireframes Flow" width="1000" height="520" loading="lazy">
+          <div class="figma-replace-hint">
+            <span>&bull; LOW-FIDELITY WIREFRAME ARCHITECTURE &mdash; Replace with your Figma wireframe layout</span>
+            <span>Recommended format: 1000 &times; 520 (WebP / PNG)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 07: DESIGN SYSTEM & FINAL UI -->
+    <section class="case-study-section" aria-label="Design System and Final UI">
+      <div class="container">
+        <div class="case-study-section-header reveal-item">
+          <div class="section-tag-row">
+            <span class="section-red-dot" aria-hidden="true"></span>
+            <span class="section-tag-text">06 // VISUAL EXECUTION</span>
+          </div>
+          <h2 class="case-study-section-title">Design System &amp; Final UI Design</h2>
+          <p class="case-study-prose">
+            A cohesive design system was crafted in Figma utilizing auto-layout tokens, fluid type curves, and semantic component variants. The monochrome base allows product imagery to stand out effortlessly, while subtle crimson accents (#E5092B) guide the user's focus directly toward actionable primary goals.
+          </p>
+        </div>
+
+        <!-- Design System Spec Placeholder -->
+        <div class="figma-placeholder-box reveal-item">
+          <!-- Figma Placeholder: Replace with exported Design System sheet from Figma -->
+          <img src="assets/case-study-design-system.svg" alt="Design System and Component Library" width="1000" height="500" loading="lazy">
+          <div class="figma-replace-hint">
+            <span>&bull; DESIGN SYSTEM &amp; TOKENS &mdash; Replace with your Figma Component Library export</span>
+            <span>Recommended format: 1000 &times; 500 (WebP / PNG)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 08: FINAL OUTCOME & LEARNINGS -->
+    <section class="case-study-section" aria-label="Final Outcome and Results">
+      <div class="container">
+        <div class="case-study-section-header reveal-item">
+          <div class="section-tag-row">
+            <span class="section-red-dot" aria-hidden="true"></span>
+            <span class="section-tag-text">07 // OUTCOME &amp; IMPACT</span>
+          </div>
+          <h2 class="case-study-section-title">Final Outcome &amp; Usability Validation</h2>
+          <p class="case-study-prose">
+            Interactive prototypes were tested against real users performing end-to-end task flows. The streamlined drawer checkout and transparent shipping communication yielded a <strong>3.2&times; reduction in task completion time</strong> with zero checkout abandonment.
+          </p>
+        </div>
+
+        <!-- Metrics Graph Placeholder -->
+        <div class="figma-placeholder-box reveal-item">
+          <!-- Figma Placeholder: Replace with exported metrics / results graphic from Figma -->
+          <img src="assets/case-study-metrics.svg" alt="Usability Testing Metrics" width="1000" height="450" loading="lazy">
+          <div class="figma-replace-hint">
+            <span>&bull; TESTING OUTCOMES &amp; SYSTEM USABILITY SCORE (SUS) &mdash; Replace with your project findings</span>
+            <span>Recommended format: 1000 &times; 450 (WebP / PNG)</span>
+          </div>
+        </div>
+
+        <!-- Project Reflection & Learnings -->
+        <div class="case-study-panel-card reveal-item" style="margin-top: 36px;">
+          <h4>Key Design Reflection</h4>
+          <p class="case-study-prose" style="font-size: 14.5px; margin-bottom: 0;">
+            This concept affirmed that minimalist visual design must be rooted in rigorous UX architecture. By understanding the real friction points of users, aesthetics become functional tools that elevate usability, boost trust, and transform everyday digital interactions into memorable experiences.
+          </p>
+        </div>
+
+        <!-- Navigation Buttons: Back to Projects & Next Case Study -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 50px;" class="reveal-item">
+          <a href="projects.html" class="btn-pill-grey" style="min-width: 200px;">
+            <span>&larr; Back to Selected Works</span>
+          </a>
+          <a href="case-study-finance.html" class="btn-pill-grey" style="min-width: 240px; text-align: right;">
+            <span>Next: Personal Finance Dashboard &rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER (ZS STUDIO MASTER SPECIFICATION) -->
+  <footer class="site-footer" id="site-footer">
+    <div class="container footer-content-container">
+      <div class="footer-main-bar">
+        <!-- Left: Brand Logo & Wordmark -->
+        <a href="index.html" class="footer-brand-lockup" aria-label="ZS STUDIO Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="eager">
+          <span class="footer-brand-divider" aria-hidden="true"></span>
+          <span class="footer-brand-name">ZS STUDIO</span>
+        </a>
+
+        <!-- Center: Navigation Links -->
+        <nav class="footer-center-nav" aria-label="Footer Navigation">
+          <ul class="footer-nav-list">
+            <li><a href="index.html" class="footer-nav-link">Home</a></li>
+            <li><a href="about.html" class="footer-nav-link">About</a></li>
+            <li><a href="projects.html" class="footer-nav-link">Projects</a></li>
+            <li><a href="skills.html" class="footer-nav-link">Skills</a></li>
+            <li><a href="blog.html" class="footer-nav-link">Blog</a></li>
+            <li><a href="contact.html" class="footer-nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: Social Media Icons -->
+        <div class="footer-social-cluster" aria-label="Social Profiles">
+          <a href="https://github.com/ZeerakSiddiqui" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="GitHub Profile">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram Profile @_siddiqui_._zeerak_">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="mailto:zeeraksiddiqui@gmail.com" class="social-circle-btn" aria-label="Email Zeerak Siddiqui">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-tagline-bar">
+        <p class="footer-creative-tagline">Building digital experiences with code and creativity.</p>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-copy-left">
+          &copy; <span id="current-year">2026</span> Zeerak Siddiqui. All rights reserved.
+        </div>
+        <div class="footer-crafted-right">
+          <span>Made with <span class="heart-symbol" style="color: var(--accent-red);" aria-hidden="true">&hearts;</span> and Coffee</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Orchestrator (ES Module) -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

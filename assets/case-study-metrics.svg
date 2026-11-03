@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="mGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141622"/>
+      <stop offset="100%" stop-color="#0A0B10"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="450" rx="16" fill="url(#mGrad)" stroke="#2B3040" stroke-width="1.5"/>
+
+  <!-- Top Header -->
+  <g transform="translate(48, 40)">
+    <text x="0" y="20" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="18" font-weight="700">Usability Testing Outcomes &amp; Performance Metrics</text>
+    <text x="0" y="38" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">Empirical testing conducted across 16 target users navigating product discovery to checkout</text>
+  </g>
+
+  <!-- 3 Big Metric Cards -->
+  <g transform="translate(48, 110)">
+    <!-- Metric 1 -->
+    <rect width="280" height="150" rx="14" fill="#181B26" stroke="#2E3446" stroke-width="1"/>
+    <text x="24" y="36" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">CHECKOUT SPEEDUP</text>
+    <text x="24" y="85" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-size="44" font-weight="700">3.2&#215;</text>
+    <text x="140" y="80" fill="#00E676" font-family="'Inter', sans-serif" font-size="14" font-weight="700">&#8593; Faster</text>
+    <text x="24" y="124" fill="#C5CBE0" font-family="'Inter', sans-serif" font-size="11">Reduced time to purchase from 115s to 36s</text>
+
+    <!-- Metric 2 -->
+    <rect x="310" width="280" height="150" rx="14" fill="#181B26" stroke="#2E3446" stroke-width="1"/>
+    <text x="334" y="36" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">TASK COMPLETION</text>
+    <text x="334" y="85" fill="#FFFFFF" font-family="'Space Grotesk', sans-serif" font-size="44" font-weight="700">96.8%</text>
+    <text x="495" y="80" fill="#00E676" font-family="'Inter', sans-serif" font-size="14" font-weight="700">&#8593; +24%</text>
+    <text x="334" y="124" fill="#C5CBE0" font-family="'Inter', sans-serif" font-size="11">Zero users abandoned during payment flow</text>
+
+    <!-- Metric 3 -->
+    <rect x="620" width="280" height="150" rx="14" fill="#181B26" stroke="#2E3446" stroke-width="1"/>
+    <text x="644" y="36" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">SUS USABILITY SCORE</text>
+    <text x="644" y="85" fill="#E5092B" font-family="'Space Grotesk', sans-serif" font-size="44" font-weight="700">92/100</text>
+    <text x="795" y="80" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="14" font-weight="700">Grade A+</text>
+    <text x="644" y="124" fill="#C5CBE0" font-family="'Inter', sans-serif" font-size="11">Industry benchmark average is 68</text>
+  </g>
+
+  <!-- Key Takeaway Banner -->
+  <g transform="translate(48, 290)">
+    <rect width="904" height="110" rx="14" fill="#1A1E2B" stroke="#333A4D" stroke-width="1"/>
+    <text x="28" y="34" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="700">Key Design Takeaway &amp; Insight</text>
+    <text x="28" y="62" fill="#B5BED6" font-family="'Inter', sans-serif" font-size="12" line-height="1.6">
+      Eliminating multi-screen transitions in favor of an expandable drawer checkout significantly reduced user hesitation. 
+      Clear shipping fee transparency from the initial product card eliminated cart abandonment spikes.
+    </text>
+  </g>
+</svg>

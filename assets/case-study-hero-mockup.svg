@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="csHeroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161822"/>
+      <stop offset="100%" stop-color="#0A0B10"/>
+    </linearGradient>
+    <radialGradient id="csHeroGlow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="rgba(229, 9, 43, 0.22)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <filter id="csShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="32" flood-color="#000000" flood-opacity="0.75"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="680" rx="20" fill="url(#csHeroGrad)"/>
+  <circle cx="600" cy="340" r="420" fill="url(#csHeroGlow)"/>
+
+  <!-- Figma Replacement Notice Banner -->
+  <g transform="translate(40, 36)">
+    <rect width="360" height="34" rx="17" fill="#1C202C" stroke="#333A4D" stroke-width="1"/>
+    <circle cx="17" cy="17" r="5" fill="#E5092B"/>
+    <text x="32" y="22" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">FIGMA PLACEHOLDER &#8226; 1200 &#215; 680</text>
+  </g>
+
+  <!-- Left Phone: Product Detail Sheet -->
+  <g transform="translate(220, 90)" filter="url(#csShadow)">
+    <rect width="320" height="520" rx="38" fill="#0E1015" stroke="#363C4E" stroke-width="2.5"/>
+    <rect x="8" y="8" width="304" height="504" rx="30" fill="#13161F"/>
+    <!-- Island -->
+    <rect x="110" y="16" width="100" height="20" rx="10" fill="#08090C"/>
+    
+    <text x="24" y="65" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">COLLECTION 2026</text>
+    <text x="24" y="90" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="18" font-weight="700">Chronos Kinetic 01</text>
+    
+    <!-- Hero Product Visual Box -->
+    <rect x="20" y="110" width="264" height="200" rx="16" fill="#1A1E29" stroke="#2B3040" stroke-width="1"/>
+    <path d="M50 210 C90 170, 160 160, 200 200 L250 200 C255 200, 260 205, 260 215 L260 225 C250 235, 180 240, 50 230 Z" fill="#E5092B"/>
+    
+    <!-- Size Selector -->
+    <text x="24" y="340" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">SELECT SIZE (EU)</text>
+    <g transform="translate(24, 355)">
+      <rect width="40" height="34" rx="8" fill="#E5092B"/>
+      <text x="13" y="22" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="700">41</text>
+      <rect x="50" width="40" height="34" rx="8" fill="#1C202C" stroke="#2D3344" stroke-width="1"/>
+      <text x="63" y="22" fill="#8E97B0" font-family="'Inter', sans-serif" font-size="12">42</text>
+      <rect x="100" width="40" height="34" rx="8" fill="#1C202C" stroke="#2D3344" stroke-width="1"/>
+      <text x="113" y="22" fill="#8E97B0" font-family="'Inter', sans-serif" font-size="12">43</text>
+      <rect x="150" width="40" height="34" rx="8" fill="#1C202C" stroke="#2D3344" stroke-width="1"/>
+      <text x="163" y="22" fill="#8E97B0" font-family="'Inter', sans-serif" font-size="12">44</text>
+    </g>
+
+    <!-- Buy Button -->
+    <rect x="24" y="420" width="256" height="46" rx="12" fill="#202430" stroke="#3E465B" stroke-width="1.2"/>
+    <text x="80" y="448" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="700">ADD TO CART &#8226; $280</text>
+  </g>
+
+  <!-- Right Phone: Checkout & One-Click Auth -->
+  <g transform="translate(620, 90)" filter="url(#csShadow)">
+    <rect width="320" height="520" rx="38" fill="#0E1015" stroke="#363C4E" stroke-width="2.5"/>
+    <rect x="8" y="8" width="304" height="504" rx="30" fill="#13161F"/>
+    <!-- Island -->
+    <rect x="110" y="16" width="100" height="20" rx="10" fill="#08090C"/>
+
+    <text x="24" y="65" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">EXPRESS CHECKOUT</text>
+    <text x="24" y="90" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="18" font-weight="700">Order Summary</text>
+
+    <!-- Item in cart -->
+    <rect x="20" y="110" width="264" height="90" rx="14" fill="#1A1E29" stroke="#2B3040" stroke-width="1"/>
+    <rect x="34" y="125" width="60" height="60" rx="10" fill="#242938"/>
+    <text x="106" y="146" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="600">Chronos 01</text>
+    <text x="106" y="164" fill="#8E97B0" font-family="'Inter', sans-serif" font-size="11">Size 41 &#8226; Stealth Black</text>
+    <text x="106" y="184" fill="#E5092B" font-family="'Inter', sans-serif" font-size="13" font-weight="700">$280.00</text>
+
+    <!-- Shipping Method -->
+    <rect x="20" y="215" width="264" height="60" rx="12" fill="#161822" stroke="#2B3040" stroke-width="1"/>
+    <circle cx="44" cy="245" r="8" fill="#E5092B"/>
+    <circle cx="44" cy="245" r="3" fill="#FFFFFF"/>
+    <text x="64" y="242" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">DHL Express Next-Day</text>
+    <text x="64" y="258" fill="#00E676" font-family="'Inter', sans-serif" font-size="11">Complimentary</text>
+
+    <!-- Payment Auth Badge -->
+    <rect x="20" y="290" width="264" height="100" rx="14" fill="#1C202C" stroke="#333A4D" stroke-width="1"/>
+    <text x="36" y="320" fill="#8891A8" font-family="'Inter', sans-serif" font-size="11">BIOMETRIC AUTHENTICATION</text>
+    <circle cx="60" cy="355" r="16" fill="#252B3C"/>
+    <path d="M55 352 C55 347, 65 347, 65 352 C65 358, 55 358, 55 363" fill="none" stroke="#E5092B" stroke-width="1.8"/>
+    <text x="90" y="360" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Double Click to Pay</text>
+
+    <!-- Pay Button -->
+    <rect x="24" y="420" width="256" height="46" rx="12" fill="#202430" stroke="#3E465B" stroke-width="1.2"/>
+    <text x="80" y="448" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="700">CONFIRM &amp; PAY &#8226; $280</text>
+  </g>
+</svg>

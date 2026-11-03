@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Projects — Zeerak Siddiqui</title>
+  <meta name="title" content="Projects — Zeerak Siddiqui">
+  <meta name="description" content="Selected projects, software creations, and web experiments by Zeerak Siddiqui.">
+  <meta name="author" content="Zeerak Siddiqui">
+  <meta name="theme-color" content="#080808">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects — Zeerak Siddiqui">
+  <meta property="og:description" content="Technical portfolio of creative web experiences and software projects by Zeerak Siddiqui.">
+  <meta property="og:image" content="./Profile%20Pic.jpg">
+
+  <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="./zs-monogram.svg">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+
+  <!-- Google Fonts Preconnect & Curated Modern Typography (Luxury Editorial Serif & Swiss Minimalism) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="projects">
+  <!-- Skip Navigation for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
+
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
+  <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
+  </div>
+
+  <!-- SITE HEADER (REFERENCE SPECIFICATION) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+      <nav class="header-nav" aria-label="Main Navigation">
+        <!-- Far Left: ZS Logo + ZS STUDIO Wordmark -->
+        <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" loading="eager">
+          <span class="header-brand-divider" aria-hidden="true"></span>
+          <span class="header-brand-name">ZS STUDIO</span>
+        </a>
+
+        <!-- Center / Main: Horizontal Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-item">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="projects.html" class="nav-item active" aria-current="page">Projects</a></li>
+          <li><a href="skills.html" class="nav-item">Skills</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
+          <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <!-- Right Side: Theme Controls & Mobile Toggle -->
+        <div class="header-controls">
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span class="theme-indicator-dot" aria-hidden="true"></span>
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-drawer"
+            aria-label="Toggle Navigation Menu">
+            <span class="hamburger-bar bar-1"></span>
+            <span class="hamburger-bar bar-2"></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop" aria-hidden="true"></div>
+      <div class="mobile-drawer-inner">
+        <div class="mobile-telemetry-header">
+          <div class="mobile-brand-mini">
+            <span>MENU</span>
+          </div>
+          <button class="mobile-close" id="mobile-close" aria-label="Close Navigation Menu">[ ✕ ]</button>
+        </div>
+
+        <ul class="mobile-nav-links">
+          <li><a href="index.html" class="mobile-link">Home</a></li>
+          <li><a href="about.html" class="mobile-link">About</a></li>
+          <li><a href="projects.html" class="mobile-link active" aria-current="page">Projects</a></li>
+          <li><a href="skills.html" class="mobile-link">Skills</a></li>
+          <li><a href="blog.html" class="mobile-link">Blog</a></li>
+          <li><a href="contact.html" class="mobile-link">Contact</a></li>
+        </ul>
+
+        <div class="mobile-drawer-footer">
+          <a href="contact.html" class="btn-drawer-cta">
+            <span>CONTACT ME ↗</span>
+          </a>
+
+          <div class="drawer-contact-links">
+            <a href="tel:+919580912686" class="drawer-link-btn" aria-label="Call +91 9580912686">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              <span>+91 9580912686</span>
+            </a>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="drawer-link-btn" aria-label="Visit Zeerak on Instagram: @_siddiqui_._zeerak_">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              <span>@_siddiqui_._zeerak_</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- SUBPAGE HERO BANNER -->
+    <section class="page-hero-banner" aria-label="Projects Page Introduction">
+      <div class="container">
+        <div class="breadcrumb-nav reveal-item">
+          <a href="index.html">HOME</a>
+          <span class="sep">/</span>
+          <span>PROJECTS</span>
+        </div>
+        <h1 class="page-title reveal-item">
+          Selected Creations &amp; Labs.
+        </h1>
+        <p class="page-lead reveal-item">
+          A collection of real-world projects and software laboratories engineered from first principles—combining procedural systems logic with luxury creative web experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION: 3D GLASS CARDS SHOWCASE -->
+    <section class="section" aria-label="Projects Archive">
+      <div class="container">
+        <!-- Category Filter Pills -->
+        <div class="skills-filter-row reveal-item" style="justify-content: flex-start; margin-bottom: 40px;" role="tablist" aria-label="Project categories">
+          <button class="skills-filter-pill active" data-filter="all" role="tab" aria-selected="true">All Creations</button>
+          <button class="skills-filter-pill" data-filter="active" role="tab" aria-selected="false">Active Experiences</button>
+          <button class="skills-filter-pill" data-filter="lab" role="tab" aria-selected="false">Upcoming Labs</button>
+        </div>
+
+        <!-- 3D Showcase Grid of Master Cards -->
+        <div class="projects-showcase-grid">
+          <!-- Project 01: The Living Portfolio -->
+          <article class="project-card-glass-body reveal-item" data-category="active" data-tilt>
+            <div class="project-card-top-meta">
+              <span class="project-counter-tag">01 / 04</span>
+              <div class="project-live-indicator">
+                <span class="pulse-dot"></span>
+                <span>ACTIVE EXPERIENCE</span>
+              </div>
+            </div>
+
+            <div class="project-preview-mockup">
+              <img src="assets/project-portfolio-preview.svg" alt="Portfolio Website Mockup Preview" class="project-preview-img" width="560" height="315" loading="eager">
+            </div>
+
+            <h2 class="project-headline-title">Portfolio Website</h2>
+            <p class="project-summary-copy">
+              A modern and responsive portfolio built with vanilla technologies. Designed and engineered from first principles as a bespoke monochrome studio. Features a mathematical fluid clamp scale, pure semantic DOM structuring, real-time telemetry, and interactive 3D perspective depth with zero runtime framework bloat.
+            </p>
+
+            <div class="project-tags-capsule-row">
+              <span class="capsule-tag">HTML5</span>
+              <span class="capsule-tag">CSS3 Clamp</span>
+              <span class="capsule-tag">JavaScript (ES6+)</span>
+              <span class="capsule-tag">WebGL</span>
+              <span class="capsule-tag">Zero Bloat</span>
+            </div>
+
+            <div class="project-action-links">
+              <a href="index.html" class="project-cta-link">
+                <span>View Project &rarr;</span>
+              </a>
+              <a href="about.html" class="project-secondary-link">
+                <span>System Dossier ↗</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 02: Algo.Core Visualizer -->
+          <article class="project-card-glass-body reveal-item" data-category="lab" data-tilt>
+            <div class="project-card-top-meta">
+              <span class="project-counter-tag">02 / 04</span>
+              <div class="project-live-indicator">
+                <span class="pulse-dot" style="background: #3b82f6; box-shadow: 0 0 8px #3b82f6;"></span>
+                <span>PROTOTYPE PHASE</span>
+              </div>
+            </div>
+
+            <div class="project-preview-mockup">
+              <img src="assets/project-matrix-preview.svg" alt="Algo Core Matrix Preview" class="project-preview-img" width="560" height="315" loading="eager">
+            </div>
+
+            <h2 class="project-headline-title">Algo.Core Visualizer</h2>
+            <p class="project-summary-copy">
+              An interactive educational visualizer bridging procedural algorithms written in C with real-time web canvas rendering. Designed to illustrate sorting dynamics (QuickSort, MergeSort), pointer traversals across linked lists, and call stack memory behaviors.
+            </p>
+
+            <div class="project-tags-capsule-row">
+              <span class="capsule-tag">C Programming</span>
+              <span class="capsule-tag">Canvas 2D API</span>
+              <span class="capsule-tag">Algorithms</span>
+              <span class="capsule-tag">Data Structures</span>
+            </div>
+
+            <div class="project-action-links">
+              <span class="project-cta-link" style="opacity: 0.8; cursor: default;">
+                <span>Prototype In Dev &bull; 2026</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Project 03: Kinetic Geometry -->
+          <article class="project-card-glass-body reveal-item" data-category="lab" data-tilt>
+            <div class="project-card-top-meta">
+              <span class="project-counter-tag">03 / 04</span>
+              <div class="project-live-indicator">
+                <span class="pulse-dot" style="background: #8b5cf6; box-shadow: 0 0 8px #8b5cf6;"></span>
+                <span>RESEARCH STAGE</span>
+              </div>
+            </div>
+
+            <div class="project-preview-mockup">
+              <img src="assets/project-3d-preview.svg" alt="Kinetic Geometry 3D Shader Preview" class="project-preview-img" width="560" height="315" loading="eager">
+            </div>
+
+            <h2 class="project-headline-title">Kinetic Geometry Lab</h2>
+            <p class="project-summary-copy">
+              Upcoming research into procedural mathematical geometry, custom GLSL fragment shaders, and hardware-accelerated vertex displacement in the browser. Exploring how mathematical curves like Lissajous figures and Mobius strips can be rendered interactively.
+            </p>
+
+            <div class="project-tags-capsule-row">
+              <span class="capsule-tag">WebGL</span>
+              <span class="capsule-tag">GLSL Shaders</span>
+              <span class="capsule-tag">Three.js</span>
+              <span class="capsule-tag">Procedural Math</span>
+            </div>
+
+            <div class="project-action-links">
+              <span class="project-cta-link" style="opacity: 0.8; cursor: default;">
+                <span>Research Lab &bull; 2026</span>
+              </span>
+            </div>
+          </article>
+
+          <!-- Project 04: Full-Stack Systems -->
+          <article class="project-card-glass-body reveal-item" data-category="lab" data-tilt>
+            <div class="project-card-top-meta">
+              <span class="project-counter-tag">04 / 04</span>
+              <div class="project-live-indicator">
+                <span class="pulse-dot" style="background: #eab308; box-shadow: 0 0 8px #eab308;"></span>
+                <span>ARCHITECTURE PHASE</span>
+              </div>
+            </div>
+
+            <div class="project-preview-mockup">
+              <img src="assets/project-fullstack-preview.svg" alt="Full Stack Systems Preview" class="project-preview-img" width="560" height="315" loading="eager">
+            </div>
+
+            <h2 class="project-headline-title">Full-Stack Architecture</h2>
+            <p class="project-summary-copy">
+              Exploring decoupled client-server communications, semantic REST endpoints, robust error propagation models, and lightweight persistent databases engineered for minimal latency and strict data validation.
+            </p>
+
+            <div class="project-tags-capsule-row">
+              <span class="capsule-tag">Node.js</span>
+              <span class="capsule-tag">REST API</span>
+              <span class="capsule-tag">Systems Logic</span>
+              <span class="capsule-tag">JSON Schema</span>
+            </div>
+
+            <div class="project-action-links">
+              <span class="project-cta-link" style="opacity: 0.8; cursor: default;">
+                <span>Architecture Study &bull; 2026</span>
+              </span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SHARED FOOTER & ARCHITECTURAL HORIZON (REFERENCE SECTION 07) -->
+  <footer class="site-footer" id="site-footer">
+    <!-- 3D Wave Horizon Ribbon with Planet Background -->
+    <div class="footer-horizon-stage" aria-hidden="true">
+      <img src="assets/footer-horizon-waves.svg" alt="3D Horizon Wave Mesh" class="footer-horizon-svg" width="1440" height="220" loading="eager">
+      <div class="footer-horizon-radial-sheen"></div>
+    </div>
+
+    <div class="container footer-content-container">
+      <!-- Main Horizontal Row -->
+      <div class="footer-main-bar">
+        <!-- Left: Brand Logo & Wordmark -->
+        <a href="index.html" class="footer-brand-lockup" aria-label="ZEERAK Homepage">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="eager">
+          <span class="footer-brand-divider" aria-hidden="true"></span>
+          <span class="footer-brand-name">ZEERAK</span>
+        </a>
+
+        <!-- Center: Navigation Links -->
+        <nav class="footer-center-nav" aria-label="Footer Navigation">
+          <ul class="footer-nav-list">
+            <li><a href="index.html" class="footer-nav-link">Home</a></li>
+            <li><a href="about.html" class="footer-nav-link">About</a></li>
+            <li><a href="projects.html" class="footer-nav-link">Projects</a></li>
+            <li><a href="skills.html" class="footer-nav-link">Skills</a></li>
+            <li><a href="blog.html" class="footer-nav-link">Blog</a></li>
+            <li><a href="contact.html" class="footer-nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: Social Media Icons in Frosted Circles -->
+        <div class="footer-social-cluster" aria-label="Social Profiles">
+          <!-- GitHub -->
+          <a href="https://github.com/ZeerakSiddiqui" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="GitHub Profile">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram Profile @_siddiqui_._zeerak_">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/zeerak-siddiqui" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="LinkedIn Profile">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://youtube.com/@zeeraksiddiqui" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="YouTube Channel">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor"></polygon>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Tagline Row -->
+      <div class="footer-tagline-bar">
+        <p class="footer-creative-tagline">Building digital experiences with code and creativity.</p>
+      </div>
+
+      <!-- Bottom Colophon Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-copy-left">
+          &copy; <span id="current-year">2026</span> Zeerak Siddiqui. All rights reserved.
+        </div>
+        <div class="footer-crafted-right">
+          <span>Made with <span class="heart-symbol" aria-hidden="true">&hearts;</span> and Coffee</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript Orchestrator (ES Module) -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>
+
+</html>

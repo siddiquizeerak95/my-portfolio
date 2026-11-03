@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141720"/>
+      <stop offset="100%" stop-color="#0B0D13"/>
+    </linearGradient>
+    <radialGradient id="phoneGlow" cx="50%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="rgba(229, 9, 43, 0.15)"/>
+      <stop offset="100%" stop-color="transparent"/>
+    </radialGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#242834"/>
+      <stop offset="100%" stop-color="#181B24"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#000000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  <circle cx="400" cy="250" r="320" fill="url(#phoneGlow)"/>
+
+  <!-- Subtle Perspective Grid -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="420" x2="800" y2="420"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="0" y1="480" x2="800" y2="480"/>
+    <line x1="100" y1="500" x2="250" y2="400"/>
+    <line x1="300" y1="500" x2="350" y2="400"/>
+    <line x1="500" y1="500" x2="450" y2="400"/>
+    <line x1="700" y1="500" x2="550" y2="400"/>
+  </g>
+
+  <!-- Tag Pill Top Left -->
+  <g transform="translate(36, 36)">
+    <rect width="170" height="28" rx="14" fill="#1C202C" stroke="#333A4D" stroke-width="1"/>
+    <circle cx="14" cy="14" r="4" fill="#E5092B"/>
+    <text x="26" y="18" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="1">CONCEPT DESIGN</text>
+  </g>
+
+  <!-- Floating Mobile Mockup Center Left -->
+  <g transform="translate(250, 45)" filter="url(#softShadow)">
+    <!-- Device Frame -->
+    <rect width="300" height="420" rx="36" fill="#0E1015" stroke="#363C4E" stroke-width="2.5"/>
+    <rect x="8" y="8" width="284" height="404" rx="28" fill="#13161F"/>
+
+    <!-- Dynamic Island / Speaker -->
+    <rect x="105" y="16" width="90" height="18" rx="9" fill="#08090C"/>
+    <circle cx="178" cy="25" r="3.5" fill="#1B1E28"/>
+
+    <!-- App Top Bar -->
+    <text x="24" y="60" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="15" font-weight="700">AURA STORE</text>
+    <rect x="236" y="47" width="28" height="28" rx="8" fill="#202430"/>
+    <path d="M246 56 h8 v10 h-8 z" fill="none" stroke="#F5F5F5" stroke-width="1.5"/>
+
+    <!-- Search Bar -->
+    <rect x="20" y="80" width="244" height="32" rx="10" fill="#1B1F2B" stroke="#2D3344" stroke-width="1"/>
+    <text x="36" y="101" fill="#7C849B" font-family="'Inter', sans-serif" font-size="11">Search luxury essentials...</text>
+
+    <!-- Categories -->
+    <rect x="20" y="122" width="60" height="22" rx="11" fill="#E5092B"/>
+    <text x="35" y="137" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="10" font-weight="600">All</text>
+    <rect x="86" y="122" width="76" height="22" rx="11" fill="#1B1F2B" stroke="#2D3344" stroke-width="1"/>
+    <text x="98" y="137" fill="#A0A8C0" font-family="'Inter', sans-serif" font-size="10">Apparel</text>
+    <rect x="168" y="122" width="76" height="22" rx="11" fill="#1B1F2B" stroke="#2D3344" stroke-width="1"/>
+    <text x="180" y="137" fill="#A0A8C0" font-family="'Inter', sans-serif" font-size="10">Footwear</text>
+
+    <!-- Featured Product Card -->
+    <rect x="20" y="156" width="244" height="154" rx="18" fill="url(#cardGrad)" stroke="#32384A" stroke-width="1"/>
+    <!-- Mockup Sneaker Geometry -->
+    <path d="M50 230 C80 200, 140 190, 180 220 L230 220 C235 220, 240 225, 240 235 L240 245 C230 252, 170 255, 50 248 Z" fill="#E5092B" opacity="0.9"/>
+    <path d="M120 205 L170 200 L165 220 Z" fill="#FFFFFF" opacity="0.8"/>
+    <text x="36" y="186" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="13" font-weight="700">Chronos Kinetic 01</text>
+    <text x="36" y="202" fill="#8F98B2" font-family="'Inter', sans-serif" font-size="10">Minimalist Performance Footwear</text>
+    <text x="36" y="292" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="14" font-weight="700">$280</text>
+    <rect x="184" y="272" width="68" height="28" rx="8" fill="#1E222D" stroke="#3D4559" stroke-width="1"/>
+    <text x="198" y="290" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="10" font-weight="600">ADD +</text>
+
+    <!-- Bottom Navigation Bar -->
+    <rect x="20" y="360" width="244" height="40" rx="20" fill="#10121A" stroke="#2B3040" stroke-width="1"/>
+    <circle cx="56" cy="380" r="5" fill="#E5092B"/>
+    <circle cx="106" cy="380" r="4" fill="#586177"/>
+    <circle cx="156" cy="380" r="4" fill="#586177"/>
+    <circle cx="206" cy="380" r="4" fill="#586177"/>
+  </g>
+
+  <!-- Side Floating Card (Detail Sheet) -->
+  <g transform="translate(580, 110)" filter="url(#softShadow)">
+    <rect width="180" height="230" rx="18" fill="#171A24" stroke="#343B4E" stroke-width="1.5"/>
+    <text x="20" y="34" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="700">Checkout Flow</text>
+    <rect x="20" y="48" width="140" height="2" fill="#E5092B"/>
+    
+    <text x="20" y="76" fill="#8E97B0" font-family="'Inter', sans-serif" font-size="10">Subtotal</text>
+    <text x="135" y="76" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="10" font-weight="600">$280.00</text>
+    <text x="20" y="98" fill="#8E97B0" font-family="'Inter', sans-serif" font-size="10">Express Shipping</text>
+    <text x="145" y="98" fill="#00E676" font-family="'Inter', sans-serif" font-size="10">FREE</text>
+    <line x1="20" y1="116" x2="160" y2="116" stroke="#2B3040" stroke-width="1"/>
+    
+    <text x="20" y="138" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="11" font-weight="700">Total</text>
+    <text x="120" y="138" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="700">$280.00</text>
+    
+    <rect x="20" y="160" width="140" height="34" rx="8" fill="#202430" stroke="#3F465C" stroke-width="1"/>
+    <text x="45" y="181" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="10" font-weight="600">1-CLICK PAY ↗</text>
+  </g>
+</svg>

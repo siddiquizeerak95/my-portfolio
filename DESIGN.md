@@ -1,11 +1,11 @@
-# DESIGN SPECIFICATION: DARK CINEMATIC MINIMALISM — BLACK & WHITE EDITION
-### Authoritative Architecture for ZS Studio — Zeerak Shafique
+# DESIGN SPECIFICATION: HYBRID 3D PERSPECTIVE & SWISS MINIMALISM
+### Authoritative Architecture for ZEERAK — Zeerak Siddiqui
 
-**Project:** ZS Studio — Zeerak Shafique Personal Portfolio  
+**Project:** ZS Studio — Zeerak Siddiqui Personal Portfolio  
 **Live Site:** [https://zsstudio.netlify.app/](https://zsstudio.netlify.app/)  
 **Role:** Creative Developer & Bachelor of Computer Applications (BCA) Student  
-**Status:** Authoritative Master Design Specification (v9.0 Black & White Minimalist Edition)  
-**Direction:** Dark Cinematic Minimalism inspired by premium editorial portfolios  
+**Status:** Authoritative Master Design Specification (v10.0 Hybrid 3D Perspective Edition)  
+**Direction:** Hybrid 3D Perspective + Swiss Minimalism + Elegant Luxury Typography + Cinematic Monochrome  
 
 ---
 
@@ -16,7 +16,7 @@
 2. **Strictly Monochromatic:** Use ONLY black, white, and neutral gray. Zero cyan, blue, gold, yellow, or colorful gradients. Zero neon glows or artificial telemetry badges.
 3. **Generous Whitespace & Balance:** Large confident headings, readable body paragraphs, clean rectangular geometry, and subtle borders.
 4. **Natural Grayscale Imagery:** Monochromatic portrait photography with natural tone curves rather than artificial glowing borders.
-5. **Immediate Access & Purposeful Motion:** Zero distracting loading preloader screens that delay content. Gentle fade-in scroll reveals, smooth link transitions, and hardware-accelerated micro-interactions.
+5. **Cinematic Particle Loading Screen & Purposeful Motion:** A signature full-screen Canvas 2D particle loading screen (`#050505`) with gentle orbital monochrome dust, centered ZS logo, ZEERAK wordmark, "LOADING EXPERIENCE" telemetry, and real asset tracking (DOM, fonts, critical images) that transitions seamlessly into the homepage hero. Gentle fade-in scroll reveals, restrained 3D card tilt with specular glare, and desktop hero mouse parallax.
 
 ### 1.2 Truthfulness & Content Authenticity
 - Authentic academic context: Undergraduate BCA student studying computer applications, low-level programming in C, and modern web standards.
@@ -25,28 +25,41 @@
 
 ---
 
-## 2. COLOR TOKEN SYSTEM
+## 2. COLOR TOKEN SYSTEM & HYBRID 3D MATRICES
 
+### 2.1 Dark Mode Tokens (Primary Atmospheric Canvas)
 | Token Name | Exact HEX | Architectural Purpose |
 | :--- | :--- | :--- |
-| `--bg-main` | `#080808` | Primary canvas backdrop / dark cinematic field |
-| `--bg-section` | `#0D0D0D` | Alternating section backgrounds, elevated cards, and footer |
-| `--bg-surface` | `#121212` | Elevated cards, project dossiers, input fields |
-| `--bg-surface-hover` | `#1A1A1A` | Card hover state and interactive element highlight |
-| `--text-primary` | `#F5F5F5` | Primary text: crisp headlines, brand mark, button text |
-| `--text-secondary` | `#929292` | Secondary text: narrative prose, subtitles, metadata |
-| `--text-muted` | `#666666` | Subtle timestamps, indices, breadcrumb separators |
-| `--border-subtle` | `#252525` | Hairline structural borders, section dividers, card frames |
+| `--bg-main` | `#080808` | Primary canvas backdrop / dark cinematic space |
+| `--bg-secondary` | `#111111` | Secondary backgrounds, elevated cards, and footer |
+| `--bg-surface` | `#111111` | Elevated cards, project dossiers, input fields |
+| `--bg-surface-hover` | `#1C1C1C` | Card hover state and interactive highlight |
+| `--text-primary` | `#F5F5F5` | Primary text: crisp headlines, brand mark, buttons |
+| `--text-secondary` | `#A0A0A0` | Secondary text: narrative prose, subtitles, tags |
+| `--text-muted` | `#707070` | Subtle timestamps, telemetry, breadcrumb separators |
+| `--border-subtle` | `#292929` | Hairline structural borders, section dividers, card frames |
 | `--border-hover` | `#444444` | Hover state for interactive cards and secondary buttons |
 | `--border-focus` | `#F5F5F5` | Accessible keyboard focus ring |
-| `--btn-primary-bg` | `#F5F5F5` | Solid primary button background |
-| `--btn-primary-text` | `#080808` | High-contrast dark text on primary button |
-| `--btn-primary-hover` | `#E0E0E0` | Subtle brightness shift on primary button hover |
-| `--btn-secondary-bg` | `transparent` | Secondary button transparent surface |
-| `--btn-secondary-border` | `#252525` | Subtle hairline boundary on secondary button |
-| `--btn-secondary-text` | `#F5F5F5` | Crisp white text on secondary button |
+| `--btn-bg` | `#F5F5F5` | High-contrast primary button fill |
+| `--btn-text` | `#080808` | Dark button typography |
 
----
+### 2.2 Light Mode Tokens (Clean Swiss Minimalist Paper)
+| Token Name | Exact HEX | Architectural Purpose |
+| :--- | :--- | :--- |
+| `--bg-main` | `#FFFFFF` | Primary white paper canvas |
+| `--bg-secondary` | `#F5F5F5` | Secondary backgrounds and elevated surfaces |
+| `--bg-surface` | `#FFFFFF` | Crisp white cards on secondary ground |
+| `--text-primary` | `#111111` | High-contrast charcoal/black typography |
+| `--text-secondary` | `#666666` | Secondary body text and subtitles |
+| `--border-subtle` | `#E5E5E5` | Minimal light hairline dividers |
+| `--btn-bg` | `#111111` | Solid dark button fill |
+| `--btn-text` | `#FFFFFF` | Crisp white button typography |
+
+### 2.3 Hybrid 3D Spatial Properties
+- `--perspective-camera: 1100px;` (Human eye optical focal length)
+- `--card-shadow-3d: 0 16px 36px -10px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.35);`
+- Smooth dynamic specular glare reflection using radial gradient tracking cursor position (`--glare-x`, `--glare-y`).
+- Internal 3D depth layering with distinct `translateZ` offsets for badges (`16px`), titles (`12px`), and action buttons (`20px`).
 
 ## 3. TYPOGRAPHY SYSTEM (ELEGANT LUXURY & SWISS MINIMALISM)
 
@@ -103,7 +116,7 @@
      - **Primary:** `View My Work →` (Dark: `#F5F5F5` bg, `#080808` text; Light: `#0A0A0A` bg, `#FFFFFF` text; `border-radius: 4px`, links to `projects.html`).
      - **Secondary:** `Contact Me` (transparent background, subtle `1px` border, smooth hover transition, links to `contact.html`).
 - **Right Column:**
-  - Authentic profile photograph (`Profile Pic.jpg`) with natural facial proportions.
+  - Authentic profile photograph (`new%20image.jpeg`) with natural facial proportions.
   - Large circular frame: desktop size `clamp(320px, 26vw, 360px)`, tablet `clamp(280px, 30vw, 320px)`, mobile `clamp(190px, 48vw, 220px)`.
   - Tasteful black-and-white conversion: `filter: grayscale(100%) contrast(1.06) brightness(0.96);`.
   - Thin subtle circular border (`var(--hero-portrait-border)`).
@@ -152,10 +165,14 @@ All 4 dedicated subpages adhere to the identical monochromatic design system:
 | **Monochrome Palette** | `#080808` main, `#0D0D0D` section, `#F5F5F5` text, `#929292` secondary, `#252525` borders. | **VERIFIED** |
 | **No Colorful Accents** | All cyan, blue, gold, yellow, and colorful gradients removed. | **VERIFIED** |
 | **Clean Minimal Header** | ZS logo, brand ZEERAK, links: Home, About, Projects, Skills, Contact, thin border `#252525`. | **VERIFIED** |
-| **Two-Column Hero** | CREATIVE DEVELOPER label, ZEERAK SHAFIQUE headline, supporting text, View My Work & Contact Me buttons, monochrome portrait. | **VERIFIED** |
+| **Two-Column Hero** | CREATIVE DEVELOPER label, ZEERAK SIDDIQUI headline, supporting text, View My Work & Contact Me buttons, monochrome portrait. | **VERIFIED** |
 | **Natural Portrait** | Grayscale portrait with natural contrast and subtle border `#252525`; zero neon glow. | **VERIFIED** |
 | **Subpages Redesign** | About, Projects, Skills, Contact all redesigned using black and white minimalism. | **VERIFIED** |
-| **No Intrusive Preloader** | Decorative loading preloader removed for immediate content access. | **VERIFIED** |
-| **No Three.js 3D Clutter** | Unnecessary 3D gyroscopes and kinetic sculpture removed. | **VERIFIED** |
+| **Particle Loading Screen** | Canvas 2D orbital particle preloader with centered ZS logo, ZEERAK wordmark, LOADING EXPERIENCE subtitle, real progress gauge, and 2-step transition. | **VERIFIED** |
+| **Default Dark Theme** | Unconditional `#080808` Dark Mode for first-time visitors; working bidirectional toggle + persistent localStorage. | **VERIFIED** |
+| **Soft White Radial Backlight** | Luminous white radial backlight blooming behind head & shoulders in portrait frame. | **VERIFIED** |
+| **Universal Name Accuracy** | All 9 pages, metadata, copy, titles, and footer corrected to "Zeerak Siddiqui". | **VERIFIED** |
+| **Harmonized 6 Sections** | About, Skills, Projects, Developer Journey, Blog, and Contact sharing identical Swiss Minimalist tokens and hairline borders. | **VERIFIED** |
+| **Subtle 3D Perspective & Motion** | Restrained ±4.5° card perspective tilt, dynamic specular glare, hero spatial tracking, and IntersectionObserver scroll reveals. | **VERIFIED** |
 | **Preserved Functionality** | Real phone, real Instagram, working project links, multipage routes preserved. | **VERIFIED** |
 | **Responsive Design** | Tested on desktop (1440px), tablet (1024px & 768px), and mobile (390px & 320px); zero overflow. | **VERIFIED** |

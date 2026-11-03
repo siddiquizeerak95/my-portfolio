@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="peaksSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#07080a"/>
+      <stop offset="60%" stop-color="#14161d"/>
+      <stop offset="100%" stop-color="#232733"/>
+    </linearGradient>
+    <linearGradient id="snowLit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#b8c0cc"/>
+      <stop offset="100%" stop-color="#6a7280"/>
+    </linearGradient>
+    <linearGradient id="rockShadow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0a0c10"/>
+      <stop offset="100%" stop-color="#1b1e26"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="600" height="400" fill="url(#peaksSky)"/>
+
+  <!-- Distant Clouds / Cirrus -->
+  <path d="M0,80 Q200,60 400,90 T600,70" stroke="#ffffff" stroke-width="1.5" opacity="0.12" fill="none"/>
+  <path d="M40,110 Q240,95 440,120 T600,105" stroke="#ffffff" stroke-width="1.2" opacity="0.08" fill="none"/>
+
+  <!-- Background Mountain Range -->
+  <polygon points="40,240 160,130 250,220 380,100 490,200 580,140 600,160 600,400 0,400 0,220" fill="#111318"/>
+
+  <!-- Main Central Peak - Shadow Facet (Left) -->
+  <polygon points="310,75 140,320 310,360" fill="url(#rockShadow)"/>
+  <!-- Main Central Peak - Illuminated Snow Facet (Right) -->
+  <polygon points="310,75 310,360 480,310" fill="url(#snowLit)"/>
+
+  <!-- Snow Ridges and Crevasses on Central Peak -->
+  <polygon points="310,75 325,140 310,180 340,240 310,290 330,340 310,360 295,300 310,250 280,200 310,140" fill="#ffffff" opacity="0.6"/>
+  <polygon points="310,75 300,110 270,160 285,180 250,230 220,290 140,320 200,280 240,220 280,150" fill="#181c24"/>
+  <polygon points="310,75 340,110 390,170 360,210 420,260 480,310 410,280 370,230 330,160" fill="#9ba5b5"/>
+
+  <!-- Foreground Dark Jagged Ridge -->
+  <polygon points="0,320 90,260 180,330 280,270 390,340 490,280 600,350 600,400 0,400" fill="#07080a"/>
+  <!-- Foreground Snow Highlights -->
+  <polyline points="0,320 90,260 180,330" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+  <polyline points="280,270 390,340" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+  <polyline points="490,280 600,350" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+</svg>

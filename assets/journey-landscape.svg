@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 450" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#050505"/>
+      <stop offset="60%" stop-color="#0c0c0e"/>
+      <stop offset="100%" stop-color="#151518"/>
+    </linearGradient>
+    <linearGradient id="mountFar" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1e"/>
+      <stop offset="100%" stop-color="#0a0a0c"/>
+    </linearGradient>
+    <linearGradient id="mountMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#151517"/>
+      <stop offset="100%" stop-color="#08080a"/>
+    </linearGradient>
+    <linearGradient id="mountFore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#111113"/>
+      <stop offset="100%" stop-color="#040405"/>
+    </linearGradient>
+    <linearGradient id="roadGlow" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#d0d0d8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#808090" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="roadBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <radialGradient id="horizonGlow" cx="65%" cy="55%" r="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
+      <stop offset="60%" stop-color="#888899" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="700" height="450" fill="url(#skyGrad)"/>
+
+  <!-- Distant Stars -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="80" cy="50" r="1"/>
+    <circle cx="160" cy="75" r="1.2"/>
+    <circle cx="240" cy="40" r="0.8"/>
+    <circle cx="320" cy="90" r="1"/>
+    <circle cx="410" cy="35" r="1.3"/>
+    <circle cx="520" cy="70" r="0.9"/>
+    <circle cx="610" cy="45" r="1.1"/>
+    <circle cx="670" cy="85" r="0.7"/>
+    <circle cx="120" cy="110" r="0.8"/>
+    <circle cx="480" cy="120" r="1.1"/>
+  </g>
+
+  <!-- Horizon Glow -->
+  <circle cx="450" cy="240" r="220" fill="url(#horizonGlow)"/>
+
+  <!-- Mountain Silhouette - Distant Layer -->
+  <path d="M0,280 L70,230 L160,260 L240,195 L340,245 L440,180 L520,230 L620,170 L700,225 L700,450 L0,450 Z" fill="url(#mountFar)" opacity="0.8"/>
+
+  <!-- Mountain Silhouette - Mid Layer -->
+  <path d="M0,320 L110,260 L210,300 L290,240 L380,285 L490,220 L580,270 L670,210 L700,230 L700,450 L0,450 Z" fill="url(#mountMid)"/>
+
+  <!-- Mountain Silhouette - Foreground Crags -->
+  <path d="M0,370 L90,320 L180,355 L280,300 L370,345 L460,285 L560,335 L650,290 L700,315 L700,450 L0,450 Z" fill="url(#mountFore)"/>
+
+  <!-- Winding Luminous Mountain Road (Layered with blur glow & core stroke) -->
+  <!-- Outer Glow -->
+  <path d="M-10,430 C120,410 160,370 200,370 C260,370 270,335 320,335 C380,335 390,290 430,280 C470,270 480,240 510,235 C540,230 550,215 570,210" 
+        fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity="0.4" filter="url(#roadBlur)"/>
+  
+  <!-- Middle Road Ribbon -->
+  <path d="M-10,430 C120,410 160,370 200,370 C260,370 270,335 320,335 C380,335 390,290 430,280 C470,270 480,240 510,235 C540,230 550,215 570,210" 
+        fill="none" stroke="url(#roadGlow)" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- Center Pin-Light Tracer -->
+  <path d="M-10,430 C120,410 160,370 200,370 C260,370 270,335 320,335 C380,335 390,290 430,280 C470,270 480,240 510,235 C540,230 550,215 570,210" 
+        fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- Roadside Light Beacon Dots along the curves -->
+  <circle cx="120" cy="400" r="2.5" fill="#ffffff" filter="url(#roadBlur)"/>
+  <circle cx="200" cy="370" r="3" fill="#ffffff" filter="url(#roadBlur)"/>
+  <circle cx="320" cy="335" r="2.5" fill="#ffffff" filter="url(#roadBlur)"/>
+  <circle cx="430" cy="280" r="2" fill="#ffffff" filter="url(#roadBlur)"/>
+  <circle cx="510" cy="235" r="2" fill="#ffffff" filter="url(#roadBlur)"/>
+  <circle cx="570" cy="210" r="3.5" fill="#ffffff" filter="url(#roadBlur)"/>
+
+  <!-- Front Gradient Vignette Overlay -->
+  <rect y="380" width="700" height="70" fill="url(#skyGrad)" opacity="0.9"/>
+</svg>
