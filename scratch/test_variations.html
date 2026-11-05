@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cinematic Variations</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0A0A0A;
+      color: #F5F5F5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 50px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .grid {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .card-title {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A5A5A5;
+    }
+
+    .stage {
+      position: relative;
+      width: 380px;
+      height: 520px;
+      perspective: 1200px;
+    }
+
+    /* Ambient glow behind */
+    .ambient-glow {
+      position: absolute;
+      width: 480px;
+      height: 600px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at 35% 45%, rgba(229, 9, 43, 0.28) 0%, rgba(229, 9, 43, 0.06) 50%, transparent 72%);
+      filter: blur(45px);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Card Frame */
+    .frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #050505;
+      border: 1px solid rgba(229, 9, 43, 0.35);
+      box-shadow: 
+        0 24px 60px rgba(0, 0, 0, 0.92),
+        0 0 35px rgba(229, 9, 43, 0.18),
+        inset 0 0 20px rgba(229, 9, 43, 0.08);
+      z-index: 2;
+    }
+
+    .portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 16%;
+      display: block;
+    }
+
+    /* Variation 1: Linear edge rim */
+    .rim-v1 {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: 
+        radial-gradient(ellipse at 12% 35%, rgba(229, 9, 43, 0.72) 0%, rgba(229, 9, 43, 0.22) 30%, transparent 60%),
+        linear-gradient(90deg, rgba(229, 9, 43, 0.38) 0%, rgba(229, 9, 43, 0.1) 12%, transparent 35%);
+      mix-blend-mode: screen;
+    }
+
+    /* Variation 2: Dual tone (Red on left rim + subtle cool rim on right) */
+    .rim-v2 {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: 
+        radial-gradient(ellipse at 10% 32%, rgba(229, 9, 43, 0.8) 0%, rgba(229, 9, 43, 0.25) 28%, transparent 55%),
+        linear-gradient(90deg, rgba(229, 9, 43, 0.45) 0%, rgba(229, 9, 43, 0.12) 10%, transparent 30%),
+        radial-gradient(ellipse at 92% 55%, rgba(180, 200, 220, 0.22) 0%, transparent 40%);
+      mix-blend-mode: screen;
+    }
+
+    /* Variation 3: Precision Contour Rim with Color-Dodge & Screen combination */
+    .rim-v3-base {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 8% 30%, rgba(229, 9, 43, 0.75) 0%, rgba(229, 9, 43, 0.2) 25%, transparent 50%);
+      mix-blend-mode: color-dodge;
+      opacity: 0.85;
+    }
+    .rim-v3-glow {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(229, 9, 43, 0.32) 0%, rgba(229, 9, 43, 0.08) 12%, transparent 28%);
+      mix-blend-mode: screen;
+    }
+
+    /* Common bottom fade */
+    .fade-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 32%;
+      background: linear-gradient(to top, #0A0A0A 0%, rgba(10, 10, 10, 0.5) 50%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Inner edge bevel */
+    .inner-rim {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: inset 1px 1px 0 rgba(229, 9, 43, 0.45);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid">
+    <div class="card-wrap">
+      <div class="card-title">V1: Linear Rim + Radial Glow</div>
+      <div class="stage">
+        <div class="ambient-glow"></div>
+        <div class="frame">
+          <img src="../NEW IMAGE FOR WEBSITE.jpeg" alt="Zeerak Siddiqui" class="portrait-img">
+          <div class="rim-v1"></div>
+          <div class="fade-bottom"></div>
+          <div class="inner-rim"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-wrap">
+      <div class="card-title">V2: Dual Rim (Red Left + Cool Right)</div>
+      <div class="stage">
+        <div class="ambient-glow"></div>
+        <div class="frame">
+          <img src="../NEW IMAGE FOR WEBSITE.jpeg" alt="Zeerak Siddiqui" class="portrait-img">
+          <div class="rim-v2"></div>
+          <div class="fade-bottom"></div>
+          <div class="inner-rim"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-wrap">
+      <div class="card-title">V3: Color-Dodge Contour Rim</div>
+      <div class="stage">
+        <div class="ambient-glow"></div>
+        <div class="frame">
+          <img src="../NEW IMAGE FOR WEBSITE.jpeg" alt="Zeerak Siddiqui" class="portrait-img">
+          <div class="rim-v3-base"></div>
+          <div class="rim-v3-glow"></div>
+          <div class="fade-bottom"></div>
+          <div class="inner-rim"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

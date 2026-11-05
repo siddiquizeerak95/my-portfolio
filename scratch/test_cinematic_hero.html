@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Cinematic Portrait Treatment</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body {
+      background: #0A0A0A;
+      color: #F5F5F5;
+      margin: 0;
+      padding: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .test-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .test-label {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #A5A5A5;
+    }
+
+    /* Option 1: Clean Editorial Rectangular Frame with Red Rim Light & Red Accent Border */
+    .hero-cinematic-portrait-stage {
+      position: relative;
+      width: 420px;
+      height: 560px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-cinematic-ambient-glow {
+      position: absolute;
+      width: 520px;
+      height: 640px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at 40% 45%, rgba(229, 9, 43, 0.26) 0%, rgba(229, 9, 43, 0.08) 45%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(48px);
+    }
+
+    .hero-cinematic-portrait-frame {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px; /* Elegant rectangular frame with sleek modern radii */
+      overflow: hidden;
+      background: #070707;
+      /* Thin red accent border with restrained glow */
+      border: 1px solid rgba(229, 9, 43, 0.38);
+      box-shadow: 
+        0 24px 60px rgba(0, 0, 0, 0.9),
+        0 0 40px rgba(229, 9, 43, 0.18),
+        inset 0 0 20px rgba(229, 9, 43, 0.08);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .hero-cinematic-portrait-frame:hover {
+      border-color: rgba(229, 9, 43, 0.65);
+      box-shadow: 
+        0 32px 75px rgba(0, 0, 0, 0.95),
+        0 0 50px rgba(229, 9, 43, 0.28),
+        inset 0 0 25px rgba(229, 9, 43, 0.14);
+    }
+
+    .hero-cinematic-portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 16%;
+      display: block;
+      filter: contrast(1.05) brightness(0.98);
+    }
+
+    /* The Cinematic Red Rim Light (Left/Top-Left directional glow matching reference) */
+    .hero-cinematic-rim-light {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      /* Focused red rim light along the left neck/ear/cheek profile */
+      background: 
+        radial-gradient(ellipse at 15% 32%, rgba(229, 9, 43, 0.65) 0%, rgba(229, 9, 43, 0.25) 35%, transparent 65%),
+        linear-gradient(90deg, rgba(229, 9, 43, 0.35) 0%, rgba(229, 9, 43, 0.1) 15%, transparent 40%);
+      mix-blend-mode: screen;
+      opacity: 0.95;
+    }
+
+    /* Subtle atmospheric vignette and smooth bottom blend into #0A0A0A */
+    .hero-cinematic-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: 
+        linear-gradient(to top, rgba(10, 10, 10, 0.95) 0%, rgba(10, 10, 10, 0.4) 15%, transparent 35%),
+        linear-gradient(to right, transparent 75%, rgba(10, 10, 10, 0.65) 100%),
+        radial-gradient(ellipse at 50% 40%, transparent 55%, rgba(10, 10, 10, 0.55) 100%);
+    }
+
+    /* Thin inner red rim edge line for high-end luxury feel */
+    .hero-cinematic-inner-border {
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 1px 1px 0 rgba(229, 9, 43, 0.5);
+    }
+
+    /* Option 2: Variation with seamless background blend & soft edge fade */
+    .hero-cinematic-portrait-frame.seamless {
+      border: 1px solid rgba(229, 9, 43, 0.28);
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="test-wrapper">
+    <div class="test-label">Option A: Editorial Rectangular Frame with Red Rim Lighting</div>
+    <div class="hero-cinematic-portrait-stage">
+      <div class="hero-cinematic-ambient-glow"></div>
+      <div class="hero-cinematic-portrait-frame">
+        <img src="../NEW IMAGE FOR WEBSITE.jpeg" alt="Zeerak Siddiqui" class="hero-cinematic-portrait-img">
+        <div class="hero-cinematic-rim-light"></div>
+        <div class="hero-cinematic-vignette"></div>
+        <div class="hero-cinematic-inner-border"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="test-wrapper">
+    <div class="test-label">Reference Image (Uploaded by User)</div>
+    <div style="width: 420px; height: 560px; border-radius: 16px; overflow: hidden; border: 1px solid #333;">
+      <img src="reference_cinematic_red.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: 85% center;">
+    </div>
+  </div>
+
+</body>
+</html>
+

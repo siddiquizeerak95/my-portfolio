@@ -637,7 +637,7 @@ function initCardTilt() {
 }
 
 // -----------------------------------------------------------------------------
-// 05.1 HERO 3D PERSPECTIVE SPATIAL TRACKER
+// 05.1 HERO BORDERLESS CINEMATIC PARALLAX DEPTH
 // -----------------------------------------------------------------------------
 function initHeroPerspective() {
   const isFinePointer = window.matchMedia('(pointer: fine) and (hover: hover)').matches;
@@ -645,68 +645,57 @@ function initHeroPerspective() {
   if (!isFinePointer || prefersReducedMotion) return;
 
   const heroSection = document.getElementById('hero');
-  const stage = document.getElementById('hero-3d-stage');
-  const rig = document.getElementById('hero-3d-rig');
-  if (!heroSection || !stage || !rig) return;
+  const portraitWrap = document.getElementById('hero-portrait-card') || document.querySelector('.hero-borderless-portrait-wrap');
+  const glow = document.querySelector('.hero-borderless-ambient-glow') || document.querySelector('.hero-cinematic-ambient-glow');
+  if (!heroSection || !portraitWrap) return;
 
-  const panels = stage.querySelectorAll('.floating-panel');
+  let targetShiftX = 0;
+  let targetShiftY = 0;
+  let currentShiftX = 0;
+  let currentShiftY = 0;
 
-  const BASE_ROTY = -15;
-  const BASE_ROTX = 9;
-
-  let targetRotX = BASE_ROTX;
-  let targetRotY = BASE_ROTY;
-  let currentRotX = BASE_ROTX;
-  let currentRotY = BASE_ROTY;
-
-  let targetNormX = 0;
-  let targetNormY = 0;
-  let currentNormX = 0;
-  let currentNormY = 0;
+  let targetRotY = 0;
+  let targetRotX = 0;
+  let currentRotY = 0;
+  let currentRotX = 0;
 
   let isHovering = false;
   let animationFrameId = null;
 
   const renderLoop = () => {
-    // Smooth damping (lerp factor 0.08)
-    currentRotX += (targetRotX - currentRotX) * 0.08;
-    currentRotY += (targetRotY - currentRotY) * 0.08;
-    currentNormX += (targetNormX - currentNormX) * 0.08;
-    currentNormY += (targetNormY - currentNormY) * 0.08;
+    // Silk-smooth lerp damping for organic photographic depth
+    currentShiftX += (targetShiftX - currentShiftX) * 0.06;
+    currentShiftY += (targetShiftY - currentShiftY) * 0.06;
+    currentRotY += (targetRotY - currentRotY) * 0.06;
+    currentRotX += (targetRotX - currentRotX) * 0.06;
 
-    rig.style.transform = `rotateY(${currentRotY.toFixed(2)}deg) rotateX(${currentRotX.toFixed(2)}deg) rotateZ(-2deg)`;
+    portraitWrap.style.transform = `translate3d(${currentShiftX.toFixed(1)}px, ${currentShiftY.toFixed(1)}px, 0) rotateY(${currentRotY.toFixed(2)}deg) rotateX(${currentRotX.toFixed(2)}deg)`;
+    if (glow) {
+      glow.style.transform = `translate(calc(-50% + ${(-currentShiftX * 1.4).toFixed(1)}px), calc(-50% + ${(-currentShiftY * 1.4).toFixed(1)}px))`;
+    }
 
-    // Differential parallax on layered floating cards
-    panels.forEach((p) => {
-      const depth = parseFloat(p.getAttribute('data-depth')) || 60;
-      const shiftX = (currentNormX * (depth * 0.16)).toFixed(1);
-      const shiftY = (currentNormY * (depth * 0.16)).toFixed(1);
-      p.style.transform = `translateZ(${depth}px) translate(${shiftX}px, ${shiftY}px)`;
-    });
-
-    const diff = Math.abs(targetRotX - currentRotX) + Math.abs(targetRotY - currentRotY);
-    if (isHovering || diff > 0.02) {
+    const diff = Math.abs(targetShiftX - currentShiftX) + Math.abs(targetShiftY - currentShiftY);
+    if (isHovering || diff > 0.1) {
       animationFrameId = requestAnimationFrame(renderLoop);
     } else {
-      rig.style.transform = '';
-      panels.forEach((p) => { p.style.transform = ''; });
+      portraitWrap.style.transform = '';
+      if (glow) glow.style.transform = '';
       animationFrameId = null;
     }
   };
 
   heroSection.addEventListener('mousemove', (e) => {
     const rect = heroSection.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const relX = Math.max(-centerX, Math.min(centerX, e.clientX - rect.left - centerX));
-    const relY = Math.max(-centerY, Math.min(centerY, e.clientY - rect.top - centerY));
+    const centerX = rect.left + rect.width * 0.5;
+    const centerY = rect.top + rect.height * 0.5;
+    const normX = Math.max(-1, Math.min(1, (e.clientX - centerX) / (rect.width * 0.5)));
+    const normY = Math.max(-1, Math.min(1, (e.clientY - centerY) / (rect.height * 0.5)));
 
-    targetNormX = relX / centerX;
-    targetNormY = relY / centerY;
-
-    // Smooth tilt: ±8 deg on Y, ±6 deg on X
-    targetRotY = BASE_ROTY + (targetNormX * 8.5);
-    targetRotX = BASE_ROTX + (targetNormY * -6.5);
+    // Restrained, subtle cinematic depth (±7px translation, ±1.5 deg tilt)
+    targetShiftX = normX * 7.5;
+    targetShiftY = normY * 5.5;
+    targetRotY = normX * 1.5;
+    targetRotX = normY * -1.2;
 
     if (!isHovering) {
       isHovering = true;
@@ -718,10 +707,10 @@ function initHeroPerspective() {
 
   heroSection.addEventListener('mouseleave', () => {
     isHovering = false;
-    targetRotX = BASE_ROTX;
-    targetRotY = BASE_ROTY;
-    targetNormX = 0;
-    targetNormY = 0;
+    targetShiftX = 0;
+    targetShiftY = 0;
+    targetRotY = 0;
+    targetRotX = 0;
   }, { passive: true });
 }
 

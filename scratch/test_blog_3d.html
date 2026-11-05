@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test 3D Blog Scroll Experience</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../blog-3d.css">
+  <style>
+    body {
+      background: #080808;
+      color: #F5F5F5;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Simulated Minimal Nav for Test -->
+  <header style="height: 72px; background: #080808; border-bottom: 1px solid #1f1f1f; display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+    <div style="font-weight: 700; letter-spacing: 0.1em; color: #FFF;">ZS STUDIO</div>
+    <div style="color: #A5A5A5; font-size: 13px;">BLOG &bull; 3D SHOWCASE</div>
+  </header>
+
+  <!-- 3D Scroll Experience Container -->
+  <section class="blog-3d-experience-section" id="blog-3d-experience" aria-label="3D Blog Showcase">
+    <div class="blog-3d-sticky-viewport">
+      <!-- Ambient Studio Lighting -->
+      <div class="blog-3d-ambient-glow" aria-hidden="true"></div>
+
+      <!-- Telemetry Bar -->
+      <div class="blog-3d-telemetry-bar">
+        <div class="b3d-tag-badge">
+          <span class="b3d-pulse-dot" aria-hidden="true"></span>
+          <span>3D EDITORIAL SHOWCASE</span>
+        </div>
+        <div class="b3d-article-counter" aria-live="polite">
+          <span class="b3d-counter-num" id="b3d-active-num">01</span>
+          <span class="b3d-counter-sep">/</span>
+          <span class="b3d-counter-total">03</span>
+          <span class="b3d-topic-ticker" id="b3d-topic-ticker">Web Architecture</span>
+        </div>
+        <div class="b3d-pills-nav" role="tablist" aria-label="Article Selection">
+          <button class="b3d-pill-btn active" data-index="0" role="tab" aria-selected="true">01</button>
+          <button class="b3d-pill-btn" data-index="1" role="tab" aria-selected="false">02</button>
+          <button class="b3d-pill-btn" data-index="2" role="tab" aria-selected="false">03</button>
+        </div>
+      </div>
+
+      <!-- 3D Spatial Stage -->
+      <div class="blog-3d-stage-wrap">
+        <div class="blog-3d-stage" id="blog-3d-cards-stage">
+
+          <!-- Card 01 -->
+          <article class="blog-3d-card" data-card-index="0" id="b3d-card-0">
+            <div class="b3d-card-inner">
+              <div class="b3d-visual-pane">
+                <img src="../assets/blog-architecture.svg" alt="How I Built My Portfolio Website Architecture" class="b3d-card-img" loading="eager">
+                <span class="b3d-date-badge">OCT 2026</span>
+                <div class="b3d-visual-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="b3d-content-pane">
+                <div class="b3d-meta-header">
+                  <span class="b3d-category-tag">Web Development</span>
+                  <span class="b3d-read-time">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    6 min read
+                  </span>
+                </div>
+                <h2 class="b3d-card-title">How I Built My Portfolio Website</h2>
+                <p class="b3d-card-excerpt">
+                  A complete breakdown of my portfolio, design process and key takeaways. Why I chose vanilla HTML5, CSS3 clamp math, and zero framework overhead.
+                </p>
+                <div class="b3d-card-actions">
+                  <a href="../blog-how-i-built-my-portfolio.html" class="b3d-cta-btn">
+                    <span>Read Article</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                  <span class="b3d-card-index-ghost" aria-hidden="true">01</span>
+                </div>
+              </div>
+            </div>
+            <div class="b3d-card-glare" aria-hidden="true"></div>
+          </article>
+
+          <!-- Card 02 -->
+          <article class="blog-3d-card" data-card-index="1" id="b3d-card-1">
+            <div class="b3d-card-inner">
+              <div class="b3d-visual-pane">
+                <img src="../assets/blog-forest.svg" alt="My Learning Journey in BCA Path" class="b3d-card-img" loading="eager">
+                <span class="b3d-date-badge">SEP 2026</span>
+                <div class="b3d-visual-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="b3d-content-pane">
+                <div class="b3d-meta-header">
+                  <span class="b3d-category-tag">Developer Journey</span>
+                  <span class="b3d-read-time">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    5 min read
+                  </span>
+                </div>
+                <h2 class="b3d-card-title">My Learning Journey in BCA</h2>
+                <p class="b3d-card-excerpt">
+                  Experiences, challenges and lessons from my academic journey. How low-level systems programming in C anchored my engineering discipline.
+                </p>
+                <div class="b3d-card-actions">
+                  <a href="../blog-my-journey-as-a-developer.html" class="b3d-cta-btn">
+                    <span>Read Article</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                  <span class="b3d-card-index-ghost" aria-hidden="true">02</span>
+                </div>
+              </div>
+            </div>
+            <div class="b3d-card-glare" aria-hidden="true"></div>
+          </article>
+
+          <!-- Card 03 -->
+          <article class="blog-3d-card" data-card-index="2" id="b3d-card-2">
+            <div class="b3d-card-inner">
+              <div class="b3d-visual-pane">
+                <img src="../assets/blog-peaks.svg" alt="Why I Prefer Minimalist Web Design" class="b3d-card-img" loading="eager">
+                <span class="b3d-date-badge">AUG 2026</span>
+                <div class="b3d-visual-overlay" aria-hidden="true"></div>
+              </div>
+              <div class="b3d-content-pane">
+                <div class="b3d-meta-header">
+                  <span class="b3d-category-tag">Design Philosophy</span>
+                  <span class="b3d-read-time">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    4 min read
+                  </span>
+                </div>
+                <h2 class="b3d-card-title">Why I Prefer Minimalist Web Design</h2>
+                <p class="b3d-card-excerpt">
+                  Essential tools for developers, productivity workflows, and why minimalist monochromatic aesthetics elevate real-world user experiences.
+                </p>
+                <div class="b3d-card-actions">
+                  <a href="../blog-why-i-prefer-minimalist-web-design.html" class="b3d-cta-btn">
+                    <span>Read Article</span>
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                  </a>
+                  <span class="b3d-card-index-ghost" aria-hidden="true">03</span>
+                </div>
+              </div>
+            </div>
+            <div class="b3d-card-glare" aria-hidden="true"></div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Bottom Hint Bar -->
+      <div class="blog-3d-footer-hint">
+        <span class="b3d-hint-text">SCROLL TO ADVANCE 3D SHOWCASE</span>
+        <div class="b3d-scroll-line" aria-hidden="true">
+          <div class="b3d-scroll-pip"></div>
+        </div>
+        <span class="b3d-hint-sub">TRANSITIONS INTO ARTICLE GRID BELOW</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conventional Grid Following Below -->
+  <section style="padding: 80px 40px; background: #080808; text-align: center;">
+    <h2 style="font-size: 32px; color: #FFF;">Conventional Blog Grid Begins Here</h2>
+    <p style="color: #A5A5A5;">Category filters & full 3-column magazine cards.</p>
+  </section>
+
+  <script src="../vendor/gsap.min.js"></script>
+  <script src="../vendor/ScrollTrigger.min.js"></script>
+  <script src="../blog-3d.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      const params = new URLSearchParams(window.location.search);
+      const y = parseInt(params.get('scrolly'), 10);
+      if (!isNaN(y) && y > 0) {
+        window.scrollTo(0, y);
+        setTimeout(() => {
+          window.scrollTo(0, y);
+          if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+            ScrollTrigger.update();
+          }
+        }, 100);
+      }
+    });
+  </script>
+</body>
+</html>

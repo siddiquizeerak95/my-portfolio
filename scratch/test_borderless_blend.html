@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Borderless Seamless Blend</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #080808;
+      color: #F5F5F5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-mockup-layout {
+      width: 1440px;
+      height: 900px;
+      background: #080808;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 100px;
+      position: relative;
+    }
+
+    /* Left Column Mockup */
+    .left-col {
+      width: 520px;
+      z-index: 10;
+    }
+
+    .tagline {
+      color: #E5092B;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .heading {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 20px;
+      color: #FFFFFF;
+    }
+
+    .heading span {
+      color: #E5092B;
+    }
+
+    .subheading {
+      font-size: 16px;
+      color: #A5A5A5;
+      line-height: 1.6;
+      max-width: 440px;
+    }
+
+    /* Right Column: BORDERLESS SEAMLESS PORTRAIT STAGE */
+    .hero-borderless-portrait-stage {
+      position: relative;
+      width: 620px;
+      height: 720px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* NO BORDER, NO CARD, NO BOX */
+      border: none !important;
+      background: transparent !important;
+      box-shadow: none !important;
+    }
+
+    /* Deep atmospheric crimson red glow concentrated behind the window & portrait */
+    .hero-borderless-ambient-glow {
+      position: absolute;
+      width: 520px;
+      height: 600px;
+      top: 50%;
+      left: 36%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(ellipse at 42% 45%, rgba(229, 9, 43, 0.45) 0%, rgba(229, 9, 43, 0.18) 45%, transparent 72%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+      border-radius: 50%;
+    }
+
+    /* The Portrait Container — Seamlessly Masked into the #080808 Background */
+    .hero-borderless-portrait-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      /* Advanced Feathered Edge Masking */
+      -webkit-mask-image: 
+        radial-gradient(ellipse 68% 74% at 54% 45%, #000 48%, rgba(0, 0, 0, 0.8) 65%, transparent 100%),
+        linear-gradient(to top, transparent 0%, #000 18%, #000 86%, transparent 100%),
+        linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+      -webkit-mask-composite: source-in;
+      mask-image: 
+        radial-gradient(ellipse 68% 74% at 54% 45%, #000 48%, rgba(0, 0, 0, 0.8) 65%, transparent 100%),
+        linear-gradient(to top, transparent 0%, #000 18%, #000 86%, transparent 100%),
+        linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+      mask-composite: intersect;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hero-borderless-portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 16%;
+      display: block;
+      filter: contrast(1.05) brightness(0.98);
+    }
+
+    /* The Red Window Light (Screen blend on the left window panes) */
+    .hero-borderless-window-light {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 3;
+      background: 
+        radial-gradient(ellipse at 16% 36%, rgba(229, 9, 43, 0.9) 0%, rgba(229, 9, 43, 0.35) 32%, transparent 60%),
+        linear-gradient(90deg, rgba(229, 9, 43, 0.55) 0%, rgba(229, 9, 43, 0.18) 16%, transparent 36%);
+      mix-blend-mode: screen;
+    }
+
+    /* Soft edge vignette to dissolve coat and sides into #080808 */
+    .hero-borderless-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 4;
+      background: 
+        linear-gradient(to top, #080808 0%, rgba(8, 8, 8, 0.85) 12%, transparent 34%),
+        linear-gradient(to right, transparent 68%, rgba(8, 8, 8, 0.95) 100%),
+        linear-gradient(to left, transparent 75%, rgba(8, 8, 8, 0.85) 100%),
+        linear-gradient(to bottom, transparent 80%, rgba(8, 8, 8, 0.6) 100%);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero-mockup-layout">
+    <div class="left-col">
+      <div class="tagline">• Available for Creative Projects</div>
+      <div class="heading">Hi, I'm Zeerak<br><span>Siddiqui.</span></div>
+      <div class="subheading">I craft beautiful digital experiences through thoughtful design, creative thinking, and modern frontend development.</div>
+    </div>
+
+    <!-- BORDERLESS CINEMATIC PORTRAIT -->
+    <div class="hero-borderless-portrait-stage">
+      <!-- Atmospheric Red Glow behind the portrait -->
+      <div class="hero-borderless-ambient-glow"></div>
+
+      <!-- Masked Portrait Wrap (Feathered seamlessly into #080808) -->
+      <div class="hero-borderless-portrait-wrap">
+        <img src="../NEW IMAGE FOR WEBSITE.jpeg" alt="Zeerak Siddiqui" class="hero-borderless-portrait-img">
+        <div class="hero-borderless-window-light"></div>
+        <div class="hero-borderless-vignette"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

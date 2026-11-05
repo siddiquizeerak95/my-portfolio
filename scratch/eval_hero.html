@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="hero-reference-portrait-card">
+  <img src="NEW IMAGE FOR WEBSITE.jpeg" class="hero-reference-portrait-img" width="480" height="620">
+</div>
+<script>
+window.addEventListener('load', () => {
+  const card = document.querySelector('.hero-reference-portrait-card');
+  const img = document.querySelector('.hero-reference-portrait-img');
+  console.log('IMG_NATURAL:' + img.naturalWidth + 'x' + img.naturalHeight);
+  console.log('IMG_OFFSET:' + img.offsetWidth + 'x' + img.offsetHeight);
+  console.log('CARD_OFFSET:' + card.offsetWidth + 'x' + card.offsetHeight);
+});
+</script>
+</body>
+</html>

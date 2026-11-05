@@ -1,0 +1,24 @@
+
+Add-Type -AssemblyName System.Drawing
+$img = [System.Drawing.Bitmap]::FromFile("c:\Users\siddi\Desktop\New folder\NEW IMAGE FOR WEBSITE.jpeg.orig")
+
+$minX = $img.Width
+$maxX = 0
+$minY = $img.Height
+$maxY = 0
+
+for ($y = 0; $y -lt $img.Height; $y += 5) {
+    for ($x = 0; $x -lt $img.Width; $x += 5) {
+        $pixel = $img.GetPixel($x, $y)
+        if ($pixel.R -gt 15 -or $pixel.G -gt 15 -or $pixel.B -gt 15) {
+            if ($x -lt $minX) { $minX = $x }
+            if ($x -gt $maxX) { $maxX = $x }
+            if ($y -lt $minY) { $minY = $y }
+            if ($y -gt $maxY) { $maxY = $y }
+        }
+    }
+}
+
+Write-Output "Non-black bounds: X from $minX to $maxX, Y from $minY to $maxY"
+Write-Output "Total image: $($img.Width) x $($img.Height)"
+$img.Dispose()

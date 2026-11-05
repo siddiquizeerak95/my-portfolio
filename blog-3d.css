@@ -1,0 +1,672 @@
+/* ==========================================================================
+   ZS STUDIO — 3D SCROLL-DRIVEN BLOG EXPERIENCE
+   Exclusively for blog.html
+   Visual Identity: #080808 Background | #141416 Surfaces | #E5092B Red Accent
+   ========================================================================== */
+
+/* 1. Main 3D Experience Section */
+.blog-3d-experience-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 680px;
+  background: #080808 !important;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 2. Pinned Viewport Container */
+.blog-3d-sticky-viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(14px, 2vh, 24px) clamp(20px, 4vw, 48px);
+  box-sizing: border-box;
+  background: #080808 !important;
+  background-image: 
+    radial-gradient(circle at 50% 40%, rgba(229, 9, 43, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 80% 85%, rgba(255, 255, 255, 0.02) 0%, transparent 45%);
+  overflow: hidden;
+}
+
+/* Atmospheric Ambient Glow behind 3D Stage */
+.blog-3d-ambient-glow {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  width: clamp(450px, 55vw, 850px);
+  height: clamp(380px, 45vw, 650px);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(229, 9, 43, 0.28) 0%, rgba(229, 9, 43, 0.08) 46%, transparent 72%);
+  filter: blur(64px);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+  animation: b3dGlowPulse 8s infinite ease-in-out;
+}
+
+@keyframes b3dGlowPulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+/* 3. Integrated Blog Header & Telemetry Bar */
+.blog-3d-header-area {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1140px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 6px;
+}
+
+.blog-3d-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.b3d-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  color: #8E8E93;
+  letter-spacing: 0.08em;
+}
+
+.b3d-breadcrumb a {
+  color: #A5A5A5;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.b3d-breadcrumb a:hover {
+  color: #E5092B;
+}
+
+.b3d-breadcrumb .sep {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.b3d-article-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(22, 22, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.b3d-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #E5092B;
+  box-shadow: 0 0 8px #E5092B;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+.b3d-counter-num {
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.b3d-counter-sep {
+  color: #666;
+}
+
+.b3d-counter-total {
+  color: #8E8E93;
+}
+
+.b3d-topic-ticker {
+  margin-left: 6px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.16);
+  color: #E5092B;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: opacity 0.25s ease;
+}
+
+.b3d-pills-nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.b3d-pill-btn {
+  background: rgba(22, 22, 26, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #8E8E93;
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.b3d-pill-btn:hover {
+  color: #FFFFFF;
+  border-color: rgba(229, 9, 43, 0.5);
+}
+
+.b3d-pill-btn.active {
+  background: #E5092B;
+  border-color: #E5092B;
+  color: #FFFFFF;
+  box-shadow: 0 0 14px rgba(229, 9, 43, 0.45);
+}
+
+.blog-3d-header-titles {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 8px;
+}
+
+.blog-3d-main-title {
+  font-family: var(--font-luxury, "Cormorant Garamond", Georgia, serif);
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.05;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.blog-3d-main-title .text-accent-red {
+  color: #E5092B !important;
+}
+
+.blog-3d-sub-lead {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(13px, 1vw, 15px);
+  color: #A5A5A5;
+  margin: 0;
+  max-width: 580px;
+}
+
+/* 4. Large 3D Spatial Stage */
+.blog-3d-stage-wrap {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 1140px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: clamp(10px, 1.8vh, 22px) 0;
+}
+
+.blog-3d-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(440px, 56vh, 520px);
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
+
+/* 5. 3D Article Cards */
+.blog-3d-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: #141416;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 35px 80px rgba(0, 0, 0, 0.9),
+    0 0 45px rgba(229, 9, 43, 0.1),
+    inset 0 0 1px 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform-origin: center center;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-3d-card:hover {
+  border-color: rgba(229, 9, 43, 0.45);
+  box-shadow: 
+    0 40px 95px rgba(0, 0, 0, 0.95),
+    0 0 55px rgba(229, 9, 43, 0.25),
+    inset 0 0 1px 1px rgba(229, 9, 43, 0.2);
+}
+
+.b3d-card-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.22fr;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Left: Visual Pane */
+.b3d-visual-pane {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: #0C0C0E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.b3d-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.blog-3d-card:hover .b3d-card-img {
+  transform: scale(1.04);
+}
+
+.b3d-visual-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to top, rgba(12, 12, 14, 0.75) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 30%, rgba(229, 9, 43, 0.22) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.b3d-date-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  background: rgba(10, 10, 12, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #F5F5F5;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Right: Content Pane */
+.b3d-content-pane {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(24px, 3.2vw, 36px);
+  position: relative;
+  background: #141416;
+}
+
+.b3d-meta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.b3d-category-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #E5092B;
+  text-transform: uppercase;
+}
+
+.b3d-category-tag::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #E5092B;
+}
+
+.b3d-read-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  color: #8E8E93;
+}
+
+.b3d-card-title {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: clamp(24px, 2.6vw, 32px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #FFFFFF;
+  margin: 12px 0 10px 0;
+  letter-spacing: -0.015em;
+  transition: color 0.25s ease;
+}
+
+.blog-3d-card:hover .b3d-card-title {
+  color: #F5F5F5;
+}
+
+.b3d-card-excerpt {
+  font-size: clamp(13.5px, 1.1vw, 15px);
+  color: #A5A5A5;
+  line-height: 1.65;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.b3d-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.b3d-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: 9999px;
+  background: #E5092B;
+  color: #FFFFFF !important;
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(229, 9, 43, 0.4);
+}
+
+.b3d-cta-btn:hover {
+  background: #FF1A38;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(229, 9, 43, 0.6);
+}
+
+.b3d-cta-btn svg {
+  transition: transform 0.25s ease;
+}
+
+.b3d-cta-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.b3d-card-index-ghost {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: 32px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.07);
+  letter-spacing: -0.04em;
+  user-select: none;
+}
+
+/* Card Glare effect */
+.b3d-card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.07) 0%, transparent 60%);
+  opacity: var(--glare-opacity, 0);
+  transition: opacity 0.3s ease;
+}
+
+/* 6. Bottom Guidance / Scroll Indicator */
+.blog-3d-footer-hint {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.b3d-hint-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  color: #8E8E93;
+  text-transform: uppercase;
+}
+
+.b3d-scroll-line {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.b3d-scroll-pip {
+  width: 1px;
+  height: 6px;
+  background: #E5092B;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: b3dScrollPip 1.8s infinite ease-in-out;
+}
+
+@keyframes b3dScrollPip {
+  0% { top: -6px; opacity: 0; }
+  40% { opacity: 1; }
+  100% { top: 18px; opacity: 0; }
+}
+
+.b3d-hint-sub {
+  font-family: var(--font-mono, monospace);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  color: #555558;
+}
+
+/* 7. Smooth Handover to Grid Section (Zero Blank Space) */
+#blog-grid-section.blog-preview-section {
+  padding-top: 40px !important;
+  padding-bottom: 80px !important;
+  background: #080808 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   LIGHT MODE OVERRIDES FOR 3D BLOG SHOWCASE
+   ========================================================================== */
+:root[data-theme="light"] .blog-3d-experience-section {
+  background: #F8F8FA !important;
+}
+
+:root[data-theme="light"] .blog-3d-sticky-viewport {
+  background: #F8F8FA !important;
+  background-image: radial-gradient(circle at 50% 32%, rgba(229, 9, 43, 0.05) 0%, transparent 60%);
+}
+
+:root[data-theme="light"] .blog-3d-main-title {
+  color: #111111;
+}
+
+:root[data-theme="light"] .b3d-breadcrumb a {
+  color: #666668;
+}
+
+:root[data-theme="light"] .b3d-article-counter {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+:root[data-theme="light"] .b3d-counter-num {
+  color: #111111;
+}
+
+:root[data-theme="light"] .b3d-pill-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 0, 0, 0.12);
+  color: #666668;
+}
+
+:root[data-theme="light"] .blog-3d-card {
+  background: #FFFFFF;
+  border-color: #E2E2E6;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08), 0 0 30px rgba(229, 9, 43, 0.06);
+}
+
+:root[data-theme="light"] .b3d-content-pane {
+  background: #FFFFFF;
+}
+
+:root[data-theme="light"] .b3d-card-title {
+  color: #111111;
+}
+
+:root[data-theme="light"] .b3d-card-excerpt {
+  color: #555558;
+}
+
+:root[data-theme="light"] .b3d-card-actions {
+  border-top-color: #EFEFEF;
+}
+
+:root[data-theme="light"] .b3d-card-index-ghost {
+  color: rgba(0, 0, 0, 0.05);
+}
+
+:root[data-theme="light"] #blog-grid-section.blog-preview-section {
+  background: #F8F8FA !important;
+  border-top-color: #E2E2E6;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 960px) {
+  .blog-3d-stage {
+    height: 480px;
+  }
+
+  .b3d-card-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: 180px 1fr;
+  }
+
+  .b3d-visual-pane {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .b3d-content-pane {
+    padding: 20px 24px;
+  }
+
+  .b3d-card-title {
+    font-size: 22px;
+    margin: 8px 0 6px 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-3d-experience-section {
+    min-height: 640px;
+  }
+
+  .blog-3d-sticky-viewport {
+    padding: 12px 16px;
+  }
+
+  .blog-3d-header-titles {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .blog-3d-main-title {
+    font-size: 24px;
+  }
+
+  .b3d-topic-ticker {
+    display: none;
+  }
+
+  .blog-3d-stage {
+    height: 440px;
+  }
+
+  .b3d-card-inner {
+    grid-template-rows: 140px 1fr;
+  }
+
+  .b3d-content-pane {
+    padding: 16px;
+  }
+
+  .b3d-card-title {
+    font-size: 18px;
+  }
+
+  .b3d-card-excerpt {
+    font-size: 13px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .b3d-card-actions {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .blog-3d-card {
+    transition: opacity 0.3s ease !important;
+  }
+  .blog-3d-ambient-glow {
+    animation: none !important;
+  }
+}
