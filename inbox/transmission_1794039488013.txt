@@ -1,0 +1,51 @@
+======================================================================
+ZS STUDIO — NEW SECURE CONTACT TRANSMISSION
+======================================================================
+Sender Name  : Alexander
+Sender Email : alexander@example.com
+Subject      : Business / Project Inquiry
+Received At  : 2026-11-07T08:18:08.012Z
+Security     : OpenPGP 4096-bit End-to-End Encrypted (Client-Side)
+======================================================================
+
+BEGIN ENCRYPTED PGP PAYLOAD:
+
+-----BEGIN PGP MESSAGE-----
+
+wcFMA5qb97LexYROAQ/+KYJ53BrMa0w0NtRtVlC3M3dIMeuUilKwvrQwlANW
+5tp4ztidZQPqyXUBlc07mwPAknATZ/WNbbros/KZDPx9s/ifjR9G2wX4KJNq
+anR41NpXdke4mW55MlAsjAsMq3n2/MgDAomP4zYpULRiIKjZy1qag/BduCnS
+nzvRnBr+h80yP4q0r86mxDrGfeyXJpHE9i7TN6ivMCPbK/jf27sN+i+3eCkU
+H1DsNInWzQX0KieKlQg9NZICKfbeST7loXyLjrrnOplQwZmbqQzGLGqxRNEy
+eDdOp3LoCNyv6ddGhfqbQqKit+pgLs2/wK4IhzhRf5zPjY8WFP2PMtHwDtEC
+TOSHf2+C9pFgjQGFQYiSguYOeYTCG1hfYDah0y/L0+U8SFWhVzT0vmVq+BOC
+eTglwfKOvKavvyCwYGBuetGUbcuryIRLmY8CyQ06eonTLoIgVW8rr3sHSiuK
+FGGAqn96baURYwdnR68f4TfyBfn+OdmN4J3bFk+9LMw2lb/8PN0HPjFLBkC/
+LlRK01IWbb8t3jyS8ctZvdLtb5V9f/iOCUbabmqGj4pO8hwYVYI8KkNMavam
+yTbBPfRk86EUVy9UkaMPEKDotJtoGbdqVowarvdFNDzx/mi0KDgHuPvjOQkN
+fvkTwVMR0mUTU8mwKb78WB5UO6O8+7TYc4NSrc2IthHSwYsB0lPjWHtGIRtq
+e5UmmfY5NJs6JsTTbM6Z7QGeX8uaw5y663ctRxpp7xS8At4up/CY3AStYRd0
+XLJj/f6W8NMRLkAhF4LO4Ny9ImhWGkZmKjEksUTaQ41MpWzgDEDre22hjbSI
+4bvmdUHbb18qiYcilv6H+a/8LQk0KPT0bBjmrgsCUavXAVV8mEulHEba89Z2
+pBxKHmzMC+3jOwa7JkHroHOkvpbjuzfDwA5wlGsmym839GXPvkI6cg37/kjp
+6FFF3NNKlJKMD0kCnORp/ayWkivkqpPjR8uVkj1YEbdQj1vSb0e9YBj3BUBK
+9GBoPdZRYHVLk+0Kv2UTv9gGQePdtTDYixhTUBvLA+cO7Z1daLqHWj+8vOf+
+2kfOC/hKzFtLf2cwivs2GoozFFfjfsSQ7eH65fWck7mugxRr0h36WhVJ8ALC
+tUt9DyoHSa+bL6ioIBHNcAthCkz0mLRuUIdLvCWwzTvBgHxkC2y3pUUsWjSE
+nZV6hOGWamMgmBBmReXd1nIVYGxqZx/gKEvE5vmsdaisTE3g2FR+TOgW+z0b
+WzYwuCpMmsP+3IBre06vNOhVtMMKUuRZy98NTzqjIknpwlwOQhr15KJ3YDFx
+nYHbT+Gr0KYMQ8e92071M63GpAb0jlafMEYxED+dDZcTJbwxsYo7dop49Gsr
+AKnZhcEkDQaYy24xJJwNjeXYCGrxmeZWmchnWfAmLpCflthmObeSWtShsS1F
+o+hFk6n03wo2Q8xeObo5H86NN7KBp8LJV2aEexS8WVz9k+bsfg==
+=jWCy
+-----END PGP MESSAGE-----
+
+
+======================================================================
+INSTRUCTIONS FOR ZEERAK SIDDIQUI:
+This message was encrypted client-side in the visitor's browser before
+transmission. Only your private decryption key can read the plaintext.
+To decrypt locally, run:
+   node decrypt_message.js
+or import your private key into GPG / Kleopatra / Mailvelope.
+======================================================================

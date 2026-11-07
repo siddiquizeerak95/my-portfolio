@@ -1,0 +1,659 @@
+/**
+ * =============================================================================
+ * ZS STUDIO — 3D DOT SCULPTURE PORTRAIT INTRO
+ * High-performance Three.js WebGL Particle Sculpture Welcome Experience
+ * =============================================================================
+ */
+
+class ParticleSculptureIntro {
+  constructor(options = {}) {
+    this.stage = document.getElementById('sculpture-intro-stage');
+    this.canvas = document.getElementById('sculpture-canvas');
+    this.welcomeBlock = document.getElementById('sculpture-welcome-block');
+    this.enterBtn = document.getElementById('btn-enter-website');
+    this.onEnterCallback = options.onEnter || (() => {});
+
+    this.scene = null;
+    this.camera = null;
+    this.renderer = null;
+    this.points = null;
+    this.dustPoints = null;
+    this.sculptureGroup = null;
+
+    this.particleCount = 0;
+    this.positions = null;
+    this.targetPositions = null;
+    this.originPositions = null;
+    this.velocities = null;
+    this.colors = null;
+
+    this.phase = 'loading'; // 'loading', 'forming', 'interactive', 'dispersing', 'dismissed'
+    this.formationProgress = 0;
+    this.formationDuration = 2.0; // seconds
+    this.startTime = 0;
+
+    // Mouse & Touch Tracking
+    this.mouse = { x: 0, y: 0 };
+    this.targetMouse = { x: 0, y: 0 };
+    this.isTouch = false;
+    this.animationFrameId = null;
+    this.boundAnimate = this.animate.bind(this);
+    this.boundResize = this.onResize.bind(this);
+    this.boundMouseMove = this.onMouseMove.bind(this);
+    this.boundTouchMove = this.onTouchMove.bind(this);
+    this.boundKeyDown = this.onKeyDown.bind(this);
+
+    this.init();
+  }
+
+  async init() {
+    if (!this.stage || !this.canvas) return;
+
+    // Check prefers-reduced-motion
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.dismissImmediately();
+      return;
+    }
+
+    // Check URL override: ?skip_intro=1
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('skip_intro') === '1') {
+      this.dismissImmediately();
+      return;
+    }
+
+    // Verify Three.js availability
+    if (typeof THREE === 'undefined') {
+      console.warn('Three.js not loaded, falling back to static presentation.');
+      this.stage.classList.add('no-webgl');
+      this.setupFallbackEvents();
+      return;
+    }
+
+    try {
+      this.initThree();
+      await this.loadParticleData();
+      this.createParticles();
+      this.createAtmosphericDust();
+      this.bindEvents();
+
+      // Ready to display
+      this.stage.classList.add('ready');
+
+      // Check if preloader is skipped (?skip_preloader=1)
+      const skipPreloader = urlParams.get('skip_preloader') === '1';
+      if (skipPreloader) {
+        this.startFormation();
+      }
+    } catch (err) {
+      console.error('3D Particle Sculpture initialization error:', err);
+      this.stage.classList.add('no-webgl');
+      this.setupFallbackEvents();
+    }
+  }
+
+  initThree() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    // Scene
+    this.scene = new THREE.Scene();
+    this.scene.background = new THREE.Color(0x080808);
+
+    // Camera
+    this.camera = new THREE.PerspectiveCamera(45, width / height, 1, 2000);
+    this.camera.position.set(0, 0, 680);
+
+    // Renderer
+    this.renderer = new THREE.WebGLRenderer({
+      canvas: this.canvas,
+      antialias: true,
+      alpha: true,
+      powerPreference: 'high-performance'
+    });
+    this.renderer.setSize(width, height);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Master Sculpture Group
+    this.sculptureGroup = new THREE.Group();
+    this.updateSculpturePosition(width);
+    this.scene.add(this.sculptureGroup);
+  }
+
+  updateSculpturePosition(width) {
+    if (!this.sculptureGroup) return;
+    if (width <= 768) {
+      // Mobile: centered, lower on screen to allow welcome text room on top
+      this.sculptureGroup.position.set(0, -55, 0);
+      this.sculptureGroup.scale.set(0.78, 0.78, 0.78);
+    } else if (width <= 1024) {
+      // Tablet: centered slightly right
+      this.sculptureGroup.position.set(80, -10, 0);
+      this.sculptureGroup.scale.set(0.92, 0.92, 0.92);
+    } else {
+      // Desktop: placed gracefully on the right half, leaving left open for typography
+      this.sculptureGroup.position.set(135, -5, 0);
+      this.sculptureGroup.scale.set(1.05, 1.05, 1.05);
+    }
+  }
+
+  async loadParticleData() {
+    // 1. Try binary buffer first (ultra fast Float32Array)
+    try {
+      const res = await fetch('assets/sculpture-particles.bin');
+      if (res.ok) {
+        const buffer = await res.arrayBuffer();
+        const flat = new Float32Array(buffer);
+        const count = flat.length / 7;
+        this.particleCount = count;
+        this.positions = new Float32Array(count * 3);
+        this.targetPositions = new Float32Array(count * 3);
+        this.originPositions = new Float32Array(count * 3);
+        this.velocities = new Float32Array(count * 3);
+        this.colors = new Float32Array(count * 3);
+
+        for (let i = 0; i < count; i++) {
+          const base = i * 7;
+          const i3 = i * 3;
+
+          const tx = flat[base];
+          const ty = flat[base + 1];
+          const tz = flat[base + 2];
+
+          this.targetPositions[i3] = tx;
+          this.targetPositions[i3 + 1] = ty;
+          this.targetPositions[i3 + 2] = tz;
+
+          // Origin positions: scattered in dark 3D void
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(2 * Math.random() - 1);
+          const r = 400 + Math.random() * 800;
+          this.originPositions[i3] = r * Math.sin(phi) * Math.cos(theta);
+          this.originPositions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+          this.originPositions[i3 + 2] = (Math.random() - 0.5) * 600 - 150;
+
+          // Start at origin
+          this.positions[i3] = this.originPositions[i3];
+          this.positions[i3 + 1] = this.originPositions[i3 + 1];
+          this.positions[i3 + 2] = this.originPositions[i3 + 2];
+
+          // Colors
+          this.colors[i3] = flat[base + 3];
+          this.colors[i3 + 1] = flat[base + 4];
+          this.colors[i3 + 2] = flat[base + 5];
+        }
+        return;
+      }
+    } catch (e) {
+      console.warn('Binary buffer fetch bypassed, trying JSON fallback:', e);
+    }
+
+    // 2. Try JSON fallback
+    try {
+      const res = await fetch('assets/sculpture-particles.json');
+      if (res.ok) {
+        const data = await res.json();
+        const count = data.length;
+        this.particleCount = count;
+        this.positions = new Float32Array(count * 3);
+        this.targetPositions = new Float32Array(count * 3);
+        this.originPositions = new Float32Array(count * 3);
+        this.velocities = new Float32Array(count * 3);
+        this.colors = new Float32Array(count * 3);
+
+        for (let i = 0; i < count; i++) {
+          const item = data[i];
+          const i3 = i * 3;
+
+          this.targetPositions[i3] = item[0];
+          this.targetPositions[i3 + 1] = item[1];
+          this.targetPositions[i3 + 2] = item[2];
+
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(2 * Math.random() - 1);
+          const r = 400 + Math.random() * 800;
+          this.originPositions[i3] = r * Math.sin(phi) * Math.cos(theta);
+          this.originPositions[i3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+          this.originPositions[i3 + 2] = (Math.random() - 0.5) * 600 - 150;
+
+          this.positions[i3] = this.originPositions[i3];
+          this.positions[i3 + 1] = this.originPositions[i3 + 1];
+          this.positions[i3 + 2] = this.originPositions[i3 + 2];
+
+          this.colors[i3] = item[3];
+          this.colors[i3 + 1] = item[4];
+          this.colors[i3 + 2] = item[5];
+        }
+        return;
+      }
+    } catch (e) {
+      console.warn('JSON fallback bypassed, using client canvas generator:', e);
+    }
+
+    // 3. Client Canvas Generator Fallback
+    await this.generateParticlesFromImage();
+  }
+
+  generateParticlesFromImage() {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        const offCanvas = document.createElement('canvas');
+        const offCtx = offCanvas.getContext('2d');
+        const w = 450;
+        const h = Math.round((img.height / img.width) * 450);
+        offCanvas.width = w;
+        offCanvas.height = h;
+        offCtx.drawImage(img, 0, 0, w, h);
+        const imgData = offCtx.getImageData(0, 0, w, h).data;
+
+        const pts = [];
+        const step = 3;
+        for (let y = 0; y < h; y += step) {
+          for (let x = 0; x < w; x += step) {
+            const idx = (y * w + x) * 4;
+            const a = imgData[idx + 3];
+            if (a < 50) continue;
+
+            const r = imgData[idx];
+            const g = imgData[idx + 1];
+            const b = imgData[idx + 2];
+            const lum = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+
+            const px = (x - w / 2) * 0.8;
+            const py = -(y - h / 2) * 0.8;
+            const pz = (lum - 0.5) * 35;
+
+            // Palette
+            let cr = 0.96, cg = 0.04, cb = 0.17; // red
+            if (lum > 0.55) { cr = 0.96; cg = 0.96; cb = 0.98; } // white
+            else if (lum < 0.2) { cr = 0.35; cg = 0.04; cb = 0.08; } // dark crimson
+
+            pts.push(px, py, pz, cr, cg, cb);
+          }
+        }
+
+        const count = pts.length / 6;
+        this.particleCount = count;
+        this.positions = new Float32Array(count * 3);
+        this.targetPositions = new Float32Array(count * 3);
+        this.originPositions = new Float32Array(count * 3);
+        this.velocities = new Float32Array(count * 3);
+        this.colors = new Float32Array(count * 3);
+
+        for (let i = 0; i < count; i++) {
+          const b = i * 6;
+          const i3 = i * 3;
+          this.targetPositions[i3] = pts[b];
+          this.targetPositions[i3 + 1] = pts[b + 1];
+          this.targetPositions[i3 + 2] = pts[b + 2];
+
+          this.originPositions[i3] = (Math.random() - 0.5) * 1200;
+          this.originPositions[i3 + 1] = (Math.random() - 0.5) * 1200;
+          this.originPositions[i3 + 2] = (Math.random() - 0.5) * 600;
+
+          this.positions[i3] = this.originPositions[i3];
+          this.positions[i3 + 1] = this.originPositions[i3 + 1];
+          this.positions[i3 + 2] = this.originPositions[i3 + 2];
+
+          this.colors[i3] = pts[b + 3];
+          this.colors[i3 + 1] = pts[b + 4];
+          this.colors[i3 + 2] = pts[b + 5];
+        }
+        resolve();
+      };
+      img.onerror = reject;
+      img.src = 'assets/zeerak-portrait-clean.png';
+    });
+  }
+
+  createPointTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+
+    const grad = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    grad.addColorStop(0.0, 'rgba(255, 255, 255, 1)');
+    grad.addColorStop(0.3, 'rgba(255, 255, 255, 0.95)');
+    grad.addColorStop(0.65, 'rgba(255, 255, 255, 0.45)');
+    grad.addColorStop(1.0, 'rgba(255, 255, 255, 0)');
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 64, 64);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.needsUpdate = true;
+    return texture;
+  }
+
+  createParticles() {
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3));
+    geometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3));
+
+    const material = new THREE.PointsMaterial({
+      size: 3.2,
+      map: this.createPointTexture(),
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.95,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+
+    this.points = new THREE.Points(geometry, material);
+    this.sculptureGroup.add(this.points);
+  }
+
+  createAtmosphericDust() {
+    const dustCount = 140;
+    const dustPositions = new Float32Array(dustCount * 3);
+    const dustColors = new Float32Array(dustCount * 3);
+
+    for (let i = 0; i < dustCount; i++) {
+      const i3 = i * 3;
+      dustPositions[i3] = (Math.random() - 0.5) * 850;
+      dustPositions[i3 + 1] = (Math.random() - 0.5) * 750;
+      dustPositions[i3 + 2] = (Math.random() - 0.5) * 500;
+
+      // 70% crimson/red ember dust, 30% soft silver dust
+      if (Math.random() > 0.3) {
+        dustColors[i3] = 0.90;
+        dustColors[i3 + 1] = 0.05;
+        dustColors[i3 + 2] = 0.16;
+      } else {
+        dustColors[i3] = 0.85;
+        dustColors[i3 + 1] = 0.85;
+        dustColors[i3 + 2] = 0.90;
+      }
+    }
+
+    const dustGeo = new THREE.BufferGeometry();
+    dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+    dustGeo.setAttribute('color', new THREE.BufferAttribute(dustColors, 3));
+
+    const dustMat = new THREE.PointsMaterial({
+      size: 2.2,
+      map: this.createPointTexture(),
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+
+    this.dustPoints = new THREE.Points(dustGeo, dustMat);
+    this.scene.add(this.dustPoints);
+  }
+
+  bindEvents() {
+    window.addEventListener('resize', this.boundResize, { passive: true });
+    window.addEventListener('mousemove', this.boundMouseMove, { passive: true });
+    window.addEventListener('touchmove', this.boundTouchMove, { passive: true });
+    window.addEventListener('keydown', this.boundKeyDown);
+
+    if (this.enterBtn) {
+      this.enterBtn.addEventListener('click', () => {
+        this.triggerDispersion();
+      });
+    }
+  }
+
+  setupFallbackEvents() {
+    if (this.enterBtn) {
+      this.enterBtn.addEventListener('click', () => {
+        this.dismissImmediately();
+      });
+    }
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        this.dismissImmediately();
+      }
+    });
+  }
+
+  onResize() {
+    if (!this.camera || !this.renderer) return;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(width, height);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    this.updateSculpturePosition(width);
+  }
+
+  onMouseMove(e) {
+    if (this.phase === 'dispersing' || this.phase === 'dismissed') return;
+    // Normalized to [-1, 1]
+    this.targetMouse.x = (e.clientX / window.innerWidth - 0.5) * 2;
+    this.targetMouse.y = -(e.clientY / window.innerHeight - 0.5) * 2;
+  }
+
+  onTouchMove(e) {
+    if (this.phase === 'dispersing' || this.phase === 'dismissed') return;
+    if (e.touches && e.touches[0]) {
+      this.isTouch = true;
+      this.targetMouse.x = (e.touches[0].clientX / window.innerWidth - 0.5) * 2;
+      this.targetMouse.y = -(e.touches[0].clientY / window.innerHeight - 0.5) * 2;
+    }
+  }
+
+  onKeyDown(e) {
+    if (e.key === 'Enter' && this.phase !== 'dispersing' && this.phase !== 'dismissed') {
+      e.preventDefault();
+      this.triggerDispersion();
+    }
+  }
+
+  startFormation() {
+    if (this.phase !== 'loading') return;
+    this.phase = 'forming';
+    this.startTime = performance.now();
+    this.stage.classList.add('active');
+
+    // Start render loop
+    if (!this.animationFrameId) {
+      this.animate();
+    }
+
+    // Schedule Welcome Message reveal after formation completes (~2.2s)
+    setTimeout(() => {
+      if (this.phase === 'forming') {
+        this.phase = 'interactive';
+        if (this.welcomeBlock) {
+          this.welcomeBlock.classList.add('visible');
+        }
+      }
+    }, 2200);
+  }
+
+  triggerDispersion() {
+    if (this.phase === 'dispersing' || this.phase === 'dismissed') return;
+    this.phase = 'dispersing';
+
+    // Assign outward explosion velocities
+    const count = this.particleCount;
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      const tx = this.targetPositions[i3];
+      const ty = this.targetPositions[i3 + 1];
+      const tz = this.targetPositions[i3 + 2];
+
+      const len = Math.sqrt(tx * tx + ty * ty + tz * tz) + 0.1;
+      const speed = 12 + Math.random() * 28;
+
+      // Radial blast direction with forward push toward camera
+      this.velocities[i3] = (tx / len) * speed + (Math.random() - 0.5) * 8;
+      this.velocities[i3 + 1] = (ty / len) * speed + (Math.random() - 0.5) * 8;
+      this.velocities[i3 + 2] = (tz / len) * speed + 18 + Math.random() * 24;
+    }
+
+    // Fade out stage & welcome elements
+    this.stage.classList.add('intro-dismissed');
+
+    // Notify callback (unveils homepage)
+    if (typeof this.onEnterCallback === 'function') {
+      this.onEnterCallback();
+    }
+
+    // Clean up Three.js after dispersion animation completes (850ms)
+    setTimeout(() => {
+      this.cleanup();
+    }, 850);
+  }
+
+  dismissImmediately() {
+    this.phase = 'dismissed';
+    if (this.stage) {
+      this.stage.classList.add('intro-dismissed');
+      this.stage.style.display = 'none';
+    }
+    if (typeof this.onEnterCallback === 'function') {
+      this.onEnterCallback();
+    }
+    this.cleanup();
+  }
+
+  cleanup() {
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
+    }
+
+    window.removeEventListener('resize', this.boundResize);
+    window.removeEventListener('mousemove', this.boundMouseMove);
+    window.removeEventListener('touchmove', this.boundTouchMove);
+    window.removeEventListener('keydown', this.boundKeyDown);
+
+    if (this.points && this.points.geometry) {
+      this.points.geometry.dispose();
+    }
+    if (this.points && this.points.material) {
+      this.points.material.dispose();
+    }
+    if (this.dustPoints && this.dustPoints.geometry) {
+      this.dustPoints.geometry.dispose();
+    }
+    if (this.dustPoints && this.dustPoints.material) {
+      this.dustPoints.material.dispose();
+    }
+    if (this.renderer) {
+      this.renderer.dispose();
+    }
+    if (this.stage) {
+      this.stage.style.display = 'none';
+    }
+  }
+
+  animate() {
+    this.animationFrameId = requestAnimationFrame(this.boundAnimate);
+
+    const time = performance.now() * 0.001;
+
+    // -------------------------------------------------------------------------
+    // PHASE ANIMATION UPDATES
+    // -------------------------------------------------------------------------
+    const posAttr = this.points ? this.points.geometry.attributes.position : null;
+    const posArray = posAttr ? posAttr.array : null;
+
+    if (this.phase === 'forming') {
+      const elapsed = (performance.now() - this.startTime) / 1000;
+      const progress = Math.min(1.0, elapsed / this.formationDuration);
+      // Cubic ease-out: 1 - (1 - t)^3
+      const ease = 1 - Math.pow(1 - progress, 3);
+      this.formationProgress = ease;
+
+      const count = this.particleCount;
+      for (let i = 0; i < count; i++) {
+        const i3 = i * 3;
+        // Stagger based on distance from center for swirling vortex assemble
+        const stagger = (i % 20) * 0.015;
+        const p = Math.max(0, Math.min(1, (ease - stagger) / (1.0 - stagger)));
+        const pEase = p * p * (3.0 - 2.0 * p); // Smoothstep
+
+        posArray[i3] = this.originPositions[i3] + (this.targetPositions[i3] - this.originPositions[i3]) * pEase;
+        posArray[i3 + 1] = this.originPositions[i3 + 1] + (this.targetPositions[i3 + 1] - this.originPositions[i3 + 1]) * pEase;
+        posArray[i3 + 2] = this.originPositions[i3 + 2] + (this.targetPositions[i3 + 2] - this.originPositions[i3 + 2]) * pEase;
+      }
+      posAttr.needsUpdate = true;
+
+    } else if (this.phase === 'interactive') {
+      // Subtle organic breathing wave on depth
+      const count = this.particleCount;
+      const waveAmp = 1.4;
+      for (let i = 0; i < count; i += 3) {
+        const i3 = i * 3;
+        const tx = this.targetPositions[i3];
+        const ty = this.targetPositions[i3 + 1];
+        const tz = this.targetPositions[i3 + 2];
+        posArray[i3 + 2] = tz + Math.sin(time * 2.2 + tx * 0.025 + ty * 0.015) * waveAmp;
+      }
+      posAttr.needsUpdate = true;
+
+    } else if (this.phase === 'dispersing') {
+      const count = this.particleCount;
+      for (let i = 0; i < count; i++) {
+        const i3 = i * 3;
+        posArray[i3] += this.velocities[i3];
+        posArray[i3 + 1] += this.velocities[i3 + 1];
+        posArray[i3 + 2] += this.velocities[i3 + 2];
+        this.velocities[i3] *= 1.04;
+        this.velocities[i3 + 1] *= 1.04;
+        this.velocities[i3 + 2] *= 1.05;
+      }
+      posAttr.needsUpdate = true;
+    }
+
+    // -------------------------------------------------------------------------
+    // SMOOTH MOUSE / TOUCH INTERPOLATION
+    // -------------------------------------------------------------------------
+    if (this.phase === 'forming' || this.phase === 'interactive') {
+      // Gentle auto-swaying idle motion when mouse is not moving
+      const idleYaw = Math.sin(time * 0.8) * 0.05;
+      const idlePitch = Math.cos(time * 0.6) * 0.03;
+
+      // Smooth damping (lerp)
+      this.mouse.x += (this.targetMouse.x - this.mouse.x) * 0.06;
+      this.mouse.y += (this.targetMouse.y - this.mouse.y) * 0.06;
+
+      if (this.sculptureGroup) {
+        // Rotation (Yaw and Pitch)
+        const targetRotY = this.mouse.x * 0.32 + idleYaw;
+        const targetRotX = -this.mouse.y * 0.20 + idlePitch;
+
+        this.sculptureGroup.rotation.y += (targetRotY - this.sculptureGroup.rotation.y) * 0.08;
+        this.sculptureGroup.rotation.x += (targetRotX - this.sculptureGroup.rotation.x) * 0.08;
+
+        // Subtle position parallax shift
+        const baseOffset = (window.innerWidth <= 768) ? 0 : ((window.innerWidth <= 1024) ? 80 : 135);
+        const targetPosX = baseOffset + this.mouse.x * 24;
+        const targetPosY = (window.innerWidth <= 768 ? -55 : -5) + this.mouse.y * 18;
+
+        this.sculptureGroup.position.x += (targetPosX - this.sculptureGroup.position.x) * 0.08;
+        this.sculptureGroup.position.y += (targetPosY - this.sculptureGroup.position.y) * 0.08;
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // DUST PARTICLES DRIFT
+    // -------------------------------------------------------------------------
+    if (this.dustPoints) {
+      this.dustPoints.rotation.y = time * 0.02;
+      this.dustPoints.rotation.x = Math.sin(time * 0.015) * 0.05;
+    }
+
+    // Render Scene
+    if (this.renderer && this.scene && this.camera) {
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+}
+
+// Global hook for orchestration
+window.ParticleSculptureIntro = ParticleSculptureIntro;
+

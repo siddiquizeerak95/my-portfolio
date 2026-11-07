@@ -1,0 +1,25 @@
+# Environment Variables & Secrets
+.env
+.env.local
+.env.*.local
+*.env
+
+# Private Encryption Keys (Keep strictly private)
+keys/*private*
+keys/*secret*
+*.private.asc
+*.sec.asc
+
+# Node Dependencies & Logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.pyc
+
+# Local Scratch Directory
+scratch/
+

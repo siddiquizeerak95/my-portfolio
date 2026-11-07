@@ -1,0 +1,53 @@
+======================================================================
+ZS STUDIO — NEW SECURE CONTACT TRANSMISSION
+======================================================================
+Sender Name  : Alexander Wright
+Sender Email : alexander.wright@techcraft.io
+Subject      : Collaboration Request
+Received At  : 2026-11-07T08:17:27.309Z
+Security     : OpenPGP 4096-bit End-to-End Encrypted (Client-Side)
+======================================================================
+
+BEGIN ENCRYPTED PGP PAYLOAD:
+
+-----BEGIN PGP MESSAGE-----
+
+wcFMA5qb97LexYROARAAt35Di5PuWyPObPOa7qZlWp70Riuh0oliXHVu0+pN
+/1zCDrx+S/1mzWzV5De63qp1BZAaUvTvAThO5bCdsW7ept8Swtms5W6Cy2e6
+0TNW3ElHJoZnXWCxEPXdRq5A27pKzHEjIF/5K28ih/ha38b+bIwd+1t9B9Qc
++ezy2B+f1Hdse2ebhpZgzMjTm6XpyLR27Q38Bt4sCNXmtbnUhVin4Z9+/nYV
+jKLyBBw7eU8ZGbwEKNkusWFAOivPutvYt6ahiLv+65Ms+XdH32T6inxRjK/0
+kD9ITKSCPQ2muivYvjQy3ApqAIhIzpYbh0fs4mRLXH8FQxwmxx4+y2t0r9ta
+4rYhMSOWCOZscTYrB1HeGqr7TPWtnSi7EO4O0sgknr6WTHspxIOJcVsQt5/N
+HwpNa99nMYi+o4UaXwnwI5OLn1Bj7kE3FXEXYqooI9qpxSN9B0U2kGZVqaCA
+530KhvtQZhqwnRNsMBFv1wHgEwo8Z3ZJ/QD1D0WgnGFqnhm9m87oZGNmA5Xo
+dkSXGYSvBJfOxAkcvQt1QP/MEcMzNd8wWQ/6xg18r6Lfqv6DTUTjlZx4yzK5
+P9mUWVQmxa2G9TTdvg6xmMHmFMRCpUj9dnAOwNpbbblMIqU0Tsg9JbKkxy00
+iD/US8PKPx6fph/bjAmOkQ6hq0v2MXJHbkkuD3h2dWrSwdgBicHlSNpJ5QdG
+H2tGL7d0lzpQLlvKnZPQv53AQKAfZkSNBMQGutnBrzu+5wJZxY9/l6yTTqI8
+05suXBgqL2DB0dtfziLPldkePxKarhQ+8oJafiVUKEGY5G0MLA2BuLtjIleb
+z6BX5LI/GaBbRUWGndMNkdYQ3Liy7ueFIkL50jF+yDsvaRmxMssVCWWOgnDK
+srsDPgHaJ8tks5XMy6Nr1zdw+CeyLUaRv/XMbpeX+YLra6pZYFv4mn4/N0lr
+wqAINijLTRnBfXBSOOLt8O+pTp5se+OAG3xa3r3MH5aLm0UyAdXTsHF9lMfl
+Z/16XWgROBwisAfEeOaY4pZH6mBWgYyfyjOE0GJKj3E3t0K6m8GPESWufbpj
+Cl5wGWUsxy45gtW6esN3mFT7I15Myo7pC+lvJ2UIXkSiebFvRH4HphL+saXm
+KEZmjRnDY2ynyQ9EecW53JmFVQBLQg7exB0yKHRQW7cMVdMKnF9AUgqIrzIb
+IlMR4s9hnHCw6aCHVSllFtuFkb6P5M7RPAaBKRP722udgxgWNG1SDInncnvD
+m731W1b9E4wAMToctyRn8zL+SimkSlwEnhvQxY3NXXdlK9zVPnQIcbEY6oEd
+ZE3g9nnx/sajLTgqvrzBkPOnkFSHp7NX24kuPAHbK0Aja6xtTompwdwfuB9B
+FqN7UMzG+0WdSwXpVmezs4uigen+H0d6aanoRt+t226+wqj0l8CdXLMWXPyC
+cS2dsoncwUVYp/KSpjCS8BY4zfnrtsIfQ20fcjkMlUl3nU9jnAyvG/Gih1gL
+vtfz4UnLSoanBL0eHMt4ohkocjczJRzIJ14tTOPxeQcwiJaHp64BdNVGhah+
+cG3nFPMwmiGPrFkudilVnRlSraIZ2zGX
+=g0AM
+-----END PGP MESSAGE-----
+
+
+======================================================================
+INSTRUCTIONS FOR ZEERAK SIDDIQUI:
+This message was encrypted client-side in the visitor's browser before
+transmission. Only your private decryption key can read the plaintext.
+To decrypt locally, run:
+   node decrypt_message.js
+or import your private key into GPG / Kleopatra / Mailvelope.
+======================================================================

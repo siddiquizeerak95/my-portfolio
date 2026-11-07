@@ -43,11 +43,14 @@
     rel="stylesheet">
 
   <!-- Master Stylesheet -->
+    <!-- Preload Interface Click Audio -->
+  <link rel="preload" href="assets/audio/mixkit-sci-fi-interface-robot-click-901.wav" as="audio" type="audio/wav">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="sculpture-intro.css">
 </head>
 
 <body data-page="home">
-<!-- =========================================================================
+  <!-- =========================================================================
        CINEMATIC WEBSITE LOADING SCREEN (ZEERAK BRAND ARCHITECTURE)
        ========================================================================= -->
   <aside id="site-preloader" class="site-preloader" aria-label="Loading ZEERAK Portfolio" aria-live="polite">
@@ -86,10 +89,50 @@
     </div>
   </aside>
 
+  <!-- =========================================================================
+       CINEMATIC 3D HOLOGRAPHIC PORTRAIT INTRODUCTION (ZS STUDIO)
+       Full-screen interactive opening experience (Runs immediately after preloader,
+       completely covers homepage until dissolved by scroll or Enter)
+       ========================================================================= -->
+  <section id="sculpture-intro-stage" class="sculpture-intro-stage" aria-label="Interactive 3D Holographic Portrait Intro">
+    <!-- WebGL Canvas for 3D Sculpture -->
+    <canvas id="sculpture-canvas" class="sculpture-canvas"></canvas>
+
+    <!-- Subtle Atmospheric Ambient Glow (Zero Blue) -->
+    <div class="sculpture-ambient-glow" aria-hidden="true"></div>
+
+    <!-- Top-Left: ZS STUDIO Brand Identifier with Red Accent Dash -->
+    <div class="intro-brand-top-left" aria-label="ZS STUDIO">
+      <span class="intro-red-dash" aria-hidden="true"></span>
+      <span class="intro-brand-text"><span class="intro-zs-accent">ZS</span> STUDIO</span>
+    </div>
+
+    <!-- Left Side: Welcome Typography with Highlighted Surname & Accent Underline -->
+    <div class="intro-welcome-group" id="sculpture-welcome-block">
+      <p class="intro-greeting">Hii, I am</p>
+      <h1 class="intro-name">Zeerak <span class="highlight-siddiqui">Siddiqui.</span></h1>
+      <p class="intro-subline">Welcome to my portfolio.</p>
+      <div class="intro-welcome-underline" aria-hidden="true"></div>
+    </div>
+
+    <!-- Bottom-Right: VISIT Action Button -->
+    <div class="sculpture-enter-wrap">
+      <button id="btn-enter-website" class="btn-sculpture-enter" aria-label="Visit Website">
+        <span class="enter-btn-label">VISIT</span>
+        <span class="enter-btn-arrow">&rarr;</span>
+      </button>
+    </div>
+
+    <!-- Static Fallback if WebGL is unavailable -->
+    <div class="sculpture-fallback">
+      <img src="assets/zeerak-portrait-clean.png" alt="Zeerak Siddiqui" width="450" height="512" loading="eager">
+    </div>
+  </section>
+
   <!-- Skip Navigation for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
 
-<!-- Custom Precision Monochrome Cursor (Desktop Only) -->
+  <!-- Custom Precision Monochrome Cursor (Desktop Only) -->
   <canvas id="particle-cursor-canvas" aria-hidden="true"></canvas>
   <div class="custom-cursor" id="custom-cursor" aria-hidden="true">
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -102,7 +145,8 @@
       <nav class="header-nav" aria-label="Main Navigation">
         <!-- Far Left: ZS Logo + ZS STUDIO Wordmark -->
         <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="46" height="46" loading="eager">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="46" height="46"
+            loading="eager">
           <span class="header-brand-divider" aria-hidden="true"></span>
           <span class="header-brand-name">ZS STUDIO</span>
         </a>
@@ -119,12 +163,31 @@
 
         <!-- Right Side: Theme Controls & Social Links & Mobile Toggle -->
         <div class="header-controls">
+          <!-- Global Sound FX Toggle (Mixkit Sci-Fi Interface Robot Click) -->
+          <button class="sound-toggle-btn" id="sound-toggle" aria-label="Toggle sound effects (currently off)" title="Toggle sound effects" data-sound="off">
+            <span class="sound-indicator-dot" aria-hidden="true"></span>
+            <svg class="sound-off-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+            <svg class="sound-on-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </button>
+
           <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
             <span class="theme-indicator-dot" aria-hidden="true"></span>
-            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
-            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg class="theme-sun-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="5"></circle>
               <line x1="12" y1="1" x2="12" y2="3"></line>
               <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -139,14 +202,30 @@
 
           <!-- Social Icons in Header (From Reference Image) -->
           <div class="header-social-cluster" aria-label="Social Links">
-            <a href="https://github.com/ZeerakSiddiqui" target="_blank" rel="noopener noreferrer" class="header-social-btn" aria-label="GitHub">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            <a href="https://github.com/ZeerakSiddiqui" target="_blank" rel="noopener noreferrer"
+              class="header-social-btn" aria-label="GitHub">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                </path>
+              </svg>
             </a>
-            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="header-social-btn" aria-label="Instagram">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+              class="header-social-btn" aria-label="Instagram">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
             </a>
             <a href="mailto:zeeraksiddiqui@gmail.com" class="header-social-btn" aria-label="Email">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
             </a>
           </div>
 
@@ -212,57 +291,137 @@
   </header>
 
   <main id="main-content">
-                <!-- =========================================================================
+    <!-- =========================================================================
          00. HERO SECTION — EXACT REFERENCE VIDEO DESIGN (ZS STUDIO)
          ========================================================================= -->
-    <!-- =========================================================================
-         00. HERO SECTION — CINEMATIC RED & BLACK SHOWCASE (DANIEL SMITH REFERENCE)
-         ========================================================================= -->
-    <section id="hero" class="section hero-section hero-cinematic-reference-section" aria-label="Hero Introduction">
-      <div class="container hero-container">
-        <div class="hero-cinematic-grid">
-          
-          <!-- Left Column: Daniel Smith Reference Layout (Adapted for Zeerak Siddiqui) -->
-          <div class="hero-content-col reveal-item">
-            
-            <!-- Red "Hello" Eyebrow exactly like Reference -->
-            <p class="hero-eyebrow-red">Hello</p>
+    <section id="hero" class="section hero-section hero-video-reference-section" aria-label="Hero Introduction">
+      <!-- Far Left Accent Line with Node 01 -->
+      <div class="hero-left-accent-line" aria-hidden="true">
+        <span class="hero-left-node">01</span>
+      </div>
 
-            <!-- Main Heading: "I'm Zeerak Siddiqui|" with "Zeerak Siddiqui" in Accent Red and typing cursor -->
-            <h1 class="hero-headline-daniel">
-              I'm <span class="text-accent-red">Zeerak Siddiqui</span><span class="hero-cursor" aria-hidden="true">|</span>
+      <div class="container hero-container">
+        <div class="hero-split-grid hero-reference-grid">
+
+          <!-- Left Column: Typography, 3D Spiral Flip Card, and CTAs -->
+          <div class="hero-editorial-col hero-reference-text-col reveal-item">
+
+            <!-- Eyebrow status tag from reference -->
+            <div class="section-tag-row">
+              <span class="section-red-dot" aria-hidden="true"></span>
+              <span class="section-tag-text">AVAILABLE FOR CREATIVE PROJECTS</span>
+            </div>
+
+            <!-- Main Heading: "Hi, I'm Zeerak Siddiqui." -->
+            <h1 class="hero-headline-zs">
+              Hi, I'm Zeerak<br><span class="text-accent-red">Siddiqui.</span>
             </h1>
 
-            <!-- Concise, elegant description -->
-            <p class="hero-desc-daniel">
-              I craft beautiful digital experiences through thoughtful design, creative thinking, and modern frontend development.
+            <!-- Connector phrase from reference video: "I am a" -->
+            <p class="hero-iam-connector">I am a</p>
+
+            <!-- THE 3D SPIRAL NOTEBOOK / FLIP CARD (Exact from reference video) -->
+            <div class="hero-spiral-3d-stage" id="hero-spiral-stage" data-tilt>
+              <div class="hero-spiral-card" id="hero-spiral-card">
+
+                <!-- 10 Metallic Spiral Binding Rings Along the Top Edge -->
+                <div class="spiral-binding-rings" aria-hidden="true">
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                  <div class="spiral-ring-item"><span class="ring-hole"></span><span class="ring-wire"></span></div>
+                </div>
+
+                <!-- Flip Content (Cycles: UI/UX Designer <-> Frontend Developer <-> Creative Technologist) -->
+                <div class="spiral-card-body">
+                  <div class="spiral-card-content" id="spiral-card-content">
+                    <span class="spiral-role-text active" data-index="0">UI/UX Designer</span>
+                    <span class="spiral-role-text" data-index="1">Frontend Developer</span>
+                    <span class="spiral-role-text" data-index="2">Creative Technologist</span>
+                  </div>
+                  <div class="spiral-card-corner-page" id="spiral-card-page">01 / 03</div>
+                </div>
+
+                <!-- Specular lighting sheen -->
+                <div class="spiral-card-sheen" aria-hidden="true"></div>
+              </div>
+            </div>
+
+            <!-- Professional title & description as requested in prompt -->
+            <p class="hero-subtitle-zs">
+              UI/UX DESIGNER &amp; FRONTEND DEVELOPER
             </p>
 
-            <!-- Pill Action Buttons: Solid Red "Hire Me" + Outlined "Contact Me" exactly like Reference -->
-            <div class="hero-actions-daniel">
-              <a href="#contact" class="btn-daniel-primary" id="btn-hero-hire" aria-label="Hire Me">
-                <span>Hire Me</span>
+            <p class="hero-desc-zs">
+              I craft beautiful digital experiences through thoughtful design, creative thinking, and modern frontend
+              development.
+            </p>
+
+            <!-- Action Buttons: Solid Red "Explore My Work" + Pill "Let's Talk" -->
+            <div class="hero-actions-row">
+              <a href="#projects" class="btn-pill-solid-red" id="btn-hero-work" aria-label="Explore My Work">
+                <span>Explore My Work &rarr;</span>
               </a>
-              <a href="contact.html" class="btn-daniel-outline" id="btn-hero-contact" aria-label="Contact Me">
-                <span>Contact Me</span>
+              <a href="contact.html" class="btn-pill-grey" id="btn-hero-contact" aria-label="Let's Talk">
+                <span>Let's Talk</span>
               </a>
+            </div>
+
+            <!-- Subtle Statistics Row Below Buttons -->
+            <div class="hero-stats-row">
+              <div class="hero-stat-item">
+                <span class="stat-num">10+</span>
+                <span class="stat-lbl">Projects</span>
+              </div>
+              <div class="hero-stat-sep" aria-hidden="true"></div>
+              <div class="hero-stat-item">
+                <span class="stat-num">UI/UX</span>
+                <span class="stat-lbl">&amp; Frontend</span>
+              </div>
+              <div class="hero-stat-sep" aria-hidden="true"></div>
+              <div class="hero-stat-item">
+                <span class="stat-num">Always</span>
+                <span class="stat-lbl">Learning</span>
+              </div>
             </div>
 
           </div>
 
           <!-- Right Column: Borderless Seamless Cinematic Editorial Portrait (Exact Match to Reference) -->
-          <div class="hero-portrait-col hero-borderless-portrait-col reveal-item">
+          <div class="hero-portrait-col hero-borderless-portrait-col hero-reference-portrait-col reveal-item">
             <div class="hero-borderless-portrait-stage" id="hero-portrait-stage">
               <!-- Soft Atmospheric Red Glow Concentrated Behind Portrait -->
               <div class="hero-borderless-ambient-glow" aria-hidden="true"></div>
 
               <!-- Seamless Borderless Portrait Container (NO BORDER, NO CARD, NO BOX) -->
               <div class="hero-borderless-portrait-wrap" id="hero-portrait-card">
-                <img src="zeerak_daniel_transparent.png" alt="Zeerak Siddiqui — UI/UX Designer &amp; Frontend Developer" class="hero-borderless-portrait-img" width="814" height="924" loading="eager">
+                <img src="assets/zeerak-portrait-clean.png"
+                  alt="Zeerak Siddiqui — UI/UX Designer &amp; Frontend Developer" class="hero-borderless-portrait-img"
+                  width="900" height="1024" loading="eager">
               </div>
             </div>
           </div>
 
+        </div>
+
+        <!-- Reference Bottom Bar: AVAILABLE FOR WORK | REMOTE-FIRST | SCROLL -->
+        <div class="hero-reference-bottom-bar" aria-hidden="true">
+          <div class="bottom-bar-item left">
+            <span class="status-pulse-dot"></span>
+            <span>AVAILABLE FOR WORK</span>
+          </div>
+          <div class="bottom-bar-item center">
+            <span>REMOTE-FIRST, WORLDWIDE</span>
+          </div>
+          <div class="bottom-bar-item right">
+            <span>SCROLL TO EXPLORE &#8595;</span>
+          </div>
         </div>
 
       </div>
@@ -286,7 +445,9 @@
             </h2>
 
             <p class="section-lead-zs">
-              I'm <strong>Zeerak Siddiqui</strong>, a UI/UX Designer &amp; Frontend Developer passionate about crafting intuitive digital experiences and high-performance web interfaces. I combine user research, wireframing, and design systems with modern front-end engineering.
+              I'm <strong>Zeerak Siddiqui</strong>, a UI/UX Designer &amp; Frontend Developer passionate about crafting
+              intuitive digital experiences and high-performance web interfaces. I combine user research, wireframing,
+              and design systems with modern front-end engineering.
             </p>
 
             <div class="section-cta-wrap" style="margin-bottom: 32px;">
@@ -316,14 +477,16 @@
           <div class="home-about-visual-col reveal-item">
             <div class="about-portrait-frame-card" data-tilt>
               <div class="about-stripes-badge" aria-hidden="true">///</div>
-              <img src="./new%20image.jpeg" alt="Zeerak Siddiqui" class="about-portrait-img" width="380" height="420" loading="eager">
+              <img src="./new%20image.jpeg" alt="Zeerak Siddiqui" class="about-portrait-img" width="380" height="420"
+                loading="eager">
             </div>
 
             <!-- 4 Feature Cards with Red Badges (From Reference) -->
             <div class="about-features-container">
               <div class="about-feature-card-zs">
                 <div class="about-feature-icon-badge" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                   </svg>
@@ -333,7 +496,8 @@
 
               <div class="about-feature-card-zs">
                 <div class="about-feature-icon-badge" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polygon points="12 8 8 12 12 16 16 12 12 8"></polygon>
                   </svg>
@@ -343,7 +507,8 @@
 
               <div class="about-feature-card-zs">
                 <div class="about-feature-icon-badge" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -354,7 +519,8 @@
 
               <div class="about-feature-card-zs">
                 <div class="about-feature-icon-badge" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                   </svg>
@@ -369,10 +535,11 @@
       </div>
     </section>
 
-        <!-- =========================================================================
+    <!-- =========================================================================
          02. SELECTED DESIGN WORKS — DEDICATED UI/UX CASE STUDIES
          ========================================================================= -->
-    <section id="selected-design-works" class="section design-works-section" aria-label="Selected Design Works Showcase">
+    <section id="selected-design-works" class="section design-works-section"
+      aria-label="Selected Design Works Showcase">
       <div class="container">
         <!-- Section Header -->
         <div class="projects-header-flex reveal-item">
@@ -385,7 +552,8 @@
           </div>
           <div style="text-align: right; max-width: 460px;">
             <p class="section-lead-zs" style="margin-bottom: 14px; text-align: left;">
-              Intuitive mobile and web concepts engineered around user research, wireframing, design systems, and rapid prototyping.
+              Intuitive mobile and web concepts engineered around user research, wireframing, design systems, and rapid
+              prototyping.
             </p>
             <a href="projects.html" class="btn-pill-grey">Explore All Case Studies &rarr;</a>
           </div>
@@ -396,7 +564,8 @@
           <!-- Card 1: Modern E-commerce App -->
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
-              <img src="assets/project-ecommerce-preview.svg" alt="Modern E-commerce App Concept" width="560" height="350" loading="eager">
+              <img src="assets/project-ecommerce-preview.svg" alt="Modern E-commerce App Concept" width="560"
+                height="350" loading="eager">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">Mobile App &bull; E-commerce</span>
@@ -404,7 +573,8 @@
             </div>
             <h3 class="design-card-title">Modern E-commerce App</h3>
             <p class="design-card-desc">
-              An end-to-end mobile shopping experience crafted with intuitive product discovery, micro-interactions, seamless checkout flow, and an accessible design system.
+              An end-to-end mobile shopping experience crafted with intuitive product discovery, micro-interactions,
+              seamless checkout flow, and an accessible design system.
             </p>
             <div class="design-tools-row">
               <span class="design-tool-pill">Figma</span>
@@ -421,7 +591,8 @@
           <!-- Card 2: Personal Finance Dashboard -->
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
-              <img src="assets/project-finance-preview.svg" alt="Personal Finance Dashboard Concept" width="560" height="350" loading="eager">
+              <img src="assets/project-finance-preview.svg" alt="Personal Finance Dashboard Concept" width="560"
+                height="350" loading="eager">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">Web App UI &bull; FinTech</span>
@@ -429,7 +600,8 @@
             </div>
             <h3 class="design-card-title">Personal Finance Dashboard</h3>
             <p class="design-card-desc">
-              A clean financial management dashboard visualizing cash flow, asset allocation, and spending trends with dark/light data visualization patterns.
+              A clean financial management dashboard visualizing cash flow, asset allocation, and spending trends with
+              dark/light data visualization patterns.
             </p>
             <div class="design-tools-row">
               <span class="design-tool-pill">Figma</span>
@@ -446,7 +618,8 @@
           <!-- Card 3: Mobile Banking App -->
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
-              <img src="assets/project-banking-preview.svg" alt="Mobile Banking App Concept" width="560" height="350" loading="eager">
+              <img src="assets/project-banking-preview.svg" alt="Mobile Banking App Concept" width="560" height="350"
+                loading="eager">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">FinTech UX &bull; Mobile</span>
@@ -454,7 +627,8 @@
             </div>
             <h3 class="design-card-title">Mobile Banking App</h3>
             <p class="design-card-desc">
-              A security-focused mobile banking interface prioritizing effortless peer-to-peer transfers, biometric authorization flows, and friction-free card management.
+              A security-focused mobile banking interface prioritizing effortless peer-to-peer transfers, biometric
+              authorization flows, and friction-free card management.
             </p>
             <div class="design-tools-row">
               <span class="design-tool-pill">Figma</span>
@@ -471,7 +645,8 @@
           <!-- Card 4: Creative Portfolio Website -->
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
-              <img src="assets/project-designportfolio-preview.svg" alt="Creative Portfolio Website Concept" width="560" height="350" loading="eager">
+              <img src="assets/project-designportfolio-preview.svg" alt="Creative Portfolio Website Concept" width="560"
+                height="350" loading="eager">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">Brand &bull; Editorial Web</span>
@@ -479,7 +654,8 @@
             </div>
             <h3 class="design-card-title">Creative Portfolio Website</h3>
             <p class="design-card-desc">
-              A minimalist editorial portfolio concept designed for creative studios, featuring brutalist spatial grids, typographic rhythm, and interactive 3D showcases.
+              A minimalist editorial portfolio concept designed for creative studios, featuring brutalist spatial grids,
+              typographic rhythm, and interactive 3D showcases.
             </p>
             <div class="design-tools-row">
               <span class="design-tool-pill">Figma</span>
@@ -496,7 +672,7 @@
       </div>
     </section>
 
-<!-- =========================================================================
+    <!-- =========================================================================
          02.2 FEATURED CODE PROJECTS & 3D SLIDER
          ========================================================================= -->
     <section id="preview-projects" class="section projects-section" aria-label="Featured Works Showcase">
@@ -525,18 +701,21 @@
             <!-- Project 01 -->
             <article class="project-slide-item project-card-zs active" data-slide-index="0" data-tilt>
               <div class="project-preview-box">
-                <img src="assets/project-portfolio-preview.svg" alt="Portfolio Website" width="400" height="250" loading="eager">
+                <img src="assets/project-portfolio-preview.svg" alt="Portfolio Website" width="400" height="250"
+                  loading="eager">
               </div>
               <div class="project-info-zs">
                 <h3 class="project-title-zs">Portfolio Website</h3>
                 <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
-                  A modern and responsive portfolio built with vanilla technologies, high performance, and smooth animations.
+                  A modern and responsive portfolio built with vanilla technologies, high performance, and smooth
+                  animations.
                 </p>
                 <div class="project-tags-row-zs">
                   <span class="project-tag-pill-zs">HTML</span>
                   <span class="project-tag-pill-zs">CSS</span>
                   <span class="project-tag-pill-zs">JavaScript</span>
-                  <a href="https://zsstudio.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-arrow-btn-circle" aria-label="View Portfolio Website">&rarr;</a>
+                  <a href="https://zsstudio.netlify.app/" target="_blank" rel="noopener noreferrer"
+                    class="project-arrow-btn-circle" aria-label="View Portfolio Website">&rarr;</a>
                 </div>
               </div>
             </article>
@@ -544,18 +723,21 @@
             <!-- Project 02 -->
             <article class="project-slide-item project-card-zs next-1" data-slide-index="1" data-tilt>
               <div class="project-preview-box">
-                <img src="assets/project-matrix-preview.svg" alt="Modern Landing Page" width="400" height="250" loading="eager">
+                <img src="assets/project-matrix-preview.svg" alt="Modern Landing Page" width="400" height="250"
+                  loading="eager">
               </div>
               <div class="project-info-zs">
                 <h3 class="project-title-zs">Modern Landing Page</h3>
                 <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
-                  High-performance creative landing platform engineered with modern responsive layout logic and design systems.
+                  High-performance creative landing platform engineered with modern responsive layout logic and design
+                  systems.
                 </p>
                 <div class="project-tags-row-zs">
                   <span class="project-tag-pill-zs">React</span>
                   <span class="project-tag-pill-zs">Tailwind</span>
                   <span class="project-tag-pill-zs">UI/UX</span>
-                  <a href="projects.html" class="project-arrow-btn-circle" aria-label="View Modern Landing Page">&rarr;</a>
+                  <a href="projects.html" class="project-arrow-btn-circle"
+                    aria-label="View Modern Landing Page">&rarr;</a>
                 </div>
               </div>
             </article>
@@ -563,12 +745,14 @@
             <!-- Project 03 -->
             <article class="project-slide-item project-card-zs prev-1" data-slide-index="2" data-tilt>
               <div class="project-preview-box">
-                <img src="assets/project-fullstack-preview.svg" alt="Web App UI" width="400" height="250" loading="eager">
+                <img src="assets/project-fullstack-preview.svg" alt="Web App UI" width="400" height="250"
+                  loading="eager">
               </div>
               <div class="project-info-zs">
                 <h3 class="project-title-zs">Web App UI</h3>
                 <p style="font-size: 13.5px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
-                  Interactive user interface featuring asynchronous data streams, modern state handling, and modular architecture.
+                  Interactive user interface featuring asynchronous data streams, modern state handling, and modular
+                  architecture.
                 </p>
                 <div class="project-tags-row-zs">
                   <span class="project-tag-pill-zs">JavaScript</span>
@@ -604,7 +788,7 @@
           </p>
         </div>
 
-                <!-- Structured Categories Overview -->
+        <!-- Structured Categories Overview -->
         <div class="skills-category-showcase reveal-item" style="margin-bottom: 36px;">
           <!-- UI/UX Design -->
           <div class="skills-category-group" style="margin-bottom: 24px;">
@@ -659,7 +843,9 @@
           <!-- HTML5 -->
           <div class="skill-squircle-card" data-tilt>
             <div class="skill-squircle-icon" style="background: rgba(227, 79, 38, 0.12); color: #E34F26;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v14l9 3 9-3V5l-9-3zm6.6 4.8l-1.3 12.2L12 20.3l-5.3-1.3L5.4 6.8h13.2z"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L3 5v14l9 3 9-3V5l-9-3zm6.6 4.8l-1.3 12.2L12 20.3l-5.3-1.3L5.4 6.8h13.2z" />
+              </svg>
             </div>
             <span class="skill-squircle-title">HTML5</span>
           </div>
@@ -667,14 +853,17 @@
           <!-- CSS3 -->
           <div class="skill-squircle-card" data-tilt>
             <div class="skill-squircle-icon" style="background: rgba(21, 114, 182, 0.12); color: #1572B6;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L3 5v14l9 3 9-3V5l-9-3zm0 2.2l6.8 2.2-1.1 11.2-5.7 1.6-5.7-1.6L5.2 6.4 12 4.2z"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L3 5v14l9 3 9-3V5l-9-3zm0 2.2l6.8 2.2-1.1 11.2-5.7 1.6-5.7-1.6L5.2 6.4 12 4.2z" />
+              </svg>
             </div>
             <span class="skill-squircle-title">CSS3</span>
           </div>
 
           <!-- JavaScript -->
           <div class="skill-squircle-card" data-tilt>
-            <div class="skill-squircle-icon" style="background: rgba(247, 223, 30, 0.12); color: #F7DF1E; font-weight: 700; font-size: 18px; font-family: var(--font-mono);">
+            <div class="skill-squircle-icon"
+              style="background: rgba(247, 223, 30, 0.12); color: #F7DF1E; font-weight: 700; font-size: 18px; font-family: var(--font-mono);">
               JS
             </div>
             <span class="skill-squircle-title">JavaScript</span>
@@ -683,7 +872,12 @@
           <!-- React -->
           <div class="skill-squircle-card" data-tilt>
             <div class="skill-squircle-icon" style="background: rgba(97, 218, 251, 0.12); color: #61DAFB;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="2" fill="currentColor"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="12" rx="10" ry="4" />
+                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+                <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+                <circle cx="12" cy="12" r="2" fill="currentColor" />
+              </svg>
             </div>
             <span class="skill-squircle-title">React</span>
           </div>
@@ -691,15 +885,24 @@
           <!-- Git -->
           <div class="skill-squircle-card" data-tilt>
             <div class="skill-squircle-icon" style="background: rgba(240, 80, 50, 0.12); color: #F05032;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="9" r="3"/><path d="M6 9v6"/><path d="M9 9l6 3"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="6" cy="6" r="3" />
+                <circle cx="6" cy="18" r="3" />
+                <circle cx="18" cy="9" r="3" />
+                <path d="M6 9v6" />
+                <path d="M9 9l6 3" />
+              </svg>
             </div>
             <span class="skill-squircle-title">Git</span>
           </div>
 
           <!-- GitHub -->
           <div class="skill-squircle-card" data-tilt>
-            <div class="skill-squircle-icon" style="background: rgba(255, 255, 255, 0.1); color: #FFFFFF;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            <div class="skill-squircle-icon icon-github">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
             </div>
             <span class="skill-squircle-title">GitHub</span>
           </div>
@@ -707,7 +910,10 @@
           <!-- Tailwind -->
           <div class="skill-squircle-card" data-tilt>
             <div class="skill-squircle-icon" style="background: rgba(56, 189, 248, 0.12); color: #38BDF8;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.336 6.182 14.975 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.336 13.382 8.975 12 6.001 12z" />
+              </svg>
             </div>
             <span class="skill-squircle-title">Tailwind</span>
           </div>
@@ -715,7 +921,14 @@
           <!-- Figma -->
           <div class="skill-squircle-card" data-tilt>
             <div class="skill-squircle-icon" style="background: rgba(162, 89, 255, 0.12); color: #A259FF;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3.5"/><path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/><path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z"/><path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/><path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="3.5" />
+                <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z" />
+                <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z" />
+                <path d="M12 12.5a3.5 3.5 0 1 1 7 0 3.5 3.5 0 1 1-7 0z" />
+                <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z" />
+                <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z" />
+              </svg>
             </div>
             <span class="skill-squircle-title">Figma</span>
           </div>
@@ -723,14 +936,18 @@
           <!-- Node.js -->
           <div class="skill-squircle-card" data-tilt>
             <div class="skill-squircle-icon" style="background: rgba(104, 160, 99, 0.12); color: #68A063;">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L3 7v10l9 5 9-5V7l-9-5z"/><path d="M12 22V12"/></svg>
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" />
+                <path d="M12 22V12" />
+              </svg>
             </div>
             <span class="skill-squircle-title">Node.js</span>
           </div>
 
           <!-- C Language -->
           <div class="skill-squircle-card" data-tilt>
-            <div class="skill-squircle-icon" style="background: rgba(0, 89, 156, 0.12); color: #5C6BC0; font-weight: 700; font-size: 18px; font-family: var(--font-mono);">
+            <div class="skill-squircle-icon"
+              style="background: rgba(0, 89, 156, 0.12); color: #5C6BC0; font-weight: 700; font-size: 18px; font-family: var(--font-mono);">
               C
             </div>
             <span class="skill-squircle-title">C Language</span>
@@ -759,7 +976,8 @@
             </p>
 
             <div class="journey-landscape-card" aria-hidden="true">
-              <img src="assets/journey-landscape.svg" alt="Dark mountain landscape with glowing path" class="journey-landscape-img" width="700" height="450" loading="eager">
+              <img src="assets/journey-landscape.svg" alt="Dark mountain landscape with glowing path"
+                class="journey-landscape-img" width="700" height="450" loading="eager">
               <div class="journey-landscape-glow-overlay"></div>
             </div>
           </div>
@@ -774,7 +992,8 @@
               <!-- Milestone 01: 2024 -->
               <div class="timeline-milestone-item" data-year="2024">
                 <div class="milestone-node-badge">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                     <path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"></path>
                   </svg>
@@ -784,7 +1003,8 @@
                   <span class="milestone-year-chip">2024</span>
                   <h3 class="milestone-title">Started BCA</h3>
                   <p class="milestone-description">
-                    Began my journey in Computer Applications. Studied computational thinking, algorithms, and core systems logic in C.
+                    Began my journey in Computer Applications. Studied computational thinking, algorithms, and core
+                    systems logic in C.
                   </p>
                 </div>
               </div>
@@ -792,7 +1012,8 @@
               <!-- Milestone 02: 2025 -->
               <div class="timeline-milestone-item" data-year="2025">
                 <div class="milestone-node-badge">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polyline points="16 18 22 12 16 6"></polyline>
                     <polyline points="8 6 2 12 8 18"></polyline>
                   </svg>
@@ -802,7 +1023,8 @@
                   <span class="milestone-year-chip">2025</span>
                   <h3 class="milestone-title">Explored Web Development</h3>
                   <p class="milestone-description">
-                    Learned HTML, CSS, JavaScript and built small projects. Mastered responsive layout mathematics and clean client logic.
+                    Learned HTML, CSS, JavaScript and built small projects. Mastered responsive layout mathematics and
+                    clean client logic.
                   </p>
                 </div>
               </div>
@@ -810,7 +1032,8 @@
               <!-- Milestone 03: 2026 -->
               <div class="timeline-milestone-item" data-year="2026">
                 <div class="milestone-node-badge">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                     <polyline points="2 17 12 22 22 17"></polyline>
                     <polyline points="2 12 12 17 22 12"></polyline>
@@ -821,7 +1044,8 @@
                   <span class="milestone-year-chip">2026</span>
                   <h3 class="milestone-title">Building Real Projects</h3>
                   <p class="milestone-description">
-                    Focusing on full-stack development and real-world applications. Designing interactive developer interfaces and modern web applications.
+                    Focusing on full-stack development and real-world applications. Designing interactive developer
+                    interfaces and modern web applications.
                   </p>
                 </div>
               </div>
@@ -860,7 +1084,8 @@
           <!-- Card 1 -->
           <a href="blog-how-i-built-my-portfolio.html" class="blog-card-zs reveal-item" data-tilt>
             <div class="blog-card-thumb-wrap">
-              <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website" width="600" height="400" loading="eager">
+              <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website" width="600" height="400"
+                loading="eager">
               <span class="blog-card-date-badge">OCT 2026</span>
             </div>
             <div class="blog-card-content-zs">
@@ -875,7 +1100,8 @@
           <!-- Card 2 -->
           <a href="blog-why-i-prefer-minimalist-web-design.html" class="blog-card-zs reveal-item" data-tilt>
             <div class="blog-card-thumb-wrap">
-              <img src="assets/blog-peaks.svg" alt="Top Tools for Web Development" width="600" height="400" loading="eager">
+              <img src="assets/blog-peaks.svg" alt="Top Tools for Web Development" width="600" height="400"
+                loading="eager">
               <span class="blog-card-date-badge">SEP 2026</span>
             </div>
             <div class="blog-card-content-zs">
@@ -890,7 +1116,8 @@
           <!-- Card 3 -->
           <a href="blog-my-journey-as-a-developer.html" class="blog-card-zs reveal-item" data-tilt>
             <div class="blog-card-thumb-wrap">
-              <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA" width="600" height="400" loading="eager">
+              <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA" width="600" height="400"
+                loading="eager">
               <span class="blog-card-date-badge">AUG 2026</span>
             </div>
             <div class="blog-card-content-zs">
@@ -924,9 +1151,11 @@
 
             <div class="contact-channels-zs">
               <!-- Email -->
-              <a href="mailto:zeeraksiddiqui@gmail.com" class="contact-channel-item-zs" aria-label="Email Zeerak Siddiqui">
+              <a href="mailto:zeeraksiddiqui@gmail.com" class="contact-channel-item-zs"
+                aria-label="Email Zeerak Siddiqui">
                 <div class="channel-icon-badge-red" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
@@ -935,9 +1164,11 @@
               </a>
 
               <!-- Instagram -->
-              <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="contact-channel-item-zs" aria-label="Instagram profile @_siddiqui_._zeerak_">
+              <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+                class="contact-channel-item-zs" aria-label="Instagram profile @_siddiqui_._zeerak_">
                 <div class="channel-icon-badge-red" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -949,7 +1180,8 @@
               <!-- Location -->
               <div class="contact-channel-item-zs">
                 <div class="channel-icon-badge-red" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
@@ -960,8 +1192,11 @@
               <!-- Phone -->
               <a href="tel:+919580912686" class="contact-channel-item-zs" aria-label="Call +91 9580912686">
                 <div class="channel-icon-badge-red" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                    </path>
                   </svg>
                 </div>
                 <span class="channel-text-val">+91 9580912686</span>
@@ -973,23 +1208,67 @@
           <div class="reveal-item">
             <div class="contact-card-zs" data-tilt>
               <form id="contact-transmission-form" novalidate>
-                <div style="margin-bottom: 16px;">
-                  <label for="contact-name" style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Your Name</label>
-                  <input type="text" id="contact-name" name="name" class="form-input-zs" placeholder="Zeerak Siddiqui" required autocomplete="name">
+                <div class="e2ee-security-badge" aria-label="End-to-End Encryption Enabled">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                  <span>End-to-End Encrypted &bull; OpenPGP 4096-bit</span>
                 </div>
 
                 <div style="margin-bottom: 16px;">
-                  <label for="contact-email" style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Your Email</label>
-                  <input type="email" id="contact-email" name="email" class="form-input-zs" placeholder="zeeraksiddiqui@gmail.com" required autocomplete="email">
+                  <label for="contact-name"
+                    style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Your
+                    Name</label>
+                  <input type="text" id="contact-name" name="name" class="form-input-zs" placeholder="Alexander"
+                    required autocomplete="name">
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                  <label for="contact-email"
+                    style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Your
+                    Email</label>
+                  <input type="email" id="contact-email" name="email" class="form-input-zs"
+                    placeholder="alexander@example.com" required autocomplete="email">
+                </div>
+
+                <div style="margin-bottom: 16px;">
+                  <label for="contact-subject"
+                    style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Classification / Subject</label>
+                  <select id="contact-subject" name="subject" class="form-input-zs" style="cursor: pointer;">
+                    <option value="Other / General Inquiry">Other / General Inquiry</option>
+                    <option value="Collaboration Request">Collaboration Request</option>
+                    <option value="Business / Project Inquiry">Business / Project Inquiry</option>
+                    <option value="Design & Technical Consultation">Design & Technical Consultation</option>
+                    <option value="Feedback & Suggestions">Feedback & Suggestions</option>
+                    <option value="Custom Subject">Custom Subject...</option>
+                  </select>
+                </div>
+
+                <div style="margin-bottom: 16px; display: none;" id="custom-subject-group">
+                  <label for="contact-custom-subject"
+                    style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Custom Subject Line</label>
+                  <input type="text" id="contact-custom-subject" name="custom_subject" class="form-input-zs"
+                    placeholder="Enter your subject...">
                 </div>
 
                 <div style="margin-bottom: 22px;">
-                  <label for="contact-message" style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Your Message</label>
-                  <textarea id="contact-message" name="message" rows="4" class="form-input-zs" style="resize: vertical; min-height: 100px;" placeholder="Let's build something great together..." required></textarea>
+                  <label for="contact-message"
+                    style="display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase;">Your
+                    Message</label>
+                  <textarea id="contact-message" name="message" rows="4" class="form-input-zs"
+                    style="resize: vertical; min-height: 100px;" placeholder="Write your message here..."
+                    required></textarea>
+                </div>
+
+                <!-- Anti-Spam Honeypot (Hidden from human visitors) -->
+                <div style="display: none !important;" aria-hidden="true">
+                  <input type="text" name="_hp_security_check" id="contact-hp" tabindex="-1" autocomplete="off">
                 </div>
 
                 <!-- Grey Button: NOT RED! -->
-                <button type="submit" class="btn-pill-grey" id="btn-submit-contact" style="width: 100%; padding: 13px 28px; justify-content: center;">
+                <button type="submit" class="btn-pill-grey" id="btn-submit-contact"
+                  style="width: 100%; padding: 13px 28px; justify-content: center;">
                   <span>Send Message &rarr;</span>
                 </button>
 
@@ -1001,10 +1280,14 @@
           <!-- Slider Navigation Controls -->
           <div class="projects-slider-controls">
             <button class="slider-nav-btn prev" id="projects-slider-prev" aria-label="Previous Project">&larr;</button>
-            <div class="projects-slider-dots" id="projects-pagination-dots" role="tablist" aria-label="Project slider pagination">
-              <button class="slider-dot active" data-index="0" role="tab" aria-selected="true" aria-label="Project 1"></button>
-              <button class="slider-dot" data-index="1" role="tab" aria-selected="false" aria-label="Project 2"></button>
-              <button class="slider-dot" data-index="2" role="tab" aria-selected="false" aria-label="Project 3"></button>
+            <div class="projects-slider-dots" id="projects-pagination-dots" role="tablist"
+              aria-label="Project slider pagination">
+              <button class="slider-dot active" data-index="0" role="tab" aria-selected="true"
+                aria-label="Project 1"></button>
+              <button class="slider-dot" data-index="1" role="tab" aria-selected="false"
+                aria-label="Project 2"></button>
+              <button class="slider-dot" data-index="2" role="tab" aria-selected="false"
+                aria-label="Project 3"></button>
             </div>
             <button class="slider-nav-btn next" id="projects-slider-next" aria-label="Next Project">&rarr;</button>
           </div>
@@ -1023,7 +1306,8 @@
       <div class="footer-main-bar">
         <!-- Left: Brand Logo & Wordmark -->
         <a href="index.html" class="footer-brand-lockup" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="eager">
+          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46"
+            loading="eager">
           <span class="footer-brand-divider" aria-hidden="true"></span>
           <span class="footer-brand-name">ZS STUDIO</span>
         </a>
@@ -1042,14 +1326,20 @@
 
         <!-- Right: Social Media Icons -->
         <div class="footer-social-cluster" aria-label="Social Profiles">
-          <a href="https://github.com/ZeerakSiddiqui" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="GitHub Profile">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          <a href="https://github.com/ZeerakSiddiqui" target="_blank" rel="noopener noreferrer"
+            class="social-circle-btn" aria-label="GitHub Profile">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+              </path>
             </svg>
           </a>
 
-          <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" class="social-circle-btn" aria-label="Instagram Profile @_siddiqui_._zeerak_">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer"
+            class="social-circle-btn" aria-label="Instagram Profile @_siddiqui_._zeerak_">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
@@ -1057,7 +1347,8 @@
           </a>
 
           <a href="mailto:zeeraksiddiqui@gmail.com" class="social-circle-btn" aria-label="Email Zeerak Siddiqui">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
@@ -1076,11 +1367,24 @@
           &copy; <span id="current-year">2026</span> Zeerak Siddiqui. All rights reserved.
         </div>
         <div class="footer-crafted-right">
-          <span>Made with <span class="heart-symbol" style="color: var(--accent-red);" aria-hidden="true">&hearts;</span> and Coffee</span>
+          <span>Made with <span class="heart-symbol" style="color: var(--accent-red);"
+              aria-hidden="true">&hearts;</span> and Coffee</span>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- GSAP & ScrollTrigger Engine -->
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+
+  <!-- 3D Particle Sculpture Engine -->
+  <script src="vendor/three.min.js"></script>
+  <script src="sculpture-intro.js?v=75"></script>
+
+  <!-- Client-Side OpenPGP Cryptographic Engine & Contact Handler -->
+  <script src="vendor/openpgp.min.js"></script>
+  <script src="contact-e2ee.js"></script>
 
   <!-- Main JavaScript Orchestrator (ES Module) -->
   <script type="module" src="script.js"></script>

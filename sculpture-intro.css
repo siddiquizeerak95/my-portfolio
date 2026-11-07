@@ -1,0 +1,470 @@
+/* ==========================================================================
+   ZS STUDIO — CINEMATIC 3D HOLOGRAPHIC PORTRAIT INTRODUCTION
+   Full-screen opening experience appearing immediately after preloader
+   and before homepage becomes visible.
+   Reference matched: Dual illumination (Red left, White right),
+   orbital shoulder waves, dispersed void particles, and exact UI layout.
+   ========================================================================== */
+
+.sculpture-intro-stage {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99998; /* Below preloader (99999), completely covers entire website */
+  background-color: #000000; /* Pure opaque black void — homepage is 100% hidden */
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Atmospheric Ambient Lighting (Clean Monochromatic Studio Glow) */
+.sculpture-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(480px, 58vw, 850px);
+  height: clamp(480px, 58vw, 850px);
+  background: radial-gradient(ellipse at 50% 48%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 45, 35, 0.04) 40%, transparent 72%);
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.6s ease;
+}
+
+/* WebGL Interactive Canvas */
+.sculpture-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  z-index: 2;
+  cursor: grab;
+}
+
+.sculpture-canvas:active {
+  cursor: grabbing;
+}
+
+/* --------------------------------------------------------------------------
+   Top-Left: ZS STUDIO Brand Identifier with Red Accent Dash
+   -------------------------------------------------------------------------- */
+.intro-brand-top-left {
+  position: absolute;
+  top: clamp(24px, 4.5vh, 44px);
+  left: clamp(28px, 4.5vw, 60px);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.sculpture-intro-stage.active .intro-brand-top-left {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-red-dash {
+  width: 22px;
+  height: 2.5px;
+  background-color: #E5092B;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(229, 9, 43, 0.8);
+}
+
+.intro-brand-text {
+  font-family: var(--font-sans, "Inter", "Space Grotesk", sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.intro-zs-accent {
+  color: #E5092B;
+}
+
+/* --------------------------------------------------------------------------
+   Top-Right: Cursor Interaction Hint with Minimal Mouse Icon
+   -------------------------------------------------------------------------- */
+.intro-explore-hint {
+  position: absolute;
+  top: clamp(22px, 4vh, 40px);
+  right: clamp(28px, 4.5vw, 60px);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.8s ease 0.5s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
+}
+
+.sculpture-intro-stage.active .intro-explore-hint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-mouse-pill {
+  width: 20px;
+  height: 32px;
+  border: 1.5px solid rgba(255, 255, 255, 0.75);
+  border-radius: 11px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.intro-mouse-wheel-dot {
+  width: 3px;
+  height: 6px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+  animation: mouseWheelNudge 1.6s infinite ease-in-out;
+}
+
+@keyframes mouseWheelNudge {
+  0% { opacity: 0; transform: translateY(0); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(9px); }
+}
+
+.intro-hint-divider {
+  width: 1px;
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+.intro-hint-text-wrap {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.35;
+}
+
+.intro-hint-line {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Left Side: Welcome Typography with Highlighted Surname & Accent Underline
+   -------------------------------------------------------------------------- */
+.intro-welcome-group {
+  position: absolute;
+  top: 45%;
+  left: clamp(32px, 5.5vw, 90px);
+  transform: translateY(-50%);
+  max-width: clamp(280px, 28vw, 420px);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.intro-welcome-group.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.intro-greeting {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(1.2rem, 1.9vw, 1.8rem);
+  font-weight: 400;
+  color: #ECECEC;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
+}
+
+.intro-name {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(2.2rem, 3.4vw, 3.6rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 10px 0;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+
+.intro-name .highlight-siddiqui {
+  color: #E5092B !important;
+  text-shadow: 0 0 24px rgba(229, 9, 43, 0.6);
+}
+
+.intro-subline {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-weight: 400;
+  color: #B5B5B5;
+  margin: 0 0 18px 0;
+  letter-spacing: -0.01em;
+}
+
+.intro-welcome-underline {
+  width: 58px;
+  height: 2.5px;
+  background-color: #E5092B;
+  border-radius: 2px;
+  box-shadow: 0 0 14px rgba(229, 9, 43, 0.85);
+}
+
+/* --------------------------------------------------------------------------
+   Right Side: Vertical Scroll Indicator with Glowing Red Dot & Label
+   -------------------------------------------------------------------------- */
+.intro-scroll-indicator {
+  position: absolute;
+  top: 50%;
+  right: clamp(24px, 4vw, 56px);
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease 0.6s;
+}
+
+.sculpture-intro-stage.active .intro-scroll-indicator {
+  opacity: 1;
+}
+
+.intro-scroll-track {
+  position: relative;
+  width: 1.5px;
+  height: 110px;
+  background-color: rgba(255, 255, 255, 0.18);
+  border-radius: 1px;
+}
+
+.intro-scroll-thumb {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background-color: #E5092B;
+  box-shadow: 0 0 12px #E5092B;
+  transition: transform 0.1s ease-out;
+}
+
+.intro-scroll-label {
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.intro-scroll-arrow {
+  font-size: 13px;
+  color: #E5092B;
+  animation: scrollArrowBounce 1.6s infinite ease-in-out;
+  line-height: 1;
+}
+
+@keyframes scrollArrowBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   Bottom-Right: ENTER WEBSITE Action Button
+   -------------------------------------------------------------------------- */
+.sculpture-enter-wrap {
+  position: absolute;
+  bottom: clamp(28px, 4.5vh, 48px);
+  right: clamp(28px, 4.5vw, 64px);
+  z-index: 20;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+}
+
+.intro-welcome-group.visible ~ .sculpture-enter-wrap,
+.sculpture-intro-stage.active .sculpture-enter-wrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-sculpture-enter {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(14, 14, 16, 0.85);
+  color: #FFFFFF;
+  border: 1px solid rgba(229, 9, 43, 0.65);
+  border-radius: 9999px;
+  padding: 13px 32px;
+  font-family: var(--font-sans, "Inter", sans-serif);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.7),
+    0 0 20px rgba(229, 9, 43, 0.35);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-sculpture-enter:hover {
+  background: linear-gradient(135deg, #E5092B 0%, #FF3850 100%);
+  border-color: #FF6680;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 30px rgba(229, 9, 43, 0.65),
+    0 0 35px rgba(229, 9, 43, 0.45);
+}
+
+.btn-sculpture-enter:hover .enter-btn-arrow {
+  transform: translateX(4px);
+  color: #FFFFFF;
+}
+
+.btn-sculpture-enter:active {
+  transform: translateY(0);
+}
+
+.enter-btn-arrow {
+  font-size: 16px;
+  line-height: 1;
+  color: #E5092B;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+/* --------------------------------------------------------------------------
+   Fallback & Dismissed States
+   -------------------------------------------------------------------------- */
+.sculpture-fallback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(280px, 32vw, 440px);
+  height: auto;
+  z-index: 2;
+  display: none;
+}
+
+.sculpture-fallback img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(229, 9, 43, 0.25);
+}
+
+.no-webgl .sculpture-fallback {
+  display: block;
+}
+
+.no-webgl .sculpture-canvas {
+  display: none;
+}
+
+.sculpture-intro-stage.intro-dismissed {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  display: none !important;
+}
+
+/* Snapshot helper */
+.sculpture-intro-stage.snap-no-transition,
+.sculpture-intro-stage.snap-no-transition * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Design (Tablet & Mobile)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .intro-welcome-group {
+    left: clamp(20px, 4vw, 40px);
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-brand-top-left {
+    top: 18px;
+    left: 20px;
+  }
+
+  .intro-explore-hint {
+    display: none;
+  }
+
+  .intro-welcome-group {
+    top: 48px;
+    left: 20px;
+    right: 20px;
+    transform: none;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .intro-greeting {
+    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  }
+
+  .intro-name {
+    font-size: clamp(1.9rem, 7.5vw, 2.5rem);
+    margin-bottom: 6px;
+  }
+
+  .intro-subline {
+    font-size: 13.5px;
+    margin-bottom: 12px;
+  }
+
+  .intro-scroll-indicator {
+    display: none;
+  }
+
+  .sculpture-enter-wrap {
+    bottom: 24px;
+    right: 20px;
+    left: 20px;
+  }
+
+  .btn-sculpture-enter {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 24px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sculpture-intro-stage {
+    display: none !important;
+  }
+}

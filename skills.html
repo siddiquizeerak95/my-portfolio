@@ -39,6 +39,8 @@
     rel="stylesheet">
 
   <!-- Master Stylesheet -->
+    <!-- Preload Interface Click Audio -->
+  <link rel="preload" href="assets/audio/mixkit-sci-fi-interface-robot-click-901.wav" as="audio" type="audio/wav">
   <link rel="stylesheet" href="style.css">
 </head>
 <body data-page="skills">
@@ -75,6 +77,23 @@
 
         <!-- Right Side: Theme Controls & Mobile Toggle -->
         <div class="header-controls">
+          <!-- Global Sound FX Toggle (Mixkit Sci-Fi Interface Robot Click) -->
+          <button class="sound-toggle-btn" id="sound-toggle" aria-label="Toggle sound effects (currently off)" title="Toggle sound effects" data-sound="off">
+            <span class="sound-indicator-dot" aria-hidden="true"></span>
+            <svg class="sound-off-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <line x1="23" y1="9" x2="17" y2="15"></line>
+              <line x1="17" y1="9" x2="23" y2="15"></line>
+            </svg>
+            <svg class="sound-on-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            </svg>
+          </button>
+
           <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
             <span class="theme-indicator-dot" aria-hidden="true"></span>
             <svg class="theme-moon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -280,7 +299,7 @@
             <!-- Card 4: Framer -->
             <article class="skill-card-3d" data-category="tools" data-tilt>
               <div class="skill-card-glass">
-                <div class="skill-card-icon-wrap" style="color: #FFFFFF; font-family: var(--font-mono); font-weight: 700; font-size: 16px;">
+                <div class="skill-card-icon-wrap icon-framer" style="font-family: var(--font-mono); font-weight: 700; font-size: 16px;">
                   <span>FR</span>
                 </div>
                 <h3 class="skill-card-title">Framer</h3>
@@ -425,7 +444,7 @@
               <p class="skill-desc">
                 Engineering accessible, search-optimized, and clean document flow. Structuring DOM trees that assistive technologies navigate effortlessly and browsers render with optimal compositing.
               </p>
-              <div style="margin: 16px 0; font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+              <div class="skill-pillar-bullets">
                 <div>&bull; Semantic Landmark Elements (&lt;header&gt;, &lt;main&gt;, &lt;article&gt;)</div>
                 <div>&bull; WCAG 2.1 AA Screen-Reader Compliance</div>
                 <div>&bull; Social OpenGraph &amp; Metadata Standards</div>
@@ -448,7 +467,7 @@
               <p class="skill-desc">
                 Building fluid, mathematical layout systems without heavy CSS frameworks. Leveraging CSS Custom Properties, asymmetric 12-column Grid, fluid clamp() formulas, and GPU-composited animations.
               </p>
-              <div style="margin: 16px 0; font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+              <div class="skill-pillar-bullets">
                 <div>&bull; Fluid Typography (clamp() equations)</div>
                 <div>&bull; Asymmetric CSS Grid &amp; Flexbox Layouts</div>
                 <div>&bull; Hardware-Accelerated 3D Transform Matrices</div>
@@ -471,7 +490,7 @@
               <p class="skill-desc">
                 Client-side execution logic, asynchronous pipelines, event loop comprehension, DOM reactivity, and hardware-accelerated canvas animation loops with zero framework lock-in.
               </p>
-              <div style="margin: 16px 0; font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+              <div class="skill-pillar-bullets">
                 <div>&bull; Asynchronous Pipelines &amp; Promise Chains</div>
                 <div>&bull; Event-Driven Architecture &amp; IntersectionObservers</div>
                 <div>&bull; Canvas 2D &amp; Three.js WebGL Integration</div>
@@ -494,7 +513,7 @@
               <p class="skill-desc">
                 The scholastic anchor of my engineering discipline. Understanding physical RAM, dynamic memory allocation (malloc/free), pointer arithmetic, structs, and fundamental data structures.
               </p>
-              <div style="margin: 16px 0; font-size: 13px; color: var(--text-muted); line-height: 1.8;">
+              <div class="skill-pillar-bullets">
                 <div>&bull; Dynamic Heap Allocations &amp; Memory Safety</div>
                 <div>&bull; Pointer Arithmetic &amp; Struct Modeling</div>
                 <div>&bull; Data Structures (Linked Lists, Stacks, Queues)</div>
@@ -512,34 +531,34 @@
     <!-- SECTION: THE DUALITY PHILOSOPHY -->
     <section class="section" style="padding-top: 0;" aria-label="Engineering Philosophy">
       <div class="container">
-        <div style="background: rgba(18, 18, 18, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); padding: clamp(24px, 4vw, 44px); border-radius: 20px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);" class="reveal-item" data-tilt>
+        <div class="skills-philosophy-card reveal-item" data-tilt>
           <div class="section-meta">
             <span class="section-index">// 02.2</span>
             <span class="section-tag">ENGINEERING PRINCIPLE: THE LOW-TO-HIGH DUALITY</span>
           </div>
 
-          <h2 style="font-family: var(--font-luxury); font-size: clamp(1.8rem, 3.2vw, 2.8rem); color: var(--text-primary); margin-bottom: 20px; font-weight: 600; letter-spacing: -0.015em;">
+          <h2 class="skills-philosophy-title">
             How Low-Level Systems Thinking Transforms Web Development
           </h2>
 
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 24px;">
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08);">
-              <div style="font-family: var(--font-mono); font-size: 11px; color: #FFFFFF; margin-bottom: 10px; font-weight: 600;">[CONCEPT: MEMORY AWARENESS]</div>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.65;">
+          <div class="skills-concept-grid">
+            <div class="skills-concept-box">
+              <div class="skills-concept-title">[CONCEPT: MEMORY AWARENESS]</div>
+              <p class="skills-concept-desc">
                 In C, unmanaged memory causes immediate crashes or leaks. In JavaScript, understanding garbage collection prevents hidden memory retention in detached DOM nodes and animation loops.
               </p>
             </div>
 
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08);">
-              <div style="font-family: var(--font-mono); font-size: 11px; color: #FFFFFF; margin-bottom: 10px; font-weight: 600;">[CONCEPT: TIME COMPLEXITY]</div>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.65;">
+            <div class="skills-concept-box">
+              <div class="skills-concept-title">[CONCEPT: TIME COMPLEXITY]</div>
+              <p class="skills-concept-desc">
                 Writing sorting algorithms in C clarifies why unoptimized iterations freeze the browser thread. Every DOM query and array transformation is evaluated for computational cost.
               </p>
             </div>
 
-            <div style="background: rgba(255, 255, 255, 0.03); padding: 24px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.08);">
-              <div style="font-family: var(--font-mono); font-size: 11px; color: #FFFFFF; margin-bottom: 10px; font-weight: 600;">[CONCEPT: ARCHITECTURAL DISCIPLINE]</div>
-              <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.65;">
+            <div class="skills-concept-box">
+              <div class="skills-concept-title">[CONCEPT: ARCHITECTURAL DISCIPLINE]</div>
+              <p class="skills-concept-desc">
                 C demands strict compilation and zero implicit magic. This translates into disciplined, modular vanilla JavaScript with explicit variable scopes and predictable state flow.
               </p>
             </div>
@@ -557,24 +576,24 @@
         </div>
 
         <div class="section-intro reveal-item" style="margin-bottom: 36px;">
-          <h2 style="font-family: var(--font-luxury); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; color: var(--text-primary); margin-bottom: 12px;">Learning Trajectory</h2>
-          <p style="font-size: 15.5px; color: var(--text-secondary); max-width: 640px; line-height: 1.65;">
+          <h2 class="trajectory-section-title">Learning Trajectory</h2>
+          <p class="trajectory-section-lead">
             An honest, forward-looking roadmap of the technologies and engineering disciplines I am actively expanding into.
           </p>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+        <div class="skills-trajectory-grid">
           <!-- Vector 1 -->
-          <div style="background: rgba(18, 18, 18, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); padding: 32px; border-radius: 18px; backdrop-filter: blur(16px);" class="reveal-item" data-tilt>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-family: var(--font-mono); font-size: 11px;">
-              <span style="color: #FFFFFF; font-weight: 600;">VECTOR 01</span>
-              <span style="color: #FFFFFF; background: rgba(255, 255, 255, 0.1); padding: 3px 8px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 4px;">ACTIVE FOCUS</span>
+          <div class="skills-trajectory-card reveal-item" data-tilt>
+            <div class="trajectory-card-header">
+              <span class="trajectory-vector-label">VECTOR 01</span>
+              <span class="trajectory-status-badge active-focus">ACTIVE FOCUS</span>
             </div>
-            <h3 style="font-family: var(--font-luxury); font-size: 22px; color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">JavaScript Internals &amp; Advanced C</h3>
-            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+            <h3 class="trajectory-card-title">JavaScript Internals &amp; Advanced C</h3>
+            <p class="trajectory-card-desc">
               Deepening understanding of the V8 execution model, microtask queues, and event loops alongside linked lists, stacks, and binary trees in C.
             </p>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); line-height: 1.8;">
+            <div class="trajectory-card-bullets">
               <div>&bull; Event loop concurrency &amp; Web Workers</div>
               <div>&bull; Dynamic memory management &amp; file I/O in C</div>
               <div>&bull; Modular ES6+ bundling principles</div>
@@ -582,16 +601,16 @@
           </div>
 
           <!-- Vector 2 -->
-          <div style="background: rgba(18, 18, 18, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); padding: 32px; border-radius: 18px; backdrop-filter: blur(16px);" class="reveal-item" data-tilt>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-family: var(--font-mono); font-size: 11px;">
-              <span style="color: #FFFFFF; font-weight: 600;">VECTOR 02</span>
-              <span style="color: var(--text-muted); background: rgba(255, 255, 255, 0.05); padding: 3px 8px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 4px;">NEXT HORIZON</span>
+          <div class="skills-trajectory-card reveal-item" data-tilt>
+            <div class="trajectory-card-header">
+              <span class="trajectory-vector-label">VECTOR 02</span>
+              <span class="trajectory-status-badge">NEXT HORIZON</span>
             </div>
-            <h3 style="font-family: var(--font-luxury); font-size: 22px; color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">Custom GLSL Shaders &amp; Modern Tooling</h3>
-            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+            <h3 class="trajectory-card-title">Custom GLSL Shaders &amp; Modern Tooling</h3>
+            <p class="trajectory-card-desc">
               Progressing from basic Three.js into custom vertex/fragment shaders written in GLSL, paired with modern build pipelines and TypeScript.
             </p>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); line-height: 1.8;">
+            <div class="trajectory-card-bullets">
               <div>&bull; GLSL math: vector transformations &amp; noise</div>
               <div>&bull; Component architecture &amp; TypeScript basics</div>
               <div>&bull; Web Accessibility (WCAG AAA standards)</div>
@@ -599,16 +618,16 @@
           </div>
 
           <!-- Vector 3 -->
-          <div style="background: rgba(18, 18, 18, 0.75); border: 1px solid rgba(255, 255, 255, 0.12); padding: 32px; border-radius: 18px; backdrop-filter: blur(16px);" class="reveal-item" data-tilt>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-family: var(--font-mono); font-size: 11px;">
-              <span style="color: #FFFFFF; font-weight: 600;">VECTOR 03</span>
-              <span style="color: var(--text-muted); background: rgba(255, 255, 255, 0.05); padding: 3px 8px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 4px;">VISION</span>
+          <div class="skills-trajectory-card reveal-item" data-tilt>
+            <div class="trajectory-card-header">
+              <span class="trajectory-vector-label">VECTOR 03</span>
+              <span class="trajectory-status-badge">VISION</span>
             </div>
-            <h3 style="font-family: var(--font-luxury); font-size: 22px; color: var(--text-primary); margin-bottom: 12px; font-weight: 600;">High-Craft Creative Development</h3>
-            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+            <h3 class="trajectory-card-title">High-Craft Creative Development</h3>
+            <p class="trajectory-card-desc">
               Evolving into a versatile creative developer capable of conceptualizing and engineering digital experiences celebrated for aesthetic and technical excellence.
             </p>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); line-height: 1.8;">
+            <div class="trajectory-card-bullets">
               <div>&bull; Interactive 3D spatial web design</div>
               <div>&bull; High-performance computational layouts</div>
               <div>&bull; Zero-framework creative engineering</div>

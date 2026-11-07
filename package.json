@@ -1,0 +1,15 @@
+{
+  "name": "zs-studio-portfolio",
+  "version": "1.0.0",
+  "description": "ZS STUDIO — Portfolio of Zeerak Siddiqui with End-to-End Encrypted Contact Form",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "decrypt": "node decrypt_message.js"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "nodemailer": "^10.3.1"
+  }
+}

@@ -255,7 +255,7 @@ function trackEssentialAssets(onAssetsReady) {
 
   window.addEventListener('load', finish, { once: true });
 
-  const essentialImgs = Array.from(document.querySelectorAll('.preloader-logo, .hero-portrait-img, .header-brand-logo'));
+  const essentialImgs = Array.from(document.querySelectorAll('.preloader-logo, .hero-borderless-portrait-img, .header-brand-logo'));
   let loadedCount = 0;
   const checkImgs = () => {
     loadedCount++;
@@ -277,8 +277,8 @@ function trackEssentialAssets(onAssetsReady) {
     document.fonts.ready.then(finish).catch(finish);
   }
 
-  // Safety fallback: guarantees completion within 6s
-  setTimeout(finish, 6000);
+  // Safety fallback: guarantees completion within 3s without stalling
+  setTimeout(finish, 3000);
 }
 
 /**
@@ -305,10 +305,20 @@ function initPreloader() {
   const isReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const urlParams = new URLSearchParams(window.location.search);
   const skipPreloader = urlParams.get('skip_preloader') === '1';
+  const skipIntro = urlParams.get('skip_intro') === '1';
+
   if (isReducedMotion || skipPreloader) {
-    document.body.classList.add('system-ready');
-    revealPageItems();
     preloader.style.display = 'none';
+    if (isReducedMotion || skipIntro) {
+      document.body.classList.add('system-ready');
+      revealPageItems();
+      if (window.sculptureIntroInstance) window.sculptureIntroInstance.dismissImmediately();
+    } else if (window.sculptureIntroInstance) {
+      window.sculptureIntroInstance.startFormation();
+    } else {
+      document.body.classList.add('system-ready');
+      revealPageItems();
+    }
     return;
   }
 
@@ -395,8 +405,13 @@ function initPreloader() {
         // Step 3: Seamless cinematic curtain transition
         setTimeout(() => {
           preloader.classList.add('preloader-dismissed');
-          document.body.classList.add('system-ready');
-          revealPageItems();
+
+          if (window.sculptureIntroInstance && !skipIntro && !isReducedMotion) {
+            window.sculptureIntroInstance.startFormation();
+          } else {
+            document.body.classList.add('system-ready');
+            revealPageItems();
+          }
 
           // Step 4: Cleanup
           setTimeout(() => {
@@ -1117,50 +1132,7 @@ function initBlogFilters() {
 // 10. CONTACT TRANSMISSION FORM HANDLER
 // -----------------------------------------------------------------------------
 function initContactForm() {
-  const form = document.getElementById('contact-transmission-form');
-  const statusMsg = document.getElementById('contact-status-msg') || document.getElementById('form-status-msg');
-
-  if (!form || !statusMsg) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const nameInput = form.querySelector('#contact-name');
-    const emailInput = form.querySelector('#contact-email');
-    const messageInput = form.querySelector('#contact-message');
-    const subjectInput = form.querySelector('#contact-subject');
-
-    const name = nameInput ? nameInput.value.trim() : '';
-    const email = emailInput ? emailInput.value.trim() : '';
-    const message = messageInput ? messageInput.value.trim() : '';
-    const subject = subjectInput ? subjectInput.value : 'General Inquiry';
-
-    if (!name || !email || !message) {
-      statusMsg.className = 'form-status-msg error';
-      statusMsg.textContent = 'ERROR: All transmission fields must be filled before sending.';
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      statusMsg.className = 'form-status-msg error';
-      statusMsg.textContent = 'ERROR: Please enter a valid email address.';
-      return;
-    }
-
-    statusMsg.className = 'form-status-msg success';
-    statusMsg.innerHTML = `TRANSMISSION VALIDATED // PREPARING MAIL CLIENT FOR ${name.toUpperCase()}...`;
-
-    const encodedSubject = encodeURIComponent(`[Portfolio Contact] ${subject} - ${name}`);
-    const encodedBody = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}\n\n---\nSent via Zeerak Siddiqui Portfolio`
-    );
-
-    setTimeout(() => {
-      window.location.href = `mailto:zeeraksiddiqui@gmail.com?subject=${encodedSubject}&body=${encodedBody}`;
-      statusMsg.innerHTML = `Message validated. Mail client launched. You can also reach Zeerak directly on Instagram: <a href="https://www.instagram.com/_siddiqui_._zeerak_/" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; text-decoration: underline;">@_siddiqui_._zeerak_</a>.`;
-    }, 600);
-  });
+  // Handled securely by contact-e2ee.js with genuine OpenPGP client-side encryption
 }
 
 // -----------------------------------------------------------------------------
@@ -1502,6 +1474,251 @@ function initThemeToggle() {
 }
 
 // -----------------------------------------------------------------------------
+// 11.2 GLOBAL SOUND SYSTEM (MIXKIT SCI-FI INTERFACE ROBOT CLICK)
+// -----------------------------------------------------------------------------
+function initSoundSystem() {
+  const toggleBtn = document.getElementById('sound-toggle');
+  const AUDIO_SRC = 'assets/audio/mixkit-sci-fi-interface-robot-click-901.wav';
+
+  class PortfolioSoundSystem {
+    constructor() {
+      this.src = AUDIO_SRC;
+      this.audio = new Audio(this.src);
+      this.audio.preload = 'auto';
+
+      this.audioCtx = null;
+      this.audioBuffer = null;
+      this.currentSource = null;
+      this.lastPlayTime = 0;
+      this.minInterval = 50; // ms: prevent overlapping sounds during rapid clicks
+
+      // Default is strictly OFF unless explicitly saved as 'on'
+      this.enabled = localStorage.getItem('zs_sound') === 'on';
+
+      this.initAudioContext();
+      this.bindUserGestureUnlock();
+      this.bindGlobalListeners();
+      this.syncUI();
+    }
+
+    async initAudioContext() {
+      try {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) return;
+        this.audioCtx = new AudioContextClass();
+
+        // Preload and decode audio data for zero-latency responsive playback
+        const res = await fetch(this.src);
+        if (!res.ok) return;
+        const arrayBuffer = await res.arrayBuffer();
+        this.audioBuffer = await this.audioCtx.decodeAudioData(arrayBuffer);
+      } catch (err) {
+        // Fallback to HTML5 audio element
+        this.audioBuffer = null;
+      }
+    }
+
+    bindUserGestureUnlock() {
+      const unlockAudio = () => {
+        if (this.audioCtx && this.audioCtx.state === 'suspended') {
+          this.audioCtx.resume().catch(() => {});
+        }
+      };
+      ['click', 'pointerdown', 'touchstart', 'keydown'].forEach(evt => {
+        window.addEventListener(evt, unlockAudio, { capture: true, once: true, passive: true });
+      });
+    }
+
+    unlock() {
+      if (this.audioCtx && this.audioCtx.state === 'suspended') {
+        this.audioCtx.resume().catch(() => {});
+      }
+    }
+
+    syncUI() {
+      const state = this.enabled ? 'on' : 'off';
+      document.documentElement.setAttribute('data-sound', state);
+      if (toggleBtn) {
+        toggleBtn.setAttribute('data-sound', state);
+        const label = this.enabled ? 'Sound effects enabled (Click to mute)' : 'Sound effects muted (Click to unmute)';
+        toggleBtn.setAttribute('aria-label', label);
+        toggleBtn.setAttribute('title', label);
+      }
+    }
+
+    toggle() {
+      this.unlock();
+      this.enabled = !this.enabled;
+      localStorage.setItem('zs_sound', this.enabled ? 'on' : 'off');
+      this.syncUI();
+
+      // Play sound upon enabling as audible confirmation
+      if (this.enabled) {
+        this.play();
+      }
+    }
+
+    play() {
+      if (!this.enabled) return;
+
+      const now = performance.now();
+      if (now - this.lastPlayTime < this.minInterval) return;
+      this.lastPlayTime = now;
+
+      this.unlock();
+
+      // 1. Web Audio API playback (Zero-latency & prevents overlapping)
+      if (this.audioCtx && this.audioBuffer) {
+        try {
+          if (this.currentSource) {
+            try {
+              this.currentSource.stop();
+              this.currentSource.disconnect();
+            } catch (e) {}
+            this.currentSource = null;
+          }
+
+          const source = this.audioCtx.createBufferSource();
+          source.buffer = this.audioBuffer;
+          source.connect(this.audioCtx.destination);
+          source.start(0);
+          this.currentSource = source;
+          return;
+        } catch (e) {
+          // Fall back to HTML5 Audio if Web Audio source fails
+        }
+      }
+
+      // 2. HTML5 Audio Fallback (Reset to 0 to prevent overlap)
+      try {
+        this.audio.pause();
+        this.audio.currentTime = 0;
+        const p = this.audio.play();
+        if (p && p.catch) p.catch(() => {});
+      } catch (e) {}
+    }
+
+    bindGlobalListeners() {
+      // Touch-scroll detection: prevent sound while dragging/scrolling on mobile
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let isTouchScrolling = false;
+
+      document.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches[0]) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+          isTouchScrolling = false;
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) {
+          const dx = Math.abs(e.touches[0].clientX - touchStartX);
+          const dy = Math.abs(e.touches[0].clientY - touchStartY);
+          if (dx > 10 || dy > 10) {
+            isTouchScrolling = true;
+          }
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchend', () => {
+        setTimeout(() => { isTouchScrolling = false; }, 60);
+      }, { passive: true });
+
+      // Interactive element selector: covers all navigation links, buttons, cards, filter pills, toggles
+      const interactiveSelector = [
+        'a[href]',
+        'button',
+        '[role="button"]',
+        '[role="tab"]',
+        '[role="link"]',
+        '[role="switch"]',
+        'input[type="submit"]',
+        'input[type="button"]',
+        'input[type="reset"]',
+        'summary',
+        '[data-filter]',
+        '[data-tab]',
+        '[data-tilt]',
+        '[data-category]',
+        '.nav-item',
+        '.mobile-link',
+        '.mobile-nav-item',
+        '.header-brand',
+        '.header-social-btn',
+        '.theme-toggle-btn',
+        '.sound-toggle-btn',
+        '.mobile-toggle',
+        '.mobile-close',
+        '.btn-sculpture-enter',
+        '.project-card-glass-body',
+        '.project-slide-item',
+        '.skill-squircle-card',
+        '.skill-card-glass',
+        '.skills-filter-pill',
+        '.blog-3d-card',
+        '.b3d-pill-btn',
+        '.b3d-cta-btn',
+        '.contact-channel-item-zs',
+        '.contact-3d-glass-card',
+        '.about-feature-card-zs',
+        '.hero-spiral-card',
+        '.slider-nav-btn',
+        '.slider-dot',
+        '.accordion-trigger',
+        '.scroll-to-top'
+      ].join(', ');
+
+      document.addEventListener('click', (e) => {
+        if (isTouchScrolling) return;
+        if (!this.enabled) return;
+
+        // Sound toggle button handles its own state and sound
+        if (e.target.closest('#sound-toggle')) return;
+
+        const target = e.target.closest(interactiveSelector);
+        if (!target) return;
+        if (target.disabled || target.getAttribute('aria-disabled') === 'true') return;
+
+        // Check if target is an internal navigation link requiring delay for audio delivery
+        const anchor = target.closest('a[href]');
+        if (anchor && this.enabled) {
+          const href = anchor.getAttribute('href');
+          const isSpecial = !href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:');
+          const isNewTab = anchor.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey;
+          const isDownload = anchor.hasAttribute('download');
+
+          if (!isSpecial && !isNewTab && !isDownload) {
+            // Internal page transition: play click sound and navigate after brief 140ms delay
+            e.preventDefault();
+            this.play();
+            const targetUrl = anchor.href;
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 140);
+            return;
+          }
+        }
+
+        // Standard interactive element click (buttons, cards, toggles, filter pills)
+        this.play();
+      }, { capture: true });
+    }
+  }
+
+  const soundSystem = new PortfolioSoundSystem();
+  window.zsSoundSystem = soundSystem;
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      soundSystem.toggle();
+    });
+  }
+}
+
+// -----------------------------------------------------------------------------
 // 12. MASTER DOM INITIALIZATION (MODULE-SAFE BOOTSTRAP)
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
@@ -1534,8 +1751,23 @@ function initSpiralFlipCard() {
   }, 2800);
 }
 
+function initSculptureIntro() {
+  const stage = document.getElementById('sculpture-intro-stage');
+  if (!stage) return;
+  if (typeof ParticleSculptureIntro !== 'undefined') {
+    window.sculptureIntroInstance = new ParticleSculptureIntro({
+      onEnter: () => {
+        document.body.classList.add('system-ready');
+        revealPageItems();
+      }
+    });
+  }
+}
+
 function bootPortfolio() {
   initThemeToggle();
+  initSoundSystem();
+  initSculptureIntro();
   initPreloader();
   initThreeScene();
   initHeaderScroll();
