@@ -999,6 +999,8 @@ class DigitalUniverse {
   completeHomepageReveal() {
     this.stage.style.opacity = '0';
     this.stage.style.pointerEvents = 'none';
+    this.stage.style.visibility = 'hidden';
+    this.stage.classList.add('intro-dismissed');
     document.body.style.overflow = '';
 
     if (!this.hasRevealedHomepage) {
@@ -1013,7 +1015,9 @@ class DigitalUniverse {
    */
   reactivateIntro() {
     this.stage.style.display = 'block';
+    this.stage.style.visibility = 'visible';
     this.stage.style.pointerEvents = 'auto';
+    this.stage.classList.remove('intro-dismissed');
     document.body.style.overflow = 'hidden';
     this.phase = 'active';
     if (this.topBar) this.topBar.style.opacity = '1';
@@ -1104,12 +1108,14 @@ class DigitalUniverse {
   }
 
   onTouchStart(e) {
+    if (e.target && e.target.closest('#site-header, #mobile-drawer')) return;
     if (e.touches && e.touches[0]) {
       this.lastTouchY = e.touches[0].clientY;
     }
   }
 
   onTouchMove(e) {
+    if (e.target && e.target.closest('#site-header, #mobile-drawer')) return;
     if (!e.touches || !e.touches[0]) return;
     const currentY = e.touches[0].clientY;
 
@@ -1138,7 +1144,8 @@ class DigitalUniverse {
     this.lastTouchY = currentY;
   }
 
-  onTouchEnd() {
+  onTouchEnd(e) {
+    if (e && e.target && e.target.closest('#site-header, #mobile-drawer')) return;
     this.targetMouse.x = 0;
     this.targetMouse.y = 0;
     this.lastTouchY = undefined;

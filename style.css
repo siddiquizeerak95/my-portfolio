@@ -3513,6 +3513,7 @@ body {
     height: var(--nav-height, 58px);
     min-height: var(--nav-height, 58px);
     padding: 0;
+    z-index: 100000 !important;
   }
 
   .site-header.scrolled {
@@ -3529,10 +3530,15 @@ body {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+    width: 100%;
   }
 
   .header-brand {
     gap: 10px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    touch-action: manipulation;
   }
 
   .header-brand-logo {
@@ -3553,8 +3559,81 @@ body {
     display: none !important;
   }
 
+  .header-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .sound-toggle-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    padding: 0 10px !important;
+    border-radius: 8px !important;
+    touch-action: manipulation !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .theme-toggle-btn {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    height: 44px !important;
+    padding: 0 10px !important;
+    border-radius: 8px !important;
+    touch-action: manipulation !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
   .mobile-toggle {
-    display: flex;
+    display: flex !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 8px !important;
+    touch-action: manipulation !important;
+  }
+
+  .mobile-drawer {
+    z-index: 100001 !important;
+  }
+
+  .mobile-close {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    touch-action: manipulation !important;
+  }
+
+  .mobile-link {
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 18px !important;
+    font-size: 16px !important;
+    touch-action: manipulation !important;
+  }
+
+  .mobile-toggle:active,
+  .sound-toggle-btn:active,
+  .theme-toggle-btn:active,
+  .mobile-close:active,
+  .mobile-link:active,
+  .header-brand:active {
+    transform: scale(0.95) !important;
+    opacity: 0.85 !important;
+    transition: transform 0.08s ease, opacity 0.08s ease !important;
   }
 
   .footer-top {
@@ -3615,6 +3694,10 @@ body {
     word-break: break-word;
   }
 
+  .header-container {
+    padding: 0 12px !important;
+  }
+
   .header-brand {
     gap: 8px;
   }
@@ -3629,8 +3712,24 @@ body {
   }
 
   .header-brand-name {
-    font-size: 12.5px;
-    letter-spacing: 0.16em;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+  }
+
+  .header-controls {
+    gap: 6px !important;
+  }
+
+  .sound-toggle-btn,
+  .theme-toggle-btn {
+    min-width: 42px !important;
+    width: 42px !important;
+    padding: 0 !important;
+  }
+
+  .sound-toggle-btn .sound-indicator-dot,
+  .theme-toggle-btn .theme-indicator-dot {
+    display: none !important;
   }
 }
 

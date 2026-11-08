@@ -522,9 +522,22 @@ function initNavigation() {
       }
     };
 
-    mobileToggle.addEventListener('click', () => toggleDrawer());
-    if (mobileClose) mobileClose.addEventListener('click', () => toggleDrawer(false));
-    if (mobileBackdrop) mobileBackdrop.addEventListener('click', () => toggleDrawer(false));
+    mobileToggle.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleDrawer();
+    });
+    if (mobileClose) {
+      mobileClose.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleDrawer(false);
+      });
+    }
+    if (mobileBackdrop) {
+      mobileBackdrop.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleDrawer(false);
+      });
+    }
 
     mobileDrawer.addEventListener('click', (e) => {
       if (e.target === mobileDrawer) {
@@ -533,11 +546,15 @@ function initNavigation() {
     });
 
     mobileLinks.forEach((link) => {
-      link.addEventListener('click', () => toggleDrawer(false));
+      link.addEventListener('click', () => {
+        toggleDrawer(false);
+      });
     });
 
     drawerCta.forEach((btn) => {
-      btn.addEventListener('click', () => toggleDrawer(false));
+      btn.addEventListener('click', () => {
+        toggleDrawer(false);
+      });
     });
 
     window.addEventListener('keydown', (e) => {

@@ -12,7 +12,7 @@
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 99998; /* Below preloader (99999), completely covers homepage until entered */
+  z-index: 99990; /* Below mobile header (100000) and preloader (999999) */
   background-color: #030305 !important;
   background: #030305 !important;
   overflow: hidden;
@@ -341,13 +341,19 @@
   display: block;
 }
 
-.sculpture-intro-stage.intro-dismissed {
+.sculpture-intro-stage.intro-dismissed,
+.sculpture-intro-stage.intro-dismissed *,
+.sculpture-intro-stage[style*="opacity: 0"],
+.sculpture-intro-stage[style*="opacity: 0"] *,
+.sculpture-intro-stage[style*="pointer-events: none"],
+.sculpture-intro-stage[style*="pointer-events: none"] * {
   opacity: 0 !important;
+  visibility: hidden !important;
   pointer-events: none !important;
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 768px) {
+@media (max-width: 860px) {
   .universe-hero-lockup {
     top: auto;
     bottom: clamp(80px, 14vh, 130px);
@@ -382,18 +388,27 @@
   }
 
   .universe-top-bar {
-    left: 18px;
-    right: 18px;
-    top: 18px;
+    left: 16px;
+    right: 16px;
+    top: clamp(66px, 9vh, 76px);
+    pointer-events: none;
+    z-index: 30;
   }
 
-  .universe-brand-subtag {
-    display: none;
+  .intro-brand-top-left {
+    display: none !important; /* Main header provides brand */
+  }
+
+  .universe-skip-wrap {
+    margin-left: auto;
+    pointer-events: auto;
   }
 
   .btn-universe-skip {
-    padding: 7px 15px;
+    padding: 8px 16px;
     font-size: 10px;
+    min-height: 38px;
+    touch-action: manipulation;
   }
 
   .universe-scroll-indicator {
