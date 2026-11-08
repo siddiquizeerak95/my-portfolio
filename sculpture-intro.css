@@ -1,40 +1,31 @@
 /* ==========================================================================
-   ZS STUDIO — CINEMATIC 3D HOLOGRAPHIC PORTRAIT INTRODUCTION
-   Full-screen opening experience appearing immediately after preloader
-   and before homepage becomes visible.
-   Reference matched: Dual illumination (Red left, White right),
-   orbital shoulder waves, dispersed void particles, and exact UI layout.
+   ZS STUDIO — DIGITAL UNIVERSE: SCENE 01 (THE AWAKENING)
+   Cinematic 3D Scroll-Driven WebGL Portfolio Opening Experience
+   Palette: #030305 (Primary Black), #08080D (Space), #E5092B (Crimson Red),
+            #790014 (Deep Red), #F5F5F7 (Primary Text), #A1A1AA (Secondary),
+            #B8BDC8 (Metallic Silver)
    ========================================================================== */
 
-.sculpture-intro-stage {
+.sculpture-intro-stage,
+.digital-universe-stage {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 99998; /* Below preloader (99999), completely covers entire website */
-  background-color: #000000; /* Pure opaque black void — homepage is 100% hidden */
+  z-index: 99998; /* Below preloader (99999), completely covers homepage until entered */
+  background-color: #030305 !important;
+  background: #030305 !important;
   overflow: hidden;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
   user-select: none;
   -webkit-user-select: none;
+  color: #F5F5F7;
+  font-family: var(--font-sans, "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
 }
 
-/* Atmospheric Ambient Lighting (Clean Monochromatic Studio Glow) */
-.sculpture-ambient-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(480px, 58vw, 850px);
-  height: clamp(480px, 58vw, 850px);
-  background: radial-gradient(ellipse at 50% 48%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 45, 35, 0.04) 40%, transparent 72%);
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 1;
-  transition: opacity 0.6s ease;
+.sculpture-intro-stage.smooth-fade {
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.85s ease;
 }
 
 /* WebGL Interactive Canvas */
@@ -53,20 +44,28 @@
 }
 
 /* --------------------------------------------------------------------------
-   Top-Left: ZS STUDIO Brand Identifier with Red Accent Dash
+   Top Navigation / Brand Bar
    -------------------------------------------------------------------------- */
-.intro-brand-top-left {
+.universe-top-bar {
   position: absolute;
-  top: clamp(24px, 4.5vh, 44px);
-  left: clamp(28px, 4.5vw, 60px);
+  top: clamp(24px, 4vh, 42px);
+  left: clamp(28px, 4.5vw, 64px);
+  right: clamp(28px, 4.5vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.intro-brand-top-left {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  z-index: 10;
-  pointer-events: none;
+  pointer-events: auto;
   opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.8s ease 0.4s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+  transform: translateY(-10px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
 }
 
 .sculpture-intro-stage.active .intro-brand-top-left {
@@ -79,392 +78,335 @@
   height: 2.5px;
   background-color: #E5092B;
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(229, 9, 43, 0.8);
+  box-shadow: 0 0 10px rgba(229, 9, 43, 0.6);
 }
 
 .intro-brand-text {
-  font-family: var(--font-sans, "Inter", "Space Grotesk", sans-serif);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.18em;
-  color: #FFFFFF;
+  color: #F5F5F7;
   text-transform: uppercase;
 }
 
 .intro-zs-accent {
   color: #E5092B;
+  text-shadow: 0 0 12px rgba(229, 9, 43, 0.5);
+}
+
+.universe-brand-subtag {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #B8BDC8;
+  padding: 3px 8px;
+  background: rgba(184, 189, 200, 0.08);
+  border: 1px solid rgba(184, 189, 200, 0.18);
+  border-radius: 999px;
+  margin-left: 6px;
 }
 
 /* --------------------------------------------------------------------------
-   Top-Right: Cursor Interaction Hint with Minimal Mouse Icon
+   SKIP EXPERIENCE Action Button (Top-Right)
    -------------------------------------------------------------------------- */
-.intro-explore-hint {
-  position: absolute;
-  top: clamp(22px, 4vh, 40px);
-  right: clamp(28px, 4.5vw, 60px);
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  z-index: 10;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.8s ease 0.5s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;
-}
-
-.sculpture-intro-stage.active .intro-explore-hint {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.intro-mouse-pill {
-  width: 20px;
-  height: 32px;
-  border: 1.5px solid rgba(255, 255, 255, 0.75);
-  border-radius: 11px;
-  display: flex;
-  justify-content: center;
-  padding-top: 5px;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.15);
-}
-
-.intro-mouse-wheel-dot {
-  width: 3px;
-  height: 6px;
-  background-color: #FFFFFF;
-  border-radius: 2px;
-  animation: mouseWheelNudge 1.6s infinite ease-in-out;
-}
-
-@keyframes mouseWheelNudge {
-  0% { opacity: 0; transform: translateY(0); }
-  35% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(9px); }
-}
-
-.intro-hint-divider {
-  width: 1px;
-  height: 28px;
-  background-color: rgba(255, 255, 255, 0.22);
-}
-
-.intro-hint-text-wrap {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.35;
-}
-
-.intro-hint-line {
-  font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: rgba(255, 255, 255, 0.78);
-  white-space: nowrap;
-}
-
-/* --------------------------------------------------------------------------
-   Left Side: Welcome Typography with Highlighted Surname & Accent Underline
-   -------------------------------------------------------------------------- */
-.intro-welcome-group {
-  position: absolute;
-  top: 45%;
-  left: clamp(32px, 5.5vw, 90px);
-  transform: translateY(-50%);
-  max-width: clamp(280px, 28vw, 420px);
-  z-index: 10;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s, transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-}
-
-.intro-welcome-group.visible {
-  opacity: 1;
+.universe-skip-wrap {
   pointer-events: auto;
-}
-
-.intro-greeting {
-  font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: clamp(1.2rem, 1.9vw, 1.8rem);
-  font-weight: 400;
-  color: #ECECEC;
-  margin: 0 0 6px 0;
-  letter-spacing: -0.01em;
-}
-
-.intro-name {
-  font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: clamp(2.2rem, 3.4vw, 3.6rem);
-  font-weight: 800;
-  color: #FFFFFF;
-  margin: 0 0 10px 0;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-}
-
-.intro-name .highlight-siddiqui {
-  color: #E5092B !important;
-  text-shadow: 0 0 24px rgba(229, 9, 43, 0.6);
-}
-
-.intro-subline {
-  font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: clamp(14px, 1.15vw, 17px);
-  font-weight: 400;
-  color: #B5B5B5;
-  margin: 0 0 18px 0;
-  letter-spacing: -0.01em;
-}
-
-.intro-welcome-underline {
-  width: 58px;
-  height: 2.5px;
-  background-color: #E5092B;
-  border-radius: 2px;
-  box-shadow: 0 0 14px rgba(229, 9, 43, 0.85);
-}
-
-/* --------------------------------------------------------------------------
-   Right Side: Vertical Scroll Indicator with Glowing Red Dot & Label
-   -------------------------------------------------------------------------- */
-.intro-scroll-indicator {
-  position: absolute;
-  top: 50%;
-  right: clamp(24px, 4vw, 56px);
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 10;
-  pointer-events: none;
   opacity: 0;
-  transition: opacity 0.8s ease 0.6s;
+  transform: translateY(-10px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
 }
 
-.sculpture-intro-stage.active .intro-scroll-indicator {
-  opacity: 1;
-}
-
-.intro-scroll-track {
-  position: relative;
-  width: 1.5px;
-  height: 110px;
-  background-color: rgba(255, 255, 255, 0.18);
-  border-radius: 1px;
-}
-
-.intro-scroll-thumb {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 6.5px;
-  height: 6.5px;
-  border-radius: 50%;
-  background-color: #E5092B;
-  box-shadow: 0 0 12px #E5092B;
-  transition: transform 0.1s ease-out;
-}
-
-.intro-scroll-label {
-  font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.intro-scroll-arrow {
-  font-size: 13px;
-  color: #E5092B;
-  animation: scrollArrowBounce 1.6s infinite ease-in-out;
-  line-height: 1;
-}
-
-@keyframes scrollArrowBounce {
-  0%, 100% { transform: translateY(0); opacity: 0.7; }
-  50% { transform: translateY(4px); opacity: 1; }
-}
-
-/* --------------------------------------------------------------------------
-   Bottom-Right: ENTER WEBSITE Action Button
-   -------------------------------------------------------------------------- */
-.sculpture-enter-wrap {
-  position: absolute;
-  bottom: clamp(28px, 4.5vh, 48px);
-  right: clamp(28px, 4.5vw, 64px);
-  z-index: 20;
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.8s ease 0.4s, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
-}
-
-.intro-welcome-group.visible ~ .sculpture-enter-wrap,
-.sculpture-intro-stage.active .sculpture-enter-wrap {
+.sculpture-intro-stage.active .universe-skip-wrap {
   opacity: 1;
   transform: translateY(0);
 }
 
-.btn-sculpture-enter {
+.btn-universe-skip {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: rgba(14, 14, 16, 0.85);
-  color: #FFFFFF;
-  border: 1px solid rgba(229, 9, 43, 0.65);
+  gap: 10px;
+  background: rgba(8, 8, 13, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: #F5F5F7;
+  border: 1px solid rgba(184, 189, 200, 0.22);
   border-radius: 9999px;
-  padding: 13px 32px;
-  font-family: var(--font-sans, "Inter", sans-serif);
-  font-size: 13.5px;
-  font-weight: 700;
-  letter-spacing: 0.10em;
+  padding: 10px 24px;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   outline: none;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.7),
-    0 0 20px rgba(229, 9, 43, 0.35);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-  overflow: hidden;
 }
 
-.btn-sculpture-enter:hover {
-  background: linear-gradient(135deg, #E5092B 0%, #FF3850 100%);
-  border-color: #FF6680;
+.btn-universe-skip:hover {
+  background: rgba(229, 9, 43, 0.15);
+  border-color: #E5092B;
   color: #FFFFFF;
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 30px rgba(229, 9, 43, 0.65),
-    0 0 35px rgba(229, 9, 43, 0.45);
+  box-shadow: 0 0 20px rgba(229, 9, 43, 0.35);
+  transform: translateY(-1px);
 }
 
-.btn-sculpture-enter:hover .enter-btn-arrow {
-  transform: translateX(4px);
-  color: #FFFFFF;
-}
-
-.btn-sculpture-enter:active {
-  transform: translateY(0);
-}
-
-.enter-btn-arrow {
-  font-size: 16px;
-  line-height: 1;
+.skip-btn-arrow {
   color: #E5092B;
-  transition: transform 0.25s ease, color 0.25s ease;
+  font-size: 14px;
+  transition: transform 0.25s ease;
+}
+
+.btn-universe-skip:hover .skip-btn-arrow {
+  transform: translateX(3px);
 }
 
 /* --------------------------------------------------------------------------
-   Fallback & Dismissed States
+   Center/Left: Cinematic Typography Lockup (The Awakening)
    -------------------------------------------------------------------------- */
+.universe-hero-lockup {
+  position: absolute;
+  top: 48%;
+  left: clamp(32px, 5.5vw, 88px);
+  transform: translateY(-50%);
+  max-width: clamp(320px, 34vw, 520px);
+  z-index: 10;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.sculpture-intro-stage.active .universe-hero-lockup,
+.universe-hero-lockup.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.universe-scene-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #B8BDC8;
+  padding: 4px 12px;
+  background: rgba(184, 189, 200, 0.06);
+  border: 1px solid rgba(184, 189, 200, 0.14);
+  border-radius: 999px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.universe-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #E5092B;
+  box-shadow: 0 0 8px #E5092B;
+  animation: universePulse 2s infinite ease-in-out;
+}
+
+@keyframes universePulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px #E5092B; }
+}
+
+.universe-title {
+  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
+  font-weight: 800;
+  color: #F5F5F7;
+  margin: 0 0 10px 0;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+
+.universe-title .highlight-siddiqui {
+  color: #E5092B !important;
+  text-shadow: 0 0 35px rgba(229, 9, 43, 0.45);
+}
+
+.universe-subtitle {
+  font-size: clamp(12px, 1.15vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #A1A1AA;
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+}
+
+.universe-tagline {
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: #B8BDC8;
+  margin: 0 0 20px 0;
+  opacity: 0.85;
+}
+
+.universe-energy-bar {
+  width: 64px;
+  height: 2.5px;
+  background: linear-gradient(90deg, #E5092B, #790014);
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(229, 9, 43, 0.65);
+}
+
+/* --------------------------------------------------------------------------
+   Center/Bottom: SCROLL TO EXPLORE Indicator
+   -------------------------------------------------------------------------- */
+.universe-scroll-indicator {
+  position: absolute;
+  bottom: clamp(24px, 4vh, 44px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 15;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease 0.6s;
+}
+
+.sculpture-intro-stage.active .universe-scroll-indicator {
+  opacity: 1;
+}
+
+.universe-scroll-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #A1A1AA;
+  text-transform: uppercase;
+}
+
+.universe-scroll-mouse {
+  width: 18px;
+  height: 28px;
+  border: 1.5px solid rgba(184, 189, 200, 0.35);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.universe-scroll-wheel {
+  width: 2.5px;
+  height: 5px;
+  background-color: #E5092B;
+  border-radius: 2px;
+  box-shadow: 0 0 6px #E5092B;
+  animation: universeWheelNudge 1.6s infinite ease-in-out;
+}
+
+@keyframes universeWheelNudge {
+  0% { opacity: 0; transform: translateY(0); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(7px); }
+}
+
+.universe-scroll-chevron {
+  font-size: 11px;
+  color: #E5092B;
+  animation: universeChevronPulse 1.6s infinite ease-in-out;
+}
+
+@keyframes universeChevronPulse {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(3px); opacity: 1; text-shadow: 0 0 8px #E5092B; }
+}
+
+/* Fallback & Dismissed States */
 .sculpture-fallback {
+  display: none;
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(280px, 32vw, 440px);
-  height: auto;
-  z-index: 2;
-  display: none;
+  right: clamp(28px, 6vw, 120px);
+  transform: translateY(-50%);
+  z-index: 5;
 }
 
 .sculpture-fallback img {
-  width: 100%;
+  max-width: 450px;
   height: auto;
-  border-radius: 18px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(229, 9, 43, 0.25);
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
 }
 
 .no-webgl .sculpture-fallback {
   display: block;
 }
 
-.no-webgl .sculpture-canvas {
-  display: none;
-}
-
 .sculpture-intro-stage.intro-dismissed {
   opacity: 0 !important;
-  visibility: hidden !important;
   pointer-events: none !important;
-  display: none !important;
 }
 
-/* Snapshot helper */
-.sculpture-intro-stage.snap-no-transition,
-.sculpture-intro-stage.snap-no-transition * {
-  transition: none !important;
-  animation: none !important;
-}
-
-/* --------------------------------------------------------------------------
-   Responsive Design (Tablet & Mobile)
-   -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .intro-welcome-group {
-    left: clamp(20px, 4vw, 40px);
-    max-width: 380px;
-  }
-}
-
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-  .intro-brand-top-left {
-    top: 18px;
-    left: 20px;
-  }
-
-  .intro-explore-hint {
-    display: none;
-  }
-
-  .intro-welcome-group {
-    top: 48px;
+  .universe-hero-lockup {
+    top: auto;
+    bottom: clamp(80px, 14vh, 130px);
     left: 20px;
     right: 20px;
     transform: none;
-    max-width: 100%;
-    text-align: left;
+    max-width: none;
+    text-align: center;
   }
 
-  .intro-greeting {
-    font-size: clamp(1.2rem, 5vw, 1.6rem);
+  .universe-scene-badge {
+    justify-content: center;
+    margin: 0 auto 10px auto;
   }
 
-  .intro-name {
-    font-size: clamp(1.9rem, 7.5vw, 2.5rem);
-    margin-bottom: 6px;
+  .universe-title {
+    font-size: clamp(1.85rem, 6.8vw, 2.35rem);
+    letter-spacing: -0.02em;
   }
 
-  .intro-subline {
-    font-size: 13.5px;
-    margin-bottom: 12px;
+  .universe-subtitle {
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
   }
 
-  .intro-scroll-indicator {
+  .universe-tagline {
+    font-size: 11px;
+  }
+
+  .universe-energy-bar {
+    margin: 14px auto 0 auto;
+  }
+
+  .universe-top-bar {
+    left: 18px;
+    right: 18px;
+    top: 18px;
+  }
+
+  .universe-brand-subtag {
     display: none;
   }
 
-  .sculpture-enter-wrap {
-    bottom: 24px;
-    right: 20px;
-    left: 20px;
+  .btn-universe-skip {
+    padding: 7px 15px;
+    font-size: 10px;
   }
 
-  .btn-sculpture-enter {
-    width: 100%;
-    justify-content: center;
-    padding: 13px 24px;
-    font-size: 13px;
+  .universe-scroll-indicator {
+    bottom: 14px;
+    gap: 6px;
   }
-}
+  
+  .universe-scroll-text {
+    font-size: 8.5px;
+  }
 
-@media (prefers-reduced-motion: reduce) {
-  .sculpture-intro-stage {
-    display: none !important;
+  .universe-scroll-mouse {
+    width: 14px;
+    height: 22px;
   }
 }

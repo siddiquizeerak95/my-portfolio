@@ -46,7 +46,7 @@
     <!-- Preload Interface Click Audio -->
   <link rel="preload" href="assets/audio/mixkit-sci-fi-interface-robot-click-901.wav" as="audio" type="audio/wav">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="sculpture-intro.css">
+  <link rel="stylesheet" href="sculpture-intro.css?v=261">
 </head>
 
 <body data-page="home">
@@ -94,38 +94,50 @@
        Full-screen interactive opening experience (Runs immediately after preloader,
        completely covers homepage until dissolved by scroll or Enter)
        ========================================================================= -->
-  <section id="sculpture-intro-stage" class="sculpture-intro-stage" aria-label="Interactive 3D Holographic Portrait Intro">
-    <!-- WebGL Canvas for 3D Sculpture -->
+  <section id="sculpture-intro-stage" class="sculpture-intro-stage digital-universe-stage" aria-label="ZS STUDIO — Digital Universe Opening Experience">
+    <!-- WebGL Canvas for 3D Digital Universe -->
     <canvas id="sculpture-canvas" class="sculpture-canvas"></canvas>
 
-    <!-- Subtle Atmospheric Ambient Glow (Zero Blue) -->
-    <div class="sculpture-ambient-glow" aria-hidden="true"></div>
+    <!-- Top Navigation / Brand Bar -->
+    <header class="universe-top-bar">
+      <div class="intro-brand-top-left" aria-label="ZS STUDIO">
+        <span class="intro-red-dash" aria-hidden="true"></span>
+        <span class="intro-brand-text"><span class="intro-zs-accent">ZS</span> STUDIO</span>
+        <span class="universe-brand-subtag">DIGITAL UNIVERSE</span>
+      </div>
 
-    <!-- Top-Left: ZS STUDIO Brand Identifier with Red Accent Dash -->
-    <div class="intro-brand-top-left" aria-label="ZS STUDIO">
-      <span class="intro-red-dash" aria-hidden="true"></span>
-      <span class="intro-brand-text"><span class="intro-zs-accent">ZS</span> STUDIO</span>
+      <div class="universe-skip-wrap">
+        <button id="btn-enter-website" class="btn-universe-skip" aria-label="Skip to Website Content">
+          <span class="skip-btn-label">SKIP EXPERIENCE</span>
+          <span class="skip-btn-arrow">&rarr;</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Center/Left: Cinematic Typography Lockup (The Awakening) -->
+    <div class="intro-welcome-group universe-hero-lockup" id="sculpture-welcome-block">
+      <div class="universe-scene-badge">
+        <span class="universe-badge-dot"></span>
+        <span>SCENE 01 // THE AWAKENING</span>
+      </div>
+      <h1 class="universe-title">ZEERAK <span class="highlight-siddiqui">SIDDIQUI</span></h1>
+      <p class="universe-subtitle">CREATIVE DEVELOPER &amp; DESIGNER</p>
+      <p class="universe-tagline">ZS STUDIO &mdash; DIGITAL UNIVERSE</p>
+      <div class="intro-welcome-underline universe-energy-bar" aria-hidden="true"></div>
     </div>
 
-    <!-- Left Side: Welcome Typography with Highlighted Surname & Accent Underline -->
-    <div class="intro-welcome-group" id="sculpture-welcome-block">
-      <p class="intro-greeting">Hii, I am</p>
-      <h1 class="intro-name">Zeerak <span class="highlight-siddiqui">Siddiqui.</span></h1>
-      <p class="intro-subline">Welcome to my portfolio.</p>
-      <div class="intro-welcome-underline" aria-hidden="true"></div>
-    </div>
-
-    <!-- Bottom-Right: VISIT Action Button -->
-    <div class="sculpture-enter-wrap">
-      <button id="btn-enter-website" class="btn-sculpture-enter" aria-label="Visit Website">
-        <span class="enter-btn-label">VISIT</span>
-        <span class="enter-btn-arrow">&rarr;</span>
-      </button>
+    <!-- Bottom: Scroll Indicator -->
+    <div class="universe-scroll-indicator" id="intro-scroll-indicator">
+      <span class="universe-scroll-text">SCROLL TO EXPLORE</span>
+      <div class="universe-scroll-mouse" aria-hidden="true">
+        <span class="universe-scroll-wheel"></span>
+      </div>
+      <span class="universe-scroll-chevron">&#8595;</span>
     </div>
 
     <!-- Static Fallback if WebGL is unavailable -->
     <div class="sculpture-fallback">
-      <img src="assets/zeerak-portrait-clean.png" alt="Zeerak Siddiqui" width="450" height="512" loading="eager">
+      <img src="assets/zeerak-office-portrait-clean.png" alt="Zeerak Siddiqui" width="450" height="512" loading="eager">
     </div>
   </section>
 
@@ -401,7 +413,7 @@
 
               <!-- Seamless Borderless Portrait Container (NO BORDER, NO CARD, NO BOX) -->
               <div class="hero-borderless-portrait-wrap" id="hero-portrait-card">
-                <img src="assets/zeerak-portrait-clean.png"
+                <img src="assets/zeerak-portrait-clean.png?v=130"
                   alt="Zeerak Siddiqui — UI/UX Designer &amp; Frontend Developer" class="hero-borderless-portrait-img"
                   width="900" height="1024" loading="eager">
               </div>
@@ -1380,7 +1392,7 @@
 
   <!-- 3D Particle Sculpture Engine -->
   <script src="vendor/three.min.js"></script>
-  <script src="sculpture-intro.js?v=75"></script>
+  <script src="sculpture-intro.js?v=261"></script>
 
   <!-- Client-Side OpenPGP Cryptographic Engine & Contact Handler -->
   <script src="vendor/openpgp.min.js"></script>
