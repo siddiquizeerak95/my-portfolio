@@ -1,0 +1,295 @@
+/* --------------------------------------------------------------------------
+   04. CINEMATIC PARTICLE LOADING SCREEN & BRAND REVEAL (5–7S MASTER SEQUENCE)
+   -------------------------------------------------------------------------- */
+.ambient-light-container,
+.ambient-city-skyline,
+.telemetry-grid-overlay {
+  display: none !important;
+}
+
+.site-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  background-color: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 24px;
+  box-sizing: border-box;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.85s ease;
+  will-change: opacity, visibility;
+}
+
+:root[data-theme="light"] .site-preloader {
+  background-color: #FFFFFF;
+}
+
+.site-preloader.preloader-dismissed {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Background Particle Canvas Layer */
+.preloader-particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Centered Foreground Brand Layer */
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 380px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.preloader-content.preloader-content-fade {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.preloader-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Phase 2 (1–2s): ZS Logo Smooth Fade-in & Scale */
+.preloader-logo-wrap {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.preloader-logo-wrap.logo-revealed {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.preloader-logo {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.30));
+  animation: preloaderLogoBreathe 3.5s ease-in-out infinite;
+}
+
+:root[data-theme="light"] .preloader-logo {
+  filter: drop-shadow(0 0 16px rgba(0, 0, 0, 0.12));
+}
+
+.preloader-logo-glow {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.06) 45%, transparent 72%);
+  filter: blur(12px);
+  z-index: 1;
+  pointer-events: none;
+}
+
+:root[data-theme="light"] .preloader-logo-glow {
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.02) 45%, transparent 72%);
+}
+
+@keyframes preloaderLogoBreathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.96;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+.preloader-text-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Phase 3 (2–3s): Wordmark & Letter-by-Letter Reveal */
+.preloader-wordmark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.14em;
+  font-family: var(--font-sans);
+  font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+}
+
+:root[data-theme="light"] .preloader-wordmark {
+  color: #111111;
+}
+
+.preloader-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  filter: blur(4px);
+  transition: opacity 0.42s ease,
+              transform 0.42s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.42s ease;
+  will-change: opacity, transform, filter;
+}
+
+.preloader-char.char-revealed {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.preloader-experience-tag {
+  font-family: var(--font-mono);
+  font-size: clamp(0.68rem, 1vw, 0.76rem);
+  letter-spacing: 0.28em;
+  color: #888888;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.preloader-experience-tag.tag-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:root[data-theme="light"] .preloader-experience-tag {
+  color: #555555;
+}
+
+/* Phase 4 & 5 (3–6s): Precision Loading Line & Telemetry */
+.preloader-gauge {
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.preloader-gauge.gauge-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.preloader-progress-track {
+  width: 100%;
+  height: 1.5px;
+  background-color: rgba(255, 255, 255, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+:root[data-theme="light"] .preloader-progress-track {
+  background-color: rgba(0, 0, 0, 0.10);
+}
+
+.preloader-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4) 0%, #FFFFFF 100%);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+  transition: width 0.14s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+:root[data-theme="light"] .preloader-progress-bar {
+  background: #111111;
+  box-shadow: none;
+}
+
+.preloader-telemetry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  letter-spacing: 0.14em;
+  color: #666666;
+}
+
+:root[data-theme="light"] .preloader-telemetry {
+  color: #777777;
+}
+
+.preloader-status {
+  text-transform: uppercase;
+  color: #888888;
+}
+
+:root[data-theme="light"] .preloader-status {
+  color: #666666;
+}
+
+.preloader-counter {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+:root[data-theme="light"] .preloader-counter {
+  color: #111111;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-logo {
+    animation: none !important;
+  }
+  .preloader-logo-wrap,
+  .preloader-char,
+  .preloader-experience-tag,
+  .preloader-gauge {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .site-preloader {
+    transition: opacity 0.3s ease !important;
+  }
+}
+

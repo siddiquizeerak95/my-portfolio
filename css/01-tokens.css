@@ -1,0 +1,344 @@
+/* ==========================================================================
+   ZS STUDIO — ZEERAK SIDDIQUI | BLACK & WHITE MINIMALIST PORTFOLIO
+   Dark Cinematic Minimalism inspired by premium editorial portfolios
+   Palette: Main (#080808), Secondary (#111111), Text Primary (#F5F5F5),
+            Text Secondary (#A0A0A0), Borders (#292929), Button Bg (#F5F5F5)
+   Typography: Space Grotesk (Display Headings), Inter (Body & UI), JetBrains Mono (Metadata)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   01. DESIGN TOKENS & SYSTEM PROPERTIES
+   -------------------------------------------------------------------------- */
+:root {
+  /* ZS STUDIO — Exact Palette Tokens */
+  --bg-main: #080808;
+  --bg-secondary: #111111;
+  --bg-card: #1A1A1A;
+  --bg-card-elevated: #222222;
+  --text-primary: #F5F5F5;
+  --text-secondary: #A0A0A0;
+  --text-muted: #707070;
+  --border-subtle: #303030;
+  --border-divider: #303030;
+  --accent-red: #E5092B;
+  --accent-red-muted: #8F1025;
+  --accent-red-glow: rgba(229, 9, 43, 0.45);
+  --accent-red-subtle: rgba(229, 9, 43, 0.12);
+
+  /* Grey Button System Tokens - STRICT RULE: NO RED BUTTONS */
+  --btn-grey-bg: #1E1E1E;
+  --btn-grey-border: #3A3A3A;
+  --btn-grey-text: #F5F5F5;
+  --btn-grey-hover-bg: #2A2A2A;
+  --btn-grey-hover-border: #555555;
+  --btn-grey-hover-text: #FFFFFF;
+
+  /* Black & White Dark Cinematic Atmosphere (Hybrid 3D Swiss Minimalist System) */
+  --bg-main: #080808;
+  --bg-primary: #080808;
+  --bg-midnight: #080808;
+  --bg-void: #050505;
+  --bg-secondary: #111111;
+  --bg-section: #111111;
+  --bg-surface: #111111;
+  --bg-surface-elevated: #161616;
+  --bg-surface-glass: rgba(17, 17, 17, 0.85);
+  --bg-surface-translucent: rgba(17, 17, 17, 0.92);
+  --bg-surface-hover: #1c1c1c;
+  --bg-glass-card: rgba(17, 17, 17, 0.80);
+
+  /* Strictly Monochromatic Accents */
+  --accent-cyan: #F5F5F5;
+  --accent-cyan-glow: rgba(255, 255, 255, 0.08);
+  --accent-cyan-subtle: rgba(255, 255, 255, 0.04);
+  --accent-cyan-tint: rgba(255, 255, 255, 0.02);
+  --accent-blue: #A0A0A0;
+  --accent-blue-glow: rgba(255, 255, 255, 0.04);
+  --accent-dark-blue: #141414;
+  --accent-gradient: linear-gradient(135deg, #FFFFFF 0%, #A0A0A0 100%);
+  --accent-gradient-text: linear-gradient(135deg, #FFFFFF 30%, #A0A0A0 100%);
+  --cyan-sheen: linear-gradient(135deg, #FFFFFF 0%, #C0C0C0 50%, #A0A0A0 100%);
+
+  /* High-Contrast Typography */
+  --text-primary: #F5F5F5;
+  --text-white: #F5F5F5;
+  --text-secondary: #A0A0A0;
+  --text-muted: #707070;
+
+  /* Structural Borders & Dividers */
+  --border-subtle: #292929;
+  --border-divider: #292929;
+  --border-subtle-translucent: rgba(41, 41, 41, 0.85);
+  --border-cyan: #444444;
+  --border-highlight: #F5F5F5;
+  --border-hairline: 1px solid var(--border-subtle);
+
+  /* Status Indicators (Monochrome) */
+  --status-online: #F5F5F5;
+  --status-pending: #A0A0A0;
+
+  /* Primary & Secondary Buttons */
+  --btn-bg: #F5F5F5;
+  --btn-text: #080808;
+  --btn-hover-bg: #FFFFFF;
+
+  /* Backwards-Compatibility Aliases */
+  --bg-obsidian: var(--bg-primary);
+  --gold-champagne: var(--text-primary);
+  --gold-antique: var(--text-secondary);
+  --gold-glow: rgba(255, 255, 255, 0.08);
+  --gold-sheen: var(--accent-gradient-text);
+  --text-ivory: var(--text-primary);
+  --border-gold: var(--border-subtle);
+
+  /* Typography Stacks — Luxury Editorial Serif & Swiss Minimalism */
+  --font-luxury: 'Cormorant Garamond', 'DM Serif Display', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  --font-wordmark: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-display: 'Cormorant Garamond', 'DM Serif Display', Georgia, serif;
+  --font-display-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  /* Spacing Scale */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 128px;
+  --space-5xl: 160px;
+
+  /* Layout Constraints */
+  --container-max-width: 1200px;
+  --container-gutter: clamp(20px, 4vw, 40px);
+  --nav-height: 64px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-full: 9999px;
+
+  /* Hybrid 3D Perspective & Depth System (Dark Mode) */
+  --perspective-camera: 1100px;
+  --card-shadow-3d: 0 16px 36px -10px rgba(0, 0, 0, 0.75), 0 2px 10px rgba(0, 0, 0, 0.35);
+  --card-shadow-3d-hover: 0 24px 50px -12px rgba(0, 0, 0, 0.88), 0 0 24px rgba(255, 255, 255, 0.04);
+  --glow-subtle: 0 0 30px rgba(255, 255, 255, 0.05);
+  --glow-soft: 0 8px 32px rgba(255, 255, 255, 0.06);
+
+  /* Header & Theme Tokens (Dark Mode) */
+  --header-bg: #080808;
+  --header-border: #292929;
+  --brand-text: #F5F5F5;
+  --nav-active-bg: rgba(255, 255, 255, 0.12);
+  --nav-active-color: #FFFFFF;
+  --nav-link-color: #A0A0A0;
+  --nav-link-hover: #FFFFFF;
+  --nav-hover-bg: rgba(255, 255, 255, 0.06);
+  --header-max-width: 1200px;
+
+  /* Elevation */
+  --glass-backdrop: blur(16px);
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.6);
+  --shadow-elevation: 0 16px 48px rgba(0, 0, 0, 0.85);
+  --shadow-cyan-glow: none;
+  --shadow-gold-glow: none;
+
+  /* Animation Easing */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 180ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+
+  /* Hero Section Theme Variables (Dark Mode Defaults) */
+  --hero-bg: #080808;
+  --hero-bg-secondary: #111111;
+  --hero-text-primary: #F5F5F5;
+  --hero-text-secondary: #A0A0A0;
+  --hero-border: #292929;
+  --circuit-line: rgba(255, 255, 255, 0.28);
+  --circuit-line-subtle: rgba(255, 255, 255, 0.12);
+  --circuit-node: rgba(255, 255, 255, 0.85);
+  --circuit-via-dot: #FFFFFF;
+  --circuit-pad: rgba(255, 255, 255, 0.5);
+  --circuit-chip-bg: #111111;
+  --circuit-chip-border: #292929;
+  --circuit-chip-text: #F5F5F5;
+  --circuit-chip-subtext: #888888;
+  --hero-btn-primary-bg: #F5F5F5;
+  --hero-btn-primary-text: #080808;
+  --hero-btn-primary-hover-bg: #FFFFFF;
+  --hero-btn-primary-hover-text: #000000;
+  --hero-btn-primary-shadow: 0 6px 20px rgba(255, 255, 255, 0.15), 0 0 10px rgba(255, 255, 255, 0.10);
+  --hero-btn-secondary-bg: transparent;
+  --hero-btn-secondary-text: #F5F5F5;
+  --hero-btn-secondary-border: #292929;
+  --hero-btn-secondary-hover-border: rgba(255, 255, 255, 0.50);
+  --hero-btn-secondary-hover-bg: rgba(255, 255, 255, 0.04);
+  --hero-btn-secondary-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --hero-portrait-bg: #111111;
+  --hero-portrait-border: rgba(255, 255, 255, 0.14);
+  --hero-portrait-halo: 0 0 54px rgba(255, 255, 255, 0.18), 0 20px 48px rgba(0, 0, 0, 0.8);
+  --hero-ambient-halo: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 38%, rgba(255, 255, 255, 0.02) 62%, transparent 75%);
+  --hero-spotlight: radial-gradient(ellipse 70% 60% at 72% 50%, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.035) 45%, rgba(8, 8, 8, 0) 75%);
+  --hero-name-color: #FFFFFF;
+
+  /* Orbital Line Tokens (Dark Mode) */
+  --orbital-line-primary: rgba(255, 255, 255, 0.12);
+  --orbital-line-secondary: rgba(255, 255, 255, 0.07);
+  --orbital-line-accent: rgba(255, 255, 255, 0.14);
+  --orbital-node: #F5F5F5;
+  --orbital-node-glow: rgba(255, 255, 255, 0.45);
+
+  /* Outlined Technical Tags (Dark Mode) */
+  --hero-tag-border: #292929;
+  --hero-tag-text: #A0A0A0;
+  --hero-tag-hover-border: #F5F5F5;
+  --hero-tag-hover-text: #F5F5F5;
+  --hero-tag-hover-bg: rgba(255, 255, 255, 0.04);
+
+  /* Floating Information Card (Dark Mode) */
+  --hero-card-bg: rgba(13, 13, 13, 0.88);
+  --hero-card-border: #292929;
+  --hero-card-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 16px rgba(255, 255, 255, 0.02);
+  --hero-card-text-primary: #F5F5F5;
+  --hero-card-text-secondary: #A0A0A0;
+  --hero-card-dot: #F5F5F5;
+}
+
+:root[data-theme="light"] {
+  /* ZS STUDIO Light Palette Tokens */
+  --bg-main: #FFFFFF;
+  --bg-secondary: #F7F7F8;
+  --bg-card: #FFFFFF;
+  --bg-card-elevated: #F0F0F2;
+  --text-primary: #121212;
+  --text-secondary: #666666;
+  --text-muted: #888888;
+  --border-subtle: #E2E2E6;
+  --border-divider: #E2E2E6;
+  --accent-red: #E5092B;
+  --accent-red-muted: #8F1025;
+  --accent-red-glow: rgba(229, 9, 43, 0.25);
+  --accent-red-subtle: rgba(229, 9, 43, 0.08);
+
+  /* Light Mode Grey Button System - STILL GREY, NEVER RED */
+  --btn-grey-bg: #EAEAEA;
+  --btn-grey-border: #D0D0D0;
+  --btn-grey-text: #181818;
+  --btn-grey-hover-bg: #DDDDDD;
+  --btn-grey-hover-border: #B0B0B0;
+  --btn-grey-hover-text: #000000;
+
+  /* Light Mode (Swiss Minimalism System) */
+  --bg-main: #FFFFFF;
+  --bg-primary: #FFFFFF;
+  --bg-midnight: #FFFFFF;
+  --bg-void: #FAFAFA;
+  --bg-secondary: #F5F5F5;
+  --bg-section: #F5F5F5;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #F5F5F5;
+  --bg-surface-hover: #EFEFEF;
+  --bg-surface-glass: rgba(255, 255, 255, 0.85);
+  --bg-surface-translucent: rgba(255, 255, 255, 0.92);
+  --bg-glass-card: rgba(255, 255, 255, 0.80);
+
+  --text-primary: #111111;
+  --text-white: #111111;
+  --text-secondary: #666666;
+  --text-muted: #888888;
+
+  --border-subtle: #E5E5E5;
+  --border-divider: #E5E5E5;
+  --border-subtle-translucent: rgba(229, 229, 229, 0.85);
+  --border-cyan: #CCCCCC;
+  --border-highlight: #111111;
+
+  --accent-cyan: #111111;
+  --accent-cyan-glow: rgba(0, 0, 0, 0.08);
+  --accent-cyan-subtle: rgba(0, 0, 0, 0.04);
+  --accent-cyan-tint: rgba(0, 0, 0, 0.02);
+  --accent-blue: #666666;
+
+  --btn-bg: #111111;
+  --btn-text: #FFFFFF;
+  --btn-hover-bg: #222222;
+
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --header-border: #E5E5E5;
+  --brand-text: #111111;
+  --nav-active-bg: rgba(0, 0, 0, 0.08);
+  --nav-active-color: #111111;
+  --nav-link-color: #666666;
+  --nav-link-hover: #111111;
+  --nav-hover-bg: rgba(0, 0, 0, 0.04);
+
+  /* Hero Section Theme Variables (Light Mode) */
+  --hero-bg: #FFFFFF;
+  --hero-bg-secondary: #F5F5F5;
+  --hero-text-primary: #111111;
+  --hero-text-secondary: #666666;
+  --hero-border: #E5E5E5;
+  --circuit-line: rgba(0, 0, 0, 0.22);
+  --circuit-line-subtle: rgba(0, 0, 0, 0.08);
+  --circuit-node: rgba(0, 0, 0, 0.7);
+  --circuit-via-dot: #111111;
+  --circuit-pad: rgba(0, 0, 0, 0.4);
+  --circuit-chip-bg: #F5F5F5;
+  --circuit-chip-border: #D8D8D8;
+  --circuit-chip-text: #111111;
+  --circuit-chip-subtext: #666666;
+  --hero-btn-primary-bg: #111111;
+  --hero-btn-primary-text: #FFFFFF;
+  --hero-btn-primary-hover-bg: #222222;
+  --hero-btn-primary-hover-text: #FFFFFF;
+  --hero-btn-primary-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  --hero-btn-secondary-bg: transparent;
+  --hero-btn-secondary-text: #111111;
+  --hero-btn-secondary-border: #E5E5E5;
+  --hero-btn-secondary-hover-border: #111111;
+  --hero-btn-secondary-hover-bg: rgba(0, 0, 0, 0.03);
+  --hero-btn-secondary-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  --hero-portrait-bg: #F5F5F5;
+  --hero-portrait-border: rgba(0, 0, 0, 0.12);
+  --hero-portrait-halo: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --hero-ambient-halo: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.07) 0%, rgba(0, 0, 0, 0.02) 45%, transparent 75%);
+  --hero-spotlight: radial-gradient(ellipse 70% 60% at 72% 50%, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.015) 45%, rgba(255, 255, 255, 0) 75%);
+  --hero-name-color: #111111;
+
+  /* Orbital Line Tokens (Light Mode) */
+  --orbital-line-primary: rgba(0, 0, 0, 0.10);
+  --orbital-line-secondary: rgba(0, 0, 0, 0.06);
+  --orbital-line-accent: rgba(0, 0, 0, 0.10);
+  --orbital-node: #111111;
+  --orbital-node-glow: rgba(0, 0, 0, 0.20);
+
+  /* Outlined Technical Tags (Light Mode) */
+  --hero-tag-border: #E5E5E5;
+  --hero-tag-text: #666666;
+  --hero-tag-hover-border: #111111;
+  --hero-tag-hover-text: #111111;
+  --hero-tag-hover-bg: rgba(0, 0, 0, 0.03);
+
+  /* Floating Information Card (Light Mode) */
+  --hero-card-bg: rgba(255, 255, 255, 0.92);
+  --hero-card-border: #E5E5E5;
+  --hero-card-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  --hero-card-text-primary: #111111;
+  --hero-card-text-secondary: #666666;
+  --hero-card-dot: #111111;
+
+  /* Hybrid 3D Perspective & Depth System (Light Mode) */
+  --perspective-camera: 1100px;
+  --card-shadow-3d: 0 14px 32px -10px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.03);
+  --card-shadow-3d-hover: 0 20px 44px -10px rgba(0, 0, 0, 0.12), 0 0 20px rgba(0, 0, 0, 0.02);
+  --glow-subtle: 0 0 24px rgba(0, 0, 0, 0.03);
+  --glow-soft: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+

@@ -1,0 +1,161 @@
+/* --------------------------------------------------------------------------
+   02. CSS RESET & GLOBAL BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-midnight);
+  color: var(--text-primary);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-midnight);
+  color: var(--text-primary);
+  line-height: 1.6;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Accessible Skip Navigation Link */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 20px;
+  padding: 12px 20px;
+  background-color: var(--accent-cyan);
+  color: var(--bg-midnight);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  z-index: 99999;
+  transition: top var(--duration-fast) ease;
+}
+
+.skip-link:focus {
+  top: 20px;
+  outline: 2px solid #ffffff;
+}
+
+/* Selection Highlight */
+::selection {
+  background-color: #333333;
+  color: #FFFFFF;
+}
+
+/* --------------------------------------------------------------------------
+   03. PRECISION MONOCHROME CURSOR (DESKTOP ONLY)
+   -------------------------------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: default;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 99998;
+  }
+
+  .cursor-dot {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 6px;
+    height: 6px;
+    background-color: #F5F5F5;
+    border-radius: 50%;
+    pointer-events: none;
+    transition: transform 0.04s linear;
+  }
+
+  .cursor-ring {
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: width var(--duration-fast) var(--ease-editorial),
+                height var(--duration-fast) var(--ease-editorial),
+                top var(--duration-fast) var(--ease-editorial),
+                left var(--duration-fast) var(--ease-editorial),
+                border-color var(--duration-fast) ease,
+                background-color var(--duration-fast) ease,
+                opacity var(--duration-fast) ease;
+  }
+
+  .custom-cursor.hovering .cursor-ring {
+    top: -24px;
+    left: -24px;
+    width: 48px;
+    height: 48px;
+    border-color: #F5F5F5;
+    background-color: rgba(255, 255, 255, 0.05);
+    opacity: 0.9;
+  }
+}
+
+:root[data-theme="light"] .cursor-dot {
+  background-color: #111111;
+}
+
+:root[data-theme="light"] .cursor-ring {
+  border-color: rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme="light"] .custom-cursor.hovering .cursor-ring {
+  border-color: #111111;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   MINIMALIST MONOCHROME PARTICLE CURSOR CANVAS
+   -------------------------------------------------------------------------- */
+#particle-cursor-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none !important;
+  z-index: 99996;
+  display: block;
+}
+
+@media (hover: none) or (pointer: coarse) {
+  .custom-cursor,
+  #particle-cursor-canvas {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #particle-cursor-canvas {
+    display: none !important;
+  }
+}
+

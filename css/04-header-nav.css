@@ -1,0 +1,574 @@
+/* --------------------------------------------------------------------------
+   06. PREMIUM STICKY MINIMAL NAVIGATION HEADER
+   -------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height, 58px);
+  min-height: var(--nav-height, 58px);
+  z-index: 1000;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--header-border);
+  transition: background-color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.site-header.scrolled {
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--header-border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.header-container {
+  max-width: var(--header-max-width, 1200px);
+  margin: 0 auto;
+  padding: 0 32px;
+  width: 100%;
+  height: 100%;
+}
+
+.header-nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Far Left: Brand Group (ZS Logo + ZEERAK Wordmark) */
+.header-brand {
+  grid-column: 1;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: var(--brand-text);
+  flex-shrink: 0;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.header-brand:hover {
+  opacity: 0.92;
+}
+
+.header-brand:focus-visible {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Header Brand Logo (ZS Logo Image: New fav icon.png) */
+.header-brand-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+  border-radius: 4px;
+  mix-blend-mode: screen;
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease, filter var(--duration-fast) ease;
+}
+
+:root[data-theme="light"] .header-brand-logo {
+  filter: invert(1);
+  mix-blend-mode: multiply;
+}
+
+.header-brand:hover .header-brand-logo {
+  transform: scale(1.04);
+}
+
+/* Subtle Architectural Divider between Logo and Wordmark */
+.header-brand-divider {
+  width: 1px;
+  height: 22px;
+  background-color: var(--border-subtle);
+  display: inline-block;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: background-color var(--duration-fast) ease;
+}
+
+/* ZEERAK Swiss Minimalist Wordmark */
+.header-brand-name {
+  font-family: var(--font-wordmark);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--brand-text);
+  white-space: nowrap;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: color var(--duration-fast) ease, letter-spacing var(--duration-fast) ease;
+  position: relative;
+  top: 1px;
+}
+
+.header-brand:hover .header-brand-name {
+  letter-spacing: 0.26em;
+  color: var(--text-primary);
+}
+
+/* Center Horizontal Navigation Links (Exact Viewport Center) */
+.nav-links {
+  grid-column: 2;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link,
+.nav-item {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 400;
+  color: var(--nav-link-color);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.nav-link:hover,
+.nav-item:hover {
+  color: var(--nav-link-hover);
+  background-color: var(--nav-hover-bg);
+}
+
+/* Reference active state: small rounded light-colored highlight */
+.nav-link.active,
+.nav-item.active {
+  color: var(--nav-active-color);
+  background-color: var(--nav-active-bg);
+  font-weight: 500;
+  box-shadow: none;
+  border: none;
+}
+
+.nav-link.active::after,
+.nav-item.active::after {
+  display: none !important;
+}
+
+.nav-link:focus-visible,
+.nav-item:focus-visible {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Right-Side Controls */
+.header-controls {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              color var(--duration-fast) ease;
+}
+
+:root[data-theme="light"] .theme-toggle-btn {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #555555;
+}
+
+:root[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: #BBBBBB;
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.theme-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-primary);
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+.theme-moon-icon,
+.theme-sun-icon {
+  display: block;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+:root[data-theme="dark"] .theme-sun-icon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-moon-icon {
+  display: block;
+}
+
+:root[data-theme="light"] .theme-moon-icon {
+  display: none;
+}
+
+:root[data-theme="light"] .theme-sun-icon {
+  display: block;
+}
+
+/* ==========================================================================
+   Sound FX System & Header Toggle (Mixkit Sci-Fi Interface Robot Click)
+   ========================================================================== */
+.sound-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 32px;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              color var(--duration-fast) ease,
+              transform var(--duration-fast) ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+:root[data-theme="light"] .sound-toggle-btn {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sound-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #555555;
+}
+
+:root[data-theme="light"] .sound-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: #BBBBBB;
+}
+
+.sound-toggle-btn:active {
+  transform: scale(0.96);
+}
+
+.sound-toggle-btn:focus-visible {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.sound-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--text-muted, #777777);
+  opacity: 0.45;
+  flex-shrink: 0;
+  transition: background-color var(--duration-fast) ease,
+              opacity var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+.sound-toggle-btn[data-sound="on"] .sound-indicator-dot {
+  background-color: #E5092B;
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(229, 9, 43, 0.85);
+}
+
+.sound-off-icon,
+.sound-on-icon {
+  display: block;
+  stroke: currentColor;
+  flex-shrink: 0;
+}
+
+.sound-toggle-btn[data-sound="off"] .sound-on-icon {
+  display: none;
+}
+
+.sound-toggle-btn[data-sound="off"] .sound-off-icon {
+  display: block;
+}
+
+.sound-toggle-btn[data-sound="on"] .sound-off-icon {
+  display: none;
+}
+
+.sound-toggle-btn[data-sound="on"] .sound-on-icon {
+  display: block;
+}
+
+/* Mobile Hamburger Button */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.mobile-toggle:hover {
+  border-color: #555555;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.mobile-toggle:focus-visible {
+  outline: 1px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+.hamburger-bar {
+  width: 18px;
+  height: 2px;
+  background-color: var(--text-primary);
+  border-radius: 1px;
+  transition: transform var(--duration-fast) ease, opacity var(--duration-fast) ease;
+}
+
+.mobile-avatar-mini {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 25%;
+  border: 1px solid var(--border-subtle);
+}
+
+/* --------------------------------------------------------------------------
+   07. MOBILE NAVIGATION DRAWER OVERLAY
+   -------------------------------------------------------------------------- */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  visibility: hidden;
+  display: none;
+  overflow: hidden;
+  pointer-events: none;
+  transition: visibility 0.3s ease;
+}
+
+.mobile-drawer.open {
+  visibility: visible;
+  display: block;
+  pointer-events: auto;
+}
+
+.mobile-drawer-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-drawer.open .mobile-drawer-backdrop {
+  opacity: 1;
+}
+
+.mobile-drawer-inner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  height: 100%;
+  background-color: var(--bg-secondary);
+  border-left: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 24px;
+  transform: translateX(100%);
+  transition: transform 0.35s var(--ease-editorial);
+  overflow-y: auto;
+}
+
+.mobile-drawer.open .mobile-drawer-inner {
+  transform: translateX(0);
+}
+
+.mobile-telemetry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 18px;
+}
+
+.mobile-brand-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-wordmark);
+  font-size: 13px;
+  font-weight: 600;
+  color: #F5F5F5;
+  letter-spacing: 0.22em;
+}
+
+.mobile-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 6px;
+  transition: color var(--duration-fast) ease;
+}
+
+.mobile-close:hover {
+  color: #F5F5F5;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 32px 0;
+}
+
+.mobile-link {
+  display: block;
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  color: var(--text-secondary);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: all var(--duration-fast) ease;
+}
+
+.mobile-link .mob-index {
+  display: none;
+}
+
+.mobile-link:hover, .mobile-link.active {
+  color: var(--text-primary);
+  background-color: var(--bg-surface-elevated);
+  border-color: var(--border-subtle);
+}
+
+.mobile-drawer-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn-drawer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 42px;
+  padding: 12px 20px;
+  background: #F5F5F5;
+  border: 1px solid #F5F5F5;
+  border-radius: 4px;
+  color: #080808;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.btn-drawer-cta:hover {
+  background: #E0E0E0;
+}
+
+.drawer-contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-link-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background-color: #080808;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  color: #929292;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.drawer-link-btn:hover {
+  border-color: #444444;
+  color: #F5F5F5;
+}
+
+.drawer-telemetry {
+  display: none;
+}
+

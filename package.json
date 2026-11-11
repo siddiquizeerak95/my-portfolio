@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
-    "decrypt": "node decrypt_message.js"
+    "decrypt": "node decrypt_message.js",
+    "build:css": "python scripts/build_css.py",
+    "verify:css": "python scripts/build_css.py --verify"
   },
   "dependencies": {
     "dotenv": "^18.0.9",
