@@ -70,7 +70,8 @@ function parseBase64UrlJson(str) {
 }
 
 function verifyNetlifyJWS(token, secret, expectedSiteId = (process.env.EXPECTED_NETLIFY_SITE_ID || '').trim()) {
-  if (!token || typeof token !== 'string' || !secret) {
+  const resolvedSecret = typeof secret === 'string' ? secret.trim() : '';
+  if (!token || typeof token !== 'string' || !resolvedSecret) {
     return { valid: false, error: 'Missing token or secret' };
   }
 
@@ -90,12 +91,21 @@ function verifyNetlifyJWS(token, secret, expectedSiteId = (process.env.EXPECTED_
   // 2. Validate Header (must be HS256)
   const header = parseBase64UrlJson(headerB64);
   if (!header || header.alg !== 'HS256') {
-    return { valid: false, error: 'Unsupported or missing algorithm' };
+    return {
+      valid: false,
+      error: 'Unsupported or missing algorithm',
+      diagnostic: {
+        alg: header ? header.alg : 'unparseable',
+        sigLen: signatureB64 ? signatureB64.length : 0,
+        expSigLen: 0,
+        trimmedSecretWhitespace: typeof secret === 'string' && secret.length !== resolvedSecret.length
+      }
+    };
   }
 
   // 3. Validate HMAC-SHA256 Signature using timingSafeEqual
   const expectedSig = crypto
-    .createHmac('sha256', secret)
+    .createHmac('sha256', resolvedSecret)
     .update(`${headerB64}.${payloadB64}`)
     .digest('base64url');
 
@@ -103,7 +113,16 @@ function verifyNetlifyJWS(token, secret, expectedSiteId = (process.env.EXPECTED_
   const expBuf = Buffer.from(expectedSig);
 
   if (sigBuf.length !== expBuf.length || !crypto.timingSafeEqual(sigBuf, expBuf)) {
-    return { valid: false, error: 'Invalid signature' };
+    return {
+      valid: false,
+      error: 'Invalid signature',
+      diagnostic: {
+        alg: header.alg,
+        sigLen: sigBuf.length,
+        expSigLen: expBuf.length,
+        trimmedSecretWhitespace: typeof secret === 'string' && secret.length !== resolvedSecret.length
+      }
+    };
   }
 
   // 4. Validate Payload structure
@@ -141,7 +160,16 @@ function verifyNetlifyJWS(token, secret, expectedSiteId = (process.env.EXPECTED_
     return { valid: false, error: 'Invalid netlify site id' };
   }
 
-  return { valid: true, payload };
+  return {
+    valid: true,
+    payload,
+    diagnostic: {
+      alg: header.alg,
+      sigLen: sigBuf.length,
+      expSigLen: expBuf.length,
+      trimmedSecretWhitespace: typeof secret === 'string' && secret.length !== resolvedSecret.length
+    }
+  };
 }
 
 // Clean up stale rate limit entries every 10 minutes
@@ -308,7 +336,7 @@ const server = http.createServer(async (req, res) => {
   // ---------------------------------------------------------------------------
   if (req.method === 'POST' && pathname === '/api/contact') {
     const isProduction = process.env.NODE_ENV === 'production';
-    const proxySecret = process.env.NETLIFY_PROXY_SECRET;
+    const proxySecret = (process.env.NETLIFY_PROXY_SECRET || '').trim();
     let clientIp = req.socket?.remoteAddress || '127.0.0.1';
 
     // In production (or whenever NETLIFY_PROXY_SECRET is configured), enforce Netlify JWS authentication
@@ -334,6 +362,7 @@ const server = http.createServer(async (req, res) => {
 
       const authResult = verifyNetlifyJWS(nfSignHeader, proxySecret);
       if (!authResult.valid) {
+        console.warn(`[Proxy Auth] Verification failed: ${authResult.error}`, authResult.diagnostic || {});
         res.writeHead(403, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
           success: false,
@@ -341,6 +370,7 @@ const server = http.createServer(async (req, res) => {
         }));
         return;
       }
+      console.log('[Proxy Auth] Verification succeeded from Netlify proxy.', authResult.diagnostic || {});
 
       // Request is authenticated from Netlify! Inspect X-NF-Client-Connection-IP
       // Note: Actual header availability in production must be confirmed through a live integration test.
