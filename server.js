@@ -12,6 +12,8 @@ import http from 'http';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import crypto from 'crypto';
+import net from 'net';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 
@@ -21,6 +23,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const PORT = parseInt(process.env.PORT || '8080', 10);
+const HOST = process.env.HOST || (
+  process.env.NODE_ENV === 'production'
+    ? '0.0.0.0'
+    : '127.0.0.1'
+);
 const RECEIVING_EMAIL = process.env.RECEIVING_EMAIL || 'siddiquizeerak95@gmail.com';
 const TEST_MODE = process.env.TEST_MODE === 'true';
 
@@ -46,6 +53,95 @@ function checkRateLimit(ip) {
 
   record.count++;
   return true;
+}
+
+// -----------------------------------------------------------------------------
+// NETLIFY SIGNED PROXY AUTHENTICATION (JWS HMAC-SHA256) & TRUSTED CLIENT IP
+// -----------------------------------------------------------------------------
+const EXPECTED_SITE_URL = process.env.EXPECTED_SITE_URL || 'https://zsstudio.netlify.app';
+
+function parseBase64UrlJson(str) {
+  try {
+    const buf = Buffer.from(str, 'base64url');
+    return JSON.parse(buf.toString('utf8'));
+  } catch {
+    return null;
+  }
+}
+
+function verifyNetlifyJWS(token, secret, expectedSiteId = (process.env.EXPECTED_NETLIFY_SITE_ID || '').trim()) {
+  if (!token || typeof token !== 'string' || !secret) {
+    return { valid: false, error: 'Missing token or secret' };
+  }
+
+  // 1. Require EXPECTED_NETLIFY_SITE_ID configuration
+  const resolvedSiteId = typeof expectedSiteId === 'string' ? expectedSiteId.trim() : '';
+  if (!resolvedSiteId) {
+    return { valid: false, error: 'Missing required netlify site id configuration' };
+  }
+
+  const parts = token.split('.');
+  if (parts.length !== 3) {
+    return { valid: false, error: 'Malformed JWS token structure' };
+  }
+
+  const [headerB64, payloadB64, signatureB64] = parts;
+
+  // 2. Validate Header (must be HS256)
+  const header = parseBase64UrlJson(headerB64);
+  if (!header || header.alg !== 'HS256') {
+    return { valid: false, error: 'Unsupported or missing algorithm' };
+  }
+
+  // 3. Validate HMAC-SHA256 Signature using timingSafeEqual
+  const expectedSig = crypto
+    .createHmac('sha256', secret)
+    .update(`${headerB64}.${payloadB64}`)
+    .digest('base64url');
+
+  const sigBuf = Buffer.from(signatureB64);
+  const expBuf = Buffer.from(expectedSig);
+
+  if (sigBuf.length !== expBuf.length || !crypto.timingSafeEqual(sigBuf, expBuf)) {
+    return { valid: false, error: 'Invalid signature' };
+  }
+
+  // 4. Validate Payload structure
+  const payload = parseBase64UrlJson(payloadB64);
+  if (!payload || typeof payload !== 'object') {
+    return { valid: false, error: 'Malformed payload' };
+  }
+
+  // 5. Validate Expiration (exp must be strictly greater than current timestamp; reject exp <= nowSec)
+  const nowSec = Math.floor(Date.now() / 1000);
+  if (typeof payload.exp !== 'number' || payload.exp <= nowSec) {
+    return { valid: false, error: 'Token expired' };
+  }
+
+  // 6. Validate Issuer (iss === 'netlify')
+  if (payload.iss !== 'netlify') {
+    return { valid: false, error: 'Invalid issuer' };
+  }
+
+  // 7. Validate Site URL (site_url === EXPECTED_SITE_URL)
+  if (payload.site_url !== EXPECTED_SITE_URL) {
+    return { valid: false, error: 'Invalid site origin' };
+  }
+
+  // 8. Validate Deployment Context (deploy_context === 'production')
+  if (payload.deploy_context !== 'production') {
+    return { valid: false, error: 'Invalid deploy context' };
+  }
+
+  // 9. Validate Netlify Site ID (netlify_id must match expectedSiteId exactly)
+  if (typeof payload.netlify_id !== 'string' || !payload.netlify_id.trim()) {
+    return { valid: false, error: 'Missing netlify site id' };
+  }
+  if (payload.netlify_id !== resolvedSiteId) {
+    return { valid: false, error: 'Invalid netlify site id' };
+  }
+
+  return { valid: true, payload };
 }
 
 // Clean up stale rate limit entries every 10 minutes
@@ -211,7 +307,55 @@ const server = http.createServer(async (req, res) => {
   // CONTACT SUBMISSION ENDPOINT: POST /api/contact
   // ---------------------------------------------------------------------------
   if (req.method === 'POST' && pathname === '/api/contact') {
-    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'unknown';
+    const isProduction = process.env.NODE_ENV === 'production';
+    const proxySecret = process.env.NETLIFY_PROXY_SECRET;
+    let clientIp = req.socket?.remoteAddress || '127.0.0.1';
+
+    // In production (or whenever NETLIFY_PROXY_SECRET is configured), enforce Netlify JWS authentication
+    if (isProduction || proxySecret) {
+      if (!proxySecret) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          success: false,
+          error: 'Server configuration error: NETLIFY_PROXY_SECRET is not configured.'
+        }));
+        return;
+      }
+
+      const nfSignHeader = req.headers['x-nf-sign'];
+      if (!nfSignHeader) {
+        res.writeHead(401, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          success: false,
+          error: 'Unauthorized: Missing required proxy authentication signature.'
+        }));
+        return;
+      }
+
+      const authResult = verifyNetlifyJWS(nfSignHeader, proxySecret);
+      if (!authResult.valid) {
+        res.writeHead(403, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({
+          success: false,
+          error: `Forbidden: Proxy authentication failed (${authResult.error}).`
+        }));
+        return;
+      }
+
+      // Request is authenticated from Netlify! Inspect X-NF-Client-Connection-IP
+      // Note: Actual header availability in production must be confirmed through a live integration test.
+      const rawNetlifyIp = req.headers['x-nf-client-connection-ip'];
+      if (typeof rawNetlifyIp === 'string' && net.isIP(rawNetlifyIp.trim()) !== 0) {
+        clientIp = rawNetlifyIp.trim();
+      } else {
+        // If x-nf-client-connection-ip is absent or malformed, do not trust any other unverified headers (e.g. x-forwarded-for).
+        // Fall back strictly to the underlying socket IP.
+        clientIp = req.socket?.remoteAddress || 'unknown';
+      }
+    } else {
+      // Local development fallback: strictly use local socket address, ignore arbitrary forwarding headers
+      clientIp = req.socket?.remoteAddress || '127.0.0.1';
+    }
 
     // Rate Limiting
     if (!checkRateLimit(clientIp)) {
@@ -293,7 +437,7 @@ const server = http.createServer(async (req, res) => {
           return;
         }
 
-        console.log(`[E2EE Contact] Valid encrypted transmission received from "${cleanName}" <${cleanEmail}> | Subject: "${cleanSubject}" | Size: ${encrypted_message.length} chars`);
+        console.log(`[E2EE Contact] Valid encrypted transmission received | Payload size: ${encrypted_message.length} chars`);
 
         // Dispatch Email
         const result = await dispatchEmail({
@@ -306,6 +450,7 @@ const server = http.createServer(async (req, res) => {
         res.writeHead(200, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
           success: true,
+          method: result.method,
           message: 'Transmission successfully encrypted and delivered to Zeerak Siddiqui.'
         }));
       } catch (err) {
@@ -352,11 +497,10 @@ const server = http.createServer(async (req, res) => {
   readStream.pipe(res);
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, HOST, () => {
   console.log(`======================================================`);
-  console.log(`ZS STUDIO Server Running on http://localhost:${PORT}`);
-  console.log(`E2EE Contact Endpoint : POST http://localhost:${PORT}/api/contact`);
-  console.log(`Target Receiving Email : ${RECEIVING_EMAIL}`);
+  console.log(`ZS STUDIO Server Running on http://${HOST}:${PORT}`);
+  console.log(`E2EE Contact Endpoint : POST http://${HOST}:${PORT}/api/contact`);
   console.log(`Test Mode Active       : ${TEST_MODE}`);
   console.log(`======================================================`);
 });

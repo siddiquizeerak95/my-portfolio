@@ -1,0 +1,13 @@
+# ZS STUDIO — Production Netlify Configuration
+# Signed Proxy Redirect to Render Node.js Backend
+
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://zs-studio-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+  signed = "NETLIFY_PROXY_SECRET"
+
