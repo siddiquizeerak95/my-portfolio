@@ -4,11 +4,12 @@
 .env.*.local
 *.env
 
-# Private Encryption Keys (Keep strictly private)
-keys/*private*
-keys/*secret*
+# Private Encryption Keys (Keep strictly private — held offline)
+keys/
 *.private.asc
 *.sec.asc
+*.key
+*.pem
 
 # Node Dependencies & Logs
 node_modules/
@@ -22,4 +23,7 @@ __pycache__/
 
 # Local Scratch Directory
 scratch/
+
+# Review Packages & Design Artifacts (Held locally)
+ZS-Galaxy-Review/
 
