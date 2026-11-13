@@ -10,31 +10,29 @@ Authoritative project charter, vision, scope, and technical constraints for **ZS
 
 ---
 
-## 2. Milestones Summary
+## 2. Current Milestone: v3.0 Production Cloud Deployment & Live Verification
 
-### Milestone 1: Optimization & Architecture Refinement (COMPLETED & VERIFIED)
-- **Goal:** Reclaimed 94.8% of asset storage (from 59.72 MB down to 3.08 MB), cleaned 112 root-level files to 41 core files, modularized 9,407 lines of CSS into 10 structured partials, fortified private key boundaries, and completed full multi-page verification (0 console errors, 36 responsive captures, real E2EE test).
+**Goal:** Deploy the Node.js backend Web Service to Render and static portfolio to Netlify, configure secure cloud dashboard environment variables and signed proxy routing, integrate real SMTP email delivery, and verify live end-to-end encrypted contact form transmissions.
 
-### Milestone 2: Responsive Layout Refinement (ACTIVE MILESTONE)
-- **Goal:** Eliminate the known 17.42px horizontal content overflow on the three blog article pages at 390px mobile viewport width by making `.author-bio-links` responsive in `css/08-responsive-blog.css` and synchronizing `style.css`, while preserving desktop layout, visual identity, CSS modular architecture, and zero console errors.
+### Target Features & Capabilities:
+- **Render Web Service Ingress:** Dynamic platform `PORT` handling, `HOST=0.0.0.0`, production mode.
+- **Mutual Proxy Authentication:** Netlify JWS HMAC-SHA256 signature verification in `server.js` using `NETLIFY_PROXY_SECRET` and `EXPECTED_NETLIFY_SITE_ID`.
+- **Secret & Key Isolation:** Server secrets stored strictly in hosting provider dashboards; offline private PGP key kept out of git and cloud hosting.
+- **Live Email Transport:** Real SMTP dispatch (Gmail App Password or Resend) to `siddiquizeerak95@gmail.com`.
+- **Full End-to-End Verification:** Live contact submission on `https://zsstudio.netlify.app/contact.html`, real inbox delivery, and offline decryption.
 
 ---
 
-## 3. Scope Boundaries (Milestone 2)
+## 3. Milestones Summary
 
-### In Scope
-- Inspect `.author-bio-links` and `.article-author-card` in `css/08-responsive-blog.css`.
-- Add responsive wrapping rules scoped to mobile media queries (`@media (max-width: 768px)`).
-- Synchronize root `style.css` using `scripts/build_css.py`.
-- Run automated read-only mobile overflow audits across all 14 pages at 390px.
-- Verify visual presentation at 1440px, 768px, and 390px across dark and light modes.
-- Verify 0 console errors across all 14 pages in headless Chrome.
+### Milestone 1: Optimization & Architecture Refinement (v1.0.0 — COMPLETED & VERIFIED)
+- **Delivered:** Reclaimed 94.8% of asset storage, cleaned root files, modularized 9,407 lines of CSS into 10 partials, fortified private key boundaries, and completed full multi-page verification.
 
-### Out of Scope
-- Modifying unrelated pages, components, or layout structures.
-- Altering desktop (> 768px) layouts or visual styling.
-- Introducing external CSS libraries or frameworks.
-- Pushing any branch to GitHub.
+### Milestone 2: Responsive Layout Refinement & API Security (v2.0.0 — COMPLETED & VERIFIED)
+- **Delivered:** Eliminated mobile content overflow across all 14 pages (`scrollWidth <= clientWidth` at 390px), synchronized modular CSS to `style.css`, verified 0 console errors, and implemented Netlify signed proxy JWS HMAC-SHA256 ingress security in `server.js` and `netlify.toml`.
+
+### Milestone 3: Production Cloud Deployment & Live Verification (v3.0.0 — COMPLETED & VERIFIED)
+- **Delivered:** Connected Netlify and Render in production with JWS HS256 proxy signatures, configured cloud secrets safely, integrated Resend HTTPS REST API email delivery, verified live 4096-bit OpenPGP form submission (`200 OK`), confirmed Gmail inbox receipt, and decrypted offline with 100% exact plaintext match.
 
 ---
 
@@ -47,3 +45,24 @@ Authoritative project charter, vision, scope, and technical constraints for **ZS
 | **CSS Architecture** | All edits made to `css/` modules first, compiled to `style.css` via `scripts/build_css.py`, verified with `npm run verify:css`. | `CONVENTIONS.md` §3 |
 | **Zero Console Errors** | All 14 HTML pages must produce 0 console errors in headless Chrome audits. | `TESTING.md` §2.1 |
 | **Zero Overflow** | `scrollWidth <= clientWidth` on all 14 pages at 390px mobile viewport. | `CONVENTIONS.md` §5 |
+| **API Ingress Security** | Production `/api/contact` requires valid Netlify JWS HMAC-SHA256 signature; reject unauthenticated direct requests. | `server.js` |
+| **Secret Protection** | Zero credentials, plaintext passwords, or private keys committed to git or logged to console. | Security Rule |
+
+---
+
+## 5. Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd-complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
