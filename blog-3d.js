@@ -21,7 +21,7 @@
       document.getElementById('b3d-card-2')
     ].filter(Boolean);
 
-    if (!experienceSec || cards.length === 0) return;
+    if (!experienceSec || cards.length < 3) return;
 
     const counterNum = document.getElementById('b3d-active-num');
     const topicTicker = document.getElementById('b3d-topic-ticker');
@@ -47,20 +47,37 @@
       });
     }
 
-    // Interactive Card Specular Glare on Mouse Movement
+    // Interactive Card Specular Glare on Mouse Movement (Throttled with RAF)
     if (window.matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
       cards.forEach((card) => {
+        let glareRafId = null;
+        let lastEvent = null;
+
         card.addEventListener('mousemove', (e) => {
           if (parseInt(card.getAttribute('data-card-index'), 10) !== currentActiveIndex) return;
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--glare-x', `${x}px`);
-          card.style.setProperty('--glare-y', `${y}px`);
-          card.style.setProperty('--glare-opacity', '1');
+          lastEvent = { clientX: e.clientX, clientY: e.clientY };
+
+          if (!glareRafId) {
+            glareRafId = requestAnimationFrame(() => {
+              if (lastEvent) {
+                const rect = card.getBoundingClientRect();
+                const x = lastEvent.clientX - rect.left;
+                const y = lastEvent.clientY - rect.top;
+                card.style.setProperty('--glare-x', `${x}px`);
+                card.style.setProperty('--glare-y', `${y}px`);
+                card.style.setProperty('--glare-opacity', '1');
+              }
+              glareRafId = null;
+            });
+          }
         }, { passive: true });
 
         card.addEventListener('mouseleave', () => {
+          if (glareRafId) {
+            cancelAnimationFrame(glareRafId);
+            glareRafId = null;
+          }
+          lastEvent = null;
           card.style.setProperty('--glare-opacity', '0');
         });
       });

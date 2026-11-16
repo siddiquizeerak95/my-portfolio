@@ -1,20 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary Meta Tags -->
   <title>Creative Portfolio Website — UI/UX Case Study | ZS STUDIO</title>
-  <meta name="description" content="UI/UX Case Study: Creative Portfolio Website by Zeerak Siddiqui, UI/UX Designer &amp; Frontend Developer at ZS STUDIO. Comprehensive design process from user research to final UI prototype.">
+  <meta name="title" content="Creative Portfolio Website Case Study — Zeerak Siddiqui | ZS STUDIO">
+  <meta name="description" content="UI/UX Case Study: Creative Portfolio Website by Zeerak Siddiqui at ZS STUDIO. High-craft Swiss Minimalist web architecture and client-side E2EE engineering.">
+  <meta name="author" content="Zeerak Siddiqui">
+  <meta name="theme-color" content="#080808">
+  <link rel="canonical" href="https://zsstudio.netlify.app/case-study-portfolio.html">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="ZS STUDIO">
+  <meta property="og:url" content="https://zsstudio.netlify.app/case-study-portfolio.html">
+  <meta property="og:title" content="Creative Portfolio Website — UI/UX Case Study | ZS STUDIO">
+  <meta property="og:description" content="Architectural breakdown of high-craft Swiss Minimalist portfolio and client-side encryption by Zeerak Siddiqui.">
+  <meta property="og:image" content="https://zsstudio.netlify.app/new%20image.jpeg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Creative Portfolio Website — UI/UX Case Study | ZS STUDIO">
+  <meta name="twitter:description" content="Architectural breakdown of high-craft Swiss Minimalist portfolio and client-side encryption by Zeerak Siddiqui.">
+  <meta name="twitter:image" content="https://zsstudio.netlify.app/new%20image.jpeg">
+
+  <!-- Favicon / Brand Identity -->
+  <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
   <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+
+  <!-- Theme Init Script (Zero Flash) -->
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('zs_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      } catch (_) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Preload Interface Click Audio -->
   <link rel="preload" href="assets/audio/mixkit-sci-fi-interface-robot-click-901.wav" as="audio" type="audio/wav">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="page-case-study" id="top">
+<body class="page-case-study" id="top" data-page="projects">
   <!-- Skip Navigation for Accessibility -->
   <a href="#main-content" class="skip-link">Skip to Primary Content [Tab]</a>
 

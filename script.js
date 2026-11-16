@@ -471,7 +471,8 @@ function initHeaderScroll() {
 }
 
 function initNavigation() {
-  const currentPage = document.body.getAttribute('data-page') || 'home';
+  const isCaseStudy = window.location.pathname.includes('case-study') || document.body.classList.contains('page-case-study');
+  const currentPage = document.body.getAttribute('data-page') || (isCaseStudy ? 'projects' : 'home');
   const navItems = document.querySelectorAll('.nav-item');
   const mobileLinks = document.querySelectorAll('.mobile-link');
   const mobileToggle = document.getElementById('mobile-toggle');
@@ -599,8 +600,9 @@ function initWorldClock() {
     }
   }
 
+  if (!clockEl) return;
+
   const updateClock = () => {
-    if (!clockEl) return;
     try {
       clockEl.textContent = `${getIndianTime()} IST`;
     } catch (err) {
@@ -762,20 +764,38 @@ function initCustomCursor() {
   let mouseY = -100;
   let ringX = -100;
   let ringY = -100;
+  let ringRafId = null;
+
+  const startRingLoop = () => {
+    if (!ringRafId) {
+      ringRafId = requestAnimationFrame(updateRing);
+    }
+  };
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+    startRingLoop();
   });
 
   const updateRing = () => {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
+    const dx = mouseX - ringX;
+    const dy = mouseY - ringY;
+    ringX += dx * 0.18;
+    ringY += dy * 0.18;
     ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(updateRing);
+
+    if (Math.hypot(dx, dy) > 0.1) {
+      ringRafId = requestAnimationFrame(updateRing);
+    } else {
+      ringX = mouseX;
+      ringY = mouseY;
+      ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
+      ringRafId = null;
+    }
   };
-  requestAnimationFrame(updateRing);
+  startRingLoop();
 
   const updateHoverTargets = () => {
     const targets = document.querySelectorAll('a, button, [data-tilt], .skill-card, input, textarea, select');
@@ -1266,10 +1286,13 @@ function initProjects3DCarousel() {
   let touchEndX = 0;
 
   stage.addEventListener('touchstart', (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+    if (e.changedTouches && e.changedTouches[0]) {
+      touchStartX = e.changedTouches[0].screenX;
+    }
   }, { passive: true });
 
   stage.addEventListener('touchend', (e) => {
+    if (!e.changedTouches || !e.changedTouches[0]) return;
     touchEndX = e.changedTouches[0].screenX;
     const diff = touchStartX - touchEndX;
     if (Math.abs(diff) > 40) {
@@ -1441,14 +1464,24 @@ function initImageScrollParallax() {
 
   const updateImgParallax = () => {
     const windowH = window.innerHeight;
-    parallaxImgs.forEach((img) => {
+    const updates = [];
+
+    // 1. Batch DOM Reads
+    for (let i = 0; i < parallaxImgs.length; i++) {
+      const img = parallaxImgs[i];
       const rect = img.getBoundingClientRect();
       if (rect.bottom > 0 && rect.top < windowH) {
         const centerOffset = (rect.top + rect.height / 2) - (windowH / 2);
         const yOffset = Math.round(centerOffset * -0.03);
-        img.style.transform = `translate3d(0, ${yOffset}px, 0)`;
+        updates.push({ img, yOffset });
       }
-    });
+    }
+
+    // 2. Batch DOM Writes
+    for (let i = 0; i < updates.length; i++) {
+      updates[i].img.style.transform = `translate3d(0, ${updates[i].yOffset}px, 0)`;
+    }
+
     ticking = false;
   };
 
@@ -1460,13 +1493,31 @@ function initImageScrollParallax() {
   }, { passive: true });
 }
 
+// Safe LocalStorage Wrappers (Graceful In-Memory Fallback for Strict Sandbox Environments)
+function safeGetStorage(key, fallback = null) {
+  try {
+    return localStorage.getItem(key) ?? fallback;
+  } catch (_) {
+    return fallback;
+  }
+}
+
+function safeSetStorage(key, val) {
+  try {
+    localStorage.setItem(key, val);
+    return true;
+  } catch (_) {
+    return false;
+  }
+}
+
 // 11. BIDIRECTIONAL LIGHT / DARK THEME SYSTEM
 // -----------------------------------------------------------------------------
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
   const urlParams = new URLSearchParams(window.location.search);
   const paramTheme = urlParams.get('theme');
-  const localTheme = localStorage.getItem('zs_theme');
+  const localTheme = safeGetStorage('zs_theme');
   // First-time visitors unconditionally default to dark mode (#080808)
   const activeTheme = paramTheme || localTheme || document.documentElement.getAttribute('data-theme') || 'dark';
   document.documentElement.setAttribute('data-theme', activeTheme);
@@ -1485,7 +1536,7 @@ function initThemeToggle() {
     const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
     const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('zs_theme', nextTheme);
+    safeSetStorage('zs_theme', nextTheme);
     updateAria(nextTheme);
   });
 }
@@ -1500,39 +1551,52 @@ function initSoundSystem() {
   class PortfolioSoundSystem {
     constructor() {
       this.src = AUDIO_SRC;
-      this.audio = new Audio(this.src);
-      this.audio.preload = 'auto';
-
+      this.audio = null;
       this.audioCtx = null;
       this.audioBuffer = null;
       this.currentSource = null;
       this.lastPlayTime = 0;
       this.minInterval = 50; // ms: prevent overlapping sounds during rapid clicks
+      this.audioLoadingPromise = null;
 
       // Default is strictly OFF unless explicitly saved as 'on'
-      this.enabled = localStorage.getItem('zs_sound') === 'on';
+      this.enabled = safeGetStorage('zs_sound') === 'on';
 
-      this.initAudioContext();
+      // Lazy-load: only fetch & decode audio resources if sound is actively enabled
+      if (this.enabled) {
+        this.initAudio();
+      }
       this.bindUserGestureUnlock();
       this.bindGlobalListeners();
       this.syncUI();
     }
 
-    async initAudioContext() {
-      try {
-        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContextClass) return;
-        this.audioCtx = new AudioContextClass();
+    async initAudio() {
+      if (this.audioLoadingPromise) return this.audioLoadingPromise;
 
-        // Preload and decode audio data for zero-latency responsive playback
-        const res = await fetch(this.src);
-        if (!res.ok) return;
-        const arrayBuffer = await res.arrayBuffer();
-        this.audioBuffer = await this.audioCtx.decodeAudioData(arrayBuffer);
-      } catch (err) {
-        // Fallback to HTML5 audio element
-        this.audioBuffer = null;
-      }
+      this.audioLoadingPromise = (async () => {
+        try {
+          if (!this.audio) {
+            this.audio = new Audio(this.src);
+            this.audio.preload = 'auto';
+          }
+
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass && !this.audioCtx) {
+            this.audioCtx = new AudioContextClass();
+            const res = await fetch(this.src);
+            if (res.ok) {
+              const arrayBuffer = await res.arrayBuffer();
+              this.audioBuffer = await this.audioCtx.decodeAudioData(arrayBuffer);
+            }
+          }
+        } catch (err) {
+          // Graceful fallback to HTML5 Audio element
+          this.audioBuffer = null;
+        }
+      })();
+
+      return this.audioLoadingPromise;
     }
 
     bindUserGestureUnlock() {
@@ -1564,14 +1628,16 @@ function initSoundSystem() {
     }
 
     toggle() {
-      this.unlock();
       this.enabled = !this.enabled;
-      localStorage.setItem('zs_sound', this.enabled ? 'on' : 'off');
+      safeSetStorage('zs_sound', this.enabled ? 'on' : 'off');
       this.syncUI();
 
       // Play sound upon enabling as audible confirmation
       if (this.enabled) {
-        this.play();
+        this.initAudio().then(() => {
+          this.unlock();
+          this.play();
+        });
       }
     }
 
@@ -1581,6 +1647,12 @@ function initSoundSystem() {
       const now = performance.now();
       if (now - this.lastPlayTime < this.minInterval) return;
       this.lastPlayTime = now;
+
+      // Ensure audio resources are loaded before playing
+      if (!this.audio && !this.audioBuffer) {
+        this.initAudio().then(() => this.play());
+        return;
+      }
 
       this.unlock();
 
@@ -1607,12 +1679,14 @@ function initSoundSystem() {
       }
 
       // 2. HTML5 Audio Fallback (Reset to 0 to prevent overlap)
-      try {
-        this.audio.pause();
-        this.audio.currentTime = 0;
-        const p = this.audio.play();
-        if (p && p.catch) p.catch(() => {});
-      } catch (e) {}
+      if (this.audio) {
+        try {
+          this.audio.pause();
+          this.audio.currentTime = 0;
+          const p = this.audio.play();
+          if (p && p.catch) p.catch(() => {});
+        } catch (e) {}
+      }
     }
 
     bindGlobalListeners() {

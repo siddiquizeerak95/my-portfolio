@@ -10,11 +10,17 @@
  */
 
 import fs from 'fs';
+import path from 'path';
+import crypto from 'crypto';
+import { fileURLToPath } from 'url';
 import readline from 'readline';
 import vm from 'vm';
 import dotenv from 'dotenv';
 
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const rawArgs = process.argv.slice(2);
 
@@ -67,8 +73,9 @@ for (let i = 0; i < rawArgs.length; i++) {
 }
 
 // 3. Resolve private key path using 3-tier hierarchy
-const DEFAULT_KEY_PATH = 'keys/zeerak_private_KEY_KEEP_SAFE.asc';
-const privateKeyPath = customKeyPath || process.env.PRIVATE_KEY_PATH || DEFAULT_KEY_PATH;
+const DEFAULT_KEY_PATH = path.resolve(__dirname, 'keys', 'zeerak_private_KEY_KEEP_SAFE.asc');
+const rawKeyPath = customKeyPath || process.env.PRIVATE_KEY_PATH;
+const privateKeyPath = rawKeyPath ? path.resolve(process.cwd(), rawKeyPath) : DEFAULT_KEY_PATH;
 
 if (!fs.existsSync(privateKeyPath)) {
   console.error(`\n❌ ERROR: Private key file not found at: ${privateKeyPath}`);
@@ -82,7 +89,8 @@ if (!fs.existsSync(privateKeyPath)) {
 const privateKeyArmored = fs.readFileSync(privateKeyPath, 'utf8');
 
 // Load OpenPGP in isolated sandbox
-const openpgpCode = fs.readFileSync('vendor/openpgp.min.js', 'utf8');
+const openpgpPath = path.resolve(__dirname, 'vendor', 'openpgp.min.js');
+const openpgpCode = fs.readFileSync(openpgpPath, 'utf8');
 const context = {
   global: {},
   window: {},

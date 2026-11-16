@@ -92,6 +92,8 @@ class DigitalUniverse {
     this.boundTouchEnd = this.onTouchEnd.bind(this);
     this.boundWheel = this.onWheel.bind(this);
     this.boundKeyDown = this.onKeyDown.bind(this);
+    this.boundHomepageWheel = this.onHomepageWheel.bind(this);
+    this.boundHomepageTouchMove = this.onHomepageTouchMove.bind(this);
 
     this.init();
   }
@@ -1003,6 +1005,17 @@ class DigitalUniverse {
     this.stage.classList.add('intro-dismissed');
     document.body.style.overflow = '';
 
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
+    }
+
+    // Detach non-passive scroll interceptors while browsing homepage; attach lightweight passive detector
+    window.removeEventListener('wheel', this.boundWheel);
+    window.removeEventListener('touchmove', this.boundTouchMove);
+    window.addEventListener('wheel', this.boundHomepageWheel, { passive: true });
+    window.addEventListener('touchmove', this.boundHomepageTouchMove, { passive: true });
+
     if (!this.hasRevealedHomepage) {
       this.hasRevealedHomepage = true;
       this.phase = 'homepage';
@@ -1021,6 +1034,16 @@ class DigitalUniverse {
     document.body.style.overflow = 'hidden';
     this.phase = 'active';
     if (this.topBar) this.topBar.style.opacity = '1';
+
+    // Remove passive homepage detectors and re-attach active non-passive flight controls
+    window.removeEventListener('wheel', this.boundHomepageWheel);
+    window.removeEventListener('touchmove', this.boundHomepageTouchMove);
+    window.addEventListener('wheel', this.boundWheel, { passive: false });
+    window.addEventListener('touchmove', this.boundTouchMove, { passive: false });
+
+    if (!this.animationFrameId) {
+      this.animate();
+    }
   }
 
   triggerEnterDissolution() {
@@ -1057,6 +1080,8 @@ class DigitalUniverse {
     this.hasRevealedHomepage = true;
     this.phase = 'homepage';
     document.body.style.overflow = '';
+
+    this.destroy();
 
     if (this.stage) {
       this.stage.classList.add('intro-dismissed');
@@ -1174,6 +1199,24 @@ class DigitalUniverse {
     }
   }
 
+  onHomepageWheel(e) {
+    if (window.scrollY <= 2 && e.deltaY < 0) {
+      this.reactivateIntro();
+      this.targetScrollProgress = Math.max(0.0, this.targetScrollProgress + e.deltaY * 0.00045);
+    }
+  }
+
+  onHomepageTouchMove(e) {
+    if (e.touches && e.touches[0] && this.lastTouchY !== undefined) {
+      const deltaY = this.lastTouchY - e.touches[0].clientY;
+      if (window.scrollY <= 2 && deltaY < -10) {
+        this.reactivateIntro();
+        this.targetScrollProgress = Math.max(0.0, this.targetScrollProgress + deltaY * 0.0012);
+      }
+      this.lastTouchY = e.touches[0].clientY;
+    }
+  }
+
   onKeyDown(e) {
     if ((e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') && this.scrollProgress < 0.96) {
       if (document.activeElement && (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA')) {
@@ -1198,6 +1241,10 @@ class DigitalUniverse {
   }
 
   animate() {
+    if (this.phase === 'homepage') {
+      this.animationFrameId = null;
+      return;
+    }
     this.animationFrameId = requestAnimationFrame(this.boundAnimate);
     const now = performance.now();
     const time = now * 0.001;
@@ -1363,6 +1410,7 @@ class DigitalUniverse {
   destroy() {
     if (this.animationFrameId) {
       cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
     }
     window.removeEventListener('resize', this.boundResize);
     window.removeEventListener('mousemove', this.boundMouseMove);
@@ -1372,9 +1420,34 @@ class DigitalUniverse {
     window.removeEventListener('touchend', this.boundTouchEnd);
     window.removeEventListener('wheel', this.boundWheel);
     window.removeEventListener('keydown', this.boundKeyDown);
+    window.removeEventListener('wheel', this.boundHomepageWheel);
+    window.removeEventListener('touchmove', this.boundHomepageTouchMove);
+
+    if (this.scene) {
+      this.scene.traverse((obj) => {
+        if (obj.geometry) {
+          try { obj.geometry.dispose(); } catch (_) {}
+        }
+        if (obj.material) {
+          try {
+            if (Array.isArray(obj.material)) {
+              obj.material.forEach((m) => m && m.dispose && m.dispose());
+            } else if (obj.material.dispose) {
+              obj.material.dispose();
+            }
+          } catch (_) {}
+        }
+      });
+    }
 
     if (this.renderer) {
-      this.renderer.dispose();
+      try {
+        this.renderer.dispose();
+        if (this.renderer.forceContextLoss) {
+          this.renderer.forceContextLoss();
+        }
+      } catch (_) {}
+      this.renderer = null;
     }
   }
 }

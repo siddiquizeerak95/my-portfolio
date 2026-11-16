@@ -403,13 +403,16 @@ const server = http.createServer(async (req, res) => {
     req.on('data', chunk => {
       body += chunk;
       if (body.length > 256 * 1024) { // Max 256KB
-        res.writeHead(413, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ success: false, error: 'Payload too large.' }));
+        if (!res.writableEnded) {
+          res.writeHead(413, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: false, error: 'Payload too large.' }));
+        }
         req.destroy();
       }
     });
 
     req.on('end', async () => {
+      if (res.writableEnded) return;
       try {
         const data = JSON.parse(body);
         const { name, email, subject, encrypted_message, _hp_security_check, timestamp } = data;
@@ -486,11 +489,13 @@ const server = http.createServer(async (req, res) => {
         }));
       } catch (err) {
         console.error('[E2EE Contact Error]', err.message);
-        res.writeHead(500, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          success: false,
-          error: err.message || 'An error occurred while dispatching the message.'
-        }));
+        if (!res.writableEnded) {
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({
+            success: false,
+            error: err.message || 'An error occurred while dispatching the message.'
+          }));
+        }
       }
     });
 
@@ -503,7 +508,8 @@ const server = http.createServer(async (req, res) => {
   let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
 
   // Normalize path to prevent directory traversal
-  if (!filePath.startsWith(__dirname)) {
+  const relativePath = path.relative(__dirname, filePath);
+  if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
     res.writeHead(403, { 'Content-Type': 'text/plain' });
     res.end('Forbidden');
     return;

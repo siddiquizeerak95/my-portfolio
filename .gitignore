@@ -27,3 +27,6 @@ scratch/
 # Review Packages & Design Artifacts (Held locally)
 ZS-Galaxy-Review/
 
+# Email Test Artifacts
+*.eml
+
