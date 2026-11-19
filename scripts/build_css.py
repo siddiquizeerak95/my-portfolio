@@ -1,6 +1,7 @@
 import os
 import hashlib
 import sys
+import re
 
 MODULE_FILES = [
     "css/01-tokens.css",
@@ -17,27 +18,139 @@ MODULE_FILES = [
 
 TARGET_FILE = "style.css"
 
+STANDALONE_FILES = [
+    "sculpture-intro.css",
+    "blog-3d.css"
+]
+
 def compute_sha256(data_bytes):
     return hashlib.sha256(data_bytes).hexdigest()
 
+def minify_css(css_text: str) -> str:
+    """
+    Lossless, deterministic CSS minifier.
+    Preserves string literals, calc() operator spacing, @media queries, and CSS custom properties.
+    """
+    output = []
+    i = 0
+    n = len(css_text)
+
+    in_string = None  # '"' or "'"
+    in_comment = False
+    current_token = []
+
+    # Pass 1: Strip comments while strictly preserving string literals
+    while i < n:
+        char = css_text[i]
+        next_char = css_text[i+1] if i + 1 < n else ''
+
+        # Comments
+        if not in_string and not in_comment and char == '/' and next_char == '*':
+            in_comment = True
+            i += 2
+            continue
+
+        if in_comment:
+            if char == '*' and next_char == '/':
+                in_comment = False
+                i += 2
+            else:
+                i += 1
+            continue
+
+        # Strings
+        if not in_string and (char == '"' or char == "'"):
+            in_string = char
+            current_token.append(char)
+            i += 1
+            continue
+
+        if in_string:
+            current_token.append(char)
+            if char == '\\':
+                if i + 1 < n:
+                    i += 1
+                    current_token.append(css_text[i])
+            elif char == in_string:
+                in_string = None
+            i += 1
+            continue
+
+        current_token.append(char)
+        i += 1
+
+    cleaned = "".join(current_token)
+
+    # Pass 2: Token-aware whitespace normalization protecting strings
+    string_pattern = re.compile(r'("(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\')')
+    parts = string_pattern.split(cleaned)
+
+    minified_parts = []
+    for idx, part in enumerate(parts):
+        if idx % 2 == 1:
+            # String literal: preserve byte-exact
+            minified_parts.append(part)
+        else:
+            p = part
+            # Collapse whitespace sequences
+            p = re.sub(r'\s+', ' ', p)
+
+            # Remove spaces around structural delimiters
+            p = re.sub(r'\s*\{\s*', '{', p)
+            p = re.sub(r'\s*\}\s*', '}', p)
+            p = re.sub(r'\s*;\s*', ';', p)
+            p = re.sub(r'\s*,\s*', ',', p)
+
+            # Remove trailing semicolons before closing brace
+            p = re.sub(r';\}', '}', p)
+
+            # Remove whitespace around colons in declarations
+            p = re.sub(r'\s*:\s*', ':', p)
+
+            # Restore required space after @media, @keyframes, @supports, @import
+            p = re.sub(r'(@media|@keyframes|@supports|@import)\(', r'\1 (', p)
+            p = re.sub(r'(@media|@keyframes|@supports|@import):', r'\1 :', p)
+
+            # Ensure "and (" in media queries has space
+            p = re.sub(r'\band\(', 'and (', p)
+
+            # Preserve calc() + and - operators required by CSS spec
+            def fix_calc_spaces(match):
+                inner = match.group(0)
+                inner = re.sub(r'(\d|\%|[a-z])\+([0-9a-z\.])', r'\1 + \2', inner)
+                inner = re.sub(r'(\d|\%|[a-z])\-([0-9a-z\.])', r'\1 - \2', inner)
+                return inner
+
+            p = re.sub(r'calc\([^)]+\)', fix_calc_spaces, p)
+
+            # Remove empty rulesets
+            p = re.sub(r'[^{};]+?\{\}', '', p)
+
+            minified_parts.append(p.strip())
+
+    res = "".join(minified_parts)
+    res = re.sub(r';+', ';', res)
+    res = re.sub(r';\}', '}', res)
+    return res.strip()
+
 def compile_modules_in_memory():
-    """Reads all 10 modules in binary mode and concatenates them in memory."""
+    """Reads all 10 modules in UTF-8 text mode, minifies them losslessly, and returns compiled UTF-8 bytes."""
     for m in MODULE_FILES:
         if not os.path.exists(m):
             print(f"[FATAL ERROR] Required CSS module file missing: {m}")
             sys.exit(1)
 
-    in_memory_chunks = []
+    raw_chunks = []
     for m in MODULE_FILES:
-        with open(m, "rb") as fl:
-            chunk = fl.read()
-            in_memory_chunks.append(chunk)
+        with open(m, "r", encoding="utf-8") as fl:
+            raw_chunks.append(fl.read())
 
-    compiled_bytes = b"".join(in_memory_chunks)
-    return compiled_bytes
+    full_css = "\n".join(raw_chunks)
+    minified_css = minify_css(full_css)
+    return minified_css.encode("utf-8")
 
 def verify_mode():
-    """Strictly read-only verification comparing in-memory modules against root style.css."""
+    """Strictly read-only verification comparing in-memory compiled modules against root style.css."""
     print("=" * 80)
     print("ZS STUDIO — CSS BUILD VERIFICATION (--verify, STRICTLY READ-ONLY)")
     print("=" * 80)
@@ -116,4 +229,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

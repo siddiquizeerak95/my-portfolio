@@ -30,8 +30,9 @@
 
   <!-- Favicon / Brand Identity -->
   <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
-  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
-  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/optimized/v4.0.1/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/optimized/v4.0.1/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/optimized/v4.0.1/favicon-192x192.png">
 
 <!-- Theme Init Script (Zero Flash) -->
   <script>
@@ -50,7 +51,6 @@
 
   <!-- Master Stylesheet -->
     <!-- Preload Interface Click Audio -->
-  <link rel="preload" href="assets/audio/mixkit-sci-fi-interface-robot-click-901.wav" as="audio" type="audio/wav">
   <link rel="stylesheet" href="style.css?v=262">
   <link rel="stylesheet" href="sculpture-intro.css?v=262">
 </head>
@@ -67,7 +67,7 @@
     <div class="preloader-content" id="preloader-content">
       <div class="preloader-brand">
         <div class="preloader-logo-wrap" id="preloader-logo-wrap">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="preloader-logo" width="64" height="64" loading="eager">
+          <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zs-logo-header.webp" type="image/webp"><img src="assets/optimized/v4.0.1/zs-logo-header.png" alt="ZS Logo" class="preloader-logo" width="64" height="64" decoding="async"></picture>
           <div class="preloader-logo-glow" aria-hidden="true"></div>
         </div>
         <div class="preloader-text-group">
@@ -143,7 +143,7 @@
 
     <!-- Static Fallback if WebGL is unavailable -->
     <div class="sculpture-fallback">
-      <img src="assets/zeerak-office-portrait-clean.png" alt="Zeerak Siddiqui" width="450" height="512" loading="eager">
+      <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zeerak-office-portrait-clean.webp" type="image/webp"><img src="assets/zeerak-office-portrait-clean.png" alt="Zeerak Siddiqui" width="450" height="512" loading="lazy" decoding="async"></picture>
     </div>
   </section>
 
@@ -163,8 +163,7 @@
       <nav class="header-nav" aria-label="Main Navigation">
         <!-- Far Left: ZS Logo + ZS STUDIO Wordmark -->
         <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="46" height="46"
-            loading="eager">
+          <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zs-logo-header.webp" type="image/webp"><img src="assets/optimized/v4.0.1/zs-logo-header.png" alt="ZS Logo" class="header-brand-logo" width="46" height="46" decoding="async"></picture>
           <span class="header-brand-divider" aria-hidden="true"></span>
           <span class="header-brand-name">ZS STUDIO</span>
         </a>
@@ -419,9 +418,7 @@
 
               <!-- Seamless Borderless Portrait Container (NO BORDER, NO CARD, NO BOX) -->
               <div class="hero-borderless-portrait-wrap" id="hero-portrait-card">
-                <img src="assets/zeerak-portrait-clean.png?v=130"
-                  alt="Zeerak Siddiqui — UI/UX Designer &amp; Frontend Developer" class="hero-borderless-portrait-img"
-                  width="900" height="1024" loading="eager">
+                <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zeerak-portrait-clean.webp" type="image/webp"><img src="assets/zeerak-portrait-clean.png" alt="Zeerak Siddiqui — UI/UX Designer &amp; Frontend Developer" class="hero-borderless-portrait-img" width="900" height="1024" loading="eager" fetchpriority="high" decoding="async"></picture>
               </div>
             </div>
           </div>
@@ -495,8 +492,7 @@
           <div class="home-about-visual-col reveal-item">
             <div class="about-portrait-frame-card" data-tilt>
               <div class="about-stripes-badge" aria-hidden="true">///</div>
-              <img src="./new%20image.jpeg" alt="Zeerak Siddiqui" class="about-portrait-img" width="380" height="420"
-                loading="eager">
+              <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zeerak-about-portrait.webp" type="image/webp"><img src="./new%20image.jpeg" alt="Zeerak Siddiqui" class="about-portrait-img" width="380" height="420" loading="lazy" decoding="async"></picture>
             </div>
 
             <!-- 4 Feature Cards with Red Badges (From Reference) -->
@@ -548,7 +544,6 @@
             </div>
           </div>
 
-
         </div>
       </div>
     </section>
@@ -583,7 +578,7 @@
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
               <img src="assets/project-ecommerce-preview.svg" alt="Modern E-commerce App Concept" width="560"
-                height="350" loading="eager">
+                height="350" loading="lazy" decoding="async">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">Mobile App &bull; E-commerce</span>
@@ -610,7 +605,7 @@
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
               <img src="assets/project-finance-preview.svg" alt="Personal Finance Dashboard Concept" width="560"
-                height="350" loading="eager">
+                height="350" loading="lazy" decoding="async">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">Web App UI &bull; FinTech</span>
@@ -636,8 +631,7 @@
           <!-- Card 3: Mobile Banking App -->
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
-              <img src="assets/project-banking-preview.svg" alt="Mobile Banking App Concept" width="560" height="350"
-                loading="eager">
+              <img src="assets/project-banking-preview.svg" alt="Mobile Banking App Concept" width="560" height="350" loading="lazy" decoding="async">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">FinTech UX &bull; Mobile</span>
@@ -664,7 +658,7 @@
           <article class="design-project-card reveal-item" data-tilt>
             <div class="design-card-preview">
               <img src="assets/project-designportfolio-preview.svg" alt="Creative Portfolio Website Concept" width="560"
-                height="350" loading="eager">
+                height="350" loading="lazy" decoding="async">
             </div>
             <div class="design-card-header">
               <span class="design-card-category">Brand &bull; Editorial Web</span>
@@ -719,8 +713,7 @@
             <!-- Project 01 -->
             <article class="project-slide-item project-card-zs active" data-slide-index="0" data-tilt>
               <div class="project-preview-box">
-                <img src="assets/project-portfolio-preview.svg" alt="Portfolio Website" width="400" height="250"
-                  loading="eager">
+                <img src="assets/project-portfolio-preview.svg" alt="Portfolio Website" width="400" height="250" loading="lazy" decoding="async">
               </div>
               <div class="project-info-zs">
                 <h3 class="project-title-zs">Portfolio Website</h3>
@@ -741,8 +734,7 @@
             <!-- Project 02 -->
             <article class="project-slide-item project-card-zs next-1" data-slide-index="1" data-tilt>
               <div class="project-preview-box">
-                <img src="assets/project-matrix-preview.svg" alt="Modern Landing Page" width="400" height="250"
-                  loading="eager">
+                <img src="assets/project-matrix-preview.svg" alt="Modern Landing Page" width="400" height="250" loading="lazy" decoding="async">
               </div>
               <div class="project-info-zs">
                 <h3 class="project-title-zs">Modern Landing Page</h3>
@@ -763,8 +755,7 @@
             <!-- Project 03 -->
             <article class="project-slide-item project-card-zs prev-1" data-slide-index="2" data-tilt>
               <div class="project-preview-box">
-                <img src="assets/project-fullstack-preview.svg" alt="Web App UI" width="400" height="250"
-                  loading="eager">
+                <img src="assets/project-fullstack-preview.svg" alt="Web App UI" width="400" height="250" loading="lazy" decoding="async">
               </div>
               <div class="project-info-zs">
                 <h3 class="project-title-zs">Web App UI</h3>
@@ -781,7 +772,6 @@
               </div>
             </article>
           </div>
-
 
         </div>
       </div>
@@ -971,7 +961,6 @@
             <span class="skill-squircle-title">C Language</span>
           </div>
 
-
         </div>
       </div>
     </section>
@@ -995,7 +984,7 @@
 
             <div class="journey-landscape-card" aria-hidden="true">
               <img src="assets/journey-landscape.svg" alt="Dark mountain landscape with glowing path"
-                class="journey-landscape-img" width="700" height="450" loading="eager">
+                class="journey-landscape-img" width="700" height="450" loading="lazy" decoding="async">
               <div class="journey-landscape-glow-overlay"></div>
             </div>
           </div>
@@ -1070,7 +1059,6 @@
             </div>
           </div>
 
-
         </div>
       </div>
     </section>
@@ -1102,8 +1090,7 @@
           <!-- Card 1 -->
           <a href="blog-how-i-built-my-portfolio.html" class="blog-card-zs reveal-item" data-tilt>
             <div class="blog-card-thumb-wrap">
-              <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website" width="600" height="400"
-                loading="eager">
+              <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website" width="600" height="400" loading="lazy" decoding="async">
               <span class="blog-card-date-badge">OCT 2026</span>
             </div>
             <div class="blog-card-content-zs">
@@ -1118,8 +1105,7 @@
           <!-- Card 2 -->
           <a href="blog-why-i-prefer-minimalist-web-design.html" class="blog-card-zs reveal-item" data-tilt>
             <div class="blog-card-thumb-wrap">
-              <img src="assets/blog-peaks.svg" alt="Top Tools for Web Development" width="600" height="400"
-                loading="eager">
+              <img src="assets/blog-peaks.svg" alt="Top Tools for Web Development" width="600" height="400" loading="lazy" decoding="async">
               <span class="blog-card-date-badge">SEP 2026</span>
             </div>
             <div class="blog-card-content-zs">
@@ -1134,8 +1120,7 @@
           <!-- Card 3 -->
           <a href="blog-my-journey-as-a-developer.html" class="blog-card-zs reveal-item" data-tilt>
             <div class="blog-card-thumb-wrap">
-              <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA" width="600" height="400"
-                loading="eager">
+              <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA" width="600" height="400" loading="lazy" decoding="async">
               <span class="blog-card-date-badge">AUG 2026</span>
             </div>
             <div class="blog-card-content-zs">
@@ -1324,8 +1309,7 @@
       <div class="footer-main-bar">
         <!-- Left: Brand Logo & Wordmark -->
         <a href="index.html" class="footer-brand-lockup" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46"
-            loading="eager">
+          <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zs-logo-header.webp" type="image/webp"><img src="assets/optimized/v4.0.1/zs-logo-header.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="lazy" decoding="async"></picture>
           <span class="footer-brand-divider" aria-hidden="true"></span>
           <span class="footer-brand-name">ZS STUDIO</span>
         </a>
@@ -1392,9 +1376,8 @@
     </div>
   </footer>
 
-  <!-- GSAP & ScrollTrigger Engine -->
+  <!-- GSAP Animation Engine -->
   <script src="vendor/gsap.min.js"></script>
-  <script src="vendor/ScrollTrigger.min.js"></script>
 
   <!-- 3D Particle Sculpture Engine -->
   <script src="vendor/three.min.js"></script>

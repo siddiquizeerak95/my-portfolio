@@ -1576,23 +1576,30 @@ function initSoundSystem() {
 
       this.audioLoadingPromise = (async () => {
         try {
-          if (!this.audio) {
-            this.audio = new Audio(this.src);
-            this.audio.preload = 'auto';
-          }
-
           const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-          if (AudioContextClass && !this.audioCtx) {
-            this.audioCtx = new AudioContextClass();
+          if (AudioContextClass) {
+            if (!this.audioCtx) {
+              this.audioCtx = new AudioContextClass();
+            }
             const res = await fetch(this.src);
             if (res.ok) {
               const arrayBuffer = await res.arrayBuffer();
               this.audioBuffer = await this.audioCtx.decodeAudioData(arrayBuffer);
+              return;
             }
           }
         } catch (err) {
-          // Graceful fallback to HTML5 Audio element
           this.audioBuffer = null;
+        }
+
+        // Graceful fallback to HTML5 Audio element if Web Audio API fails or is unavailable
+        try {
+          if (!this.audio) {
+            this.audio = new Audio(this.src);
+            this.audio.preload = 'auto';
+          }
+        } catch (err) {
+          this.audio = null;
         }
       })();
 
@@ -1638,6 +1645,21 @@ function initSoundSystem() {
           this.unlock();
           this.play();
         });
+      } else {
+        // Immediately halt any in-flight playback upon muting
+        if (this.currentSource) {
+          try {
+            this.currentSource.stop();
+            this.currentSource.disconnect();
+          } catch (e) {}
+          this.currentSource = null;
+        }
+        if (this.audio) {
+          try {
+            this.audio.pause();
+            this.audio.currentTime = 0;
+          } catch (e) {}
+        }
       }
     }
 

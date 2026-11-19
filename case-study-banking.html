@@ -29,8 +29,9 @@
 
   <!-- Favicon / Brand Identity -->
   <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
-  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
-  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/optimized/v4.0.1/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/optimized/v4.0.1/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/optimized/v4.0.1/favicon-192x192.png">
 
   <!-- Theme Init Script (Zero Flash) -->
   <script>
@@ -48,7 +49,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Preload Interface Click Audio -->
-  <link rel="preload" href="assets/audio/mixkit-sci-fi-interface-robot-click-901.wav" as="audio" type="audio/wav">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="page-case-study" id="top" data-page="projects">
@@ -68,7 +68,7 @@
       <nav class="header-nav" aria-label="Main Navigation">
         <!-- Far Left: ZS Logo + ZS STUDIO Wordmark -->
         <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="header-brand-logo" width="46" height="46" loading="eager">
+          <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zs-logo-header.webp" type="image/webp"><img src="assets/optimized/v4.0.1/zs-logo-header.png" alt="ZS Logo" class="header-brand-logo" width="46" height="46" decoding="async"></picture>
           <span class="header-brand-divider" aria-hidden="true"></span>
           <span class="header-brand-name">ZS STUDIO</span>
         </a>
@@ -221,7 +221,7 @@
         <!-- Hero Showcase Mockup -->
         <div class="case-study-hero-showcase reveal-item">
           <!-- Figma Placeholder: Replace with exported image from Figma (1200x680) -->
-          <img src="assets/project-banking-preview.svg" alt="Mobile Banking App Showcase Mockup" width="1200" height="680" loading="eager">
+          <img src="assets/project-banking-preview.svg" alt="Mobile Banking App Showcase Mockup" width="1200" height="680" loading="eager" fetchpriority="high" decoding="async">
           <div class="figma-replace-hint">
             <span>&bull; FIGMA COVER MOCKUP &mdash; Ready for your high-res Figma export</span>
             <span>Recommended export size: 1200 &times; 680 (WebP / PNG)</span>
@@ -353,7 +353,7 @@
         <!-- Persona Diagram Placeholder -->
         <div class="figma-placeholder-box reveal-item">
           <!-- Figma Placeholder: Replace with exported Persona graphic from Figma -->
-          <img src="assets/case-study-persona.svg" alt="User Persona Diagram" width="1000" height="500" loading="lazy">
+          <img src="assets/case-study-persona.svg" alt="User Persona Diagram" width="1000" height="500" loading="lazy" decoding="async">
           <div class="figma-replace-hint">
             <span>&bull; USER PERSONA SPECIFICATION &mdash; Replace with your Figma Persona export</span>
             <span>Recommended format: 1000 &times; 500 (WebP / PNG)</span>
@@ -379,7 +379,7 @@
         <!-- Wireframes Diagram Placeholder -->
         <div class="figma-placeholder-box reveal-item">
           <!-- Figma Placeholder: Replace with exported Wireframes from Figma -->
-          <img src="assets/case-study-wireframes.svg" alt="Low-Fidelity Wireframes Flow" width="1000" height="520" loading="lazy">
+          <img src="assets/case-study-wireframes.svg" alt="Low-Fidelity Wireframes Flow" width="1000" height="520" loading="lazy" decoding="async">
           <div class="figma-replace-hint">
             <span>&bull; LOW-FIDELITY WIREFRAME ARCHITECTURE &mdash; Replace with your Figma wireframe layout</span>
             <span>Recommended format: 1000 &times; 520 (WebP / PNG)</span>
@@ -405,7 +405,7 @@
         <!-- Design System Spec Placeholder -->
         <div class="figma-placeholder-box reveal-item">
           <!-- Figma Placeholder: Replace with exported Design System sheet from Figma -->
-          <img src="assets/case-study-design-system.svg" alt="Design System and Component Library" width="1000" height="500" loading="lazy">
+          <img src="assets/case-study-design-system.svg" alt="Design System and Component Library" width="1000" height="500" loading="lazy" decoding="async">
           <div class="figma-replace-hint">
             <span>&bull; DESIGN SYSTEM &amp; TOKENS &mdash; Replace with your Figma Component Library export</span>
             <span>Recommended format: 1000 &times; 500 (WebP / PNG)</span>
@@ -431,7 +431,7 @@
         <!-- Metrics Graph Placeholder -->
         <div class="figma-placeholder-box reveal-item">
           <!-- Figma Placeholder: Replace with exported metrics / results graphic from Figma -->
-          <img src="assets/case-study-metrics.svg" alt="Usability Testing Metrics" width="1000" height="450" loading="lazy">
+          <img src="assets/case-study-metrics.svg" alt="Usability Testing Metrics" width="1000" height="450" loading="lazy" decoding="async">
           <div class="figma-replace-hint">
             <span>&bull; TESTING OUTCOMES &amp; SYSTEM USABILITY SCORE (SUS) &mdash; Replace with your project findings</span>
             <span>Recommended format: 1000 &times; 450 (WebP / PNG)</span>
@@ -465,7 +465,7 @@
       <div class="footer-main-bar">
         <!-- Left: Brand Logo & Wordmark -->
         <a href="index.html" class="footer-brand-lockup" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="eager">
+          <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zs-logo-header.webp" type="image/webp"><img src="assets/optimized/v4.0.1/zs-logo-header.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="lazy" decoding="async"></picture>
           <span class="footer-brand-divider" aria-hidden="true"></span>
           <span class="footer-brand-name">ZS STUDIO</span>
         </a>

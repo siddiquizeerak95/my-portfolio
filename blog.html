@@ -29,8 +29,9 @@
 
   <!-- Favicon / Brand Identity -->
   <link rel="icon" type="image/svg+xml" href="./zs-monogram.svg">
-  <link rel="icon" type="image/png" href="./New%20fav%20icon.png">
-  <link rel="apple-touch-icon" href="./New%20fav%20icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/optimized/v4.0.1/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/optimized/v4.0.1/favicon-48x48.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/optimized/v4.0.1/favicon-192x192.png">
 
 <!-- Theme Init Script (Zero Flash) -->
   <script>
@@ -49,7 +50,6 @@
 
   <!-- Master Stylesheet -->
     <!-- Preload Interface Click Audio -->
-  <link rel="preload" href="assets/audio/mixkit-sci-fi-interface-robot-click-901.wav" as="audio" type="audio/wav">
   <link rel="stylesheet" href="style.css">
   <!-- Dedicated 3D Blog Showcase Stylesheet (Scoped to blog.html) -->
   <link rel="stylesheet" href="blog-3d.css">
@@ -71,7 +71,7 @@
       <nav class="header-nav" aria-label="Main Navigation">
         <!-- Far Left: ZS Logo + ZS STUDIO Wordmark -->
         <a href="index.html" class="header-brand" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" loading="eager">
+          <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zs-logo-header.webp" type="image/webp"><img src="assets/optimized/v4.0.1/zs-logo-header.png" alt="ZS logo" class="header-brand-logo" width="50" height="50" decoding="async"></picture>
           <span class="header-brand-divider" aria-hidden="true"></span>
           <span class="header-brand-name">ZS STUDIO</span>
         </a>
@@ -238,7 +238,7 @@
             <article class="blog-3d-card" data-card-index="0" id="b3d-card-0">
               <div class="b3d-card-inner">
                 <div class="b3d-visual-pane">
-                  <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website Architecture" class="b3d-card-img" width="520" height="420" loading="eager">
+                  <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website Architecture" class="b3d-card-img" width="520" height="420" loading="eager" decoding="async">
                   <span class="b3d-date-badge">OCT 2026</span>
                   <div class="b3d-visual-overlay" aria-hidden="true"></div>
                 </div>
@@ -270,7 +270,7 @@
             <article class="blog-3d-card" data-card-index="1" id="b3d-card-1">
               <div class="b3d-card-inner">
                 <div class="b3d-visual-pane">
-                  <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA Path" class="b3d-card-img" width="520" height="420" loading="eager">
+                  <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA Path" class="b3d-card-img" width="520" height="420" loading="lazy" decoding="async">
                   <span class="b3d-date-badge">SEP 2026</span>
                   <div class="b3d-visual-overlay" aria-hidden="true"></div>
                 </div>
@@ -302,7 +302,7 @@
             <article class="blog-3d-card" data-card-index="2" id="b3d-card-2">
               <div class="b3d-card-inner">
                 <div class="b3d-visual-pane">
-                  <img src="assets/blog-peaks.svg" alt="Why I Prefer Minimalist Web Design" class="b3d-card-img" width="520" height="420" loading="eager">
+                  <img src="assets/blog-peaks.svg" alt="Why I Prefer Minimalist Web Design" class="b3d-card-img" width="520" height="420" loading="lazy" decoding="async">
                   <span class="b3d-date-badge">AUG 2026</span>
                   <div class="b3d-visual-overlay" aria-hidden="true"></div>
                 </div>
@@ -361,7 +361,7 @@
           <article class="magazine-article-card reveal-item" data-category="architecture" data-tilt>
             <a href="blog-how-i-built-my-portfolio.html" class="magazine-card-link" aria-label="Read How I Built My Portfolio Website">
               <div class="magazine-thumbnail-wrap">
-                <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website Architecture" class="magazine-thumb-img" width="400" height="260" loading="eager">
+                <img src="assets/blog-architecture.svg" alt="How I Built My Portfolio Website Architecture" class="magazine-thumb-img" width="400" height="260" loading="lazy" decoding="async">
                 <span class="magazine-date-pill">OCT 2026</span>
               </div>
               <div class="magazine-content-wrap">
@@ -381,7 +381,7 @@
           <article class="magazine-article-card reveal-item" data-category="journey" data-tilt>
             <a href="blog-my-journey-as-a-developer.html" class="magazine-card-link" aria-label="Read My Learning Journey in BCA">
               <div class="magazine-thumbnail-wrap">
-                <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA Path" class="magazine-thumb-img" width="400" height="260" loading="eager">
+                <img src="assets/blog-forest.svg" alt="My Learning Journey in BCA Path" class="magazine-thumb-img" width="400" height="260" loading="lazy" decoding="async">
                 <span class="magazine-date-pill">SEP 2026</span>
               </div>
               <div class="magazine-content-wrap">
@@ -401,7 +401,7 @@
           <article class="magazine-article-card reveal-item" data-category="design" data-tilt>
             <a href="blog-why-i-prefer-minimalist-web-design.html" class="magazine-card-link" aria-label="Read Top Tools for Developers in 2026 / Why I Prefer Minimalist Web Design">
               <div class="magazine-thumbnail-wrap">
-                <img src="assets/blog-peaks.svg" alt="Top Tools and Minimalist Web Design" class="magazine-thumb-img" width="400" height="260" loading="eager">
+                <img src="assets/blog-peaks.svg" alt="Top Tools and Minimalist Web Design" class="magazine-thumb-img" width="400" height="260" loading="lazy" decoding="async">
                 <span class="magazine-date-pill">AUG 2026</span>
               </div>
               <div class="magazine-content-wrap">
@@ -428,7 +428,7 @@
       <div class="footer-main-bar">
         <!-- Left: Brand Logo & Wordmark -->
         <a href="index.html" class="footer-brand-lockup" aria-label="ZS STUDIO Homepage">
-          <img src="./New%20fav%20icon.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="eager">
+          <picture style="display: contents;"><source srcset="assets/optimized/v4.0.1/zs-logo-header.webp" type="image/webp"><img src="assets/optimized/v4.0.1/zs-logo-header.png" alt="ZS Logo" class="footer-brand-logo" width="46" height="46" loading="lazy" decoding="async"></picture>
           <span class="footer-brand-divider" aria-hidden="true"></span>
           <span class="footer-brand-name">ZS STUDIO</span>
         </a>
